@@ -1,23 +1,27 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const rewardSchema = new mongoose.Schema({
-    buss_id: {
-        type: String,
-        required: true
-    },
-    information: {
-        type: String
-    },
-    low: {
-        type: String
-    },
-    high: {
-        type: Number
-    },
-    medium: {
-        type: String
-    }
-})
+  buss_id: {
+    type: String,
+    required: true,
+  },
+  information: {
+    type: String,
+    required: true,
+  },
+  low: {
+    type: String,
+    required: true,
+  },
+  high: {
+    type: String,
+    required: true,
+  },
+  medium: {
+    type: String,
+    required: true,
+  },
+});
 
-const RewardDB = mongoose.model('REWARDDB', rewardSchema)
-module.exports = RewardDB
+const RewardDB = mongoose.model("REWARDDB", rewardSchema);
+module.exports = RewardDB;
