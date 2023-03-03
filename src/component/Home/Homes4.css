@@ -1,0 +1,28 @@
+.section-four {
+    background-color: #0b0b0b;
+}
+
+.section-four-p {
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    color: #8D8C8C;
+    margin: 5rem 10rem 0rem 10rem;
+}
+
+
+
+.section-four-div {
+    color: #8D8C8C;
+    border: 1px solid #04ff69;
+}
+
+.section-four-div-p {
+    /* align-items: center; */
+    /* text-align: center; */
+    text-align: justify;
+    margin: 5rem;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+}

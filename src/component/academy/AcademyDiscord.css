@@ -1,0 +1,35 @@
+.academy-discord {
+    background-color: #0b0b0b;
+    padding-bottom: 10rem;
+}
+
+.academy-discord-h {
+    padding-top: 8rem;
+    text-align: center;
+    font-family: "Nunito";
+    font-size: 26px;
+    line-height: 2.8rem;
+    letter-spacing: 2px;
+    font-family: "Nunito";
+    text-shadow: 0 0 15px #04ff69;
+    color: #ffffff;
+}
+
+.academy-discord-p {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 8rem;
+    width: 80%;
+    text-align: justify;
+}
+
+.academy-discord-img {
+    margin-top: 8rem;
+    width: 50%;
+}
+
+.academy-discord-button {
+    width: fit-content;
+}

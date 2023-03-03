@@ -1,0 +1,79 @@
+.signin {
+    background-color: #0b0b0b;
+    padding-top: 1rem;
+    padding-bottom: 20rem;
+}
+
+.signin-h {
+    /* padding-top: 10rem; */
+    text-align: center;
+    font-size: 26px;
+    line-height: 2.8rem;
+    letter-spacing: 2px;
+    font-family: "Nunito";
+    text-shadow: 0 0 15px #04ff69;
+    color: #04ff69;
+}
+
+.signin-label {
+    color: #ffffff;
+    margin-left: calc(32%);
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    display: block;
+    padding: 1rem 0rem;
+    margin-top: 3rem;
+}
+
+.signin-input {
+    margin-left: calc(32%);
+    width: 500px;
+    height: 51px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.signin-checkbox {
+    margin-top: 3rem;
+    margin-left: calc(30%);
+    font-size: 20px;
+    color: #ffffff;
+    /* font-size: 14px; */
+}
+
+.signin-checkbox-label {
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    margin-left: 1rem;
+    justify-content: center;
+}
+
+.signin-checkbox-label a {
+    text-decoration: none;
+    color: #04ff69;
+}
+
+.signin-button {
+    width: fit-content;
+    text-align: center;
+}
+
+.signin-p {
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    margin-left: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.signin-p a {
+    color: #04ff69;
+}

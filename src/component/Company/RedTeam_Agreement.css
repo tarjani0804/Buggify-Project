@@ -1,0 +1,32 @@
+.company-c3 {
+    background-color: #0b0b0b;
+    padding-bottom: 10rem;
+}
+
+.company-c3-h {
+    padding-top: 8rem;
+    text-align: center;
+    font-family: "Nunito";
+    font-size: 26px;
+    line-height: 2.8rem;
+    letter-spacing: 2px;
+    font-family: "Nunito";
+    text-shadow: 0 0 15px #04ff69;
+    color: #ffffff;
+    margin-bottom: 5rem;
+}
+
+.company-c3-p {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    width: 75%;
+    text-align: justify;
+}
+
+.company-c3-button {
+    width: fit-content;
+    margin-top: 10em;
+}

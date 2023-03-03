@@ -1,0 +1,248 @@
+.blog-div {
+    background-color: #0b0b0b;
+    padding-bottom: 10rem;
+}
+
+
+@font-face {
+    font-family: 'Rocher';
+    src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+
+.blog-h {
+    font-family: 'Rocher';
+    text-align: center;
+    font-size: 30px;
+    padding-top: 5rem;
+    letter-spacing: 1px;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin-left: calc(15%);
+    font-palette: --Mint;
+}
+
+@font-palette-values --Mint {
+    font-family: Rocher;
+    base-palette: 2;
+    override-colors:
+        2 rgb(0, 290, 0);
+}
+
+.back-to-home-link {
+    color: #878787;
+    font-size: 18px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-left: 3rem;
+    display: flexbox;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 16px;
+}
+
+.blog-p1 {
+    margin-top: 5rem;
+    margin-left: calc(12rem);
+    /* margin-right: calc(12rem); */
+    width: 60%;
+}
+
+.blog-p1-p {
+    color: #dadada;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    text-align: justify;
+}
+
+.blog-p1-p a {
+    text-decoration: none;
+    color: #04ffff;
+}
+
+
+.more-blogs-div {
+    margin-top: 8rem;
+}
+
+.more-blogs-h {
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-left: calc(8%);
+}
+
+:root {
+    --color: #04ff69;
+    --transition-time: 1s;
+}
+
+.cards-wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 4rem;
+    padding: 4rem;
+    margin: 0 auto;
+    width: max-content;
+}
+
+.num {
+    color: #878787;
+}
+
+.card {
+    font-family: 'Heebo';
+    --bg-filter-opacity: 0.5;
+    background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+    height: 20em;
+    width: 35rem;
+    font-size: 1.5em;
+    color: white;
+    border-radius: 1em;
+    padding: 1em;
+    /*margin: 2em;*/
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 5em -1em black;
+    transition: all, var(--transition-time);
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #04ff69;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: rotate(0);
+}
+
+.card h1 {
+    margin: 0;
+    font-size: 1.5em;
+    line-height: 1.2em;
+}
+
+.card p {
+    font-size: 0.75em;
+    font-family: 'Open Sans';
+    margin-top: 0.5em;
+    line-height: 2em;
+}
+
+.card .tags {
+    display: flex;
+}
+
+.card .tags {
+    font-size: 0.75em;
+    border-radius: 0.3rem;
+    padding: 0 0.5em;
+    margin-right: 0.5em;
+    line-height: 1.5em;
+    transition: all, var(--transition-time);
+}
+
+.card:hover {
+    background: var(--color);
+    color: white;
+}
+
+.tag {
+    margin-top: 2rem;
+    font-size: 14px;
+}
+
+.card .date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.75em;
+    padding: 1em;
+    line-height: 1em;
+    opacity: .8;
+}
+
+.card:before,
+.card:after {
+    content: '';
+    transform: scale(0);
+    transform-origin: top left;
+    border-radius: 50%;
+    position: absolute;
+    left: -50%;
+    top: -50%;
+    z-index: -5;
+    transition: all, var(--transition-time);
+    transition-timing-function: ease-in-out;
+}
+
+.card:before {
+    background: #141414;
+    width: 250%;
+    height: 250%;
+}
+
+.card:after {
+    background: #141414;
+    width: 200%;
+    height: 200%;
+}
+
+.card:hover {
+    background-color: #152410;
+    color: var(--color);
+}
+
+.card:hover:before,
+.card:hover:after {
+    transform: scale(1);
+}
+
+.card-grid-space .num {
+    font-size: 3em;
+    margin-bottom: 1.2rem;
+    margin-left: 1rem;
+}
+
+.info {
+    font-size: 1.2em;
+    display: flex;
+    padding: 1em 3em;
+    height: 3em;
+}
+
+.info img {
+    height: 3em;
+    margin-right: 0.5em;
+}
+
+.info h1 {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+:root {
+    --d: 2500ms;
+    --angle: 90deg;
+    --gradX: 100%;
+    --gradY: 50%;
+    --c1: rgb(21, 221, 38);
+    --c2: rgba(194, 198, 199, 0.1);
+}
+
+.box {
+    border-radius: 1em;
+    border: 0.35rem solid;
+    border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
+    animation: borderRotate var(--d) linear infinite forwards;
+}

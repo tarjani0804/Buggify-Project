@@ -1,0 +1,88 @@
+.academy-courseVideo {
+    background-color: #0b0b0b;
+    padding-bottom: 10rem;
+    padding-top: 8rem;
+}
+
+.academy-course-video {
+    display: grid;
+    grid-template-columns: 10rem 0.5fr 1fr 10rem;
+}
+
+.academy-course-video-progress-bar {
+    margin: 0rem 2rem 1rem 2rem;
+    width: 200px;
+    height: 15px;
+}
+
+.academy-course-video-progree-list {
+    grid-column: 2/3;
+    margin-right: 8rem;
+}
+
+.academy-course-video-progress {
+    border: 1px solid #04ff69;
+}
+
+.CourseVideo-progress {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin: 1rem 2rem 0rem 2rem;
+}
+
+.academy-course-video-videos-h {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+}
+
+.academy-course-video-videos-video-player {
+    color: #878787;
+}
+
+.academy-course-video-list li {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 0.8rem;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    border: 1px solid #04ff69;
+    margin: 1.5rem 0rem;
+    padding-right: 2rem;
+}
+
+
+
+.previous-button {
+    cursor: pointer;
+    margin: 1rem;
+    background-color: #272727;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #878787;
+    border-radius: 5px;
+}
+
+.next-button {
+    cursor: pointer;
+    margin: 1rem;
+    background-color: #272727;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #878787;
+    border-radius: 5px;
+}
+
+.complete-course-button {
+    cursor: pointer;
+    margin: 1rem;
+    background-color: #272727;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #878787;
+    border-radius: 5px;
+}

@@ -1,0 +1,200 @@
+.container {
+    background-color: #0b0b0b
+}
+
+.courses-div {
+    display: grid;
+    grid-template-columns: 5rem 0.8fr 3fr;
+}
+
+.filter-div {
+    grid-column: 2/3;
+    display: block;
+}
+
+.courses-card-div {
+    grid-column: 3/4;
+}
+
+.filter-box1 {
+    background-color: #131212;
+    margin-top: 10rem;
+}
+
+.level-filter-h {
+    color: #ffffff;
+    font-size: 14px;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 3rem;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+}
+
+.form-check input {
+    margin-left: 5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    background-color: #878787;
+}
+
+
+
+.form-check-input:checked {
+    color: black;
+    background-color: hsl(0, 0%, 40%);
+    border-color: hsl(0, 0%, 40%);
+}
+
+.form-check-input:hover {
+    box-shadow: 0 0 0 2px #878787;
+}
+
+
+.form-check label {
+    cursor: pointer;
+    color: #ffffff;
+    margin-left: 1rem;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    font-size: 14px;
+    justify-content: center;
+
+}
+
+.category-filter {
+    margin-top: 5rem;
+    background-color: #131212;
+}
+
+.category-filter-h {
+    color: #ffffff;
+    font-size: 14px;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-bottom: 3rem;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+}
+
+.course-card {
+    border: 1px solid #878787;
+    border-radius: 10px;
+}
+
+.course-cards {
+    margin: 5rem 3rem;
+}
+
+
+.course-card {
+    position: relative;
+    display: grid;
+    width: 100%;
+    height: 35rem;
+    grid-template-columns: 2rem 1.2fr 1fr 0.6fr 2rem;
+}
+
+.card-body-div1 {
+    grid-column: 2/3;
+}
+
+.card-body-div1-img {
+    width: 100%;
+    height: 90%;
+    margin-top: calc(5%);
+    margin-bottom: 2rem;
+}
+
+.card-body-div2 {
+    grid-column: 3/4;
+    margin-left: 2rem;
+}
+
+
+.card-body-div2-title {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 5rem
+}
+
+.card-body-div2-text {
+    font-size: 14px;
+    color: #878787;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+}
+
+.card-body-div2-level-button {
+    background-color: #5200FF;
+    border: none;
+    border-radius: 10px;
+    margin-top: 2rem;
+    width: 100px;
+    height: 25px;
+    /* position: absolute; */
+    /* bottom: 8.5rem; */
+}
+
+.card-body-div2-category-button {
+    background-color: #00FF38;
+    border: none;
+    border-radius: 10px;
+    margin-left: 2rem;
+    width: 100px;
+    height: 25px;
+    /* position: absolute; */
+    /* bottom: 8.5rem; */
+    /* left: 51rem; */
+}
+
+.card-body-div2-instrutor {
+    color: #878787;
+    position: absolute;
+    bottom: 2.5rem;
+    margin-top: 2rem;
+    font-size: 14px;
+
+}
+
+.card-body-div2-avatar {
+    float: left;
+    width: 10%;
+    margin-top: 1rem;
+    margin-right: 1.5rem;
+    border-radius: 50px;
+}
+
+.card-body-div2-instrutor-span {
+    margin-top: 1.7rem;
+}
+
+.card-body-div3 {
+    grid-column: 4/5;
+}
+
+.card-body-div3-price {
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    margin-top: 5rem;
+}
+
+.card-div3-button1 {
+    width: fit-content;
+    /* height: 80px; */
+    margin-bottom: 0rem;
+}
+
+.card-div3-button2 {
+    width: fit-content;
+    margin-top: 2rem;
+}
+
+.card-div3-button2-button {
+    width: 150px;
+}

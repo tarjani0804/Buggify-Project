@@ -1,0 +1,437 @@
+.navbar.open {
+    width: 5%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 10px;
+    width: 100%;
+    height: auto;
+    background-color: #141414;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.navbar.close {
+    background-color: #141414;
+    width: 30%;
+    height: auto;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+
+.navbar-menu {
+    display: flex;
+    flex-direction: column;
+    transition: width 1s;
+    margin-top: 5rem;
+}
+
+.navbar-menu li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin: 5px 0;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.navbar-menu-icon {
+    margin-left: 2rem;
+    margin-right: 1rem;
+    font-size: 20px;
+}
+
+.navbar-menu-item {
+    font-size: 16px;
+}
+
+.back-link-icon {
+    margin-top: -5rem;
+}
+
+.back-link {
+    margin-top: -5rem;
+}
+
+.company-icon {
+    color: #04ff69;
+    margin-top: -2rem;
+}
+
+.company-name {
+    color: #04ff69;
+    font-size: 20px;
+    margin-top: -2rem;
+}
+
+.navbar-menu.shrink {
+    width: 5%;
+}
+
+.navbar-menu.shrink li {
+    justify-content: center;
+    cursor: pointer;
+}
+
+.navbar-menu li .navbar-menu-item {
+    display: none;
+}
+
+.navbar-menu.open li .navbar-menu-item {
+    display: block;
+}
+
+.navbar-toggle.navopen {
+    width: 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: #04ff69;
+    display: flex;
+    position: absolute;
+    top: 16rem;
+    left: 96%;
+    cursor: pointer;
+}
+
+.navbar-toggle.navclose {
+    width: 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: #04ff69;
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    top: 29.5rem;
+    left: 5%;
+}
+
+.navbar-toggle .arrow {
+    width: 12px;
+    height: 10px;
+}
+
+.navbar-hr {
+    margin: 2rem 0rem 2rem 1rem;
+    width: 100%;
+}
+
+.dashboard-link {
+    color: #ffffff;
+    background-color: #3b3b3b;
+    border-radius: 10px;
+    padding: 0rem 1rem;
+    cursor: pointer;
+}
+
+/*  */
+
+
+.bus-profile {
+    background-color: #0b0b0b;
+    padding-bottom: 15rem;
+}
+
+.bus-profile-divs {
+    padding-top: 3rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.bus-profile-div1 {
+    grid-column: 1/2;
+}
+
+.bus-profile-div2 {
+    grid-column: 2/3;
+}
+
+.bus-profile-div2-h {
+    color: #04ff69;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.bus-profie-header {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.bus-profile-company-logo {
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid #04ff69;
+    border-radius: 10px;
+    text-align: center;
+    margin: 5rem 0rem 1rem 0rem;
+
+}
+
+.bus-profile-company-name {
+    color: #04ff69;
+    font-size: 18px;
+}
+
+.bus-profie-stat-h {
+    margin-top: 8rem;
+    font-size: 20px;
+    color: #04ff69;
+    text-align: center;
+}
+
+.column {
+    display: flex;
+    width: 100%;
+}
+
+.column-div1 {
+    margin-top: 3rem;
+    width: 50%;
+    position: relative;
+    margin-left: 5rem;
+}
+
+.column-div2 {
+    margin-top: 3rem;
+    width: 50%;
+    position: relative;
+}
+
+
+
+.bus-profile-label {
+    text-align: center;
+    color: #878787;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    margin-left: 5rem;
+}
+
+.bus-profile-span {
+    position: absolute;
+    right: 5rem;
+    color: #04ff69;
+    font-size: 14px;
+    background-color: #141414;
+    width: 12rem;
+    height: 24px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    border-radius: 8px;
+    box-shadow: 0 0 3px #04ff69;
+}
+
+
+/* Scope Setting */
+.dashboard-form {
+    margin-top: 5rem;
+}
+
+.dashboard-form-label {
+    position: relative;
+    left: calc(40%);
+    text-align: center;
+    color: #878787;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    margin-left: 5rem;
+}
+
+.dashboard-input {
+    position: absolute;
+    left: calc(80%);
+    margin-left: 11rem;
+    color: #04ff69;
+    font-size: 14px;
+    background-color: #141414;
+    width: 15rem;
+    height: 30px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px #04ff69;
+    border: none;
+}
+
+.dashboard-form-option {
+    color: #ffffff;
+}
+
+.dashboard-button {
+    width: fit-content;
+    margin-top: 8rem;
+}
+
+
+
+/* Bug Report */
+
+.bus-profile-bug-report {
+    position: relative;
+    margin-top: 8rem;
+    width: 70%;
+    background-color: #141414;
+}
+
+.bus-profile-bug-report-div {
+    border-bottom: 1px solid #878787;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.bus-profile-bug-report-divtitle {
+    display: flex;
+    padding-top: 2rem;
+
+}
+
+.bus-profile-bug-report-div-title-p {
+    color: #04ff69;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-left: 2rem;
+
+}
+
+.bus-profile-bug-report-div-id-p {
+    color: #04ff69;
+    font-size: 12px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    position: absolute;
+    right: calc(2%);
+}
+
+.bus-profile-bug-report-div-link1 {
+    text-decoration: underline;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    margin-left: -60rem;
+    cursor: pointer;
+}
+
+
+
+/* Reward Update */
+
+.input {
+    width: 25rem;
+    left: calc(70%);
+}
+
+.dashboard-reward-update-note {
+    position: relative;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 5rem;
+    text-align: center;
+}
+
+
+
+
+/*  Retesting */
+
+.dashboard-reward-update-input {
+    position: absolute;
+    left: calc(30%);
+    bottom: 0;
+    margin-left: 11rem;
+    color: #04ff69;
+    font-size: 14px;
+    background-color: #141414;
+    width: 30rem;
+    height: 50px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px #04ff69;
+    border: none;
+}
+
+.search-button {
+    margin-left: 65rem;
+    background-color: #141414;
+    padding: 15px 15px 10px 15px;
+    font-size: 20px;
+    color: #04ff69;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px #04ff69;
+    border: none;
+}
+
+
+.report-div {
+    background-color: #141414;
+    width: 80%;
+    margin-left: calc(10%);
+    position: relative;
+    /* height: 10px; */
+}
+
+.report-steps {
+    margin-top: 3rem;
+}
+
+.report-div-steps-li {
+    text-indent: 5rem;
+}
+
+.report-proof {
+    margin-top: 3rem;
+}
+
+.report-proof-link-of-poc {
+    color: #04ff69;
+    font-size: 12px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    text-indent: 5rem;
+}
+
+.report-div-poclink-li {
+    text-indent: 10rem;
+}
+
+
+
+
+/* Bounty Payment */
+
+.payment-history-table {
+    width: 70%;
+    margin-left: calc(15%);
+    margin-top: 5rem;
+}
+
+
+
+/* Previous Finding */
+
+.bus-profile-bug-report-div-link {
+    text-decoration: underline;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    margin-left: -30rem;
+    cursor: pointer;
+}

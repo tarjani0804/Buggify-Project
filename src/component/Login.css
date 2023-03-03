@@ -1,0 +1,83 @@
+.login {
+    background-color: #0B0B0B;
+    padding-bottom: 20rem;
+}
+
+.login-h {
+    padding-top: 10rem;
+    text-align: center;
+    font-size: 26px;
+    line-height: 2.8rem;
+    letter-spacing: 2px;
+    font-family: "Nunito";
+    text-shadow: 0 0 15px #04ff69;
+    color: #04ff69;
+}
+
+.login-form {
+    margin: 10rem;
+
+}
+
+
+
+.login-label {
+    color: #ffffff;
+    margin-left: calc(32%);
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    display: block;
+    padding: 1rem 0rem;
+}
+
+.login-checkbox {
+    margin-top: 3rem;
+    margin-left: calc(32%);
+    font-size: 20px;
+}
+
+.login-checkbox-label {
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    margin-left: 1rem;
+    justify-content: center;
+}
+
+.login-form-input {
+    margin-left: calc(30%);
+    width: 500px;
+    height: 51px;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.login-button-div {
+    width: fit-content;
+}
+
+.login-p {
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    margin-left: 1rem;
+    text-align: center;
+    margin-top: -8rem;
+}
+
+.login-forgot-password {
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 2rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+
+}
