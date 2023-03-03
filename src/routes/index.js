@@ -12,6 +12,7 @@ const Buss = require("../models/businessaccs");
 const Rsrc = require("../models/researcheraccs");
 const BussStats = require("../models/bussstats");
 const ScopeDB = require("../models/ScopeDB");
+const RewardDB = require("../models/RewardDB");
 
 //vars
 const KEY = process.env.SECRET_KEY;
@@ -260,6 +261,16 @@ app.post("/agreement", middleware, async (req, res) => {
     const scope = new ScopeDB(data2);
     const resposva = scope.save();
     console.log(await resposva);
+    const data3 = {
+      buss_id: `${val.buss_id}`,
+      low: "",
+      medium: "",
+      high: "",
+      critical: "",
+    };
+    const reward = new RewardDB(data3);
+    const resp1 = reward.save();
+    console.log(await resp1);
     res.status(200).json({ isAgree: true });
   } catch (e) {
     res.status(200).json({ status: "Something Went Wrong" });
@@ -343,7 +354,7 @@ app.get("/insertStats", middleware, async (req, res) => {
   });
 });
 
-app.post("/setScope", middleware, async (req, res) => {
+app.patch("/setScope", middleware, async (req, res) => {
   const buss_id = req.buss_id;
   console.log(buss_id);
   const in_scope_asset = req.body.in_scope.asset;
@@ -787,7 +798,7 @@ app.post("/setScope", middleware, async (req, res) => {
   res.status(200).send("done");
 });
 
-app.post("/settingBus", middleware, async (req, res) => {
+app.patch("/settingBus", middleware, async (req, res) => {
   id = req.id;
   buss_id = req.buss_id;
   if (req.body.username != "") {
@@ -822,6 +833,62 @@ app.post("/settingBus", middleware, async (req, res) => {
     console.log(result);
   }
   res.status(200).json({ status: "Profile Updated" });
+});
+
+app.patch("/setReward", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  try {
+    const findby1 = RewardDB.find({ buss_id: `${buss_id}` });
+    const ds1 = await findby1;
+    const new_id = ds1[0].id;
+    if (req.body.low != "") {
+      const result = await RewardDB.findByIdAndUpdate(new_id, {
+        low: `${req.body.low}`,
+      });
+      console.log(result);
+    }
+    if (req.body.medium != "") {
+      const result = await RewardDB.findByIdAndUpdate(new_id, {
+        medium: `${req.body.medium}`,
+      });
+      console.log(result);
+    }
+    if (req.body.high != "") {
+      const result = await RewardDB.findByIdAndUpdate(new_id, {
+        high: `${req.body.high}`,
+      });
+      console.log(result);
+    }
+    if (req.body.critical != "") {
+      const result = await RewardDB.findByIdAndUpdate(new_id, {
+        critical: `${req.body.critical}`,
+      });
+      console.log(result);
+    }
+    res.status(200).json({ status: "Data Updated Successfully" });
+  } catch (e) {
+    res.status(400).json({ status: "Somthing went wrong" });
+  }
+}); // Test this API
+
+app.delete("/delAccount", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const rsrc_id = req.rsrc_id;
+  const id = req.id;
+  console.log(buss_id);
+  console.log(rsrc_id);
+  console.log(id);
+  if (buss_id) {
+    const resp = await Buss.findByIdAndDelete(id);
+    res.status(200).json({ status: "business account deleted" });
+  } else {
+    if (rsrc_id) {
+      const resp = await Rsrc.findByIdAndDelete(id);
+      res.status(200).json({ status: "Researcher account deleted" });
+    } else {
+      res.status(400).json({ status: "No User Found with this ID" });
+    }
+  }
 });
 
 // app.get('/forgetPass/:username', async (req, res) => {

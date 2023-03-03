@@ -5,11 +5,11 @@ const rewardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  information: {
+  low: {
     type: String,
     required: true,
   },
-  low: {
+  medium: {
     type: String,
     required: true,
   },
@@ -17,7 +17,7 @@ const rewardSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  medium: {
+  critical: {
     type: String,
     required: true,
   },
