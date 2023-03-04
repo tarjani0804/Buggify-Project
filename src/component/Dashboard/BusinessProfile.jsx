@@ -59,12 +59,12 @@ function DashboardNavbar() {
                     <span className="back-link-icon navbar-menu-icon"><AiOutlineArrowLeft /></span>
                     {isMenuOpen && <span className="back-link navbar-menu-item">Back to Home</span>}
                 </li>
-                <li onClick={gotoBusinessProfile}>
+                <li >
                     <span className="company-icon navbar-menu-icon"><SiBigbluebutton /></span>
                     {isMenuOpen && <p className="company-name navbar-menu-item ">Buggify</p>}
                 </li>
                 <hr className={`navbar-hr ${isMenuOpen ? 'open' : ''}`} />
-                <li className="dashboard-link">
+                <li className="dashboard-link" onClick={gotoBusinessProfile}>
                     <span className="navbar-menu-icon"><MdAddBusiness /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Business Profile</span>}
                 </li>

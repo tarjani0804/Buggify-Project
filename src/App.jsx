@@ -75,9 +75,13 @@ import PreviousFinding from './component/Dashboard/PreviousFinding';
 import Dashboardsetting from './component/Dashboard/DashboardSetting'
 import FAQs from './component/Dashboard/FAQs';
 
-
-
-
+import ResearcherProfile from './component/Researcher-Dashboard/ResearcherProfile';
+import BountyHistory from './component/Researcher-Dashboard/BountyHistory';
+import ResearcherFAQs from './component/Researcher-Dashboard/ResearcherFaqs';
+import ResearcherSettings from './component/Researcher-Dashboard/ResearcherSettings';
+import ResearcherNotification from './component/Researcher-Dashboard/Notification';
+import BookmarkedProgram from './component/Researcher-Dashboard/BookmarkedProgram';
+import TrackReports from './component/Researcher-Dashboard/TrackReport';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -394,6 +398,55 @@ function App() {
             <>
               <NoNavbar />
               <FAQs />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/researcherProfile' element={
+            <>
+              <NoNavbar />
+              <ResearcherProfile />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/track-report' element={
+            <>
+              <NoNavbar />
+              <TrackReports />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/bounty-history' element={
+            <>
+              <NoNavbar />
+              <BountyHistory />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/bookmarked-program' element={
+            <>
+              <NoNavbar />
+              <BookmarkedProgram />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/dashboard-notification' element={
+            <>
+              <NoNavbar />
+              <ResearcherNotification />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/dashboard-settings' element={
+            <>
+              <NoNavbar />
+              <ResearcherSettings />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/researcherFAQs' element={
+            <>
+              <NoNavbar />
+              <ResearcherFAQs />
               <NoFooter />
             </>
           } />
