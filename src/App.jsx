@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
-import './App.css';
 
-import User from './component/user';
+
+
 import Navbar from './component/Navbar';
-import Home from './component/Home/Home';
-import Company from './component/Company/Company';
-import Researcher from './component/Researcher/Researcher';
-import Program from './component/Program/Program';
+import NoNavbar from './component/NoNavbar';
 import Footer from './component/Footer';
-import Login from './component/Login';
-import Forgot from './component/Forgot';
-import OTP from './component/OTP';
-import SetNewPassword from './component/SetNewPassword';
-import Signup from './component/Signup';
+import NoFooter from './component/NoFooter';
+
+
+import Home from './component/Home/Home';
+
+
+import Company from './component/Company/Company';
 import ExploreProgram from './component/Company/ExploreProgram';
+import RedTeam_Agreement from './component/Company/RedTeam_Agreement';
+import BugBounty_Agreement from './component/Company/BugBounty_Agreement';
+
+
+import Researcher from './component/Researcher/Researcher';
+
+
+
+import Program from './component/Program/Program';
+import InnerProgram from './component/Program/Inner_Program';
+import ProgramLeaderBoard from './component/Program/ProgramLeaderBoard';
+
+
+import AcademyGetStarted from './component/academy/AcademyGetStarted';
+
+import AcademyCourses from './component/academy/AcademyCourses';
 import PentestingWithPython from './component/Academy-Courses/PentestingWithPython';
 import BashWithBeginner from './component/Academy-Courses/BashWithBeginner';
 import WebApplicationPentesting from './component/Academy-Courses/WebApplicationPentesting';
@@ -22,25 +37,33 @@ import MalwareAalysis from './component/Academy-Courses/MalwareAnalysis';
 import ActiveDirectoryExploitation from './component/Academy-Courses/ActiveDirectoryExploitation';
 import MobileAppPentesting from './component/Academy-Courses/MobileAppPentesting';
 import ApiPentesting from './component/Academy-Courses/ApiPentesting';
+
+import AcademyVideos from './component/academy/AcademyVideos';
+import TestCourse from './component/TestCourse';
+
+
+import AcademyAnnouncement from './component/academy/AcademyAnnouncement';
+
+
+import AcademyBlogs from './component/academy/AcademyBlogs';
 import ReportBlogs1 from './component/Blog-Descprition/Ukrainian-Blog';
 import ReportBlogs4 from './component/Blog-Descprition/GlamblingIndustry-Blog';
 import ReportBlogs2 from './component/Blog-Descprition/CiscoVulernability-Blog';
 import ReportBlogs3 from './component/Blog-Descprition/Atlassian-Blog';
 
-import RedTeam_Agreement from './component/Company/RedTeam_Agreement';
-import BugBounty_Agreement from './component/Company/BugBounty_Agreement';
 
-import AcademyGetStarted from './component/academy/AcademyGetStarted';
-import AcademyCourses from './component/academy/AcademyCourses';
-import AcademyVideos from './component/academy/AcademyVideos';
-import AcademyAnnouncement from './component/academy/AcademyAnnouncement';
-import AcademyBlogs from './component/academy/AcademyBlogs';
 import AcademyDiscord from './component/academy/AcademyDiscord';
 
 
+import Login from './component/Login';
+import Signup from './component/Signup';
+import Forgot from './component/Forgot';
+import OTP from './component/OTP';
+import SetNewPassword from './component/SetNewPassword';
 
 
-import TestCourse from './component/TestCourse';
+
+
 import BussinessProfile from './component/Dashboard/BusinessProfile';
 import ScopeSetting from './component/Dashboard/ScopeSetting';
 import RewardUpdate from './component/Dashboard/RewardUpdate';
@@ -56,25 +79,7 @@ import FAQs from './component/Dashboard/FAQs';
 
 
 
-import NoNavbar from './component/NoNavbar';
-import NoFooter from './component/NoFooter';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ProgramLeaderBoard from './component/Program/ProgramLeaderBoard';
 
 function App() {
 
@@ -111,6 +116,13 @@ function App() {
             <>
               <Navbar />
               <Program />
+              <Footer />
+            </>
+          } />
+          <Route path='/program-inner-program' element={
+            <>
+              <Navbar />
+              <InnerProgram />
               <Footer />
             </>
           } />
