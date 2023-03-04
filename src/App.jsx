@@ -28,6 +28,7 @@ import ReportBlogs2 from './component/Blog-Descprition/CiscoVulernability-Blog';
 import ReportBlogs3 from './component/Blog-Descprition/Atlassian-Blog';
 
 import RedTeam_Agreement from './component/Company/RedTeam_Agreement';
+import BugBounty_Agreement from './component/Company/BugBounty_Agreement';
 
 import AcademyGetStarted from './component/academy/AcademyGetStarted';
 import AcademyCourses from './component/academy/AcademyCourses';
@@ -84,13 +85,7 @@ function App() {
 
 
         <Routes>
-          <Route path='/user' element={
-            <>
-              <Navbar />
-              <User />
-              <Footer />
-            </>
-          } />
+
           <Route path='/' element={
             <>
               <Navbar />
@@ -222,6 +217,13 @@ function App() {
             <>
               <Navbar />
               <RedTeam_Agreement />
+              <Footer />
+            </>
+          } />
+          <Route path='/BugBounty_Agreement' element={
+            <>
+              <Navbar />
+              <BugBounty_Agreement />
               <Footer />
             </>
           } />

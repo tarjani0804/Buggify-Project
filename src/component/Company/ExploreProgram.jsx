@@ -10,6 +10,9 @@ const C1 = () => {
     const gotoRedTeam_Agreement = () => {
         navigate('/RedTeam_Agreement');
     }
+    const gotoBugBounty_Agreement = () => {
+        navigate('/BugBounty_Agreement');
+    }
 
 
 
@@ -115,7 +118,7 @@ const C1 = () => {
                         </div>
 
                     </div>
-                    <div className="button_ani c1-section1-button">
+                    <div className="button_ani c1-section1-button" onClick={gotoBugBounty_Agreement}>
                         <button className=" btn">Lunch Program</button></div>
 
                 </div>

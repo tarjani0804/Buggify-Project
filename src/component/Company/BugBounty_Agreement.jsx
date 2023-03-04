@@ -1,6 +1,8 @@
 import React, { useRef, useLayoutEffect } from "react";
 import './RedTeam_Agreement.css';
 
+
+
 const C3 = () => {
 
     const scrollTo = useRef()
@@ -13,11 +15,11 @@ const C3 = () => {
     return (
         <>
             <div className="company-c3" ref={scrollTo}>
-                <h1 className="company-c3-h">Agreement for Private Red Team Engagement</h1>
+                <h1 className="company-c3-h">Agreement for Open Source Bug Bounty Program</h1>
 
                 <center>
-                    <p className="company-c3-p"><span style={{ color: "#878787" }}></span>A Red Team Engagement Agreement is a legal document that outlines the scope, objectives, expectations, and responsibilities of a red team engagement between the organization and the red team provider(Buggify). It typically includes the following key elements : </p>
-                    <p className="company-c3-p"><span style={{ color: "#878787" }}>Purpose:</span> Private Red Team Engagement aims to nullify security flaws in systems of organization by collaborating with IT department.
+                    <p className="company-c3-p"><span style={{ color: "#878787" }}></span>A Open Source Bug Bounty Program Agreement is a legal document that outlines the scope, objectives, expectations, and responsibilities of a red team engagement between the organization and the red team provider(Buggify). It typically includes the following key elements : </p>
+                    <p className="company-c3-p"><span style={{ color: "#878787" }}>Purpose:</span> Bug Bounty Program aims to nullify security flaws in systems of organization by collaborating with IT department.
                     </p>
                     <p className="company-c3-p"><span style={{ color: "#878787" }}>Scope:</span>Definition of the systems, applications, and infrastructure that will be tested as part of the engagement can be set manually through dashboard or can be discussed during CTO meeting.
                     </p>
@@ -33,7 +35,7 @@ const C3 = () => {
                     </p>
                     <p className="company-c3-p"><span style={{ color: "#878787" }}>Expenses:</span>Expenses or additional costs are time & equipment based, which depends on the scope of Assessment.
                     </p>
-                    <p className="company-c3-p"><span style={{ color: "#878787" }}>Termination:</span>Termination can only done under some sever circumstances after Scope Setting By Agreeing to This, Organizations agreed to participate in Our Private Red Team Engagement.
+                    <p className="company-c3-p"><span style={{ color: "#878787" }}>Termination:</span>Termination can only done under some sever circumstances after Scope Setting By Agreeing to This, Organizations agreed to participate in Our Open Source Bug Bounty Program.
                     </p>
 
                 </center>
