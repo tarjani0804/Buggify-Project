@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const moment = require("moment");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const cors = require("cors");
@@ -13,6 +14,7 @@ const Rsrc = require("../models/researcheraccs");
 const BussStats = require("../models/bussstats");
 const ScopeDB = require("../models/ScopeDB");
 const RewardDB = require("../models/RewardDB");
+const ProgramDB = require("../models/ProgramDB");
 
 //vars
 const KEY = process.env.SECRET_KEY;
@@ -79,7 +81,7 @@ app.post("/business", async (req, res) => {
       let bussuser = req.body;
       const hash = req.body.password;
       bussuser["password"] = hash;
-      bussuser["isAgree"] = false;
+      bussuser["typeofProgram"] = "none";
       bussuser["buss_id"] = number;
       const buss_id = number;
       const user = new Buss(bussuser);
@@ -125,7 +127,7 @@ app.post("/researcher", async (req, res) => {
         let bussuser = req.body;
         const hash = req.body.password;
         bussuser["password"] = hash;
-        bussuser["isAgree"] = false;
+        bussuser["isAgree"] = true;
         bussuser["rsrc_id"] = number;
         const rsrc_id = number;
         const user = new Rsrc(bussuser);
@@ -207,12 +209,14 @@ app.post("/userfetch", async (req, res) => {
 
 app.post("/agreementBug", middleware, async (req, res) => {
   const id = req.id;
+  console.log("endpoint hit");
   try {
     const val = await Buss.findByIdAndUpdate(id, {
       typeofProgram: `BugBounty`,
     });
     console.log(val.typeofProgram);
     console.log(val.buss_id);
+    console.log(val.company_name);
     const data = {
       buss_id: `${val.buss_id}`,
       stats: {
@@ -228,52 +232,59 @@ app.post("/agreementBug", middleware, async (req, res) => {
     };
     const stats = new BussStats(data);
     const statsres = stats.save();
-    console.log(await statsres);
+    console.log("Stats");
     const data2 = {
       buss_id: `${val.buss_id}`,
       in_scope: {
-        one: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        two: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        three: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        four: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        five: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        six: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        seven: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        eight: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        nine: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        ten: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        one: { asset: "", asset_type: "", impact: "", elb: "" },
+        two: { asset: "", asset_type: "", impact: "", elb: "" },
+        three: { asset: "", asset_type: "", impact: "", elb: "" },
+        four: { asset: "", asset_type: "", impact: "", elb: "" },
+        five: { asset: "", asset_type: "", impact: "", elb: "" },
+        six: { asset: "", asset_type: "", impact: "", elb: "" },
+        seven: { asset: "", asset_type: "", impact: "", elb: "" },
+        eight: { asset: "", asset_type: "", impact: "", elb: "" },
+        nine: { asset: "", asset_type: "", impact: "", elb: "" },
+        ten: { asset: "", asset_type: "", impact: "", elb: "" },
       },
       out_scope: {
-        one: { asset: ``, asset_type: `` },
-        two: { asset: ``, asset_type: `` },
-        three: { asset: ``, asset_type: `` },
-        four: { asset: ``, asset_type: `` },
-        five: { asset: ``, asset_type: `` },
-        six: { asset: ``, asset_type: `` },
-        seven: { asset: ``, asset_type: `` },
-        eight: { asset: ``, asset_type: `` },
-        nine: { asset: ``, asset_type: `` },
-        ten: { asset: ``, asset_type: `` },
+        one: { asset: "", asset_type: "" },
+        two: { asset: "", asset_type: "" },
+        three: { asset: "", asset_type: "" },
+        four: { asset: "", asset_type: "" },
+        five: { asset: "", asset_type: "" },
+        six: { asset: "", asset_type: "" },
+        seven: { asset: "", asset_type: "" },
+        eight: { asset: "", asset_type: "" },
+        nine: { asset: "", asset_type: "" },
+        ten: { asset: "", asset_type: "" },
       },
     };
-    const scope = new ScopeDB(data2);
-    const resposva = scope.save();
-    console.log(await resposva);
+    const stats2 = new ScopeDB(data2);
+    const statsres2 = stats2.save();
+    console.log("Scope");
     const data3 = {
       buss_id: `${val.buss_id}`,
-      low: "",
-      medium: "",
-      high: "",
-      critical: "",
+      low: "0",
+      medium: "0",
+      high: "0",
+      critical: "0",
     };
-    const reward = new RewardDB(data3);
-    const resp1 = reward.save();
-    console.log(await resp1);
-    //define data based on program db here
-    const program = new ProgramDB(data3);
-    const resp2 = program.save();
-    console.log(await resp2);
-    res.status(200).json({ typeofProgram: "BugBounty" });
+    const stats3 = new RewardDB(data3);
+    const statsres3 = stats3.save();
+    console.log("Reward");
+    const currentDate = moment().format("YYYY-MM-DD");
+    const data4 = {
+      buss_id: `${val.buss_id}`,
+      company_name: `${val.company_name}`,
+      Resolved: "0",
+      Avg_Bounty: "0",
+      Launch_Date: `${currentDate}`,
+    };
+    const stats4 = new ProgramDB(data4);
+    const statsres4 = stats4.save();
+    console.log("Program");
+    res.status(200).json({ status: "BugBounty" });
   } catch (e) {
     res.status(400).json({ status: "Something Went Wrong" });
   }
@@ -304,34 +315,34 @@ app.post("/agreementRed", middleware, async (req, res) => {
     const data2 = {
       buss_id: `${val.buss_id}`,
       in_scope: {
-        one: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        two: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        three: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        four: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        five: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        six: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        seven: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        eight: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        nine: { asset: ``, asset_type: ``, impact: ``, elb: `` },
-        ten: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        one: { asset: "", asset_type: "", impact: "", elb: "" },
+        two: { asset: "", asset_type: "", impact: "", elb: "" },
+        three: { asset: "", asset_type: "", impact: "", elb: "" },
+        four: { asset: "", asset_type: "", impact: "", elb: "" },
+        five: { asset: "", asset_type: "", impact: "", elb: "" },
+        six: { asset: "", asset_type: "", impact: "", elb: "" },
+        seven: { asset: "", asset_type: "", impact: "", elb: "" },
+        eight: { asset: "", asset_type: "", impact: "", elb: "" },
+        nine: { asset: "", asset_type: "", impact: "", elb: "" },
+        ten: { asset: "", asset_type: "", impact: "", elb: "" },
       },
       out_scope: {
-        one: { asset: ``, asset_type: `` },
-        two: { asset: ``, asset_type: `` },
-        three: { asset: ``, asset_type: `` },
-        four: { asset: ``, asset_type: `` },
-        five: { asset: ``, asset_type: `` },
-        six: { asset: ``, asset_type: `` },
-        seven: { asset: ``, asset_type: `` },
-        eight: { asset: ``, asset_type: `` },
-        nine: { asset: ``, asset_type: `` },
-        ten: { asset: ``, asset_type: `` },
+        one: { asset: "", asset_type: "" },
+        two: { asset: "", asset_type: "" },
+        three: { asset: "", asset_type: "" },
+        four: { asset: "", asset_type: "" },
+        five: { asset: "", asset_type: "" },
+        six: { asset: "", asset_type: "" },
+        seven: { asset: "", asset_type: "" },
+        eight: { asset: "", asset_type: "" },
+        nine: { asset: "", asset_type: "" },
+        ten: { asset: "", asset_type: "" },
       },
     };
     const scope = new ScopeDB(data2);
     const resposva = scope.save();
     console.log(await resposva);
-    res.status(200).json({ typeofProgram: "RedTeam" });
+    res.status(200).json({ status: "RedTeam" });
   } catch (e) {
     res.status(400).json({ status: "Something Went Wrong" });
   }
@@ -972,6 +983,6 @@ app.delete("/delAccount", middleware, async (req, res) => {
 // })
 
 // Start the server
-app.listen(port, () => {
+app.listen(port, "127.0.0.1", () => {
   console.log(`Server started on port ${port}`);
 });

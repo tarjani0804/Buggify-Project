@@ -2,24 +2,19 @@ const mongoose = require("mongoose");
 
 const rewardSchema = new mongoose.Schema({
   buss_id: {
-    type: String,
-    required: true,
+    type: String
   },
   low: {
-    type: String,
-    required: true,
+    type: String
   },
   medium: {
-    type: String,
-    required: true,
+    type: String
   },
   high: {
-    type: String,
-    required: true,
+    type: String
   },
   critical: {
-    type: String,
-    required: true,
+    type: String
   },
 });
 

@@ -1,17 +1,19 @@
-const jwt = require("jsonwebtoken")
-const mongoose = require('mongoose')
-const hasher = require('../routes/generator');
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const hasher = require("../routes/generator");
+
+const KEY = process.env.SECRET_KEY;
 
 const userSchema = new mongoose.Schema({
-    username:{
+  username: {
     type: String,
     required: true,
-        unique: true
+    unique: true,
   },
-    email:{
+  email: {
     type: String,
     required: true,
-        unique: [true, "Email is Already in use."]
+    unique: [true, "Email is Already in use."],
   },
   password: {
     type: String,
@@ -19,46 +21,41 @@ const userSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-        required: true
+    required: true,
   },
   accepted_terms: {
     type: Boolean,
-        required: true
+    required: true,
   },
   isAgree: {
     type: Boolean,
-        required: true
+    required: true,
   },
   rsrc_id: {
     type: String,
     required: true,
-        minlength: 9
+    minlength: 9,
   },
-    tokens:[
+  tokens: [
     {
-            token:{
+      token: {
         type: String,
-                    required:true
-                }
-        }
-    ]
-})
+        required: true,
+      },
+    },
+  ],
+});
 
-
-
-userSchema.pre('save', function (next) {
-          if (this.isModified('password')) {
-                    this.password = hasher(this.password)
+userSchema.pre("save", function(next) {
+  if (this.isModified("password")) {
+    this.password = hasher(this.password);
   }
-          next()
-})
+  next();
+});
 
 userSchema.methods.generateAuthToken = async function() {
   try {
-    let token = jwt.sign(
-      { _id: this._id },
-      "BUGGIFYISCOLLECTIVEPROJECTOFTUSHARTARJANIANDJAY"
-    );
+    let token = jwt.sign({ _id: this._id }, KEY);
     this.tokens = this.tokens.concat({ token: token });
     await this.save();
     return token;
