@@ -16,7 +16,7 @@ function DashboardNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
 
     const handleMenuToggle = () => {
-        setIsMenuOpen(!isMenuOpen);
+        setIsMenuOpen(!isMenuOpen)
     };
 
     const Navigate = useNavigate();
