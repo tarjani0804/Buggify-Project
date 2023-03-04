@@ -962,6 +962,26 @@ app.delete("/delAccount", middleware, async (req, res) => {
   }
 });
 
+app.get("/listPrograms", async (req, res) => {
+  try {
+    const programs = await ProgramDB.find({});
+    res.status(200).json(programs);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+app.get("/programScRd/:prog_id", async(req, res) => {
+  const buss_id = req.params.prog_id
+  try{
+    const sc_info = await ScopeDB.find({buss_id: `${buss_id}`})
+    const rd_info = await RewardDB.find({buss_id: `${buss_id}`})
+    res.status(200).json({sc_info: `${sc_info}`,rd_info: `${rd_info}`})
+  }catch(e){
+    res.status(400).json({status: 'Failed to fetch info'})
+  }
+})
+
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
