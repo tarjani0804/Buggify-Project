@@ -33,7 +33,7 @@ const C1 = () => {
         <>
             <div className="c1" ref={scrollRefToPrivate}>
                 <div className="c1-section-1">
-                    <h1 className="c1-h" >Choose according to Your Neeeds</h1>
+                    <h1 className="c1-h" >Choose according to Your Needs</h1>
                     <h3 className="c1-h2">Private Red Team Engagement</h3>
                     <div className="c1-div">
                         <div className="c1-div1">
