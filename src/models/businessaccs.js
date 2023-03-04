@@ -36,8 +36,8 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  isAgree: {
-    type: Boolean,
+  typeofProgram: {
+    type: String,
     required: true,
   },
   buss_id: {

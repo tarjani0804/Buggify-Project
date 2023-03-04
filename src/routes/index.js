@@ -205,15 +205,13 @@ app.post("/userfetch", async (req, res) => {
   }
 });
 
-app.post("/agreement", middleware, async (req, res) => {
-  const jwt = req.auth;
-  const isAgree = req.body.isAgree;
+app.post("/agreementBug", middleware, async (req, res) => {
+  const id = req.id;
   try {
-    const dbresp = await Buss.find({ _id: `${jwt}` });
-    const insertdoc = { isAgree: `${isAgree}` };
-    console.log(insertdoc);
-    const val = await Buss.findByIdAndUpdate(jwt, { isAgree: `${isAgree}` });
-    console.log(val.isAgree);
+    const val = await Buss.findByIdAndUpdate(id, {
+      typeofProgram: `BugBounty`,
+    });
+    console.log(val.typeofProgram);
     console.log(val.buss_id);
     const data = {
       buss_id: `${val.buss_id}`,
@@ -271,9 +269,71 @@ app.post("/agreement", middleware, async (req, res) => {
     const reward = new RewardDB(data3);
     const resp1 = reward.save();
     console.log(await resp1);
-    res.status(200).json({ isAgree: true });
+    //define data based on program db here
+    const program = new ProgramDB(data3);
+    const resp2 = program.save();
+    console.log(await resp2);
+    res.status(200).json({ typeofProgram: "BugBounty" });
   } catch (e) {
-    res.status(200).json({ status: "Something Went Wrong" });
+    res.status(400).json({ status: "Something Went Wrong" });
+  }
+});
+
+app.post("/agreementRed", middleware, async (req, res) => {
+  const id = req.id;
+  try {
+    const val = await Buss.findByIdAndUpdate(id, { typeofProgram: `RedTeam` });
+    console.log(val.typeofProgram);
+    console.log(val.buss_id);
+    const data = {
+      buss_id: `${val.buss_id}`,
+      stats: {
+        monthly_report: 0,
+        monthly_paid: 0,
+        avg_paid: 0,
+        mmm_reports: 0,
+        mmm_paid: 0,
+        mmm_avg: 0,
+      },
+      report_counts: { open: 0, resolved: 0 },
+      report_cvss: { NA: 0, dups: 0, info: 0, medium: 0, high: 0, critical: 0 },
+    };
+    const stats = new BussStats(data);
+    const statsres = stats.save();
+    console.log(await statsres);
+    const data2 = {
+      buss_id: `${val.buss_id}`,
+      in_scope: {
+        one: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        two: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        three: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        four: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        five: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        six: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        seven: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        eight: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        nine: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+        ten: { asset: ``, asset_type: ``, impact: ``, elb: `` },
+      },
+      out_scope: {
+        one: { asset: ``, asset_type: `` },
+        two: { asset: ``, asset_type: `` },
+        three: { asset: ``, asset_type: `` },
+        four: { asset: ``, asset_type: `` },
+        five: { asset: ``, asset_type: `` },
+        six: { asset: ``, asset_type: `` },
+        seven: { asset: ``, asset_type: `` },
+        eight: { asset: ``, asset_type: `` },
+        nine: { asset: ``, asset_type: `` },
+        ten: { asset: ``, asset_type: `` },
+      },
+    };
+    const scope = new ScopeDB(data2);
+    const resposva = scope.save();
+    console.log(await resposva);
+    res.status(200).json({ typeofProgram: "RedTeam" });
+  } catch (e) {
+    res.status(400).json({ status: "Something Went Wrong" });
   }
 });
 
