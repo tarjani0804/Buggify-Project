@@ -3,8 +3,13 @@ const nodemailer = require('nodemailer');
 const app = express();
 
 const sendotp = (otp, mail) => {
-    let otpval = otp;
+    let msg = otp;
     let mailid = mail;
+    let number = "";
+      for (let i = 0; i < 20; i++) {
+        number += Math.floor(Math.random() * 10);
+      }
+  const token_id = number
     console.log('op1');
     let mailTransporter = nodemailer.createTransport({
         service: "gmail",
@@ -16,8 +21,8 @@ const sendotp = (otp, mail) => {
     let details = {
         from: "nullify.bug@gmail.com",
         to: `${mailid}`,
-        subject: "OTP for password reset @Buggify",
-        text: `OTP for password change is ${otpval}`
+        subject: `Token ID:${token_id} from Buggify`,
+        text: `${msg}`
     }
     mailTransporter.sendMail(details, (err) => {
         console.log('op here');

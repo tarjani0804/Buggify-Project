@@ -15,6 +15,7 @@ const BussStats = require("../models/bussstats");
 const ScopeDB = require("../models/ScopeDB");
 const RewardDB = require("../models/RewardDB");
 const ProgramDB = require("../models/ProgramDB");
+const sendotp = require("./mailer");
 
 //vars
 const KEY = process.env.SECRET_KEY;
@@ -992,6 +993,13 @@ app.get("/programRd/:prog_id", async (req, res) => {
   const val4 = sc_info[0].critical;
   res.status(200).json({low: `${val1}`, medium:`${val2}`, high:`${val3}`, critical:`${val4}`});
 });
+
+app.post("/mailem", async(req, res) => {
+  const mailto = req.body.mailto
+  const msg = req.body.msg
+  sendotp(msg, mailto);
+  res.status(200).json({status: `Mail Sent to ${mailto}`})
+})
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
