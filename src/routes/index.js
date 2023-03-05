@@ -342,7 +342,7 @@ app.post("/agreementRed", middleware, async (req, res) => {
     const scope = new ScopeDB(data2);
     const resposva = scope.save();
     console.log(await resposva);
-    res.status(200).json({ status: "RedTeam" });
+    res.status(200).json({ typeofProgram: "RedTeam" });
   } catch (e) {
     res.status(400).json({ status: "Something Went Wrong" });
   }
@@ -971,17 +971,27 @@ app.get("/listPrograms", async (req, res) => {
   }
 });
 
-app.get("/programScRd/:prog_id", async(req, res) => {
-  const buss_id = req.params.prog_id
-  try{
-    const sc_info = await ScopeDB.find({buss_id: `${buss_id}`})
-    const rd_info = await RewardDB.find({buss_id: `${buss_id}`})
-    res.status(200).json({sc_info: `${sc_info}`,rd_info: `${rd_info}`})
-  }catch(e){
-    res.status(400).json({status: 'Failed to fetch info'})
-  }
-})
-
+app.get("/programScIn/:prog_id", async (req, res) => {
+  const buss_id = req.params.prog_id;
+  const sc_info = await ScopeDB.find({ buss_id: `${buss_id}` });
+  const val1 = sc_info[0].in_scope;
+  res.status(200).json(val1);
+});
+app.get("/programScOut/:prog_id", async (req, res) => {
+  const buss_id = req.params.prog_id;
+  const sc_info = await ScopeDB.find({ buss_id: `${buss_id}` });
+  const val1 = sc_info[0].out_scope;
+  res.status(200).json(val1);
+});
+app.get("/programRd/:prog_id", async (req, res) => {
+  const buss_id = req.params.prog_id;
+  const sc_info = await RewardDB.find({ buss_id: `${buss_id}` });
+  const val1 = sc_info[0].low;
+  const val2 = sc_info[0].medium;
+  const val3 = sc_info[0].high;
+  const val4 = sc_info[0].critical;
+  res.status(200).json({low: `${val1}`, medium:`${val2}`, high:`${val3}`, critical:`${val4}`});
+});
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
