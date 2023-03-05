@@ -2,3 +2,37 @@
     background-color: #0b0b0b;
     padding-bottom: 15rem;
 }
+
+.res-profile-div {
+    width: 100%;
+}
+
+.res-column-div1 {
+    margin-top: 5rem;
+    position: relative;
+    width: 50%;
+    margin-left: calc(25%);
+}
+
+.res-profile-label {
+    /* text-align: center; */
+    color: #878787;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    margin-left: 10rem;
+}
+
+.res-profile-span {
+    position: absolute;
+    right: 15rem;
+    color: #04ff69;
+    font-size: 14px;
+    background-color: #141414;
+    width: 12rem;
+    height: 30px;
+    text-align: center;
+    padding: 8px 0px 8px 0px;
+    border-radius: 8px;
+    box-shadow: 0 0 3px #04ff69;
+}

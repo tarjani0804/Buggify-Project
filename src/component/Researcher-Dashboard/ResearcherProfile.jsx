@@ -102,7 +102,7 @@ function ResearcherNavbar() {
 
 
 
-const ResearcherProfile = () => {
+const ResearcherProfile = (props) => {
 
     return (
         <>
@@ -115,14 +115,77 @@ const ResearcherProfile = () => {
                     </div>
                     <div className="bus-profile-div2">
                         <h1 className="bus-profile-div2-h">Researcher Profile</h1>
+                        <div className="dashboard">
+                            <center><div className="bus-profile-header">
+                                <img src={props.researcherAvtar} className="bus-profile-company-logo" />
+                                <h3 className="bus-profile-company-name">{props.rUsername}</h3>
+                            </div></center>
+                            <div className="stats">
+
+
+                                <div className="res-profile-div">
+
+                                    <div className="res-column-div1">
+                                        <label className="res-profile-label">Researcher Id: </label>
+                                        <span className="res-profile-span">{props.rId}</span>
+                                    </div>
+                                    <div className="res-column-div1">
+                                        <label className="res-profile-label">Email: </label>
+                                        <span className="res-profile-span">{props.rEmail}</span>
+                                    </div>
+                                    <div className="res-column-div1">
+                                        <label className="res-profile-label">Country: </label>
+                                        <span className="res-profile-span">{props.country}</span>
+                                    </div>
+                                </div>
+
+                                <p className="bus-profie-stat-h">Statistics</p>
+
+                                <div className="res-profile-div">
+
+                                    <div className="res-column-div1">
+                                        <label className="res-profile-label">Submitted Reports: </label>
+                                        <span className="res-profile-span">{props.sReports}</span>
+                                    </div>
+                                    <div className="res-column-div1">
+                                        <label className="res-profile-label">Open Reports: </label>
+                                        <span className="res-profile-span">{props.oReports}</span>
+                                    </div>
+                                    <div className="res-column-div1">
+                                        <label className="res-profile-label">Resolved Reports: </label>
+                                        <span className="res-profile-span">{props.cReports}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
+
             </div>
+
+
+
+
+
 
         </>
     )
 }
 
+
+ResearcherProfile.defaultProps = {
+    researcherAvtar: '',
+    rUsername: 'User Name',
+    rId: '12343214',
+    rEmail: 'acd@zxt.com',
+    country: 'India',
+    sReports: '125',
+    oReports: '10',
+    cReports: '15',
+};
 
 
 export default ResearcherProfile;

@@ -154,15 +154,7 @@ function Policy() {
   );
 }
 function Scope_and_Reward() {
-  // const prog_id = Cookies.get('prog_id');
-  // const url = `http://127.0.0.1:5173/programScRd/${prog_id}`;
 
-  // const response = await fetch(url);
-
-  // const parsedData = JSON.parse(response.sc_info);
-  // const assetValue = parsedData.in_scope.one.asset;
-
-  // alert(assetValue);
 
   return (
     <div className="program-sar-div">
@@ -173,7 +165,7 @@ function Scope_and_Reward() {
         <div className="program-reward-div">
           <div className="program-reward-level">
             <div className="reward-low-div">
-              <h3 className="reward-low-h">Low </h3>
+              <h3 className="reward-low-h">Low :  </h3>
             </div>
             <div className="reward-medium-div">
               <h3 className="reward-medium-h">Medium</h3>
@@ -371,27 +363,24 @@ const Inner_Program = (props) => {
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${
-                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${
-                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward
               </li>
               <li
-                className={`program-navbar-ul-li  ${
-                  newUpdateSelected
-                    ? "selecProgram-navbar"
-                    : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${newUpdateSelected
+                  ? "selecProgram-navbar"
+                  : "program-navbar-ul-li"
+                  }`}
                 onClick={handleNewUpdateSelected}
               >
                 New Updates
