@@ -71,9 +71,19 @@ const Report = () => {
 
                         <br /> <br /> <span style={{ fontSize: "20px", fontWeight: "900" }}>Cisco Patches Command Injection Bug in Cisco IOx</span>
 
-                        <br /> <br />
+                        <br /> <br />The disclosure comes as Cisco released updates to fix a flaw in Cisco IOx application hosting environment (CVE-2023-20076, CVSS score: 7.2) that could open the door for an authenticated, remote attacker to execute arbitrary commands as root on the underlying host operating system.
 
-                        <br /> <br />
+                        <br /> <br />   The <a href="https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-iox-8whGn5dL" target="_blank"> vulnerability </a> impacts devices running Cisco IOS XE Software and have the Cisco IOx feature enabled, as well as 800 Series Industrial ISRs, Catalyst Access Points, CGR1000 Compute Modules, IC3000 Industrial Compute Gateways, IR510 WPAN Industrial Routers.
+
+                        <br /> <br />  Cybersecurity firm Trellix, which identified the issue, <a href="https://www.trellix.com/en-us/about/newsroom/stories/research/when-pwning-cisco-persistence-is-key-when-pwning-supply-chain-cisco-is-key.html" target="_blank"> said </a> it could be weaponized to inject malicious packages in a manner that can persist system reboots and firmware upgrades, leaving which can only be removed after a factory reset.
+
+                        <br /> <br />"A bad actor could use CVE-2023-20076 to maliciously tamper with one of the affected Cisco devices anywhere along this supply chain," it said, warning of potential threats to the broader supply chain. "The level of access that CVE-2023-20076 provides could allow for backdoors to be installed and hidden, making the tampering entirely transparent for the end user."
+
+                        <br /> <br /> While the exploit requires the attacker to be authenticated and have admin privileges, it's worth noting that adversaries can find a variety of ways to escalate privileges, such as phishing or by banking on the possibility that users may have failed to change the default credentials.
+
+                        <br /> <br />Also discovered by Trellix is a <a href="https://thehackernews.com/2022/09/15-year-old-unpatched-python.html" target='_blank'> security check </a> bypass during <a href="https://www.trellix.com/en-us/about/newsroom/stories/research/trellix-advanced-research-center-patches-vulnerable-open-source-projects.html"> TAR archive extraction, </a> which could allow an attacker to write on the underlying host operating system as the root user.
+
+                        <br /> <br />  The networking equipment major, which has since remediated the defect, said the vulnerability poses no immediate risk as "the code was put there for future application packaging support."
                     </p>
                 </div>
 

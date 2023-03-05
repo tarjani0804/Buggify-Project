@@ -23,7 +23,7 @@ li {
 }
 
 .card1 {
-    padding: 10rem 10rem 5rem;
+    padding: 2rem 10rem 5rem;
 
 }
 
@@ -31,7 +31,7 @@ li {
     width: 100%;
     display: grid;
     grid-template-columns: 10rem 1fr 1fr 5rem;
-    margin-top: 5rem;
+    /* margin-top: 8rem; */
 }
 
 .hr-div {
