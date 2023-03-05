@@ -882,6 +882,16 @@ app.get("/profileBuss/:buss_id", async (req, res) => {
   });
 });
 
+app.get("/profileRes/:rsrc_id", async (req, res) => {
+  const rsrc_id = req.params.rsrc_id;
+  const buss = await Rsrc.find({ rsrc_id: `${rsrc_id}` });
+  res.status(200).json({
+    username: `${buss[0].username}`,
+    email: `${buss[0].email}`,
+    country: `${buss[0].country}`,
+  });
+});
+
 app.patch("/settingBus", middleware, async (req, res) => {
   id = req.id;
   buss_id = req.buss_id;
@@ -914,6 +924,36 @@ app.patch("/settingBus", middleware, async (req, res) => {
   if (req.body.country != "") {
     const country = req.body.country;
     const result = await Buss.findByIdAndUpdate(id, { country: `${country}` });
+    console.log(result);
+  }
+  res.status(200).json({ status: "Profile Updated" });
+});
+
+app.patch("/settingRes", middleware, async (req, res) => {
+  id = req.id;
+  rsrc_id = req.rsrc_id;
+  if (req.body.username != "") {
+    const username = req.body.username;
+    const result = await Rsrc.findByIdAndUpdate(id, {
+      username: `${username}`,
+    });
+    console.log(result);
+  }
+  if (req.body.email != "") {
+    const email = req.body.email;
+    const result = await Rsrc.findByIdAndUpdate(id, { email: `${email}` });
+    console.log(result);
+  }
+  if (req.body.password != "") {
+    const password = req.body.password;
+    const hashed = hasher(password);
+    console.log(hashed);
+    const result = await Rsrc.findByIdAndUpdate(id, { password: `${hashed}` });
+    console.log(result);
+  }
+  if (req.body.country != "") {
+    const country = req.body.country;
+    const result = await Rsrc.findByIdAndUpdate(id, { country: `${country}` });
     console.log(result);
   }
   res.status(200).json({ status: "Profile Updated" });
@@ -1018,15 +1058,6 @@ app.post("/mailem", async (req, res) => {
   res.status(200).json({ status: `Mail Sent to ${mailto}` });
 });
 
-app.get("/profileRes/:rsrc_id", async (req, res) => {
-  const rsrc_id = req.params.rsrc_id;
-  const buss = await Rsrc.find({ rsrc_id: `${rsrc_id}` });
-  res.status(200).json({
-    username: `${buss[0].username}`,
-    email: `${buss[0].email}`,
-    country: `${buss[0].country}`,
-  });
-});
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
