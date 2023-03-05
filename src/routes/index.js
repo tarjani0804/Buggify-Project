@@ -870,6 +870,18 @@ app.patch("/setScope", middleware, async (req, res) => {
   res.status(200).send("done");
 });
 
+app.get("/profileBuss/:buss_id", async (req, res) => {
+  const buss_id = req.params.buss_id;
+  const buss = await Buss.find({ buss_id: `${buss_id}` });
+  res.status(200).json({
+    username: `${buss[0].username}`,
+    email: `${buss[0].email}`,
+    company_name: `${buss[0].company_name}`,
+    position: `${buss[0].position}`,
+    country: `${buss[0].country}`,
+  });
+});
+
 app.patch("/settingBus", middleware, async (req, res) => {
   id = req.id;
   buss_id = req.buss_id;
@@ -991,15 +1003,30 @@ app.get("/programRd/:prog_id", async (req, res) => {
   const val2 = sc_info[0].medium;
   const val3 = sc_info[0].high;
   const val4 = sc_info[0].critical;
-  res.status(200).json({low: `${val1}`, medium:`${val2}`, high:`${val3}`, critical:`${val4}`});
+  res.status(200).json({
+    low: `${val1}`,
+    medium: `${val2}`,
+    high: `${val3}`,
+    critical: `${val4}`,
+  });
 });
 
-app.post("/mailem", async(req, res) => {
-  const mailto = req.body.mailto
-  const msg = req.body.msg
+app.post("/mailem", async (req, res) => {
+  const mailto = req.body.mailto;
+  const msg = req.body.msg;
   sendotp(msg, mailto);
-  res.status(200).json({status: `Mail Sent to ${mailto}`})
-})
+  res.status(200).json({ status: `Mail Sent to ${mailto}` });
+});
+
+app.get("/profileRes/:rsrc_id", async (req, res) => {
+  const rsrc_id = req.params.rsrc_id;
+  const buss = await Rsrc.find({ rsrc_id: `${rsrc_id}` });
+  res.status(200).json({
+    username: `${buss[0].username}`,
+    email: `${buss[0].email}`,
+    country: `${buss[0].country}`,
+  });
+});
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
