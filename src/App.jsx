@@ -24,7 +24,7 @@ import Researcher from './component/Researcher/Researcher';
 import Program from './component/Program/Program';
 import InnerProgram from './component/Program/Inner_Program';
 import ProgramLeaderBoard from './component/Program/ProgramLeaderBoard';
-
+import SubmitReport from './component/Program/SubmitReport';
 
 import AcademyGetStarted from './component/academy/AcademyGetStarted';
 
@@ -123,6 +123,14 @@ function App() {
               <Footer />
             </>
           } />
+          <Route path='/program-submitReport' element={
+            <>
+              <Navbar />
+              <SubmitReport />
+              <Footer />
+            </>
+          } />
+
           <Route path='/program-inner-program' element={
             <>
               <Navbar />

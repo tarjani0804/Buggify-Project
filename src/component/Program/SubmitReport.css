@@ -1,0 +1,102 @@
+.submit-report {
+    background-color: #0b0b0b;
+    padding-bottom: 10rem;
+    width: 100%;
+}
+
+
+.submit-report-h {
+    font-family: "Nunito";
+    padding-top: 5rem;
+    font-size: 20px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    color: #04ff69;
+}
+
+.submit-report-div {
+    background-color: #141414;
+    width: 80%;
+    margin-left: calc(10%);
+    margin-top: 5rem;
+}
+
+.submit-report-div1 {
+    display: flex;
+    padding-top: 2rem;
+    position: relative;
+}
+
+.submit-report-div1-p1 {
+    color: #04ff69;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-left: 2rem;
+}
+
+.submit-report-div1-p2 {
+    position: absolute;
+    color: #04ff69;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    right: 2rem;
+}
+
+.submit-report-div2 {
+    margin-top: 2rem;
+    position: relative;
+    padding-bottom: 5rem;
+}
+
+.submit-report-form-field {
+    margin-bottom: 3rem;
+}
+
+.submit-report-label {
+    display: flex;
+    color: #878787;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-left: 2rem;
+    flex-basis: 120px;
+}
+
+.submit-report-input {
+    /* margin-left: auto; */
+    margin-right: 5rem;
+    color: #04ff69;
+    font-size: 14px;
+    background-color: #141414;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 0 3px #04ff69;
+    margin-left: 1rem;
+    flex: 1;
+    padding-left: 2rem;
+    vertical-align: middle;
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+}
+
+.input-group label {
+    grid-column: 1;
+
+}
+
+.input-group input {
+    grid-column: 2;
+    padding-left: 2rem;
+}
+
+
+.submit-report-button {
+    width: fit-content;
+    margin-top: 5rem;
+}

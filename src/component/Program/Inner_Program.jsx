@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Inner_Program.css";
 import { BsBookmarkPlus, BsBookmarkCheckFill } from "react-icons/bs";
 import { HiOutlineBellAlert, HiBellAlert } from "react-icons/hi2";
 
 import Cookies from "js-cookie";
 import { render } from "react-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -210,12 +211,14 @@ const Inner_Program = (props) => {
   };
 
   const handlePolicySelected = () => {
+    localStorage.setItem("listPath", "policy");
     setpolicySelected(true);
     setNewUpdateSelected(false);
     setScopeSelected(false);
   };
 
   const handleScopeSelected = async (e) => {
+    localStorage.setItem("listPath", "scope");
     setScopeSelected(true);
     setNewUpdateSelected(false);
     setpolicySelected(false);
@@ -272,10 +275,42 @@ const Inner_Program = (props) => {
   };
 
   const handleNewUpdateSelected = () => {
+    localStorage.setItem("listPath", "newUpdate");
     setNewUpdateSelected(true);
     setScopeSelected(false);
     setpolicySelected(false);
   };
+
+
+  useEffect(() => {
+    // Get the stored list path from local storage
+    const storedListPath = localStorage.getItem("listPath");
+
+    // Set the state variables based on the stored list path
+    if (storedListPath === "policy") {
+      setpolicySelected(true);
+      setScopeSelected(false);
+      setNewUpdateSelected(false);
+    } else if (storedListPath === "scope") {
+      setpolicySelected(false);
+      setScopeSelected(true);
+      setNewUpdateSelected(false);
+    } else if (storedListPath === "newUpdate") {
+      setpolicySelected(false);
+      setScopeSelected(false);
+      setNewUpdateSelected(true);
+    }
+  }, []);
+
+
+  const navigate = useNavigate()
+  const gotoSubmitReport = () => {
+    navigate('/program-submitReport');
+  }
+
+
+
+
   return (
     <>
       <div className="inner-program">
@@ -336,7 +371,7 @@ const Inner_Program = (props) => {
                   </h5>
                 </div>
 
-                <div className="submit-button">
+                <div className="submit-button" onClick={gotoSubmitReport}>
                   <button className="sub-button">Submit Report</button>
                 </div>
               </div>
