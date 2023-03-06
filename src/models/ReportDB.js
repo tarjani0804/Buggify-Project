@@ -55,7 +55,9 @@ const ReportSchema = mongoose.Schema({
     payment_id:{
         type: String
     }
-})
+},{
+    timestamps: true
+  })
 
 const ReportDB = mongoose.model("REPORTDB", ReportSchema)
 module.exports = ReportDB;

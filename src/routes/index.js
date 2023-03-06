@@ -1203,6 +1203,43 @@ app.get("/reportfetch/:report_id", async (req, res) => {
   res.status(200).json(rep);
 });
 
+app.patch("/reportfetch/:report_id", async (req, res) => {
+  const cvss = req.body.cvss;
+  const note = req.body.note;
+  const bounty = req.body.bounty;
+  const payment_id = req.body.payment_id;
+  const report_id = req.params.report_id;
+  try {
+    if (cvss != "") {
+      await ReportDB.updateOne(
+        { report_id: `${report_id}` },
+        { cvss: `${cvss}` }
+      );
+    }
+    if (note != "") {
+      await ReportDB.updateOne(
+        { report_id: `${report_id}` },
+        { note: `${note}` }
+      );
+    }
+    if (bounty != "") {
+      await ReportDB.updateOne(
+        { report_id: `${report_id}` },
+        { bounty: `${bounty}` }
+      );
+    }
+    if (payment_id != "") {
+      await ReportDB.updateOne(
+        { report_id: `${report_id}` },
+        { payment_id: `${payment_id}` }
+      );
+    }
+    res.status(200).json({ status: `Report Updated Successfully` });
+  } catch (e) {
+    res.status(400).json({ status: `Fail to Update Report` });
+  }
+});
+
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
