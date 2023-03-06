@@ -81,6 +81,18 @@
     cursor: pointer;
 }
 
+.res-track-report-list-date {
+    position: absolute;
+    right: 5rem;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+}
+
+
+
 .listselected {
     color: #04ff69;
 }

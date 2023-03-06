@@ -130,13 +130,16 @@ function ResolvedReports() {
             <div className="track-report">
                 <div className="track-reports-div">
 
-                    {(TrackReports.defaultProps.reports.map((title) => (
+                    {(TrackReports.defaultProps.Resolvedreports.map((title) => (
                         <div key={title.id} className="res-track-report-list-div">
                             <div className="bus-profile-bug-report-divtitle">
                                 <p className="bus-profile-bug-report-div-title-p">Report Title: {title.reportTitle}</p>
                                 <p className="bus-profile-bug-report-div-id-p">Report Id: {title.reportId}</p>
                             </div>
-                            <p className="bus-profile-bug-report-div-link"><a href={title.reportLink} className="bus-profile-bug-report-div-link">Check Report</a></p>
+                            <div style={{ display: "flex", position: "relative" }}>
+                                <p className="res-track-report-list-link"><a href={title.reportLink} className="res-track-report-list-link">Check Report</a></p>
+                                <p className="res-track-report-list-date">{title.reportDate}</p>
+                            </div>
                         </div>
                     )))}
                 </div>
@@ -212,12 +215,14 @@ TrackReports.defaultProps = {
             reportTitle: 'XSS in Search Field of abc.def.com',
             reportLink: '',
 
-        },
+        },],
+    Resolvedreports: [
         {
             id: '2',
             reportId: '#v3jd8-st62s ',
             reportTitle: 'CSRF in Password Change Function of staging.def.com',
             reportLink: '',
+            reportDate: '1/2022',
 
         },
     ],
