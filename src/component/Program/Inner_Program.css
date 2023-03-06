@@ -247,28 +247,32 @@
     padding-top: 2rem;
 }
 
-.reward-low-h {
+.reward-low-h,
+.reward-low-span {
     color: #ffffff;
     font-size: 16px;
     line-height: 2.8rem;
     letter-spacing: 1px;
 }
 
-.reward-medium-h {
+.reward-medium-h,
+.reward-medium-span {
     color: #CCFF00;
     font-size: 16px;
     line-height: 2.8rem;
     letter-spacing: 1px;
 }
 
-.reward-high-h {
+.reward-high-h,
+.reward-high-span {
     color: #FF6B00;
     font-size: 16px;
     line-height: 2.8rem;
     letter-spacing: 1px;
 }
 
-.reward-critical-h {
+.reward-critical-h,
+.reward-critical-span {
     color: #FF0000;
     font-size: 16px;
     line-height: 2.8rem;

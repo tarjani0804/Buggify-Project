@@ -6,6 +6,9 @@ import { HiOutlineBellAlert, HiBellAlert } from "react-icons/hi2";
 import Cookies from "js-cookie";
 import { render } from "react-dom";
 
+
+
+
 function Policy() {
   return (
     <div className="program-policy-div">
@@ -165,16 +168,20 @@ function Scope_and_Reward() {
         <div className="program-reward-div">
           <div className="program-reward-level">
             <div className="reward-low-div">
-              <h3 className="reward-low-h">Low :  </h3>
+              <h3 className="reward-low-h">Low</h3>
+              <span className="reward-low-span" id="low">0</span>
             </div>
             <div className="reward-medium-div">
               <h3 className="reward-medium-h">Medium</h3>
+              <span className="reward-medium-span" id="medium">0</span>
             </div>
             <div className="reward-high-div">
               <h3 className="reward-high-h">High</h3>
+              <span className="reward-high-span" id="high">0</span>
             </div>
             <div className="reward-critical-div">
               <h3 className="reward-critical-h">Critical</h3>
+              <span className="reward-critical-span" id="critical">0</span>
             </div>
           </div>
           <div className="program-reward-div-p">
@@ -257,10 +264,11 @@ const Inner_Program = (props) => {
     var rd_medium = rdval.medium;
     var rd_high = rdval.high;
     var rd_critical = rdval.critical;
-    console.log(rd_low);
-    console.log(rd_medium);
-    console.log(rd_high);
-    console.log(rd_critical);
+
+    document.getElementById("low").innerHTML = rd_low;
+    document.getElementById("medium").innerHTML = rd_medium;
+    document.getElementById("high").innerHTML = rd_high;
+    document.getElementById("critical").innerHTML = rd_critical;
   };
 
   const handleNewUpdateSelected = () => {
@@ -412,6 +420,5 @@ Inner_Program.defaultProps = {
   avg_time_respond: "Within 2 Days",
   avg_time_triage: "Within 3 Days",
 
-  reward_low: "$500 - $1,000",
 };
 export default Inner_Program;
