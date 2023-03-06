@@ -17,7 +17,9 @@ const RewardDB = require("../models/RewardDB");
 const ProgramDB = require("../models/ProgramDB");
 const ExamDB = require("../models/examDB");
 const CertDB = require("../models/certDB");
+const BookmarkDB = require("../models/bookmarkedDB");
 const sendotp = require("./mailer");
+const { array } = require("i/lib/util");
 
 //vars
 const KEY = process.env.SECRET_KEY;
@@ -38,22 +40,15 @@ const middleware = async (req, res, next) => {
   req.id = auth;
   const findby1 = Buss.findById(auth);
   const ds1 = await findby1;
-  const bus_id = ds1.buss_id;
-  console.log(bus_id);
-  if (bus_id) {
+  if (ds1 != null) {
+    const bus_id = ds1.buss_id;
     req.buss_id = bus_id;
-  } else {
-    const findby2 = Rsrc.findById(auth);
-    const ds2 = await findby2;
+  }
+  const findby2 = Rsrc.findById(auth);
+  const ds2 = await findby2;
+  if (ds2 != null) {
     const rsc_id = ds2.rsrc_id;
-    console.log(rsc_id);
-    if (rsc_id) {
-      req.rsrc_id = rsc_id;
-    } else {
-      req.id = "";
-      req.buss_id = "";
-      req.rsrc_id = "";
-    }
+    req.rsrc_id = rsc_id;
   }
   next();
 };
@@ -142,6 +137,15 @@ app.post("/researcher", async (req, res) => {
           rsrc_id: `${rsrc_id}`,
           username: `${req.body.username}`,
         });
+        const findbook = await BookmarkDB.find({ rsrc_id });
+        if (findbook == "") {
+          const newbook = new BookmarkDB({
+            buss_id: [],
+            rsrc_id: `${number}`,
+          });
+          const out = await newbook.save();
+          console.log(out);
+        }
       }
     }
   } catch (err) {
@@ -1085,6 +1089,55 @@ app.post("/certInfo", async (req, res) => {
     });
   } catch (e) {
     res.status(400).json({ status: `Fail to issue certificate` });
+  }
+});
+
+app.post("/bookmarkIn", middleware, async (req, res) => {
+  //apply when click on bookmark button when not bookmarked
+  const buss_id = req.body.prog_id;
+  const rsrc_id = req.rsrc_id;
+  console.log(buss_id);
+  const data = await BookmarkDB.find({ rsrc_id: `${rsrc_id}` });
+  const arraybhau = data[0].buss_id;
+  if (arraybhau.includes(buss_id)) {
+    res.status(200).json({ status: 0 });
+  } else {
+    await BookmarkDB.updateOne(
+      { rsrc_id: `${rsrc_id}` },
+      { $push: { buss_id: `${buss_id}` } }
+    );
+    res.status(200).json({ status: 1 });
+  }
+});
+
+app.post("/bookmarkOut", middleware, async (req, res) => {
+  //apply when click on bookmark button when already bookmarked
+  const buss_id = req.body.prog_id;
+  const rsrc_id = req.rsrc_id;
+  console.log(buss_id);
+  const data = await BookmarkDB.find({ rsrc_id: `${rsrc_id}` });
+  const arraybhau = data[0].buss_id;
+  if (arraybhau.includes(buss_id)) {
+    await BookmarkDB.updateOne(
+      { rsrc_id: `${rsrc_id}` },
+      { $pull: { buss_id: `${buss_id}` } }
+    );
+    res.status(200).json({ status: 1 });
+  } else {
+    res.status(200).json({ status: 0 });
+  }
+});
+
+app.post("/bookmarkShow", middleware, async (req, res) => {
+  // apply when inner-program page load
+  const buss_id = req.body.prog_id;
+  const rsrc_id = req.rsrc_id;
+  const data = await BookmarkDB.find({ rsrc_id: `${rsrc_id}` });
+  const arraybhau = data[0].buss_id;
+  if (arraybhau.includes(buss_id)) {
+    res.status(200).json({ status: 1 });
+  } else {
+    res.status(200).json({ status: 0 });
   }
 });
 
