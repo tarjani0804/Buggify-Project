@@ -387,14 +387,14 @@ function App() {
               <NoFooter />
             </>
           } />
-          <Route path='/dashboard-setting' element={
+          <Route path='/dashboardSetting' element={
             <>
               <NoNavbar />
               <Dashboardsetting />
               <NoFooter />
             </>
           } />
-          <Route path='/dashboard-FAQ' element={
+          <Route path='/FAQ' element={
             <>
               <NoNavbar />
               <FAQs />
