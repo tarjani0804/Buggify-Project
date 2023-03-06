@@ -15,6 +15,8 @@ const BussStats = require("../models/bussstats");
 const ScopeDB = require("../models/ScopeDB");
 const RewardDB = require("../models/RewardDB");
 const ProgramDB = require("../models/ProgramDB");
+const ExamDB = require("../models/examDB");
+const CertDB = require("../models/certDB");
 const sendotp = require("./mailer");
 
 //vars
@@ -1056,6 +1058,34 @@ app.post("/mailem", async (req, res) => {
   const msg = req.body.msg;
   sendotp(msg, mailto);
   res.status(200).json({ status: `Mail Sent to ${mailto}` });
+});
+
+app.post("/scheduleExam", async (req, res) => {
+  try {
+    const exam_info = req.body;
+    const exam = new ExamDB(exam_info);
+    const out = await exam.save();
+    res.status(200).json({
+      status: `Exam slot for ${req.body.course_name} course is booked on ${req.body.exam_date} at ${req.body.exam_time}`,
+    });
+  } catch (e) {
+    res
+      .status(400)
+      .json({ status: `Fail to register slot for ${req.body.rsrc_id}` });
+  }
+});
+
+app.post("/certInfo", async (req, res) => {
+  try {
+    const cert_info = req.body;
+    const cert = new CertDB(cert_info);
+    const out = await cert.save();
+    res.status(200).json({
+      status: `Certificate ${req.body.certificate_id} is issued to Researcher No. ${req.body.rsrc_id}`,
+    });
+  } catch (e) {
+    res.status(400).json({ status: `Fail to issue certificate` });
+  }
 });
 
 // app.get('/forgetPass/:username', async (req, res) => {
