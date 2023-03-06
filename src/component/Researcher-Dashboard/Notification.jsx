@@ -124,17 +124,33 @@ const ResearcherNotification = (props) => {
                             <div className="track-report">
                                 <div className="track-reports-div">
 
-                                    {(ResearcherNotification.defaultProps.bounty.map((title) => (
+                                    {(ResearcherNotification.defaultProps.company.map((title) => (
                                         <div key={title.id} className="res-track-report-list-div">
 
                                             <div style={{ display: "flex", position: "relative", paddingTop: "2rem" }}>
-                                                <p className="bus-profile-bug-report-div-title-p">Bounty Amount: {title.bAmount}</p>
-                                                <p className="bus-profile-bug-report-div-id-p">Company Name: {title.companyName}</p>
+                                                <p style={
+                                                    {
+                                                        color: "#878787",
+                                                        fontSize: "14px",
+                                                        margin: "2rem 5rem 2rem 2rem",
+                                                        lineHeight: "2.8rem",
+                                                        letterSpacing: "1px",
+                                                    }}>{title.companyName} has requested for Retesting</p>
+                                                <p style={
+                                                    {
+                                                        position: "absolute",
+                                                        right: "5rem",
+                                                        textDecoration: "underline",
+                                                        color: "#ffffff",
+                                                        fontSize: "14px",
+                                                        lineHeight: "2.8rem",
+                                                        letterSpacing: "1px",
+                                                        margin: "2rem 5rem 2rem 2rem",
+                                                        cursor: "pointer", cursor: "pointer",
+                                                    }
+                                                }><a href={title.reportLink} className="res-track-report-list-link">Check</a></p>
                                             </div>
-                                            <div className="bus-profile-bug-report-divtitle">
-                                                <p className="bus-profile-bug-report-div-title-p">Date of Payment: {title.dop}</p>
-                                                <p className="bus-profile-bug-report-div-id-p">Report Id: {title.rId}</p>
-                                            </div>
+
                                         </div>
                                     )))}
                                 </div>
@@ -150,20 +166,17 @@ const ResearcherNotification = (props) => {
 ResearcherNotification.defaultProps = {
     researcherAvtar: '',
     rUsername: 'User Name',
-    bounty: [
+    company: [
         {
             id: '1',
-            bAmount: 'xyz$',
             companyName: 'xyz',
-            dop: '2022-12-1',
-            rId: 'xxxxx-xxxxx',
+            reportLink: '',
+
         },
         {
             id: '2',
-            bAmount: 'abc$',
             companyName: 'abc',
-            dop: '2021-10-1',
-            rId: 'xxxxx-xxxxx',
+            reportLink: '',
         }
     ],
 };
