@@ -8,6 +8,11 @@ const SubmitReport = (props) => {
     const [attackScenarios, setAttackScenarios] = useState();
     const [remediation, setRemediation] = useState();
 
+
+    const handleSubmit = () => {
+
+    }
+
     return (
         <>
             <div className="submit-report">
@@ -149,7 +154,7 @@ const SubmitReport = (props) => {
                                     />
                                 </label>
                             </div>
-                            <div className="button_ani submit-report-button">
+                            <div className="button_ani submit-report-button" onClick={handleSubmit}>
                                 <button className="btn"> Submit Report </button>  </div>
 
 
