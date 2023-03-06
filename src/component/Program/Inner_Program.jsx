@@ -454,6 +454,9 @@ Inner_Program.defaultProps = {
   avg_bounties_paid: "600",
   avg_time_respond: "Within 2 Days",
   avg_time_triage: "Within 3 Days",
-
+  // in_one_asset
+  // in_one_asset_type
+  // in_one_impact
+  // in_one_elb
 };
 export default Inner_Program;

@@ -1,5 +1,8 @@
+import Cookies from "js-cookie";
 import React, { useState } from "react";
 import './SubmitReport.css'
+
+var rsrc_id = Cookies.get('rsrc_id')
 
 const SubmitReport = (props) => {
     const [title, setTitle] = useState();
@@ -58,7 +61,8 @@ const SubmitReport = (props) => {
                                     <textarea className="submit-report-input"
                                         style={{
                                             width: "85rem",
-                                            height: "20rem"
+                                            height: "20rem",
+                                            paddingTop: "1rem"
                                         }}
                                         type="textarea"
                                         value={stepToReproduce}
@@ -132,6 +136,7 @@ const SubmitReport = (props) => {
                                             width: "85rem",
                                             height: "20rem",
                                             marginLeft: "3rem",
+                                            paddingTop: "1rem"
                                         }}
                                         type="text"
                                         value={attackScenarios}
@@ -146,7 +151,8 @@ const SubmitReport = (props) => {
                                         style={{
                                             width: "85rem",
                                             height: "20rem",
-                                            marginLeft: "6rem"
+                                            marginLeft: "6rem",
+                                            paddingTop: "1rem"
                                         }}
                                         type="text"
                                         value={remediation}
@@ -175,8 +181,8 @@ const SubmitReport = (props) => {
 }
 
 SubmitReport.defaultProps = {
-    companyName: "QWE",
-    rId: "xxxxx-xxxxx",
+    companyName: `Buggify LLC`,
+    rId: `${rsrc_id}`,
 }
 
 export default SubmitReport;
