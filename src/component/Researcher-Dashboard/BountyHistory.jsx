@@ -101,7 +101,7 @@ function ResearcherNavbar() {
 }
 
 
-const BountyHistory = () => {
+const BountyHistory = (props) => {
 
     return (
         <>
@@ -114,6 +114,30 @@ const BountyHistory = () => {
                     </div>
                     <div className="bus-profile-div2">
                         <h1 className="bus-profile-div2-h">Bounty History</h1>
+                        <div className="dashboard">
+                            <center><div className="bus-profile-header">
+                                <img src={props.researcherAvtar} className="bus-profile-company-logo" />
+                                <h3 className="bus-profile-company-name">{props.rUsername}</h3>
+                            </div></center>
+                            <div className="track-report">
+                                <div className="track-reports-div">
+
+                                    {(BountyHistory.defaultProps.bounty.map((title) => (
+                                        <div key={title.id} className="res-track-report-list-div">
+
+                                            <div style={{ display: "flex", position: "relative", paddingTop: "2rem" }}>
+                                                <p className="bus-profile-bug-report-div-title-p">Bounty Amount: {title.bAmount}</p>
+                                                <p className="bus-profile-bug-report-div-id-p">Company Name: {title.companyName}</p>
+                                            </div>
+                                            <div className="bus-profile-bug-report-divtitle">
+                                                <p className="bus-profile-bug-report-div-title-p">Date of Payment: {title.dop}</p>
+                                                <p className="bus-profile-bug-report-div-id-p">Report Id: {title.rId}</p>
+                                            </div>
+                                        </div>
+                                    )))}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,6 +146,25 @@ const BountyHistory = () => {
     )
 }
 
-
+BountyHistory.defaultProps = {
+    researcherAvtar: '',
+    rUsername: 'User Name',
+    bounty: [
+        {
+            id: '1',
+            bAmount: 'xyz$',
+            companyName: 'xyz',
+            dop: '2022-12-1',
+            rId: 'xxxxx-xxxxx',
+        },
+        {
+            id: '2',
+            bAmount: 'abc$',
+            companyName: 'abc',
+            dop: '2021-10-1',
+            rId: 'xxxxx-xxxxx',
+        }
+    ],
+};
 
 export default BountyHistory;

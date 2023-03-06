@@ -119,7 +119,8 @@ function OpenReports() {
                     )))}
                 </div>
 
-            </div></div>
+            </div>
+        </div>
     )
 }
 
@@ -138,7 +139,7 @@ function ResolvedReports() {
                             </div>
                             <div style={{ display: "flex", position: "relative" }}>
                                 <p className="res-track-report-list-link"><a href={title.reportLink} className="res-track-report-list-link">Check More Info</a></p>
-                                <p className="res-track-report-list-date">{title.reportDate}</p>
+                                <p className="res-track-report-list-date">Resolved Date: {title.reportDate}</p>
                             </div>
                         </div>
                     )))}
