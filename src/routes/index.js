@@ -1037,12 +1037,14 @@ app.get("/programScIn/:prog_id", async (req, res) => {
   const val1 = sc_info[0].in_scope;
   res.status(200).json(val1);
 });
+
 app.get("/programScOut/:prog_id", async (req, res) => {
   const buss_id = req.params.prog_id;
   const sc_info = await ScopeDB.find({ buss_id: `${buss_id}` });
   const val1 = sc_info[0].out_scope;
   res.status(200).json(val1);
 });
+
 app.get("/programRd/:prog_id", async (req, res) => {
   const buss_id = req.params.prog_id;
   const sc_info = await RewardDB.find({ buss_id: `${buss_id}` });
@@ -1144,29 +1146,30 @@ app.post("/bookmarkShow", middleware, async (req, res) => {
 
 const random5 = () => {
   const length = 5;
-  let result = '';
-  const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  let result = "";
+  const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
-  return(result);
-}
+  return result;
+};
+
 app.post("/submitReport", middleware, async (req, res) => {
   const v1 = random5();
   const v2 = random5();
-  const final = "#"+v1+"-"+v2
-  const rsrc_id = req.rsrc_id
-  const buss_id = req.body.buss_id
-  const report_title = req.body.report_title
-  const reproduce_steps = req.body.reproduce_steps
-  const poc1 = req.body.poc1
-  const poc2 = req.body.poc2
-  const poc3 = req.body.poc3
-  const poc4 = req.body.poc4
-  const poc5 = req.body.poc5
-  const attack_scenario = req.body.attack_scenario
-  const remediation = req.body.remediation
+  const final = v1 + "-" + v2;
+  const rsrc_id = req.rsrc_id;
+  const buss_id = req.body.buss_id;
+  const report_title = req.body.report_title;
+  const reproduce_steps = req.body.reproduce_steps;
+  const poc1 = req.body.poc1;
+  const poc2 = req.body.poc2;
+  const poc3 = req.body.poc3;
+  const poc4 = req.body.poc4;
+  const poc5 = req.body.poc5;
+  const attack_scenario = req.body.attack_scenario;
+  const remediation = req.body.remediation;
   const data = {
     report_id: `${final}`,
     rsrc_id: `${rsrc_id}`,
@@ -1180,19 +1183,25 @@ app.post("/submitReport", middleware, async (req, res) => {
     poc5: `${poc5}`,
     attack_scenario: `${attack_scenario}`,
     remediation: `${remediation}`,
-    cvss: '',
-    note: '',
-    bounty: '',
-    payment_id: ''
+    cvss: "",
+    note: "",
+    bounty: "",
+    payment_id: "",
+  };
+  try {
+    const structdb = new ReportDB(data);
+    const outdb = await structdb.save();
+    res.status(200).json(outdb);
+  } catch (e) {
+    res.status(400).json({ status: "Fail to insert report" });
   }
-  try{
-    const structdb = new ReportDB(data)
-    const outdb = await structdb.save()
-    res.status(200).json(outdb)
-  }catch(e){
-    res.status(400).json({status:'Fail to insert report'})
-  }
-})
+});
+
+app.get("/reportfetch/:report_id", async (req, res) => {
+  const report_id = req.params.report_id;
+  const rep = await ReportDB.find({ report_id: `${report_id}` });
+  res.status(200).json(rep);
+});
 
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
