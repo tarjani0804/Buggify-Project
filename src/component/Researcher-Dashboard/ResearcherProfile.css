@@ -36,3 +36,51 @@
     border-radius: 8px;
     box-shadow: 0 0 3px #04ff69;
 }
+
+.track-report {
+    margin-top: 8rem;
+    width: 80%;
+    margin-left: calc(10%);
+}
+
+.track-reports-div {
+    background-color: #141414;
+}
+
+.res-track-report-list-div {
+    border-bottom: 1px solid #878787;
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.track-report-menu-list {
+    margin-top: 3rem;
+}
+
+.track-report-menu-list ul {
+    display: flex;
+}
+
+.track-report-menu-list-li {
+    color: #878787;
+    cursor: pointer;
+    padding-left: 8rem;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+}
+
+.res-track-report-list-link {
+    text-decoration: underline;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.listselected {
+    color: #04ff69;
+}

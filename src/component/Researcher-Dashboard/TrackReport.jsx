@@ -101,9 +101,63 @@ function ResearcherNavbar() {
 
 }
 
+function OpenReports() {
+    return (
+        <div>
+
+            <div className="track-report">
+                <div className="track-reports-div">
+
+                    {(TrackReports.defaultProps.reports.map((title) => (
+                        <div key={title.id} className="res-track-report-list-div">
+                            <div className="bus-profile-bug-report-divtitle">
+                                <p className="bus-profile-bug-report-div-title-p">Report Title: {title.reportTitle}</p>
+                                <p className="bus-profile-bug-report-div-id-p">Report Id: {title.reportId}</p>
+                            </div>
+                            <p className="res-track-report-list-link"><a href="" className="res-track-report-list-link">Check More info</a></p>
+                        </div>
+                    )))}
+                </div>
+
+            </div></div>
+    )
+}
 
 
-const TrackReports = () => {
+function ResolvedReports() {
+    return (
+        <div>
+            <div className="track-report">
+                <div className="track-reports-div">
+
+                    {(TrackReports.defaultProps.reports.map((title) => (
+                        <div key={title.id} className="res-track-report-list-div">
+                            <div className="bus-profile-bug-report-divtitle">
+                                <p className="bus-profile-bug-report-div-title-p">Report Title: {title.reportTitle}</p>
+                                <p className="bus-profile-bug-report-div-id-p">Report Id: {title.reportId}</p>
+                            </div>
+                            <p className="bus-profile-bug-report-div-link"><a href={title.reportLink} className="bus-profile-bug-report-div-link">Check Report</a></p>
+                        </div>
+                    )))}
+                </div>
+
+            </div></div>
+    )
+}
+
+const TrackReports = (props) => {
+    const [OpenSelected, setOpenSelected] = useState('true');
+    const [ResolvedSelected, setResolvedSelected] = useState();
+
+    const handleOpenSelected = () => {
+        setOpenSelected(true);
+        setResolvedSelected(false);
+    }
+    const handleResolvedSelected = () => {
+        setOpenSelected(false);
+        setResolvedSelected(true);
+    }
+
 
     return (
         <>
@@ -116,6 +170,30 @@ const TrackReports = () => {
                     </div>
                     <div className="bus-profile-div2">
                         <h1 className="bus-profile-div2-h">Track Reports</h1>
+
+                        <div className="dashboard">
+                            <center><div className="bus-profile-header">
+                                <img src={props.researcherAvtar} className="bus-profile-company-logo" />
+                                <h3 className="bus-profile-company-name">{props.rUsername}</h3>
+                            </div></center>
+                            <div className="stats">
+                                <div className="track-report-menu-list">
+                                    <ul>
+                                        <li className={`track-report-menu-list-li ${OpenSelected ? 'listselected' : ''}`} onClick={handleOpenSelected}>Open</li>
+                                        <li className={`track-report-menu-list-li ${ResolvedSelected ? 'listselected' : ''}`} onClick={handleResolvedSelected} >Resolved</li>
+                                    </ul>
+                                </div>
+
+                                {OpenSelected && <OpenReports />}
+                                {ResolvedSelected && <ResolvedReports />}
+
+
+
+                            </div>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -124,6 +202,26 @@ const TrackReports = () => {
     )
 }
 
+TrackReports.defaultProps = {
+    researcherAvtar: '',
+    rUsername: 'User Name',
+    reports: [
+        {
+            id: '1',
+            reportId: '#a7ag3-jh38g',
+            reportTitle: 'XSS in Search Field of abc.def.com',
+            reportLink: '',
+
+        },
+        {
+            id: '2',
+            reportId: '#v3jd8-st62s ',
+            reportTitle: 'CSRF in Password Change Function of staging.def.com',
+            reportLink: '',
+
+        },
+    ],
+};
 
 
 export default TrackReports;
