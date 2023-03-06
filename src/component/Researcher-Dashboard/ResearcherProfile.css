@@ -64,10 +64,17 @@
 .track-report-menu-list-li {
     color: #878787;
     cursor: pointer;
-    padding-left: 8rem;
     font-size: 14px;
     line-height: 2.8rem;
     letter-spacing: 1px;
+}
+
+.track-report-menu-list ul :first-child {
+    margin-left: 12rem;
+}
+
+.track-report-menu-list ul :last-child {
+    margin-left: 5rem;
 }
 
 .res-track-report-list-link {

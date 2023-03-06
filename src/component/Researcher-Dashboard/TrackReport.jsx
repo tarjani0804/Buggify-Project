@@ -137,7 +137,7 @@ function ResolvedReports() {
                                 <p className="bus-profile-bug-report-div-id-p">Report Id: {title.reportId}</p>
                             </div>
                             <div style={{ display: "flex", position: "relative" }}>
-                                <p className="res-track-report-list-link"><a href={title.reportLink} className="res-track-report-list-link">Check Report</a></p>
+                                <p className="res-track-report-list-link"><a href={title.reportLink} className="res-track-report-list-link">Check More Info</a></p>
                                 <p className="res-track-report-list-date">{title.reportDate}</p>
                             </div>
                         </div>
