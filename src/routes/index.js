@@ -1264,6 +1264,20 @@ app.get("/trackRep/:isOld", middleware, async (req, res) => {
   }
 });
 
+app.post("/closeReport", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const report_id = req.body.report_id;
+  try {
+    const repup = await ReportDB.updateOne(
+      { buss_id: `${buss_id}`, report_id: `${report_id}`, isOld: false },
+      { $set: { isOld: true } }
+    );
+    console.log(repup);
+    res.status(200).json({ status: `Report is Closed` });
+  } catch (e) {
+    res.status(400).json({ status: `Somthing went wrong` });
+  }
+});
 
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
