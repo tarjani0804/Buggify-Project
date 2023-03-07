@@ -1299,6 +1299,21 @@ app.patch("/reopenReport", middleware, async (req, res) => {
   }
 });
 
+app.get("/retestingReportFetch/:report_id", async (req, res) => {
+  const report_id = req.params.report_id;
+  try {
+    const rep = await ReportDB.find({
+      report_id: `${report_id}`,
+      retesting: true,
+    });
+    res.status(200).json(rep);
+  } catch (e) {
+    res
+      .status(400)
+      .json({ status: `No Retest Report with given report_id exists` });
+  }
+});
+
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
