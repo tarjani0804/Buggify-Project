@@ -1188,6 +1188,7 @@ app.post("/submitReport", middleware, async (req, res) => {
     bounty: "",
     payment_id: "",
     isOld: false,
+    retesting: false,
   };
   try {
     const structdb = new ReportDB(data);
@@ -1276,6 +1277,25 @@ app.post("/closeReport", middleware, async (req, res) => {
     res.status(200).json({ status: `Report is Closed` });
   } catch (e) {
     res.status(400).json({ status: `Somthing went wrong` });
+  }
+});
+
+app.patch("/reopenReport", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const report_id = req.body.report_id;
+  const repval = await ReportDB.find({ report_id: `${report_id}` });
+  if (repval[0].isOld == true) {
+    const final = await ReportDB.updateOne(
+      { buss_id: `${buss_id}`, report_id: `${report_id}`, isOld: true },
+      { $set: { isOld: false, retesting: true } }
+    );
+    res.status(200).json({ status: `Retesting Approved` });
+  } else {
+    if (repval[0].isOld == false) {
+      res.status(400).json({ status: `Report is already Open` });
+    } else {
+      res.status(400).json({ status: `No Report with this Id exists` });
+    }
   }
 });
 

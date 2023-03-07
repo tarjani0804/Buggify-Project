@@ -1,66 +1,72 @@
 const mongoose = require("mongoose");
 
-const ReportSchema = mongoose.Schema({
+const ReportSchema = mongoose.Schema(
+  {
     report_id: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
     rsrc_id: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     buss_id: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-    report_title:{
-        type: String,
-        required: true
+    report_title: {
+      type: String,
+      required: true,
     },
-    reproduce_steps:{
-        type: String,
-        required: true
+    reproduce_steps: {
+      type: String,
+      required: true,
     },
     poc1: {
-        type: String
+      type: String,
     },
     poc2: {
-        type: String
+      type: String,
     },
     poc3: {
-        type: String
+      type: String,
     },
     poc4: {
-        type: String
+      type: String,
     },
     poc5: {
-        type: String
+      type: String,
     },
-    attack_scenario:{
-        type: String
+    attack_scenario: {
+      type: String,
     },
-    remediation:{
-        type: String
+    remediation: {
+      type: String,
     },
-    cvss:{
-        type: String
+    cvss: {
+      type: String,
     },
-    note:{
-        type: String
+    note: {
+      type: String,
     },
-    bounty:{
-        type: String
+    bounty: {
+      type: String,
     },
-    payment_id:{
-        type: String
+    payment_id: {
+      type: String,
     },
     isOld: {
-        type: Boolean
-    }
-},{
-    timestamps: true
-  })
+      type: Boolean,
+    },
+    retesting: {
+      type: Boolean,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const ReportDB = mongoose.model("REPORTDB", ReportSchema)
+const ReportDB = mongoose.model("REPORTDB", ReportSchema);
 module.exports = ReportDB;
