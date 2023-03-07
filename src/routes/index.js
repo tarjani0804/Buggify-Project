@@ -1187,6 +1187,7 @@ app.post("/submitReport", middleware, async (req, res) => {
     note: "",
     bounty: "",
     payment_id: "",
+    isOld: false,
   };
   try {
     const structdb = new ReportDB(data);
@@ -1239,6 +1240,30 @@ app.patch("/reportfetch/:report_id", async (req, res) => {
     res.status(400).json({ status: `Fail to Update Report` });
   }
 });
+
+app.get("/trackRep/:isOld", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const isOld = req.params.isOld;
+  if (buss_id) {
+    if (isOld == "open") {
+      const reps = await ReportDB.find({ buss_id: `${buss_id}`, isOld: false });
+      res.status(200).json(reps);
+    } else {
+      if (isOld == "resolved") {
+        const reps = await ReportDB.find({
+          buss_id: `${buss_id}`,
+          isOld: true,
+        });
+        res.status(200).json(reps);
+      } else {
+        res.status(400).send("Somthing went wrong");
+      }
+    }
+  } else {
+    res.status(400).send("Invalid Business Account");
+  }
+});
+
 
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;

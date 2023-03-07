@@ -54,6 +54,9 @@ const ReportSchema = mongoose.Schema({
     },
     payment_id:{
         type: String
+    },
+    isOld: {
+        type: Boolean
     }
 },{
     timestamps: true
