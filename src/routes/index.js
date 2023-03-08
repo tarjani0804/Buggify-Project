@@ -1187,6 +1187,8 @@ app.post("/submitReport", middleware, async (req, res) => {
     note: "",
     bounty: "",
     payment_id: "",
+    isOld: false,
+    retesting: false,
   };
   try {
     const structdb = new ReportDB(data);
@@ -1237,6 +1239,78 @@ app.patch("/reportfetch/:report_id", async (req, res) => {
     res.status(200).json({ status: `Report Updated Successfully` });
   } catch (e) {
     res.status(400).json({ status: `Fail to Update Report` });
+  }
+});
+
+app.get("/trackRep/:isOld", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const isOld = req.params.isOld;
+  if (buss_id) {
+    if (isOld == "open") {
+      const reps = await ReportDB.find({ buss_id: `${buss_id}`, isOld: false });
+      res.status(200).json(reps);
+    } else {
+      if (isOld == "resolved") {
+        const reps = await ReportDB.find({
+          buss_id: `${buss_id}`,
+          isOld: true,
+        });
+        res.status(200).json(reps);
+      } else {
+        res.status(400).send("Somthing went wrong");
+      }
+    }
+  } else {
+    res.status(400).send("Invalid Business Account");
+  }
+});
+
+app.post("/closeReport", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const report_id = req.body.report_id;
+  try {
+    const repup = await ReportDB.updateOne(
+      { buss_id: `${buss_id}`, report_id: `${report_id}`, isOld: false },
+      { $set: { isOld: true } }
+    );
+    console.log(repup);
+    res.status(200).json({ status: `Report is Closed` });
+  } catch (e) {
+    res.status(400).json({ status: `Somthing went wrong` });
+  }
+});
+
+app.patch("/reopenReport", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const report_id = req.body.report_id;
+  const repval = await ReportDB.find({ report_id: `${report_id}` });
+  if (repval[0].isOld == true) {
+    const final = await ReportDB.updateOne(
+      { buss_id: `${buss_id}`, report_id: `${report_id}`, isOld: true },
+      { $set: { isOld: false, retesting: true } }
+    );
+    res.status(200).json({ status: `Retesting Approved` });
+  } else {
+    if (repval[0].isOld == false) {
+      res.status(400).json({ status: `Report is already Open` });
+    } else {
+      res.status(400).json({ status: `No Report with this Id exists` });
+    }
+  }
+});
+
+app.get("/retestingReportFetch/:report_id", async (req, res) => {
+  const report_id = req.params.report_id;
+  try {
+    const rep = await ReportDB.find({
+      report_id: `${report_id}`,
+      retesting: true,
+    });
+    res.status(200).json(rep);
+  } catch (e) {
+    res
+      .status(400)
+      .json({ status: `No Retest Report with given report_id exists` });
   }
 });
 
