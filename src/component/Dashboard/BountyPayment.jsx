@@ -177,8 +177,8 @@ const BusinessProfile = (props) => {
                             </div>
                             <div className="stats">
                                 <p className="bus-profie-stat-h">Payment History</p>
-                                <div className="bus-profile-stat-div">
-                                    <div className="payment-history-table">
+                                <div className="program-divs-programs">
+                                    <div className="programs-div">
                                         <table>
                                             <thead>
                                                 <tr>
@@ -188,7 +188,13 @@ const BusinessProfile = (props) => {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr></tr>
+                                                {BusinessProfile.defaultProps.bounty.map((bounty, index) => (
+                                                    <tr key={bounty.id}>
+                                                        <td>{bounty.pId}</td>
+                                                        <td>{bounty.paidTo}</td>
+                                                        <td>{bounty.paymentAmount}</td>
+                                                    </tr>
+                                                ))}
                                             </tbody>
                                         </table>
 
@@ -212,7 +218,26 @@ const BusinessProfile = (props) => {
 BusinessProfile.defaultProps = {
     companyLogo: '',
     companyName: 'Company',
-
+    bounty: [
+        {
+            id: 1,
+            pId: "738836-837536-8726534",
+            paidTo: "CryOniXHashacks",
+            paymentAmount: "1000",
+        },
+        {
+            id: 2,
+            pId: "937483-938536-3794534",
+            paidTo: "CryOniXHashacks",
+            paymentAmount: "1000",
+        },
+        {
+            id: 3,
+            pId: "937536-929464-8635634",
+            paidTo: "CryOniXHashacks",
+            paymentAmount: "1000",
+        },
+    ],
 
 };
 export default BusinessProfile;

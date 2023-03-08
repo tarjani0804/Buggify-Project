@@ -46,6 +46,7 @@
   width: 80%;
   margin-left: calc(10%);
   background-color: #141414;
+  /* font-size: 14px; */
   /* height: 100px; */
 }
 
@@ -58,8 +59,7 @@ table {
 th,
 td {
   padding: 12px;
-  text-align: left;
-  /* border-top: 1px solid #878787; */
+  text-align: center;
 }
 
 th {
@@ -86,6 +86,7 @@ td {
   color: #ffffff;
   padding-top: 3rem;
   padding-bottom: 2rem;
+  font-size: 12px;
 }
 
 th:first-child {

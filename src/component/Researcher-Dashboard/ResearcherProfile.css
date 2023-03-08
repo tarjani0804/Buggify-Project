@@ -218,3 +218,17 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+.res-bookmarked-list-link {
+    color: #04ff69;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    position: absolute;
+    right: calc(2%);
+}
+
+.bookmarked-ul li {
+    list-style-type: number;
+    margin-left: 2rem;
+}

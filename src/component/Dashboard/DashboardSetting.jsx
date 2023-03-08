@@ -393,13 +393,7 @@ const BusinessProfile = (props) => {
 
 
                             <form className="researcher-form">
-                                <div className="column-div1 res-form">
-                                    <label className="res-form-label">Position : {props.position} </label>
-                                    <input className="res-input"
-                                        type="text"
-                                        value={Position}
-                                        onChange={(event) => setPosition(event.target.value)} />
-                                </div>
+
                                 <div className="column-div1 res-form">
                                     <label className="res-form-label">Email Id : {props.email} </label>
                                     <input className="res-input"
@@ -414,7 +408,13 @@ const BusinessProfile = (props) => {
                                         value={Password}
                                         onChange={(event) => setPassword(event.target.value)} />
                                 </div>
-
+                                <div className="column-div1 res-form">
+                                    <label className="res-form-label">Position : {props.position} </label>
+                                    <input className="res-input"
+                                        type="text"
+                                        value={Position}
+                                        onChange={(event) => setPosition(event.target.value)} />
+                                </div>
                                 <div className="column-div1 res-form">
                                     <label className="res-form-label">Country: {props.country}</label>
                                     <select

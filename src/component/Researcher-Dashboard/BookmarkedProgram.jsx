@@ -103,7 +103,7 @@ function ResearcherNavbar() {
 
 
 
-const BookmarkedProgram = () => {
+const BookmarkedProgram = (props) => {
 
     return (
         <>
@@ -116,6 +116,34 @@ const BookmarkedProgram = () => {
                     </div>
                     <div className="bus-profile-div2">
                         <h1 className="bus-profile-div2-h">Bookmarked Program</h1>
+                        <div className="dashboard">
+                            <center><div className="bus-profile-header">
+                                <img src={props.researcherAvtar} className="bus-profile-company-logo" />
+                                <h3 className="bus-profile-company-name">{props.rUsername}</h3>
+                            </div></center>
+                            <div className="track-report">
+                                <div className="track-reports-div">
+                                    <ol className="bookmarked-ul">
+                                        {(BookmarkedProgram.defaultProps.bookmarked.map((title) => (
+                                            <div key={title.id} className="res-track-report-list-div">
+
+                                                <div className="bus-profile-bug-report-divtitle">
+
+
+                                                    <li className="bus-profile-bug-report-div-title-p" style={{ marginLeft: "4rem" }}> {title.programTitle}</li>
+                                                    <p className="res-bookmarked-list-link"><a href="" className="res-track-report-list-link">start Hunting {title.programLink}</a></p>
+                                                </div>
+
+                                            </div>
+                                        )))}
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
@@ -124,6 +152,23 @@ const BookmarkedProgram = () => {
     )
 }
 
+BookmarkedProgram.defaultProps = {
+    researcherAvtar: '',
+    rUsername: 'User Name',
+    bookmarked: [
+        {
+            id: '1',
+            programTitle: 'Buggify',
+            programLink: "",
+        },
+        {
+            id: '2',
+            programTitle: 'BugBee',
+            programLink: "",
 
+
+        },
+    ],
+};
 
 export default BookmarkedProgram;
