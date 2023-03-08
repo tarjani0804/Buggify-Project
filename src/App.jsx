@@ -402,7 +402,7 @@ function App() {
               <NoFooter />
             </>
           } />
-          <Route path='/FAQ' element={
+          <Route path='/FAQs' element={
             <>
               <NoNavbar />
               <FAQs />

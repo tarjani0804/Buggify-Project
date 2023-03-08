@@ -146,7 +146,7 @@ const ResearcherNotification = (props) => {
                                                         lineHeight: "2.8rem",
                                                         letterSpacing: "1px",
                                                         margin: "2rem 5rem 2rem 2rem",
-                                                        cursor: "pointer", cursor: "pointer",
+                                                        cursor: "pointer",
                                                     }
                                                 }><a href={title.reportLink} className="res-track-report-list-link">Check</a></p>
                                             </div>

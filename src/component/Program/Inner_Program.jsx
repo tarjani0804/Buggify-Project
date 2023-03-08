@@ -206,8 +206,7 @@ const Inner_Program = (props) => {
   const [bookmarkSelected, setBookmarkSelected] = useState();
 
   const handleBookmark = () => {
-    <BsBookmarkCheckFill />;
-    console.log("check");
+    setBookmarkSelected(true);
   };
 
   const handlePolicySelected = () => {
@@ -350,25 +349,26 @@ const Inner_Program = (props) => {
                   <h5>
                     Bookmark{" "}
                     <span onClick={handleBookmark}>
-                      <BsBookmarkPlus
-                        style={{
-                          fontSize: "16px",
-                          marginLeft: "2px",
-                          cursor: "pointer",
-                        }}
-                      />{" "}
+                      {bookmarkSelected ? (
+                        <BsBookmarkCheckFill
+                          style={{
+                            fontSize: "16px",
+                            marginLeft: "2px",
+                            cursor: "pointer",
+                          }}
+                        />
+                      ) : (
+                        <BsBookmarkPlus
+                          style={{
+                            fontSize: "16px",
+                            marginLeft: "2px",
+                            cursor: "pointer",
+                          }}
+                        />
+                      )}
                     </span>
                   </h5>
-                  <h5>
-                    Subscribe{" "}
-                    <HiOutlineBellAlert
-                      style={{
-                        fontSize: "16px",
-                        marginLeft: "2px",
-                        cursor: "pointer",
-                      }}
-                    />{" "}
-                  </h5>
+
                 </div>
 
                 <div className="submit-button" onClick={gotoSubmitReport}>
