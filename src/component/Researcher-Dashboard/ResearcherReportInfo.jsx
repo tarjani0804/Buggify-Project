@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { BsJournalBookmark } from 'react-icons/bs';
@@ -8,8 +8,8 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { SiBigbluebutton } from 'react-icons/si';
 import { ImProfile } from 'react-icons/im';
 import { TbReportSearch } from 'react-icons/tb';
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
 
 function ResearcherNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -58,12 +58,12 @@ function ResearcherNavbar() {
                     <span className="navbar-menu-icon"><ImProfile /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Researcher Profile</span>}
                 </li>
-                <li onClick={gotoTrackReports}>
+                <li className="dashboard-link" onClick={gotoTrackReports}>
                     <span className="navbar-menu-icon" style={{ color: "#ffffff" }}><TbReportSearch /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Track Report</span>}
                 </li>
 
-                <li className="dashboard-link" onClick={gotoBuountyHistory}>
+                <li onClick={gotoBuountyHistory}>
                     <span className="navbar-menu-icon"><RiFolderHistoryLine /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Bounty History</span>}
                 </li>
@@ -96,71 +96,140 @@ function ResearcherNavbar() {
 
 }
 
+const BusinessProfile = (props) => {
 
-const BountyHistory = (props) => {
 
     return (
         <>
 
-            <div className="res-profile">
+            <div className="bus-profile">
 
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">
                         <ResearcherNavbar />
                     </div>
                     <div className="bus-profile-div2">
-                        <h1 className="bus-profile-div2-h">Bounty History</h1>
+                        <center><h1 className="bus-profile-div2-h">Bug Report</h1></center>
                         <div className="dashboard">
-                            <center><div className="bus-profile-header">
-                                <img src={props.researcherAvtar} className="bus-profile-company-logo" />
-                                <h3 className="bus-profile-company-name">{props.rUsername}</h3>
-                            </div></center>
-                            <div className="track-report">
-                                <div className="track-reports-div">
+                            <center>  <div className="bus-profile-header">
+                                <img src={props.companyLogo} className="bus-profile-company-logo" />
+                                <h3 className="bus-profile-company-name">{props.companyName}</h3>
+                            </div>
+                            </center>
 
-                                    {(BountyHistory.defaultProps.bounty.map((title) => (
-                                        <div key={title.id} className="res-track-report-list-div">
+                            <div className="bus-profile-report-update">
 
-                                            <div style={{ display: "flex", position: "relative", paddingTop: "2rem" }}>
-                                                <p className="bus-profile-bug-report-div-title-p">Bounty Amount: {title.bAmount}</p>
-                                                <p className="bus-profile-bug-report-div-id-p">Company Name: {title.companyName}</p>
-                                            </div>
-                                            <div className="bus-profile-bug-report-divtitle">
-                                                <p className="bus-profile-bug-report-div-title-p">Date of Payment: {title.dop}</p>
-                                                <p className="bus-profile-bug-report-div-id-p">Report Id: {title.rId}</p>
-                                            </div>
-                                        </div>
+                                <div className="bus-profile-bug-report-divtitle" >
+                                    <p className="bus-profile-bug-report-div-title-p">Report Title: {props.reportTitle} </p>
+                                    <p className="bus-profile-bug-report-div-id-p" >Report Id: {props.reportId} </p>
+                                </div>
+
+                            </div>
+                            <div className="bus-profile-report-update">
+
+                                <div className="bus-profile-report-update-steps">
+
+                                    <p className="bus-profile-bug-report-div-title-p">Steps to Reproduce :
+                                        {(BusinessProfile.defaultProps.reportSteps.map((report) => (
+                                            <li className="report-div-steps-li" key={report.id}>{report.li}</li>
+                                        )))}
+                                    </p>
+
+                                </div>
+
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Proof-of-Concept :</p>
+                                    {(BusinessProfile.defaultProps.pocLink.map((poclink) => (
+                                        <p className="report-proof-link-of-poc" key={poclink.id} >Additional Link :{poclink.li}
+                                        </p>
                                     )))}
                                 </div>
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: {props.attack} </p>
+                                </div>
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Remediation: {props.remeda} </p>
+                                </div>
+
+
                             </div>
+
+
+
+
                         </div>
+
                     </div>
                 </div>
-            </div>
+            </div >
 
         </>
     )
 }
 
-BountyHistory.defaultProps = {
-    researcherAvtar: '',
-    rUsername: 'User Name',
-    bounty: [
+BusinessProfile.defaultProps = {
+    companyLogo: '',
+    companyName: 'Company',
+    reportId: '#a7ag3-jh38g',
+    reportTitle: 'XSS in Search Field of abc.def.com',
+    reportSteps: [
         {
             id: '1',
-            bAmount: 'xyz$',
-            companyName: 'xyz',
-            dop: '2022-12-1',
-            rId: 'xxxxx-xxxxx',
+            li: 'Search field of https://abc.def.com/page?search=abc',
         },
         {
             id: '2',
-            bAmount: 'abc$',
-            companyName: 'abc',
-            dop: '2021-10-1',
-            rId: 'xxxxx-xxxxx',
-        }
+            li: 'Replace Payload “><script>alert(document.cookie);</script> with abc in search parameter ',
+        },
+        {
+            id: '3',
+            li: 'Entering this payload will show alert popup having cookie of current user ',
+        },
+        {
+            id: '4',
+            li: 'bkfaeb',
+        },
+        {
+            id: '5',
+            li: ' iflakenflkan ',
+        },
+        {
+            id: '6',
+            li: 'flaflakefa',
+        },
+        {
+            id: '7',
+            li: ' akfvajfuafka',
+        },
     ],
-};
+    pocLink: [{
+        id: '1',
+        li: 'link1',
+    },
+    {
+        id: '2',
+        li: 'link2 ',
+    },
+    {
+        id: '3',
+        li: 'link3 ',
+    },
+    {
+        id: '4',
+        li: 'link4',
+    },
 
-export default BountyHistory;
+    ],
+    attack: "bfcjbfjhreufhvnjkehuf",
+    remeda: "njsagysgbcfysgbyxgbygbidsx",
+
+
+
+
+}
+
+
+
+
+
+export default BusinessProfile;

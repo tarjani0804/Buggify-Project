@@ -54,10 +54,6 @@ function ResearcherNavbar() {
                     <span className="back-link-icon navbar-menu-icon"><AiOutlineArrowLeft /></span>
                     {isMenuOpen && <span className="back-link navbar-menu-item">Back to Home</span>}
                 </li>
-                <li >
-                    <span className="company-icon navbar-menu-icon"><SiBigbluebutton /></span>
-                    {isMenuOpen && <p className="company-name navbar-menu-item ">Buggify</p>}
-                </li>
                 <hr className={`navbar-hr ${isMenuOpen ? 'open' : ''}`} />
                 <li onClick={gotoResearcherProfile}>
                     <span className="navbar-menu-icon"><ImProfile /></span>
@@ -105,6 +101,11 @@ function ResearcherNavbar() {
 
 const ResearcherNotification = (props) => {
 
+    const navigate = useNavigate()
+    const gotoReportInfo = () => {
+        navigate('/researcher-ReportInfo')
+    }
+
     return (
         <>
 
@@ -148,7 +149,7 @@ const ResearcherNotification = (props) => {
                                                         margin: "2rem 5rem 2rem 2rem",
                                                         cursor: "pointer",
                                                     }
-                                                }><a href={title.reportLink} className="res-track-report-list-link">Check</a></p>
+                                                } onClick={gotoReportInfo} >Check</p>
                                             </div>
 
                                         </div>

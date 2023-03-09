@@ -327,7 +327,7 @@ const Inner_Program = (props) => {
                   <h5>Program Type</h5>
                   <p>{props.program_type}</p>
                 </div>
-                <div className="program-bookmark">
+                <div className="program-bookmark" style={{ cursor: "pointer" }}>
                   <h5>
                     Bookmark{" "}
                     <span onClick={handleBookmark}>

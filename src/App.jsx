@@ -83,6 +83,14 @@ import ResearcherSettings from './component/Researcher-Dashboard/ResearcherSetti
 import ResearcherNotification from './component/Researcher-Dashboard/Notification';
 import BookmarkedProgram from './component/Researcher-Dashboard/BookmarkedProgram';
 import TrackReports from './component/Researcher-Dashboard/TrackReport';
+import ResearcherReportInfo from './component/Researcher-Dashboard/ResearcherReportInfo';
+
+
+import PaymentClearance from './component/Admin-Panel/Payment Clearance';
+import CertificationInfo from './component/Admin-Panel/CertificationInfo';
+import ExamSchedule from './component/Admin-Panel/ExamSchedule';
+import ContactNotification from './component/Admin-Panel/ContactNotification';
+import AdminDashboard from './component/Admin-Panel/AdminDashboard';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -431,6 +439,13 @@ function App() {
               <NoFooter />
             </>
           } />
+          <Route path='/researcher-ReportInfo' element={
+            <>
+              <NoNavbar />
+              <ResearcherReportInfo />
+              <NoFooter />
+            </>
+          } />
           <Route path='/bounty-history' element={
             <>
               <NoNavbar />
@@ -463,6 +478,41 @@ function App() {
             <>
               <NoNavbar />
               <ResearcherFAQs />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/Admin-Dashboard' element={
+            <>
+              <NoNavbar />
+              <AdminDashboard />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/PaymentClearance' element={
+            <>
+              <NoNavbar />
+              <PaymentClearance />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/ContactNotification' element={
+            <>
+              <NoNavbar />
+              <ContactNotification />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/CertificateInfo' element={
+            <>
+              <NoNavbar />
+              <CertificationInfo />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/ExamSchedule' element={
+            <>
+              <NoNavbar />
+              <ExamSchedule />
               <NoFooter />
             </>
           } />

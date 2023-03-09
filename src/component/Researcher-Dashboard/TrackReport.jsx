@@ -102,6 +102,11 @@ function ResearcherNavbar() {
 }
 
 function OpenReports() {
+
+    const navigate = useNavigate()
+    const gotoReportInfo = () => {
+        navigate('/researcher-ReportInfo')
+    }
     return (
         <div>
 
@@ -114,7 +119,7 @@ function OpenReports() {
                                 <p className="bus-profile-bug-report-div-title-p">Report Title: {title.reportTitle}</p>
                                 <p className="bus-profile-bug-report-div-id-p">Report Id: {title.reportId}</p>
                             </div>
-                            <p className="res-track-report-list-link"><a href="" className="res-track-report-list-link">Check More info</a></p>
+                            <p className="res-track-report-list-link" onClick={gotoReportInfo}>Check More info</p>
                         </div>
                     )))}
                 </div>
@@ -126,6 +131,13 @@ function OpenReports() {
 
 
 function ResolvedReports() {
+
+
+    const navigate = useNavigate()
+    const gotoReportInfo = () => {
+        navigate('/researcher-ReportInfo')
+    }
+
     return (
         <div>
             <div className="track-report">
@@ -138,14 +150,15 @@ function ResolvedReports() {
                                 <p className="bus-profile-bug-report-div-id-p">Report Id: {title.reportId}</p>
                             </div>
                             <div style={{ display: "flex", position: "relative" }}>
-                                <p className="res-track-report-list-link"><a href={title.reportLink} className="res-track-report-list-link">Check More Info</a></p>
+                                <p className="res-track-report-list-link" onClick={gotoReportInfo}>Check More Info</p>
                                 <p className="res-track-report-list-date">Resolved Date: {title.reportDate}</p>
                             </div>
                         </div>
                     )))}
                 </div>
 
-            </div></div>
+            </div>
+        </div>
     )
 }
 

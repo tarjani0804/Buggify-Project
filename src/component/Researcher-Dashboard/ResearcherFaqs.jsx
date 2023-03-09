@@ -56,10 +56,6 @@ function ResearcherNavbar() {
                     <span className="back-link-icon navbar-menu-icon"><AiOutlineArrowLeft /></span>
                     {isMenuOpen && <span className="back-link navbar-menu-item">Back to Home</span>}
                 </li>
-                <li >
-                    <span className="company-icon navbar-menu-icon"><SiBigbluebutton /></span>
-                    {isMenuOpen && <p className="company-name navbar-menu-item ">Buggify</p>}
-                </li>
                 <hr className={`navbar-hr ${isMenuOpen ? 'open' : ''}`} />
                 <li onClick={gotoResearcherProfile}>
                     <span className="navbar-menu-icon"><ImProfile /></span>

@@ -30,6 +30,7 @@
     flex-direction: column;
     transition: width 1s;
     margin-top: 5rem;
+    padding-bottom: 3rem;
 }
 
 .navbar-menu li {
@@ -59,17 +60,6 @@
     margin-top: -5rem;
 }
 
-.company-icon {
-    color: #04ff69;
-    margin-top: -2rem;
-}
-
-.company-name {
-    color: #04ff69;
-    font-size: 20px;
-    margin-top: -2rem;
-}
-
 .navbar-menu.shrink {
     width: 5%;
 }
@@ -94,7 +84,7 @@
     background-color: #04ff69;
     display: flex;
     position: absolute;
-    top: 16rem;
+    top: 9rem;
     left: 96%;
     cursor: pointer;
 }
@@ -107,7 +97,7 @@
     display: flex;
     cursor: pointer;
     position: absolute;
-    top: 29.5rem;
+    top: 17.5rem;
     left: 5%;
 }
 
@@ -117,7 +107,7 @@
 }
 
 .navbar-hr {
-    margin: 2rem 0rem 2rem 1rem;
+    margin: 0rem 0rem 2rem 1rem;
     width: 50%;
 }
 

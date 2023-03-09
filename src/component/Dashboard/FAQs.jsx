@@ -59,10 +59,6 @@ function DashboardNavbar() {
                     <span className="back-link-icon navbar-menu-icon"><AiOutlineArrowLeft /></span>
                     {isMenuOpen && <span className="back-link navbar-menu-item">Back to Home</span>}
                 </li>
-                <li >
-                    <span className="company-icon navbar-menu-icon"><SiBigbluebutton /></span>
-                    {isMenuOpen && <p className="company-name navbar-menu-item ">Buggify</p>}
-                </li>
                 <hr className={`navbar-hr ${isMenuOpen ? 'open' : ''}`} />
                 <li onClick={gotoBusinessProfile}>
                     <span className="navbar-menu-icon"><MdAddBusiness /></span>
@@ -169,20 +165,20 @@ class BusinessFaqs extends React.Component {
     render() {
 
         const hiddenTexts = [{
-            label: 'How do I write a good report?',
-            value: 'A good report is made up of a few things — a descriptive title, a thorough explanation and proof of concept, and metadata. @nahamsec wrote a great guide on how to write a good report. You can read it here: https://docs.hackerone.com/programs/quality-reports.html.'
+            label: 'How Payment System works?',
+            value: "Buggify has a bounty distribution system where once Company updates of bounty, data will be passed on to admin and will be double check and then it's finally added to Bounty History. It may take time up to 2-3 working day."
         },
         {
-            label: 'How are researchers compensated for their services?',
-            value: 'Bugcrowd manages payments to researchers who are the first to successfully identify unique vulnerabilities that are in scope of the Bug Bounty Program, following review and approval by the customer. At the outset of a Bug Bounty Program, the customer will establish and fund a “Rewards Pool” from which Bugcrowd will pay out rewards to successful researchers. Other non-monetary forms of payment may apply, including recognition by the researcher community on Crowdcontrol’s Hall of Fame & Monthly Leader Boards. Bugcrowd pays researchers 100% of the bounties earned to ensure proper incentives within the ecosystem.'
+            label: 'How to Approch Researcher of Previously Submitted Bug and ask them for Retesting?',
+            value: "To Follow Up Older Report and approach Researcher for Retesting, Business Dashboard has Option called Retesting where Client can search for specific report ID and by pressing Request for Retesting Button, System will Notify Researcher for Re-Investigate that issue again."
         },
         {
-            label: 'What happens when I submit a report?',
-            value: 'A company will review the contents and triage the vulnerability. You can review the Response Efficiency metrics on a company’s policy page. This will help you determine how quickly a company responds, bounties and resolves the bug.'
+            label: 'What if user who manage Business Dashboard left Company, How Company can escalate account and continue it?',
+            value: " In this particular case, Update Business Profile from Settings and let us know at nullify.bug@gmail.com"
         },
         {
-            label: 'When do I submit a security vulnerability?',
-            value: 'Before you submit a security vulnerability, make sure to read through the program’s scope. The scope determines whether or not a company is interested in a particular vulnerability. Once you have confirmed the program will accept the vulnerability, be sure to submit the issue to the program.'
+            label: 'Suppose if bounty amount change in future, How to Update it?',
+            value: 'By Changing Bounty Amount, Company can request for updating bounty amount from "Reward Update" and mail us to clear payment at nullify.bug@gmail.com'
         }];
 
         return (
