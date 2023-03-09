@@ -20,6 +20,7 @@ const CertDB = require("../models/certDB");
 const BookmarkDB = require("../models/bookmarkedDB");
 const ReportDB = require("../models/ReportDB");
 const BountyDB = require("../models/paymentDB");
+const LeaderboardDB = require("../models/leaderboardDB");
 const sendotp = require("./mailer");
 const { array } = require("i/lib/util");
 
@@ -1403,6 +1404,39 @@ app.post("/notifications", middleware, async (req, res) => {
     }
   } catch (e) {
     res.status(400).json({ status: `Operation Fail` });
+  }
+});
+
+app.get("/leaderboard", async (req, res) => {
+  try {
+    const abc = await LeaderboardDB.find();
+    res.status(200).json(abc);
+  } catch (e) {
+    res.status(400).json({ status: `Failed to fetch leaderboard information` });
+  }
+});
+
+app.post("/leaderin", async (req, res) => {
+  let number = "";
+  for (let i = 0; i < 20; i++) {
+    number += Math.floor(Math.random() * 10);
+  }
+  const rsrc_id = number;
+  const username = req.body.username;
+  const country = req.body.country;
+  const impact = req.body.impact;
+  const data = {
+    rsrc_id: `${rsrc_id}`,
+    username: `${username}`,
+    country: `${country}`,
+    impact: `${impact}`,
+  };
+  try {
+    const abc = new LeaderboardDB(data);
+    await abc.save();
+    res.status(200).json({ status: `User added to leaderboard` });
+  } catch (e) {
+    res.status(400).json({ status: `Unable to add Researcher, Try Again!` });
   }
 });
 
