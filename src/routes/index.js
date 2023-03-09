@@ -1353,9 +1353,9 @@ app.post("/bountyinfo", middleware, async (req, res) => {
   };
   try {
     const createinfo = new BountyDB(data);
-    const final = await createinfo.save()
+    const final = await createinfo.save();
     console.log(final);
-    res.status(200).json({status: "Successful"})
+    res.status(200).json({ status: "Successful" });
   } catch (e) {
     res.status(400).json({ status: "Fail" });
   }
@@ -1363,23 +1363,48 @@ app.post("/bountyinfo", middleware, async (req, res) => {
 
 app.post("/previousFindings", middleware, async (req, res) => {
   const buss_id = req.buss_id;
-  try{
-    const out = await ReportDB.find({buss_id: `${buss_id}`, isOld: true})
-    res.status(400).json(out)
-  }catch(e){
-    res.status(400).json({status: `Fail to Fetch Old Reports`})
+  try {
+    const out = await ReportDB.find({ buss_id: `${buss_id}`, isOld: true });
+    res.status(400).json(out);
+  } catch (e) {
+    res.status(400).json({ status: `Fail to Fetch Old Reports` });
   }
-})
+});
 
 app.post("/bountyhistory", middleware, async (req, res) => {
   const rsrc_id = req.rsrc_id;
-  try{
-    const out = await ReportDB.find({rsrc_id: `${rsrc_id}`, bounty: {$exists: true, $ne: ""}})
-    res.status(200).json(out)
-  }catch(e){
-    res.status(400).json({status: `Fail to fetch bounty history`})
+  try {
+    const out = await ReportDB.find({
+      rsrc_id: `${rsrc_id}`,
+      bounty: { $exists: true, $ne: "" },
+    });
+    if (out != "") {
+      res.status(200).json(out);
+    } else {
+      res.status(200).json({ status: `No Previous Bounty Records` });
+    }
+  } catch (e) {
+    res.status(400).json({ status: `Fail to fetch bounty history` });
   }
-})
+});
+
+app.post("/notifications", middleware, async (req, res) => {
+  const rsrc_id = req.rsrc_id;
+  try {
+    const out = await ReportDB.find({
+      rsrc_id: `${rsrc_id}`,
+      isOld: false,
+      retesting: true,
+    });
+    if (out != "") {
+      res.status(200).json(out);
+    } else {
+      res.status(200).json({ status: `There is not any Notification for you` });
+    }
+  } catch (e) {
+    res.status(400).json({ status: `Operation Fail` });
+  }
+});
 
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
