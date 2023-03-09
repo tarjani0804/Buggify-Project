@@ -1371,6 +1371,16 @@ app.post("/previousFindings", middleware, async (req, res) => {
   }
 })
 
+app.post("/bountyhistory", middleware, async (req, res) => {
+  const rsrc_id = req.rsrc_id;
+  try{
+    const out = await ReportDB.find({rsrc_id: `${rsrc_id}`, bounty: {$exists: true, $ne: ""}})
+    res.status(200).json(out)
+  }catch(e){
+    res.status(400).json({status: `Fail to fetch bounty history`})
+  }
+})
+
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});
