@@ -76,16 +76,16 @@ function ResearcherNavbar() {
                     <span className="navbar-menu-icon"><BsJournalBookmark /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Bookmarked Program</span>}
                 </li>
-
+                <li className="dashboard-link" onClick={gotoNotification}>
+                    <span className="navbar-menu-icon"><IoNotificationsSharp /></span>
+                    {isMenuOpen && <span className="navbar-menu-item">Notification</span>}
+                </li>
                 <li >
                     <span className="navbar-menu-icon"><RiLogoutBoxRLine /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Logout</span>}
                 </li>
                 <hr className={`navbar-hr ${isMenuOpen ? 'open' : ''}`} />
-                <li className="dashboard-link" onClick={gotoNotification}>
-                    <span className="navbar-menu-icon"><IoNotificationsSharp /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Notification</span>}
-                </li>
+
 
                 <li onClick={gotoSetting}>
                     <span className="navbar-menu-icon"><IoSettingsOutline /></span>

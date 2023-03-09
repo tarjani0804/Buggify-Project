@@ -209,8 +209,6 @@
     position: relative;
 }
 
-
-
 .bus-profile-label {
     text-align: center;
     color: #878787;
@@ -285,6 +283,7 @@
     margin-top: 8rem;
     width: 70%;
     background-color: #141414;
+    border-radius: 10px;
 }
 
 .bus-profile-bug-report-div {
@@ -296,7 +295,6 @@
 .bus-profile-bug-report-divtitle {
     display: flex;
     padding-top: 2rem;
-
 }
 
 .bus-profile-bug-report-div-title-p {
@@ -395,6 +393,7 @@
 
 .report-div-steps-li {
     text-indent: 5rem;
+    color: #04ff69;
 }
 
 .report-proof {
@@ -437,4 +436,61 @@
     margin-top: 2rem;
     margin-left: -30rem;
     cursor: pointer;
+}
+
+
+
+/* Report Update */
+
+
+
+.bus-profile-report-update {
+    background-color: #141414;
+    width: 80%;
+    margin-left: calc(10%);
+    margin-top: 3rem;
+    position: relative;
+    border-radius: 10px;
+    padding-bottom: 3rem;
+}
+
+.bus-profile-report-update-steps {
+    display: block;
+    padding-top: 2rem;
+}
+
+.report-update-form {
+    width: 80%;
+    margin-left: calc(10%);
+    /* padding-bottom: 2rem; */
+}
+
+.column-div3 {
+    margin-top: 3rem;
+    position: relative;
+
+}
+
+.report-update-label {
+    text-align: center;
+    color: #04ff69;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+}
+
+.report-update-input {
+    position: absolute;
+    left: 8rem;
+    margin-left: 2rem;
+    color: #04ff69;
+    font-size: 14px;
+    background-color: #141414;
+    width: 75rem;
+    height: 30px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px #04ff69;
+    border: none;
 }

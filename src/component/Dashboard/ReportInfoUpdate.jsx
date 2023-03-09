@@ -113,6 +113,13 @@ function DashboardNavbar() {
 
 const BusinessProfile = (props) => {
 
+    const [cvss, setcvss] = useState();
+    const [remark, setremark] = useState();
+
+    const handleSubmit = () => {
+
+    }
+
 
     return (
         <>
@@ -124,26 +131,79 @@ const BusinessProfile = (props) => {
                         <DashboardNavbar />
                     </div>
                     <div className="bus-profile-div2">
-                        <center><h1 className="bus-profile-div2-h">Bug Report</h1>
-                            <div className="dashboard">
-                                <center><div className="bus-profile-header">
-                                    <img src={props.companyLogo} className="bus-profile-company-logo" />
-                                    <h3 className="bus-profile-company-name">{props.companyName}</h3>
-                                </div>
-                                </center>
-                                <div className="bus-profile-bug-report">
+                        <center><h1 className="bus-profile-div2-h">Bug Report</h1></center>
+                        <div className="dashboard">
+                            <center>  <div className="bus-profile-header">
+                                <img src={props.companyLogo} className="bus-profile-company-logo" />
+                                <h3 className="bus-profile-company-name">{props.companyName}</h3>
+                            </div>
+                            </center>
 
-                                    <div className="bus-profile-bug-report-divtitle">
-                                        <p className="bus-profile-bug-report-div-title-p">Report Title: </p>
-                                        <p className="bus-profile-bug-report-div-id-p">Report Id: </p>
-                                    </div>
+                            <div className="bus-profile-report-update">
+
+                                <div className="bus-profile-bug-report-divtitle" >
+                                    <p className="bus-profile-bug-report-div-title-p">Report Title: {props.reportTitle} </p>
+                                    <p className="bus-profile-bug-report-div-id-p" >Report Id: {props.reportId} </p>
                                 </div>
 
                             </div>
+                            <div className="bus-profile-report-update">
 
-                        </center>
+                                <div className="bus-profile-report-update-steps">
+
+                                    <p className="bus-profile-bug-report-div-title-p">Steps to Reproduce :
+                                        {(BusinessProfile.defaultProps.reportSteps.map((report) => (
+                                            <li className="report-div-steps-li" key={report.id}>{report.li}</li>
+                                        )))}
+                                    </p>
+
+                                </div>
+
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Proof-of-Concept :</p>
+                                    {(BusinessProfile.defaultProps.pocLink.map((poclink) => (
+                                        <p className="report-proof-link-of-poc" key={poclink.id} >Additional Link :{poclink.li}
+                                        </p>
+                                    )))}
+                                </div>
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: {props.attack} </p>
+                                </div>
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Remediation: {props.remeda} </p>
+                                </div>
 
 
+                            </div>
+
+                            <form className="report-update-form" >
+                                <div className="column-div3">
+                                    <label className="report-update-label">CVSS Score: </label>
+                                    <input className="report-update-input"
+                                        type="text"
+                                        value={cvss}
+                                        onChange={(event) => setcvss(event.target.value)} />
+                                </div>
+                                <div className="column-div3">
+                                    <label className="report-update-label">Remark: </label>
+                                    <textarea className="report-update-input"
+                                        style={{
+                                            height: "15rem"
+                                        }}
+                                        type="text"
+                                        value={remark}
+                                        onChange={(event) => setremark(event.target.value)} />
+                                </div>
+                                <div className="button_ani signin-button" onClick={handleSubmit} style={{ paddingTop: "20rem" }}>
+                                    <button type="submit" className="button2">
+                                        Update Report
+                                    </button>
+                                </div>
+
+                            </form>
+
+
+                        </div>
 
                     </div>
                 </div>
@@ -156,22 +216,62 @@ const BusinessProfile = (props) => {
 BusinessProfile.defaultProps = {
     companyLogo: '',
     companyName: 'Company',
-    reports: [
+    reportId: '#a7ag3-jh38g',
+    reportTitle: 'XSS in Search Field of abc.def.com',
+    reportSteps: [
         {
             id: '1',
-            reportId: '#a7ag3-jh38g',
-            reportTitle: 'XSS in Search Field of abc.def.com',
-            reportLink: '',
-
+            li: 'Search field of https://abc.def.com/page?search=abc',
         },
         {
             id: '2',
-            reportId: '#v3jd8-st62s ',
-            reportTitle: 'CSRF in Password Change Function of staging.def.com',
-            reportLink: '',
-
+            li: 'Replace Payload “><script>alert(document.cookie);</script> with abc in search parameter ',
+        },
+        {
+            id: '3',
+            li: 'Entering this payload will show alert popup having cookie of current user ',
+        },
+        {
+            id: '4',
+            li: 'bkfaeb',
+        },
+        {
+            id: '5',
+            li: ' iflakenflkan ',
+        },
+        {
+            id: '6',
+            li: 'flaflakefa',
+        },
+        {
+            id: '7',
+            li: ' akfvajfuafka',
         },
     ],
+    pocLink: [{
+        id: '1',
+        li: 'link1',
+    },
+    {
+        id: '2',
+        li: 'link2 ',
+    },
+    {
+        id: '3',
+        li: 'link3 ',
+    },
+    {
+        id: '4',
+        li: 'link4',
+    },
+
+    ],
+    attack: "bfcjbfjhreufhvnjkehuf",
+    remeda: "njsagysgbcfysgbyxgbygbidsx",
+
+
+
+
 }
 
 

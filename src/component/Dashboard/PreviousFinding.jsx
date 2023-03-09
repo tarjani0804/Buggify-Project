@@ -113,6 +113,10 @@ function DashboardNavbar() {
 
 const BusinessProfile = (props) => {
 
+    const navigate = useNavigate()
+    const gotoReportInfoUpdate = () => {
+        navigate('/ReportInfo')
+    }
 
     return (
         <>
@@ -140,7 +144,7 @@ const BusinessProfile = (props) => {
                                                     <p className="bus-profile-bug-report-div-title-p">Report Title: {title.reportTitle}</p>
                                                     <p className="bus-profile-bug-report-div-id-p">Report Id: {title.reportId}</p>
                                                 </div>
-                                                <p className="bus-profile-bug-report-div-link"><a href={title.reportLink} className="bus-profile-bug-report-div-link">Check Report</a></p>
+                                                <p className="bus-profile-bug-report-div-link1" onClick={gotoReportInfoUpdate}>Check Report</p>
                                             </div>
                                         )))}
                                     </div>

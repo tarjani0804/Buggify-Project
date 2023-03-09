@@ -69,6 +69,7 @@ import ScopeSetting from './component/Dashboard/ScopeSetting';
 import RewardUpdate from './component/Dashboard/RewardUpdate';
 import BugReport from './component/Dashboard/BugReport';
 import ReportInfoUpdate from './component/Dashboard/ReportInfoUpdate';
+import ReportInfo from './component/Dashboard/ReportInfo';
 import Retesting from './component/Dashboard/Retesting';
 import BountyPayment from './component/Dashboard/BountyPayment';
 import PreviousFinding from './component/Dashboard/PreviousFinding';
@@ -364,6 +365,13 @@ function App() {
             <>
               <NoNavbar />
               <ReportInfoUpdate />
+              <NoFooter />
+            </>
+          } />
+          <Route path='/reportInfo' element={
+            <>
+              <NoNavbar />
+              <ReportInfo />
               <NoFooter />
             </>
           } />
