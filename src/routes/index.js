@@ -19,6 +19,7 @@ const ExamDB = require("../models/examDB");
 const CertDB = require("../models/certDB");
 const BookmarkDB = require("../models/bookmarkedDB");
 const ReportDB = require("../models/ReportDB");
+const BountyDB = require("../models/paymentDB");
 const sendotp = require("./mailer");
 const { array } = require("i/lib/util");
 
@@ -1311,6 +1312,97 @@ app.get("/retestingReportFetch/:report_id", async (req, res) => {
     res
       .status(400)
       .json({ status: `No Retest Report with given report_id exists` });
+  }
+});
+
+app.patch("/paymentclearance", async (req, res) => {
+  const report_id = req.body.report_id;
+  const bounty = req.body.bounty;
+  const payment_id = req.body.payment_id;
+  try {
+    const updateinfo = await ReportDB.find({ report_id: `${report_id}` });
+    const id = updateinfo[0].id;
+    const upbt = await ReportDB.findByIdAndUpdate(id, {
+      bounty: `${bounty}`,
+      payment_id: `${payment_id}`,
+    });
+    const clear = await BountyDB.updateOne(
+      { report_id: `${report_id}` },
+      { $set: { isCleared: true } }
+    );
+    console.log(clear);
+    res.status(200).json({ status: `Payment Cleared Successfully` });
+  } catch (e) {
+    res.status(400).json({ status: `Fail to Update Payment Information` });
+  }
+});
+
+app.post("/bountyinfo", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  const rsrc_id = req.body.rsrc_id;
+  const report_id = req.body.report_id;
+  const bounty = req.body.bounty;
+  const payment_id = req.body.payment_id;
+  const data = {
+    buss_id: `${buss_id}`,
+    rsrc_id: `${rsrc_id}`,
+    report_id: `${report_id}`,
+    bounty: `${bounty}`,
+    payment_id: `${payment_id}`,
+    isCleared: false,
+  };
+  try {
+    const createinfo = new BountyDB(data);
+    const final = await createinfo.save();
+    console.log(final);
+    res.status(200).json({ status: "Successful" });
+  } catch (e) {
+    res.status(400).json({ status: "Fail" });
+  }
+});
+
+app.post("/previousFindings", middleware, async (req, res) => {
+  const buss_id = req.buss_id;
+  try {
+    const out = await ReportDB.find({ buss_id: `${buss_id}`, isOld: true });
+    res.status(400).json(out);
+  } catch (e) {
+    res.status(400).json({ status: `Fail to Fetch Old Reports` });
+  }
+});
+
+app.post("/bountyhistory", middleware, async (req, res) => {
+  const rsrc_id = req.rsrc_id;
+  try {
+    const out = await ReportDB.find({
+      rsrc_id: `${rsrc_id}`,
+      bounty: { $exists: true, $ne: "" },
+    });
+    if (out != "") {
+      res.status(200).json(out);
+    } else {
+      res.status(200).json({ status: `No Previous Bounty Records` });
+    }
+  } catch (e) {
+    res.status(400).json({ status: `Fail to fetch bounty history` });
+  }
+});
+
+app.post("/notifications", middleware, async (req, res) => {
+  const rsrc_id = req.rsrc_id;
+  try {
+    const out = await ReportDB.find({
+      rsrc_id: `${rsrc_id}`,
+      isOld: false,
+      retesting: true,
+    });
+    if (out != "") {
+      res.status(200).json(out);
+    } else {
+      res.status(200).json({ status: `There is not any Notification for you` });
+    }
+  } catch (e) {
+    res.status(400).json({ status: `Operation Fail` });
   }
 });
 
