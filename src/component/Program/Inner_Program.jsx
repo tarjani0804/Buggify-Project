@@ -4,7 +4,6 @@ import { BsBookmarkPlus, BsBookmarkCheckFill } from "react-icons/bs";
 import { HiOutlineBellAlert, HiBellAlert } from "react-icons/hi2";
 
 import Cookies from "js-cookie";
-import { render } from "react-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -195,14 +194,11 @@ function Scope_and_Reward() {
     </div>
   );
 }
-function New_Updates() {
-  return <div style={{ color: "white" }}>1426383</div>;
-}
+
 
 const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
   const [scopeSelected, setScopeSelected] = useState();
-  const [newUpdateSelected, setNewUpdateSelected] = useState();
   const [bookmarkSelected, setBookmarkSelected] = useState();
 
   const handleBookmark = () => {
@@ -212,14 +208,12 @@ const Inner_Program = (props) => {
   const handlePolicySelected = () => {
     localStorage.setItem("listPath", "policy");
     setpolicySelected(true);
-    setNewUpdateSelected(false);
     setScopeSelected(false);
   };
 
   const handleScopeSelected = async (e) => {
     localStorage.setItem("listPath", "scope");
     setScopeSelected(true);
-    setNewUpdateSelected(false);
     setpolicySelected(false);
     const prog_id = Cookies.get('prog_id')
     alert(prog_id)
@@ -273,12 +267,6 @@ const Inner_Program = (props) => {
     document.getElementById("critical").innerHTML = rd_critical;
   };
 
-  const handleNewUpdateSelected = () => {
-    localStorage.setItem("listPath", "newUpdate");
-    setNewUpdateSelected(true);
-    setScopeSelected(false);
-    setpolicySelected(false);
-  };
 
 
   useEffect(() => {
@@ -289,15 +277,9 @@ const Inner_Program = (props) => {
     if (storedListPath === "policy") {
       setpolicySelected(true);
       setScopeSelected(false);
-      setNewUpdateSelected(false);
     } else if (storedListPath === "scope") {
       setpolicySelected(false);
       setScopeSelected(true);
-      setNewUpdateSelected(false);
-    } else if (storedListPath === "newUpdate") {
-      setpolicySelected(false);
-      setScopeSelected(false);
-      setNewUpdateSelected(true);
     }
   }, []);
 
@@ -419,21 +401,11 @@ const Inner_Program = (props) => {
               >
                 Scope and Reward
               </li>
-              <li
-                className={`program-navbar-ul-li  ${newUpdateSelected
-                  ? "selecProgram-navbar"
-                  : "program-navbar-ul-li"
-                  }`}
-                onClick={handleNewUpdateSelected}
-              >
-                New Updates
-              </li>
             </ul>
           </nav>
           {/* Conditional rendering based on the selected nav item */}
           {policySelect && <Policy />}
           {scopeSelected && <Scope_and_Reward />}
-          {newUpdateSelected && <New_Updates />}
         </div>
       </div>
     </>

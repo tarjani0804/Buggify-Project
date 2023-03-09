@@ -125,9 +125,12 @@ const BusinessProfile = (props) => {
         const results = await searchDatabase(query);
         // Do something with the results, e.g. update a state variable
     }
+    const handleSubmit = () => {
 
+    }
 
     return (
+
         <>
 
             <div className="bus-profile">
@@ -188,19 +191,24 @@ const BusinessProfile = (props) => {
                                         <p className="report-proof-link-of-poc" key={poclink.id} >Additional Link :{poclink.li}
                                         </p>
                                     )))}
-
-                                    <p className="bus-profile-bug-report-div-title-p">CVSS Score: {props.CvssScore}</p>
-                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: {props.CvssScore}</p>
-
-
                                 </div>
-
-
-
-
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">CVSS Score: {props.CvssScore}</p>
+                                </div>
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: {props.attack}</p>
+                                </div>
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Remediation: {props.remedi}</p>
+                                </div>
+                                <div className="report-proof">
+                                    <p className="bus-profile-bug-report-div-title-p">Note by Company: {props.nbc}</p>
+                                </div>
                             </div>
 
-
+                            <div className="button_ani retesting-button">
+                                <button className="btn" onClick={handleSubmit}>Request for Retesting</button>
+                            </div>
 
                         </div>
 
@@ -219,60 +227,70 @@ BusinessProfile.defaultProps = {
     companyName: 'Company',
     reportTitle: 'Reflected XSS in search field of abc.def.com',
     reportId: '#a7ag3-jh48g',
-    reportSteps: [{
-        id: '1',
-        li: 'Search field of https://abc.def.com/page?search=abc',
-    },
-    {
-        id: '2',
-        li: 'Replace Payload “><script>alert(document.cookie);</script> with abc in search parameter ',
-    },
-    {
-        id: '3',
-        li: 'Entering this payload will show alert popup having cookie of current user ',
-    },
-    {
-        id: '4',
-        li: 'bkfaeb',
-    },
-    {
-        id: '5',
-        li: ' iflakenflkan ',
-    },
-    {
-        id: '6',
-        li: 'flaflakefa',
-    },
-    {
-        id: '7',
-        li: ' akfvajfuafka',
-    },
+    reportSteps: [
+        {
+            id: '1',
+            li: 'Search field of https://abc.def.com/page?search=abc',
+        },
+        {
+            id: '2',
+            li: 'Replace Payload “><script>alert(document.cookie);</script> with abc in search parameter ',
+        },
+        {
+            id: '3',
+            li: 'Entering this payload will show alert popup having cookie of current user ',
+        },
+        {
+            id: '4',
+            li: 'bkfaeb',
+        },
+        {
+            id: '5',
+            li: ' iflakenflkan ',
+        },
+        {
+            id: '6',
+            li: 'flaflakefa',
+        },
+        {
+            id: '7',
+            li: ' akfvajfuafka',
+        },
 
 
     ],
     linkOfPOC: 'https://drive.amazing.com ',
-    pocLink: [{
-        id: '1',
-        li: 'link1',
-    },
-    {
-        id: '2',
-        li: 'link2 ',
-    },
-    {
-        id: '3',
-        li: 'link3 ',
-    },
-    {
-        id: '4',
-        li: 'link4',
-    },
+    pocLink: [
+        {
+            id: '1',
+            li: 'link1',
+        },
+        {
+            id: '2',
+            li: 'link2 ',
+        },
+        {
+            id: '3',
+            li: 'link3 ',
+        },
+        {
+            id: '4',
+            li: 'link4',
+        },
 
     ],
     CvssScore: 'Low (3.0 CVSS)',
-
-
+    attack: "djcbjsdbcshdbcuijskdbvyufdhvbyudfh",
+    remedi: "wkssalmkdcnfhgryhdsjkehysgdfxjkr",
+    nbc: "We have successfully fixed bug.We Encourage you to ensure fix of bug is working or not, and if still there is any vulnerability found, Reference this Report ID and Report as new bug.Thank you for Securing Def Limited.Based on CVSS calculation score 2.4, you will be awarded with 300$ Bounty.Please send us your banking detail at secure @def.com with Report ID and Proofs mentioned in Payout Policy as per regulations.",
 }
 
 
 export default BusinessProfile;
+
+
+
+
+
+
+

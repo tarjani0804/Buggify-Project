@@ -384,11 +384,12 @@
     width: 80%;
     margin-left: calc(10%);
     position: relative;
-    /* height: 10px; */
+    margin-top: 2rem;
 }
 
 .report-steps {
     margin-top: 3rem;
+    padding-bottom: 2rem;
 }
 
 .report-div-steps-li {
@@ -397,7 +398,7 @@
 }
 
 .report-proof {
-    margin-top: 3rem;
+    padding-bottom: 2rem;
 }
 
 .report-proof-link-of-poc {
@@ -412,6 +413,9 @@
     text-indent: 10rem;
 }
 
+.retesting-button {
+    width: fit-content;
+}
 
 
 
