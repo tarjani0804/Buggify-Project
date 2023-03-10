@@ -68,6 +68,16 @@ function DashboardNavbar() {
 }
 
 const PaymentClearance = () => {
+    const [reportId, setReportId] = useState();
+    const [bounty, setBounty] = useState();
+    const [paymentId, setPaymentId] = useState();
+
+
+
+    const handleSubmit = () => {
+
+    }
+
     return (
         <>
             <div className="bus-profile">
@@ -76,6 +86,50 @@ const PaymentClearance = () => {
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
                     </div>
+
+                    <div className="admin-dashboard-div">
+                        <center>
+                            <h1 className="admin-dashboard-h">Payment Clearance</h1>
+                        </center>
+
+                        <div className="admin-dashboard-form">
+                            <form>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Report Id: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        value={reportId}
+                                        type="text"
+                                        onChange={(event) => setReportId(event.target.value)}
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Bounty: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="text"
+                                        value={bounty}
+                                        onChange={(event) => setBounty(event.target.value)}
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Payment Id: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="text"
+                                        value={paymentId}
+                                        onChange={(event) => setPaymentId(event.target.value)}
+                                    />
+                                </div>
+                                <div className="button_ani admin-dashboard-form-button" onClick={handleSubmit}>
+                                    <button className="btn">Clear Payment</button>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                    </div>
+
+
+
                 </div>
 
             </div>

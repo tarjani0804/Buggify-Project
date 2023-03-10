@@ -68,6 +68,17 @@ function DashboardNavbar() {
 }
 
 const ExamSchedule = () => {
+
+    const [rsrcId, setRsrcId] = useState();
+    const [courseName, setCourseName] = useState();
+    const [examDate, setExamDate] = useState();
+    const [examTime, setExamTime] = useState();
+
+    const handleSubmit = () => {
+
+    }
+
+
     return (
         <>
             <div className="bus-profile">
@@ -76,6 +87,54 @@ const ExamSchedule = () => {
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
                     </div>
+
+                    <div className="admin-dashboard-div">
+                        <center>
+                            <h1 className="admin-dashboard-h">Exam Schedule</h1>
+                        </center>
+
+                        <div className="admin-dashboard-form">
+                            <form>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">RSRC Id: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="text"
+                                        value={rsrcId}
+                                        onChange={(event) => setRsrcId(event.target.value)}
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Course Name: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="text"
+                                        value={courseName}
+                                        onChange={(event) => setCourseName(event.target.value)}
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Exam Date: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="date"
+                                        value={examDate}
+                                        onChange={(event) => setExamDate(event.target.value)}
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Exam Time: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="time"
+                                        value={examTime}
+                                        onChange={(event) => setExamTime(event.target.value)}
+
+                                    />
+                                </div>
+                                <div className="button_ani admin-dashboard-form-button" onClick={handleSubmit}>
+                                    <button className="btn">Schedule Exam</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

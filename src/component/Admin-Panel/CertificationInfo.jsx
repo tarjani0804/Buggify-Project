@@ -68,6 +68,15 @@ function DashboardNavbar() {
 }
 
 const CertificationInfo = () => {
+
+    const [rsrcId, setRsrcId] = useState();
+    const [CertificateId, setCertificateId] = useState();
+    const [examDate, setExamDate] = useState();
+
+    const handleSubmit = () => {
+
+    }
+
     return (
         <>
             <div className="bus-profile">
@@ -75,6 +84,46 @@ const CertificationInfo = () => {
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
+                    </div>
+
+                    <div className="admin-dashboard-div">
+                        <center>
+                            <h1 className="admin-dashboard-h">Certificate Info</h1>
+                        </center>
+
+                        <div className="admin-dashboard-form">
+                            <form>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">RSRc Id:</label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="text"
+                                        value={rsrcId}
+                                        onChange={(event) => setRsrcId(event.target.value)}
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Certificate Id:</label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="text"
+                                        value={CertificateId}
+                                        onChange={(event) => setCertificateId(event.target.value)}
+
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Exam Date: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="date"
+                                        // dateFormat="YYYY-MM-DD"
+                                        value={examDate}
+                                        onChange={(event) => setExamDate(event.target.value)}
+                                    />
+                                </div>
+                                <div className="button_ani admin-dashboard-form-button" onClick={handleSubmit}>
+                                    <button className="btn">Certificate Clearance</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 

@@ -68,6 +68,15 @@ function DashboardNavbar() {
 }
 
 const ContactNotification = () => {
+
+    const [mailTo, setMailTo] = useState();
+    const [message, setMessage] = useState();
+
+    const handleSubmit = () => {
+
+    }
+
+
     return (
         <>
             <div className="bus-profile">
@@ -75,6 +84,37 @@ const ContactNotification = () => {
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
+                    </div>
+
+                    <div className="admin-dashboard-div">
+                        <center>
+                            <h1 className="admin-dashboard-h">Contact Notification</h1>
+                        </center>
+
+                        <div className="admin-dashboard-form">
+                            <form>
+                                <div className="admin-dashboard-form-div">
+                                    <label className="admin-dashboad-form-label">Mail To: </label>
+                                    <input className="admin-dashboard-form-input"
+                                        type="text"
+                                        value={mailTo}
+                                        onChange={(event) => setMailTo(event.target.value)}
+                                    />
+                                </div>
+                                <div className="admin-dashboard-form-div d1">
+                                    <label className="admin-dashboad-form-label">Message:</label>
+                                    <textarea className="admin-dashboard-form-input"
+                                        style={{ height: "50px", display: "inline-block" }}
+                                        type="text"
+                                        value={message}
+                                        onChange={(event) => setMessage(event.target.value)}
+                                    />
+                                </div>
+                                <div className="button_ani admin-dashboard-form-button" onClick={handleSubmit}>
+                                    <button className="btn">Contact</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 

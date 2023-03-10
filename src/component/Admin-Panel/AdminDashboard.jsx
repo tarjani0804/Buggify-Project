@@ -77,6 +77,16 @@ const AdminDashboard = () => {
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
                     </div>
+
+                    <div className="title-wrapper">
+
+                        <h1 class="sweet-title">
+                            <span data-text="Welcome To">Welcome To</span>
+                            <br />
+                            <span data-text="Admin Dashboard">Admin Dashboard</span>
+                        </h1>
+                    </div>
+
                 </div>
 
             </div>

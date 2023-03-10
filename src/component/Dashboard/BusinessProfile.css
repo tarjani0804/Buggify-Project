@@ -148,9 +148,12 @@
 
 .bus-profile-div2-h {
     color: #04ff69;
-    font-size: 20px;
+    font-size: 26px;
+    line-height: 2.8rem;
     text-align: center;
-
+    font-family: 'Nunito';
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px #04ff69;
 }
 
 .bus-profie-header {
