@@ -162,7 +162,7 @@ class ResearcherFAQs extends React.Component {
         },
         {
             label: 'How are researchers compensated for their services?',
-            value: 'Bugcrowd manages payments to researchers who are the first to successfully identify unique vulnerabilities that are in scope of the Bug Bounty Program, following review and approval by the customer. At the outset of a Bug Bounty Program, the customer will establish and fund a “Rewards Pool” from which Bugcrowd will pay out rewards to successful researchers. Other non-monetary forms of payment may apply, including recognition by the researcher community on Crowdcontrol’s Hall of Fame & Monthly Leader Boards. Bugcrowd pays researchers 100% of the bounties earned to ensure proper incentives within the ecosystem.'
+            value: 'Buggify manages payments to researchers who are the first to successfully identify unique vulnerabilities that are in scope of the Bug Bounty Program, following review and approval by the customer. At the outset of a Bug Bounty Program, the customer will establish and fund a “Rewards Pool” from which Bugcrowd will pay out rewards to successful researchers. Other non-monetary forms of payment may apply, including recognition by the researcher community on Crowdcontrol’s Hall of Fame & Monthly Leader Boards. Bugcrowd pays researchers 100% of the bounties earned to ensure proper incentives within the ecosystem.'
         },
         {
             label: 'What happens when I submit a report?',

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import Academy1 from '../image/academy1.png';
 import Academy2 from '../image/academy2.png';
 import Academy3 from '../image/academy3.png';
@@ -12,6 +12,14 @@ import './AcademyCourse.css';
 import { useNavigate } from "react-router-dom";
 
 const AcademyCourses = () => {
+
+    const scrollRef = useRef(null);
+    useLayoutEffect(() => {
+        if (scrollRef.current) {
+            window.scrollTo(0, 0);
+        }
+    }, []);
+
 
     const [levelFilters, setLevelFilters] = useState({
         Beginner: false,
@@ -54,7 +62,7 @@ const AcademyCourses = () => {
         price: "15",
         img: Academy2,
         avatar: HeathAdam,
-        instrutor: "Heath Adam",
+        instrutor: "Heath Adams",
         link: "/BashWithBeginner/",
     },
     {
@@ -66,7 +74,7 @@ const AcademyCourses = () => {
         price: "150",
         img: Academy3,
         avatar: HeathAdam,
-        instrutor: "Heath Adam",
+        instrutor: "Heath Adams",
         link: "/WebApplicationPentesting/",
     },
     {
@@ -77,7 +85,7 @@ const AcademyCourses = () => {
         description: "Offensive Red Teaming Covers Every Techniques & Tactics covered in MITRE Framework and other infamous Frameworks.",
         img: Academy4,
         avatar: HeathAdam,
-        instrutor: "Heath Adam",
+        instrutor: "Heath Adams",
         price: "220",
         link: "/OffensiveRedTeaming/",
     }, {
@@ -87,7 +95,7 @@ const AcademyCourses = () => {
         category: "Malware",
         description: "Advance Malware Analysis Training Consist of Static and Dynamic Analysis of Recent Malwares and Reverse Enginner them.",
         avatar: HeathAdam,
-        instrutor: " HeathAdam",
+        instrutor: " Heath Adams",
         price: "150",
         img: Academy5,
         link: "/MalwareAnalysis/",
@@ -100,7 +108,7 @@ const AcademyCourses = () => {
         img: Academy6,
         description: "AD Exploitation is one of the top notch skill to Pentest 99% of Forbs top 500 Companies and get into their Networks Ethically.",
         avatar: HeathAdam,
-        instrutor: "Heath Adam ",
+        instrutor: "Heath Adams ",
         price: "200",
         link: "/ActiveDirectoryExploitation/",
     },
@@ -112,7 +120,7 @@ const AcademyCourses = () => {
         img: Academy7,
         description: "Mobile Application Pentesting One of the Most Untouched Area of Pentesting, Hunting Bugs in Mobile App gives High Payouts.",
         avatar: HeathAdam,
-        instrutor: "Heath Adam",
+        instrutor: "Heath Adams",
         price: "120",
         link: "/MobileAppPentesting/",
     },
@@ -124,7 +132,7 @@ const AcademyCourses = () => {
         img: Academy8,
         description: "API is a way of Communication Between Systems and Breaking it, Testing it is a Fun.",
         avatar: HeathAdam,
-        instrutor: "Heath Adam ",
+        instrutor: "Heath Adams ",
         price: "150",
         link: "/ApiPentesting/",
     },];
@@ -222,7 +230,7 @@ const AcademyCourses = () => {
 
     return (
         <>
-            <div className="nav">
+            <div className="nav" ref={scrollRef}>
                 <nav className="academy-nav">
                     <ul className="academy-nav-ul">
 

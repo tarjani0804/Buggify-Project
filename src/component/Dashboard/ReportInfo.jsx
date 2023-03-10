@@ -68,7 +68,7 @@ function DashboardNavbar() {
                     <span className="navbar-menu-icon" style={{ color: "#ffffff" }}><RiUserSettingsLine /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Scope Setting</span>}
                 </li>
-                <li onClick={gotoBugReport} className="dashboard-link">
+                <li onClick={gotoBugReport} >
                     <span className="navbar-menu-icon"><VscReport /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Bug Reports</span>}
                 </li>
@@ -84,7 +84,7 @@ function DashboardNavbar() {
                     <span className="navbar-menu-icon"><RiFileHistoryLine /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Bounty Payment Details</span>}
                 </li>
-                <li onClick={gotoPreviousFinding}>
+                <li onClick={gotoPreviousFinding} className="dashboard-link">
                     <span className="navbar-menu-icon"><TbReportAnalytics /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Previous finding</span>}
                 </li>

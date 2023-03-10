@@ -72,6 +72,7 @@
     line-height: 2.8rem;
     letter-spacing: 1px;
     margin-left: 12rem;
+
 }
 
 .admin-dashboard-form-input {
@@ -80,7 +81,7 @@
     color: #04ff69;
     font-size: 14px;
     background-color: #141414;
-    width: 30rem;
+    width: 35rem;
     height: 30px;
     padding: 8px 0px 8px 8px;
     border-radius: 8px;
@@ -91,7 +92,7 @@
 
 .admin-dashboard-form-button {
     width: fit-content;
-    margin-top: 5rem;
+    margin-top: 15rem;
 }
 
 

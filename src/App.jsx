@@ -9,7 +9,7 @@ import NoFooter from './component/NoFooter';
 
 
 import Home from './component/Home/Home';
-
+import WhyBuggify from './component/Home/WhyBuggify';
 
 import Company from './component/Company/Company';
 import ExploreProgram from './component/Company/ExploreProgram';
@@ -151,6 +151,13 @@ function App() {
             <>
               <Navbar />
               <ProgramLeaderBoard />
+              <Footer />
+            </>
+          } />
+          <Route path='/WhyBuggify' element={
+            <>
+              <Navbar />
+              <WhyBuggify />
               <Footer />
             </>
           } />

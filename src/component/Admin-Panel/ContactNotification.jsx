@@ -104,7 +104,7 @@ const ContactNotification = () => {
                                 <div className="admin-dashboard-form-div d1">
                                     <label className="admin-dashboad-form-label">Message:</label>
                                     <textarea className="admin-dashboard-form-input"
-                                        style={{ height: "50px", display: "inline-block" }}
+                                        style={{ height: "100px" }}
                                         type="text"
                                         value={message}
                                         onChange={(event) => setMessage(event.target.value)}

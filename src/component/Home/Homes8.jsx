@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import './Homes8.css'
+import React, { useState, useRef, useLayoutEffect } from "react";
+import './Homes8.css';
+
+
 function Form() {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
-    const [company, setCompany] = useState("");
-    const [jobTitle, setJobTitle] = useState("");
-    const [country, setCountry] = useState("");
+    const [concern, setConcern] = useState("");
+
+
 
     return (
         <div className="section-eight">
@@ -29,7 +29,7 @@ function Form() {
                     <label className="section-eight-form-label">What's your Concern</label>
                     <input className="section-eight-form-input-concern"
                         type="text"
-                        id="concern"
+                        id={concern}
                         onChange={(e) => setConcern(e.target.value)}
                     />
                 </div>

@@ -389,7 +389,7 @@ const ResearcherSettings = (props) => {
                                         onChange={(event) => setEmailId(event.target.value)} />
                                 </div>
                                 <div className="column-div1 res-form">
-                                    <label className="res-form-label">Password: {props.password} </label>
+                                    <label className="res-form-label">Password: </label>
                                     <input className="res-input"
                                         type="password"
                                         value={Password}

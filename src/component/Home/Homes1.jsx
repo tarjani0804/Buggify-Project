@@ -8,8 +8,16 @@ import CardImg from "react-bootstrap/esm/CardImg";
 
 import { BsInfoLg } from "react-icons/bs";
 import { IoBugOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const homes1 = () => {
+
+	const navigate = useNavigate();
+
+	const gotoWhyBuggify = () => {
+		navigate('/WhyBuggify')
+	}
+
 	return (
 		<>
 			<div className="h1">
@@ -40,7 +48,9 @@ const homes1 = () => {
 								</div>
 							</div>
 
-							<div className="button_ani home-button"><Button className="button ">Why Buggify</Button></div>
+							<div className="button_ani home-button" onClick={gotoWhyBuggify}>
+								<Button className="button">Why Buggify</Button>
+							</div>
 						</div>
 						<Card.Img src={Image} className="card-img" />
 					</div>

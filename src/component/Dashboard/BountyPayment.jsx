@@ -171,33 +171,7 @@ const BusinessProfile = (props) => {
                                     </form>
                                 </div>
                             </div>
-                            <div className="stats">
-                                <p className="bus-profie-stat-h">Payment History</p>
-                                <div className="program-divs-programs">
-                                    <div className="programs-div">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Payment Id</th>
-                                                    <th>Paid to</th>
-                                                    <th>Payment Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {BusinessProfile.defaultProps.bounty.map((bounty, index) => (
-                                                    <tr key={bounty.id}>
-                                                        <td>{bounty.pId}</td>
-                                                        <td>{bounty.paidTo}</td>
-                                                        <td>{bounty.paymentAmount}</td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
 
-                                    </div>
-
-                                </div>
-                            </div>
                         </div>
 
 

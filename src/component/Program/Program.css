@@ -75,18 +75,22 @@ th {
 .program-heading {
   display: flex;
   align-items: center;
+
 }
 
 .program-icon {
   margin-left: 2rem;
   width: 20%;
+  margin-right: 1rem;
 }
 
 td {
   color: #ffffff;
   padding-top: 3rem;
   padding-bottom: 2rem;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 2.8rem;
+  letter-spacing: 1px;
 }
 
 th:first-child {

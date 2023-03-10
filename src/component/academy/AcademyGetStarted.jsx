@@ -124,7 +124,7 @@ const AcademyGetStarted = () => {
                                         style={{
                                             position: "absolute",
                                             top: '50%',
-                                            left: '5rem',
+                                            left: '10rem',
                                             cursor: 'pointer',
                                             width: '50px',
                                             height: '50px',
@@ -144,7 +144,7 @@ const AcademyGetStarted = () => {
                                         style={{
                                             position: "absolute",
                                             top: '50%',
-                                            right: '5rem',
+                                            right: '10rem',
                                             cursor: 'pointer',
                                             width: '50px',
                                             height: '50px',
@@ -164,14 +164,14 @@ const AcademyGetStarted = () => {
                                             Guide New Comers throughout journey of Learning
                                         </p>
                                     </center>
-                                    <div className="button_ani academy-getstarted-section2-div-button">
+                                    <div className="button_ani academy-getstarted-section2-div-button" onClick={gotoCourses}>
                                         <button className="btn">Explore Courses</button></div>
                                 </div>
 
                             </div>
                             <div className="academy-getstarted-section3">
                                 <h1 className="academy-getstarted-section3-h">
-                                    What Makes Buggify Sec Academy Special?
+                                    What Makes Buggify Security Academy Special?
                                 </h1>
                                 <div className="academy-getstarted-section3-div">
                                     <div className="academy-getstarted-section3-div1">

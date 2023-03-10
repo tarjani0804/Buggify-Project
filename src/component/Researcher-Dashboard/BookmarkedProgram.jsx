@@ -127,7 +127,7 @@ const BookmarkedProgram = (props) => {
 
 
                                                     <li className="bus-profile-bug-report-div-title-p" style={{ marginLeft: "4rem" }}> {title.programTitle}</li>
-                                                    <p className="res-bookmarked-list-link"><a href="" className="res-track-report-list-link">start Hunting {title.programLink}</a></p>
+                                                    <p className="res-bookmarked-list-link"><a href="" className="res-track-report-list-link">Start Hunting {title.programLink}</a></p>
                                                 </div>
 
                                             </div>

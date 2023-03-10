@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import Homes1 from "./Homes1";
 import Homes2 from "./Homes2";
 import Homes3 from "./Homes3";
@@ -11,6 +13,21 @@ import Homes8 from "./Homes8";
 import Homes9 from "./Homes9";
 
 function Home() {
+
+	const scrollRef = useRef(null);
+	const location = useLocation();
+
+	useEffect(() => {
+		console.log("useEffect called");
+		if (scrollTo === "homes8" && scrollRef.current) {
+			setTimeout(() => {
+				console.log("scrolling to Homes8");
+				scrollRef.current.scrollIntoView();
+			}, 10);
+		}
+	}, [scrollTo, scrollRef]);
+
+
 	return (
 		<>
 			<Homes1 />
@@ -21,7 +38,7 @@ function Home() {
 			<Homes6 />
 
 			<Homes7 />
-			<Homes8 />
+			<Homes8 ref={scrollRef} />
 			<Homes9 />
 		</>
 	);

@@ -49,6 +49,9 @@ function Company() {
 	const gotoLogin = () => {
 		navigate('/Login');
 	}
+	const gotoContactUs = () => {
+		navigate("/");
+	}
 
 	const [firstIndex, setFirstIndex] = useState(0);
 	const images = [CompanyProduct1, CompanyProduct2, CompanyProduct3, CompanyProduct4, CompanyProduct5, CompanyProduct6, CompanyProduct7, CompanyProduct8];
@@ -209,7 +212,7 @@ function Company() {
 									Every Submitted Bugs can be Prioritize according to their severity.
 									Personal Pentest Reports can be easily tracked. It is Specifically
 									Designed to Monitor Pentest 24/7. After Completion of Pentest, You can
-									download Pentest Report directly from Dashboard. (<a href="#" style={{ color: "#878787", textDecoration: "underline" }}>See Sample Report</a>)
+									download Pentest Report directly from Dashboard. (<a href="https://drive.google.com/file/d/14NJYlRSC9c-nFeZpceSD-mh85lpwVVdc/view?usp=share_link" target="_blank" style={{ color: "#878787", textDecoration: "underline" }}>See Sample Report</a>)
 								</p>
 							</div>
 						</div>
@@ -304,40 +307,6 @@ function Company() {
 				</div>
 
 				{/* Section-5 */}
-				<div className="section-5">
-
-					<div className="section5-container">
-						<div className="section-5-slider" >
-							{slides.map((slide, index) => (
-								<div className="section5-slide" key={index}>
-									<div className="section5-content">
-										<img src={slide.src} className="section-5-content-img" />
-									</div>
-								</div>
-							))}
-						</div>
-
-
-						<div className="section-5-slider2" >
-							{slides2.map((slide2, index) => (
-								<div className="section5-slide2" key={index}>
-									<div className="section5-content">
-										<img src={slide2.src} className="section-5-content-img" />
-									</div>
-								</div>
-							))}
-						</div>
-						<div className="section-5-slider3" >
-							{slides3.map((slide3, index) => (
-								<div className="section5-slide" key={index}>
-									<div className="section5-content">
-										<img src={slide3.src} className="section-5-content-img" />
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
-				</div>
 
 
 				<div className="section-6">
@@ -354,7 +323,7 @@ function Company() {
 										Try Buggify
 									</button>
 								</div>
-								<div className="button_ani section-6-button2">
+								<div className="button_ani section-6-button2" onClick={gotoContactUs}>
 									<button className="button2">
 										Contact Us
 									</button>

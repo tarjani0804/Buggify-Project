@@ -190,7 +190,7 @@ const BusinessProfile = (props) => {
                                         value={remark}
                                         onChange={(event) => setremark(event.target.value)} />
                                 </div>
-                                <div className="button_ani signin-button" onClick={handleSubmit} style={{ paddingTop: "20rem" }}>
+                                <div className="button_ani report-info-button" onClick={handleSubmit} >
                                     <button type="submit" className="button2">
                                         Update Report
                                     </button>
