@@ -157,7 +157,22 @@ function Policy() {
   );
 }
 function Scope_and_Reward() {
-
+  const program = [
+    {
+      id: 1,
+      asset: "*.buggify.com",
+      asset_type: "web",
+      impact: "High",
+      elb: "yes",
+    },
+    {
+      id: 2,
+      asset: "*.buggify.com",
+      asset_type: "web",
+      impact: "High",
+      elb: "yes",
+    }
+  ]
 
   return (
     <div className="program-sar-div">
@@ -191,6 +206,81 @@ function Scope_and_Reward() {
           </div>
         </div>
       </div>
+
+      <div className="program-sar-info-div">
+        <h4 className="program-sar-intro-div-h">Scope</h4>
+        <div className="program-scope-div">
+          <div className="program-scope-div1">
+            <h3 className="program-scope-div1-h">In-Scope</h3>
+
+            <div className="program-scope-div-table">
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Asset Type</th>
+                    <th>Impact</th>
+                    <th>Eligibile for bounty</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {program.map((program, index) => (
+                    <tr key={program.id}>
+
+                      <td>{program.asset}</td>
+                      <td>{program.asset_type}</td>
+                      <td>{program.impact}</td>
+                      <td>{program.elb}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <div className="program-scope-div">
+          <div className="program-scope-div1">
+            <h3 className="program-scope-div1-h">Out-of-Scope</h3>
+
+            <div className="program-scope-div-table">
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Asset Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {program.map((program, index) => (
+                    <tr key={program.id}>
+
+                      <td>{program.asset}</td>
+                      <td>{program.asset_type}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+
+
+
+
     </div>
   );
 }
@@ -418,7 +508,7 @@ Inner_Program.defaultProps = {
     "Shopify is a multi-channel commerce platform that helps people sell online, in-store, and everywhere in between.",
   program_link: "https://www.shopify.com",
 
-  program_launch: "2" + "/" + "2016 ",
+  program_launch: "2/2016 ",
   program_type: "Bug  Bounty Program",
 
   bug_resolved: "1570",
@@ -426,9 +516,14 @@ Inner_Program.defaultProps = {
   avg_bounties_paid: "600",
   avg_time_respond: "Within 2 Days",
   avg_time_triage: "Within 3 Days",
-  // in_one_asset
-  // in_one_asset_type
-  // in_one_impact
-  // in_one_elb
+  program: [
+    {
+      id: 1,
+      asset: "*.buggify.com",
+      asset_type: "web",
+      impact: "High",
+      elb: "yes",
+    }
+  ]
 };
 export default Inner_Program;

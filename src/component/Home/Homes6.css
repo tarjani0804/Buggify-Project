@@ -14,7 +14,7 @@
     color: #ffffff;
     margin-left: calc(30%);
     margin-top: 5rem;
-    cursor: pointer;
+
 }
 
 .toggled-div {
@@ -63,6 +63,7 @@
     margin-bottom: 2rem;
     border: none;
     background-color: #0b0b0b;
+    cursor: pointer;
 }
 
 .reseacher-label {
@@ -73,13 +74,17 @@
     margin-bottom: 2rem;
     border: none;
     background-color: #0b0b0b;
+    cursor: pointer;
 }
 
 .div-icon-name {
     display: flex;
     margin-top: 2rem;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
     bottom: 5rem;
+    font-size: 12px;
+    line-height: 2rem;
+    letter-spacing: 1px;
 }
 
 .div-icon {
@@ -88,7 +93,19 @@
     font-size: 30px;
 }
 
+.div-icon1 {
+    width: 25%;
+    grid-column: 2/3;
+    margin-left: 5rem;
+    border-radius: 50px;
+}
+
 .t-d {
+    margin-left: 3rem;
+}
+
+.t-d1 {
+    margin-top: 3rem;
     margin-left: 3rem;
 }
 

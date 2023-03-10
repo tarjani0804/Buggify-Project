@@ -3,6 +3,10 @@ import "./Homes6.css";
 import { FcGoogle } from "react-icons/fc";
 import { SlSocialFacebook } from "react-icons/sl";
 import { BsTwitch } from "react-icons/bs";
+import Avt from '../image/avat.jpeg';
+import Avt2 from '../image/avat2.jpeg';
+import Avt1 from '../image/avat1.png';
+
 
 function App() {
 	const [selected, setSelected] = useState(1);
@@ -93,40 +97,44 @@ function App() {
 					<div className="toggled-div">
 						<div className="toggle-div1">
 							<p className="div-p">
-								The Flexibility of Platform and Amazing Community of Security
-								Researchers are Helping make Google Cloud a Secure & Trusted Platform
+								As a security researcher and bug bounty hunter, I have had the pleasure
+								of using several bug bounty platforms throughout my career, and I must say
+								that these platforms have revolutionized the way we approach security testing.
 							</p>
 							<div className="div-icon-name">
-								<FcGoogle className="div-icon"></FcGoogle>
-								<div className="t-d">
-									<h3 className="div-h1">Phil Venables</h3>
-									<h4 className="div-h2">CISO, Google Cloud</h4>
+								<img src={Avt} className="div-icon1" />
+								<div className="t-d1">
+									<h3 className="div-h1">Nagli</h3>
+									<h4 className="div-h2">Security Researcher</h4>
 								</div>
 							</div>
 						</div>
 						<div className="toggle-div2">
 							<p className="div-p">
-								The Flexibility of Platform and Amazing Community of Security
-								Researchers are Helping make Google Cloud a Secure & Trusted Platform
+								Buggify is a fantastic bug bounty platform that has helped me to grow my skills as a security researcher. I appreciate the transparency,
+								variety of programs,
+								and sense of community that the platform provides.
 							</p>
 							<div className="div-icon-name">
-								<FcGoogle className="div-icon"></FcGoogle>
-								<div className="t-d">
-									<h3 className="div-h1">Phil Venables</h3>
-									<h4 className="div-h2">CISO, Google Cloud</h4>
+								<img src={Avt2} className="div-icon1" />
+								<div className="t-d1">
+									<h3 className="div-h1">Frans Rosen,</h3>
+									<h4 className="div-h2">Security Researcher</h4>
 								</div>
 							</div>
 						</div>
 						<div className="toggle-div3">
 							<p className="div-p">
-								f Platform and Amazing Community of Security Researchers are Helping
-								make Google Cloud a Secure & Trusted Platform
+								The platform has a wide variety of programs,
+								ranging from small startups to large corporations,
+								and offers opportunities for both beginner and experienced researchers. The user interface is intuitive and easy to navigate,
+								and the platform offers great resources.
 							</p>
 							<div className="div-icon-name">
-								<FcGoogle className="div-icon"></FcGoogle>
-								<div className="t-d">
-									<h3 className="div-h1">Phil Venables</h3>
-									<h4 className="div-h2">CISO, Google Cloud</h4>
+								<img src={Avt1} className="div-icon1" />
+								<div className="t-d1">
+									<h3 className="div-h1">Deltas3c</h3>
+									<h4 className="div-h2">Security Researcher</h4>
 								</div>
 							</div>
 						</div>

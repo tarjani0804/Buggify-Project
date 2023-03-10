@@ -235,7 +235,7 @@
 .program-reward-div {
     width: 93%;
     margin-left: 5rem;
-    background-color: #3b3b3b;
+    background-color: #1d1d1d;
     /* height: 100px; */
     border-radius: 10px;
     text-align: center;
@@ -287,4 +287,37 @@
     line-height: 2.8rem;
     letter-spacing: 1px;
     padding-bottom: 2rem;
+}
+
+
+
+/* Scope  */
+
+
+.program-scope-div1 {
+    width: 93%;
+    margin-left: 5rem;
+    background-color: #1d1d1d;
+    /* height: 100px; */
+    border-radius: 10px;
+    padding-bottom: 5rem;
+    margin-bottom: 10rem;
+}
+
+.program-scope-div1-h {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+.program-scope-div-table {
+    width: 80%;
+    margin-left: calc(10%);
+    margin-top: 3rem;
+    background-color: #2b2b2b;
+    border-radius: 10px;
+
 }
