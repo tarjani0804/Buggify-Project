@@ -295,7 +295,14 @@
     line-height: 2.8rem;
     letter-spacing: 1px;
     margin-left: 2rem;
+}
 
+.bus-profile-bug-report-div-p {
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    margin-left: 2rem;
 }
 
 .bus-profile-bug-report-div-id-p {
@@ -385,7 +392,16 @@
 
 .report-div-steps-li {
     text-indent: 5rem;
-    color: #04ff69;
+    color: #ffffff;
+}
+
+.report-note-p {
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    width: 90%;
+    margin-left: 5rem;
 }
 
 .report-proof {
@@ -393,7 +409,7 @@
 }
 
 .report-proof-link-of-poc {
-    color: #04ff69;
+    color: #ffffff;
     font-size: 12px;
     line-height: 2.8rem;
     letter-spacing: 1px;

@@ -192,13 +192,16 @@ const BusinessProfile = (props) => {
                                     <p className="bus-profile-bug-report-div-title-p">CVSS Score: {props.CvssScore}</p>
                                 </div>
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: {props.attack}</p>
+                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario:  </p>
+                                    <p className="report-proof-link-of-poc">{props.attack}</p>
                                 </div>
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Remediation: {props.remedi}</p>
+                                    <p className="bus-profile-bug-report-div-title-p">Remediation: </p>
+                                    <p className="report-proof-link-of-poc">{props.remedi}</p>
                                 </div>
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Note by Company: {props.nbc}</p>
+                                    <p className="bus-profile-bug-report-div-title-p">Note by Company: </p>
+                                    <p className="report-note-p"> {props.nbc}</p>
                                 </div>
                             </div>
 

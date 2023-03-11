@@ -156,10 +156,12 @@ const BusinessProfile = (props) => {
                                     )))}
                                 </div>
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: {props.attack} </p>
+                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: </p>
+                                    <p className="report-proof-link-of-poc"> {props.attack} </p>
                                 </div>
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Remediation: {props.remeda} </p>
+                                    <p className="bus-profile-bug-report-div-title-p">Remediation: </p>
+                                    <p className="report-proof-link-of-poc"> {props.remeda} </p>
                                 </div>
 
 
