@@ -100,6 +100,19 @@
     margin-top: 5rem;
 }
 
+@media (max-width: 1920px) {
+    .section-2-div {
+        grid-template-columns: 20rem 1fr 1fr 1fr 20rem;
+       
+    }
+    .section-2-div1 {
+       
+        width: 45rem;
+        height: 30rem;
+    }
+
+}
+
 .section-2-div1 {
     grid-column: 2/3;
     border: 1px solid #04FF69;

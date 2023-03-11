@@ -8,7 +8,7 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { SiBigbluebutton } from 'react-icons/si';
 import { ImProfile } from 'react-icons/im';
 import { TbReportSearch } from 'react-icons/tb';
-
+import Avat from '../image/avat1.png';
 import { useNavigate } from "react-router-dom";
 
 function ResearcherNavbar() {
@@ -112,7 +112,7 @@ const BusinessProfile = (props) => {
                         <center><h1 className="bus-profile-div2-h">Bug Report</h1></center>
                         <div className="dashboard">
                             <center>  <div className="bus-profile-header">
-                                <img src={props.companyLogo} className="bus-profile-company-logo" />
+                                <img src={Avat} className="bus-profile-company-logo" />
                                 <h3 className="bus-profile-company-name">{props.companyName}</h3>
                             </div>
                             </center>

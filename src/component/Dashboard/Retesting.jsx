@@ -11,6 +11,8 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { SiBigbluebutton } from 'react-icons/si';
 import { useNavigate } from "react-router-dom";
 import { FaSearchMinus } from 'react-icons/fa';
+import Avat from '../image/avat1.png';
+
 
 function DashboardNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -138,7 +140,7 @@ const BusinessProfile = (props) => {
                     <div className="bus-profile-div2">
                         <center><h1 className="bus-profile-div2-h">Retesting</h1>
                             <div className="bus-profile-header">
-                                <img src={props.companyLogo} className="bus-profile-company-logo" />
+                                <img src={Avat} className="bus-profile-company-logo" />
                                 <h3 className="bus-profile-company-name">{props.companyName}</h3>
                             </div></center>
                         <div className="stats">

@@ -10,6 +10,8 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { SiBigbluebutton } from 'react-icons/si';
 import { useNavigate } from "react-router-dom";
+import Avat from '../image/avat1.png';
+
 
 
 function DashboardNavbar() {
@@ -134,7 +136,7 @@ const BusinessProfile = (props) => {
 
                         <div className="dashboard">
                             <center><div className="bus-profile-header">
-                                <img src={props.companyLogo} className="bus-profile-company-logo" />
+                                <img src={Avat} className="bus-profile-company-logo" />
                                 <h3 className="bus-profile-company-name">{props.companyName}</h3>
                             </div></center>
                             <div className="stats">
@@ -187,7 +189,7 @@ const BusinessProfile = (props) => {
 
 BusinessProfile.defaultProps = {
     companyLogo: '',
-    companyName: 'Company',
+    companyName: 'Buggify LLC',
     bounty: [
         {
             id: 1,

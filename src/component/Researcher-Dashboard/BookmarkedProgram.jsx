@@ -11,6 +11,8 @@ import { SiBigbluebutton } from 'react-icons/si';
 import { ImProfile } from 'react-icons/im';
 import { TbReportSearch } from 'react-icons/tb';
 import { useNavigate } from "react-router-dom";
+import Avat from '../image/avat1.png';
+
 
 function ResearcherNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -114,7 +116,7 @@ const BookmarkedProgram = (props) => {
                         <h1 className="bus-profile-div2-h">Bookmarked Program</h1>
                         <div className="dashboard">
                             <center><div className="bus-profile-header">
-                                <img src={props.researcherAvtar} className="bus-profile-company-logo" />
+                                <img src={Avat} className="bus-profile-company-logo" />
                                 <h3 className="bus-profile-company-name">{props.rUsername}</h3>
                             </div></center>
                             <div className="track-report">
@@ -150,7 +152,7 @@ const BookmarkedProgram = (props) => {
 
 BookmarkedProgram.defaultProps = {
     researcherAvtar: '',
-    rUsername: 'User Name',
+    rUsername: 'Tarjani Patel',
     bookmarked: [
         {
             id: '1',
