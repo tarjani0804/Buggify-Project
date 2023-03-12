@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import "./signin.css";
 import "./Login.css";
 // import { Form, Input, Label, Dropdown, Checkbox, Button } from "semantic-ui-react";
+var username2;
 
 const SignInForm = () => {
   const [username, setUserName] = useState("");
@@ -284,13 +285,18 @@ const SignInForm = () => {
           body: JSON.stringify(data),
         });
         const jwt = await response.json();
-        const username2 = jwt.username;
-        alert(username2);
+        username2 = jwt.username;
         Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 2, path: "/" });
         if (jwt.buss_id) {
           Cookies.set("buss_id", `${jwt.buss_id}`, { expires: 2, path: "/" });
+          window.location.href = "/ExploreProgram";
         } else {
-          Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
+          if (jwt.rsrc_id) {
+            Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
+            window.location.href = "/Researcher";
+          } else {
+            alert(`Somthing went wrong`);
+          }
         }
       } else {
         if (companyName != "" && position != "") {
@@ -312,14 +318,21 @@ const SignInForm = () => {
             body: JSON.stringify(data),
           });
           const jwt = await response.json();
-          const username2 = jwt.username;
-          alert(username2);
+          username2 = jwt.username;
           Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 2, path: "/" });
           if (jwt.buss_id) {
             Cookies.set("buss_id", `${jwt.buss_id}`, { expires: 2, path: "/" });
             window.location.href = "/ExploreProgram";
           } else {
-            Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
+            if (jwt.rsrc_id) {
+              Cookies.set("rsrc_id", `${jwt.rsrc_id}`, {
+                expires: 2,
+                path: "/",
+              });
+              window.location.href = "/Researcher";
+            } else {
+              alert(`Somthing went wrong`);
+            }
           }
         } else {
           alert("Company Name or Position Missing for Business Account");
