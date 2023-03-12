@@ -1,9 +1,9 @@
 import React from "react";
 import './Homes9.css'
-import HomeBlogTwitter from '../image/HomeBlogTwitter.png';
-import HomeBlogUkrainian from '../image/HomeBlogUkrainian.png';
-import HomeBlogRecon from '../image/HomeBlogRecon.png';
-import HomeBlogFire from '../image/HomeBlogFire.png';
+import HomeBlogCisco from '../image/Blog/Blog_2-F.png';
+import HomeBlogUkrainian from '../image/Blog/Blog_1-F.png';
+import HomeBlogAtlassian from '../image/Blog/Blog_3-F.png';
+import HomeBlogGlambing from '../image/Blog/Blog_4-F.png';
 import { useNavigate } from "react-router-dom";
 
 
@@ -46,7 +46,7 @@ const homes9 = () => {
                         </button></div>
                     </div>
                     <div className="section-nine-div-body div2">
-                        <img src={HomeBlogTwitter} alt="card image" className="section-nine-div-img" />
+                        <img src={HomeBlogCisco} alt="card image" className="section-nine-div-img" />
                         <div className="section-nine-div-body-p" >
                             <p className="section-nine-div-p">New High-Severity Vulnerabilities Discovered in Cisco IOx and F5 BIG-IP Products</p>
                         </div>
@@ -55,7 +55,7 @@ const homes9 = () => {
                         </button></div>
                     </div>
                     <div className="section-nine-div-body div3">
-                        <img src={HomeBlogRecon} alt="card image" className="section-nine-div-img" />
+                        <img src={HomeBlogAtlassian} alt="card image" className="section-nine-div-img" />
                         <div className="section-nine-div-body-p" >
                             <p className="section-nine-div-p">Atlassian's Jira Service Management Found Vulnerable to Critical Vulnerability</p>
                         </div>
@@ -64,7 +64,7 @@ const homes9 = () => {
                         </button></div>
                     </div>
                     <div className="section-nine-div-body div4">
-                        <img src={HomeBlogFire} alt="card image" className="section-nine-div-img" />
+                        <img src={HomeBlogGlambing} alt="card image" className="section-nine-div-img" />
                         <div className="section-nine-div-body-p" >
                             <p className="section-nine-div-p">Experts Warn of 'Ice Breaker' Cyberattacks Targeting Gaming and Gambling Industry</p>
                         </div>

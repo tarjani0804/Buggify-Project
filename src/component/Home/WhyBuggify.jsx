@@ -1,6 +1,9 @@
 import React from "react";
 import './WhyBuggify.css';
 import { useNavigate } from "react-router-dom";
+import Why from '../Buggify1.mp4';
+
+
 
 const WhyBuggify = () => {
 
@@ -13,9 +16,16 @@ const WhyBuggify = () => {
     return (
         <>
             <div className="whybuggify">
-                <h3 className="whybuggify-h">
-                    Why Buggify?
-                </h3>
+
+                <video src={Why} autoPlay muted loop
+                    style={{
+                        width: "99.9%",
+                        marginTop: "2rem",
+                        border: "1px solid #04ff69"
+                    }}>
+                </video>
+
+
                 <h3 className="h1">For Companies</h3>
                 <div className="whybuggify-div">
                     <p className="whybuggify-div-p">

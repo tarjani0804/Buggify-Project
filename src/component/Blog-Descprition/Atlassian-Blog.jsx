@@ -2,10 +2,7 @@ import React, { useRef, useLayoutEffect } from "react";
 import './Blog.css';
 import { useNavigate } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
-import AtlassianF from '../image/Blog_3-F.png';
-import MyImage from '../image/1.png';
-
-
+import Blog3 from '../image/Blog/Blog_3.png'
 
 const Report = () => {
 
@@ -48,32 +45,58 @@ const Report = () => {
                     <BsArrowLeft className="arrow" /> Back To Blogs
                 </div>
 
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "3fr 1fr"
+                }}>
+                    <div className="blog-p1">
+                        <p className="blog-p1-p">Atlassian has released fixes to resolve a critical security flaw in Jira Service Management Server and Data Center that could be abused by an attacker to pass off as another user and gain unauthorized access to susceptible instances.
 
-                <div className="blog-p1">
-                    <p className="blog-p1-p">Atlassian has released fixes to resolve a critical security flaw in Jira Service Management Server and Data Center that could be abused by an attacker to pass off as another user and gain unauthorized access to susceptible instances.
+                            <br /><br />The <a href="https://confluence.atlassian.com/security/january-2023-security-advisories-overview-1207183418.html" target='_blank'> vulnerability </a> is tracked as <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-22501" target='_blank'> CVE-2023-22501 </a> (CVSS score: 9.4) and has been described as a case of broken authentication with low attack complexity.
 
-                        <br /><br />The <a href="https://confluence.atlassian.com/security/january-2023-security-advisories-overview-1207183418.html" target='_blank'> vulnerability </a> is tracked as <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-22501" target='_blank'> CVE-2023-22501 </a> (CVSS score: 9.4) and has been described as a case of broken authentication with low attack complexity.
+                            <br /><br />  "An authentication vulnerability was discovered in Jira Service Management Server and Data Center which allows an attacker to impersonate another user and gain access to a Jira Service Management instance under certain circumstances," Atlassian <a href="https://confluence.atlassian.com/jira/jira-service-management-server-and-data-center-advisory-cve-2023-22501-1188786458.html" target='_blank'> said.</a>
 
-                        <br /><br />  "An authentication vulnerability was discovered in Jira Service Management Server and Data Center which allows an attacker to impersonate another user and gain access to a Jira Service Management instance under certain circumstances," Atlassian <a href="https://confluence.atlassian.com/jira/jira-service-management-server-and-data-center-advisory-cve-2023-22501-1188786458.html" target='_blank'> said.</a>
+                            <br /><br />  "With write access to a User Directory and outgoing email enabled on a Jira Service Management instance, an attacker could gain access to signup tokens sent to users with accounts that have never been logged into."
 
-                        <br /><br />  "With write access to a User Directory and outgoing email enabled on a Jira Service Management instance, an attacker could gain access to signup tokens sent to users with accounts that have never been logged into."
-
-                        <br /><br />The tokens, Atlassian noted, can be obtained in either of the two scenarios -
-                        <ul>
-                            <li style={{ textIndent: "20px" }}> If the attacker is included on Jira issues or requests with these users, or </li>
-                            <li style={{ textIndent: "20px" }}> If attacker is forwarded or otherwise gains access to emails containing a "View Request" link from these users </li>
-                        </ul>
-                        <br /> It also <a href="https://confluence.atlassian.com/kb/faq-for-cve-2023-22501-1189797488.html" target='_blank'> cautioned </a> that while users who are synced to the Jira service via read-only User Directories or single sign-on (SSO) are not affected, external customers who interact with the instance via email are affected, even when SSO is configured.
-                        <br /> <br />The Australian software services provider said the vulnerability was introduced in version 5.3.0 and impacts all subsequent versions 5.3.1, 5.3.2, 5.4.0, 5.4.1, and 5.5.0. Fixes have been made available in versions 5.3.3, 5.3.3, 5.5.1, and 5.6.0 or later.
-
-                        <br /> <br /> Atlassian emphasized that Jira sites hosted on the cloud via an atlassian[.]net domain are not affected by the flaw and that no action is required in this case.
-
-                        <br /> <br /> The disclosure arrives more than two months after the company closed two critical security holes Bitbucket Server, Data Center, and Crowd products ( <a href="https://thehackernews.com/2022/11/atlassian-releases-patches-for-critical.html" target='_blank' > CVE-2022-43781 and CVE-2022-43782 </a> ) that could be exploited to gain code execution and invoke privileged API endpoints.
-
-                        <br /> <br /> With flaws in Atlassian products becoming an <a href="https://thehackernews.com/2022/09/hackers-targeting-unpatched-atlassian.html" target='_blank'> alluring</a> <a href="https://thehackernews.com/2022/10/cisa-warns-of-hackers-exploiting.html" target='_blank' > attack vector </a> in recent months, it's crucial that users upgrade their installations to the latest versions to mitigate potential threats.
-                    </p>
+                            <br /><br />The tokens, Atlassian noted, can be obtained in either of the two scenarios -
+                            <ul>
+                                <li style={{ textIndent: "20px" }}> If the attacker is included on Jira issues or requests with these users, or </li>
+                                <li style={{ textIndent: "20px" }}> If attacker is forwarded or otherwise gains access to emails containing a "View Request" link from these users </li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div className="blog-p2" style={{ marginTop: "15rem" }}>
+                        <img src={Blog3} ></img>
+                    </div>
                 </div>
 
+                <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 3fr"
+                }}>
+
+
+
+                    <div className="blog-p2" style={{
+                        marginLeft: "10rem",
+                        marginTop: "25rem"
+                    }}>
+                        <img src={Blog3} ></img>
+                    </div>
+                    <div className="blog-p1">
+                        <p className="blog-p1-p">
+
+                            It also <a href="https://confluence.atlassian.com/kb/faq-for-cve-2023-22501-1189797488.html" target='_blank'> cautioned </a> that while users who are synced to the Jira service via read-only User Directories or single sign-on (SSO) are not affected, external customers who interact with the instance via email are affected, even when SSO is configured.
+                            <br /> <br />The Australian software services provider said the vulnerability was introduced in version 5.3.0 and impacts all subsequent versions 5.3.1, 5.3.2, 5.4.0, 5.4.1, and 5.5.0. Fixes have been made available in versions 5.3.3, 5.3.3, 5.5.1, and 5.6.0 or later.
+
+                            <br /> <br /> Atlassian emphasized that Jira sites hosted on the cloud via an atlassian[.]net domain are not affected by the flaw and that no action is required in this case.
+
+                            <br /> <br /> The disclosure arrives more than two months after the company closed two critical security holes Bitbucket Server, Data Center, and Crowd products ( <a href="https://thehackernews.com/2022/11/atlassian-releases-patches-for-critical.html" target='_blank' > CVE-2022-43781 and CVE-2022-43782 </a> ) that could be exploited to gain code execution and invoke privileged API endpoints.
+
+                            <br /> <br /> With flaws in Atlassian products becoming an <a href="https://thehackernews.com/2022/09/hackers-targeting-unpatched-atlassian.html" target='_blank'> alluring</a> <a href="https://thehackernews.com/2022/10/cisa-warns-of-hackers-exploiting.html" target='_blank' > attack vector </a> in recent months, it's crucial that users upgrade their installations to the latest versions to mitigate potential threats.
+                        </p>
+                    </div>
+                </div>
 
 
                 <div className="more-blogs-div">

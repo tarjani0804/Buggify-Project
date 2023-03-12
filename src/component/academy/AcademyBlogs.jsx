@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import './AcademyBlogs.css';
-import HomeBlogTwitter from '../image/HomeBlogTwitter.png';
-import HomeBlogUkrainian from '../image/HomeBlogUkrainian.png';
-import HomeBlogRecon from '../image/HomeBlogRecon.png';
-import HomeBlogFire from '../image/HomeBlogFire.png';
+import HomeBlogCisco from '../image/Blog/Blog_2-F.png';
+import HomeBlogUkrainian from '../image/Blog/Blog_1-F.png';
+import HomeBlogAtlassian from '../image/Blog/Blog_3-F.png';
+import HomeBlogGlambing from '../image/Blog/Blog_4-F.png';
 
 
 import { useNavigate } from "react-router-dom";
@@ -18,19 +18,19 @@ const AcademyBlogs = () => {
         },
         {
             id: 2,
-            imgSrc: HomeBlogTwitter,
+            imgSrc: HomeBlogCisco,
             title: "New High-Severity Vulnerabilities Discovered in Cisco IOx and F5 BIG-IP Products",
             link: "/AcademyBlogs-Blog2"
         },
         {
             id: 3,
-            imgSrc: HomeBlogRecon,
+            imgSrc: HomeBlogAtlassian,
             title: "Atlassian's Jira Service Management Found Vulnerable to Critical Vulnerability",
             link: "/AcademyBlogs-Blog3"
         },
         {
             id: 4,
-            imgSrc: HomeBlogFire,
+            imgSrc: HomeBlogGlambing,
             title: "Experts Warn of 'Ice Breaker' Cyberattacks Targeting Gaming and Gambling Industry",
             link: "/AcademyBlogs-Blog4"
         },
