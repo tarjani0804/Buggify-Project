@@ -11,7 +11,7 @@ const SubmitReport = (props) => {
   const [attackScenarios, setAttackScenarios] = useState();
   const [remediation, setRemediation] = useState();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => { };
 
   return (
     <>
@@ -77,7 +77,7 @@ const SubmitReport = (props) => {
                 <input
                   className="submit-report-input"
                   style={{
-                    width: "98.5rem",
+                    width: "85rem",
                     height: "3rem",
                   }}
                   type="text"
@@ -89,7 +89,7 @@ const SubmitReport = (props) => {
                 <input
                   className="submit-report-input"
                   style={{
-                    width: "98.5rem",
+                    width: "85rem",
                     height: "3rem",
                   }}
                   type="text"
@@ -101,7 +101,7 @@ const SubmitReport = (props) => {
                 <input
                   className="submit-report-input"
                   style={{
-                    width: "98.5rem",
+                    width: "85rem",
                     height: "3rem",
                   }}
                   placeholder="Enter Link 3"
@@ -113,7 +113,7 @@ const SubmitReport = (props) => {
                 <input
                   className="submit-report-input"
                   style={{
-                    width: "98.5rem",
+                    width: "85rem",
                     height: "3rem",
                   }}
                   placeholder="Enter Link 4"
@@ -125,7 +125,7 @@ const SubmitReport = (props) => {
                 <input
                   className="submit-report-input"
                   style={{
-                    width: "98.5rem",
+                    width: "85rem",
                     height: "3rem",
                   }}
                   placeholder="Enter Link 5"

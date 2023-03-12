@@ -289,10 +289,15 @@ function Scope_and_Reward() {
 const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
   const [scopeSelected, setScopeSelected] = useState();
-  const [bookmarkSelected, setBookmarkSelected] = useState();
+  const [bookmarkSelected, setBookmarkSelected] = useState(0);
+
+  const isBookmarked = bookmarkSelected;
+
 
   const handleBookmark = () => {
-    setBookmarkSelected(true);
+    setBookmarkSelected(bookmarkSelected === 0 ? 1 : 0);
+    console.log("Bookmark", isBookmarked);
+
   };
 
   const handlePolicySelected = () => {

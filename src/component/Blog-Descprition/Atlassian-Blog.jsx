@@ -2,6 +2,10 @@ import React, { useRef, useLayoutEffect } from "react";
 import './Blog.css';
 import { useNavigate } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
+import AtlassianF from '../image/Blog_3-F.png';
+import MyImage from '../image/1.png';
+
+
 
 const Report = () => {
 
@@ -34,14 +38,12 @@ const Report = () => {
     return (
         <>
             <div className="blog-div" ref={scrollRef}>
-                <div className="blog-heading">
-                    <h2 className="blog-h mint">Atlassian's Jira Service Management Found Vulnerable to Critical Vulnerability</h2>
+                <div className="hero">
+                    <div className="blog-heading hero-content">
+                        <h1 class="hero__title blog-h mint">Atlassian's Jira Service Management Found Vulnerable to Critical Vulnerability</h1>
 
-
-
-                    <img></img>
+                    </div>
                 </div>
-
                 <div className="back-to-home-link" onClick={gotoBlogs}>
                     <BsArrowLeft className="arrow" /> Back To Blogs
                 </div>

@@ -246,3 +246,87 @@
     border-image: conic-gradient(from var(--angle), var(--c2), var(--c1) 0.1turn, var(--c1) 0.15turn, var(--c2) 0.25turn) 30;
     animation: borderRotate var(--d) linear infinite forwards;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Base
+----------------------------------------------------------- */
+
+
+
+img {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+
+.hero {
+    width: 100%;
+    padding-bottom: 52.5%;
+    position: relative;
+    background-image: url('https://picsum.photos/1000/660');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.hero :before {
+    content: '';
+    background-color: rgba(150, 80, 30, 0.5);
+    display: block;
+    width: 100%;
+    /* height: 100%; */
+    position: absolute;
+}
+
+.hero__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 2rem;
+    /* width: 100%; */
+}
+
+.hero__title {
+    padding-top: 25rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+
+/* Hero [END]
+  ----------------------------------------------------------- */
+
+/* Main Content
+  ----------------------------------------------------------- */
+
+.main-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.main-content p {
+    column-count: 2;
+
+    @media only screen and (max-width: 600px) {
+        column-count: 1;
+    }
+}
+
+
+/* Main Content [END]
+  ----------------------------------------------------------- */
