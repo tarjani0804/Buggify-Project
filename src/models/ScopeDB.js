@@ -10,6 +10,7 @@ const scopeSchema = new mongoose.Schema({
     one: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -24,6 +25,7 @@ const scopeSchema = new mongoose.Schema({
     two: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -38,6 +40,7 @@ const scopeSchema = new mongoose.Schema({
     three: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -52,6 +55,7 @@ const scopeSchema = new mongoose.Schema({
     four: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -66,6 +70,7 @@ const scopeSchema = new mongoose.Schema({
     five: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -80,6 +85,7 @@ const scopeSchema = new mongoose.Schema({
     six: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -94,6 +100,7 @@ const scopeSchema = new mongoose.Schema({
     seven: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -108,6 +115,7 @@ const scopeSchema = new mongoose.Schema({
     eight: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -122,6 +130,7 @@ const scopeSchema = new mongoose.Schema({
     nine: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -136,6 +145,7 @@ const scopeSchema = new mongoose.Schema({
     ten: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -152,6 +162,7 @@ const scopeSchema = new mongoose.Schema({
     one: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -160,6 +171,7 @@ const scopeSchema = new mongoose.Schema({
     two: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -168,6 +180,7 @@ const scopeSchema = new mongoose.Schema({
     three: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -176,6 +189,7 @@ const scopeSchema = new mongoose.Schema({
     four: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -184,6 +198,7 @@ const scopeSchema = new mongoose.Schema({
     five: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -192,6 +207,7 @@ const scopeSchema = new mongoose.Schema({
     six: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -200,6 +216,7 @@ const scopeSchema = new mongoose.Schema({
     seven: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -208,6 +225,7 @@ const scopeSchema = new mongoose.Schema({
     eight: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -216,6 +234,7 @@ const scopeSchema = new mongoose.Schema({
     nine: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,
@@ -224,6 +243,7 @@ const scopeSchema = new mongoose.Schema({
     ten: {
       asset: {
         type: String,
+        unique: true,
       },
       asset_type: {
         type: String,

@@ -46,14 +46,15 @@ const middleware = async (req, res, next) => {
   if (ds1 != null) {
     const bus_id = ds1.buss_id;
     req.buss_id = bus_id;
+    next();
   }
   const findby2 = Rsrc.findById(auth);
   const ds2 = await findby2;
   if (ds2 != null) {
     const rsc_id = ds2.rsrc_id;
     req.rsrc_id = rsc_id;
+    next();
   }
-  next();
 };
 
 // using async
@@ -177,7 +178,7 @@ app.post("/userfetch", async (req, res) => {
           console.log(username);
           console.log(buss_id);
           res.status(200).json({
-            status: "Credentials Matched",
+            status: "Business",
             jwttoken: `${token}`,
             buss_id: `${buss_id}`,
             username: `${username}`,
@@ -199,7 +200,7 @@ app.post("/userfetch", async (req, res) => {
             console.log(username);
             console.log(rsrc_id);
             res.status(200).json({
-              status: "Credentials Matched",
+              status: "Researcher",
               jwttoken: `${token}`,
               rsrc_id: `${rsrc_id}`,
               username: `${username}`,
