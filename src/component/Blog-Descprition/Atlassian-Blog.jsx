@@ -65,7 +65,7 @@ const Report = () => {
                             </ul>
                         </p>
                     </div>
-                    <div className="blog-p2" style={{ marginTop: "15rem" }}>
+                    <div className="blog-p2" style={{ marginTop: "15rem", width: "100%" }}>
                         <img src={Blog3} ></img>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ const Report = () => {
 
                     <div className="blog-p2" style={{
                         marginLeft: "10rem",
-                        marginTop: "25rem"
+                        marginTop: "15rem"
                     }}>
                         <img src={Blog3} ></img>
                     </div>

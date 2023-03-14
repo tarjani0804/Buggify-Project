@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsArrowLeft } from 'react-icons/bs';
 import Blog_Glambling from '../image/blog_gambling.png'
 import Blog4 from '../image/Blog/Blog_4.png';
+import Blog4_1 from '../image/Blog/Blog_4-1.png';
 
 
 const Report = () => {
@@ -63,7 +64,7 @@ const Report = () => {
                             <br /><br />Clicking the purported screenshot link sent in the chat leads to the retrieval of an LNK payload or, alternatively, a VBScript file as a backup option, the former of which is configured to download and run an MSI package containing a Node.js implant.
                         </p>
                     </div>
-                    <div className="blog-p2" style={{ marginTop: "15rem" }}>
+                    <div className="blog-p2" style={{ marginTop: "20rem", marginRight: "10rem" }}>
                         <img src={Blog4} ></img>
                     </div>
                 </div>
@@ -76,12 +77,12 @@ const Report = () => {
 
 
                     <div className="blog-p2" style={{
-                        marginLeft: "10rem",
-                        marginTop: "25rem"
+                        marginLeft: "12rem",
+                        marginTop: "20rem"
                     }}>
-                        <img src={Blog4} ></img>
+                        <img src={Blog4_1} ></img>
                     </div>
-                    <div className="blog-p1">
+                    <div className="blog-p2">
                         <p className="blog-p1-p">
                             The JavaScript file has all the features of a typical backdoor, enabling the threat actor to enumerate running processes, steal passwords and cookies, exfiltrate arbitrary files, take screenshots, run VBScript imported from a remote server, and even open a reverse proxy on the compromised host.
 

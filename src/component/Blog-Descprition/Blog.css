@@ -48,6 +48,13 @@
 .blog-p1 {
     margin-top: 5rem;
     margin-left: calc(12rem);
+    margin-right: 0;
+    width: 85%;
+}
+
+.blog-p2 {
+    margin-top: 5rem;
+    margin-left: calc(10rem);
     /* margin-right: calc(2rem); */
     width: 80%;
 }
