@@ -114,9 +114,10 @@ function DashboardNavbar() {
 
 const BusinessProfile = (props) => {
 
-    const [assetName, setAssetName] = useState("");
-    const [assetType, setAssetType] = useState("");
-    const [selectedAssetType, setSelectedCountry] = useState('');
+    const [inAssetName, setInAssetName] = useState("");
+    const [outAssetName, setOutAssetName] = useState("");
+    const [selectedInAssetType, setSelectedInAssetType] = useState('');
+    const [selectedOutAssetType, setSelectedOutAssetType] = useState('');
     const [selectedImpactLevel, setImpactLevel] = useState('');
     const [selectedEligible, setEligible] = useState('');
 
@@ -129,8 +130,11 @@ const BusinessProfile = (props) => {
         { id: '5', type: 'IoT' },
     ];
 
-    const handleAssetTypeChange = (event) => {
-        setSelectedCountry(event.target.value);
+    const handleInAssetTypeChange = (event) => {
+        setSelectedInAssetType(event.target.value);
+    };
+    const handleOutAssetTypeChange = (event) => {
+        setSelectedOutAssetType(event.target.value);
     };
 
     const impactLevel = [
@@ -153,10 +157,9 @@ const BusinessProfile = (props) => {
         setEligible(event.target.value);
     };
 
-    const handleUpdateInScope = () => {
+    const handleUpdateScope = () => {
     }
-    const handleUpdateOutScope = () => {
-    }
+
 
 
     return (
@@ -184,12 +187,12 @@ const BusinessProfile = (props) => {
                                             <label className="dashboard-form-label">Asset: </label>
                                             <input className="dashboard-input"
                                                 type="text"
-                                                value={assetName}
-                                                onChange={(event) => setAssetName(event.target.value)} />
+                                                value={inAssetName}
+                                                onChange={(event) => setInAssetName(event.target.value)} />
                                         </div>
                                         <div className="column-div1">
                                             <label className="dashboard-form-label">Asset Type: </label>
-                                            <select className="dashboard-input" id="assetType" value={selectedAssetType} onChange={handleAssetTypeChange}>
+                                            <select className="dashboard-input" id="assetType" value={selectedInAssetType} onChange={handleInAssetTypeChange}>
                                                 <option value="">Web</option>
                                                 {assetTypes.map((assettype) => (
                                                     <option className="dashboard-form-option" key={assettype.id} value={assettype.type} >{assettype.type}</option>
@@ -214,27 +217,18 @@ const BusinessProfile = (props) => {
                                                 ))}
                                             </select>
                                         </div>
-                                        <div className="button_ani dashboard-button" onClick={handleUpdateInScope}>
-                                            <button type="submit" className="button2">Update Scope</button>
-                                        </div>
-                                    </form>
-
-                                </div>
-                            </div>
-                            <div className="report-count">
-                                <p className="bus-profie-stat-h">Out-Scope</p>
-                                <div className="bus-profile-stat-div">
-                                    <form className="dashboard-form">
+                                        <p className="bus-profie-stat-h">Out-Scope</p>
                                         <div className="column-div1">
                                             <label className="dashboard-form-label">Asset: </label>
                                             <input className="dashboard-input"
                                                 type="text"
-                                                value={assetName}
-                                                onChange={(event) => setAssetName(event.target.value)} />
+                                                value={outAssetName}
+                                                onChange={(event) => setOutAssetName(event.target.value)} />
                                         </div>
+
                                         <div className="column-div1">
                                             <label className="dashboard-form-label">Asset Type: </label>
-                                            <select className="dashboard-input" id="assetType" value={selectedAssetType} onChange={handleAssetTypeChange}>
+                                            <select className="dashboard-input" id="assetType" value={selectedOutAssetType} onChange={handleOutAssetTypeChange}>
                                                 <option value="">Web</option>
                                                 {assetTypes.map((assettype) => (
                                                     <option className="dashboard-form-option" key={assettype.id} value={assettype.type} >{assettype.type}</option>
@@ -242,21 +236,13 @@ const BusinessProfile = (props) => {
                                             </select>
                                         </div>
 
-                                        <div className="button_ani dashboard-button" onClick={handleUpdateOutScope}>
+                                        <div className="button_ani dashboard-button" onClick={handleUpdateScope}>
                                             <button type="submit" className="button2">Update Scope</button>
                                         </div>
                                     </form>
 
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
 
                         </div>
                     </div>

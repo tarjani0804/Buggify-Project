@@ -18,21 +18,6 @@ import { SiBigbluebutton, SiReactrouter } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 
-var jwt,
-  monthly_report,
-  monthly_paid,
-  avg_paid,
-  mmm_reports,
-  mmm_paid,
-  mmm_avg,
-  open,
-  resolved,
-  NA,
-  dups,
-  info,
-  medium,
-  high,
-  critical;
 
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -186,36 +171,51 @@ function BusinessProfile() {
     fetchProfileStats();
   }, []);
 
-  // Use the profileStats state variable in other parts of the app
-  const abcd =
+  const monthly_report =
     profileStats && profileStats.stats && profileStats.stats.monthly_report;
-  console.log(abcd);
-  // const myCookie = Cookies.get("myCookie");
 
-  // const url = "http://127.0.0.1:5173/profileStats";
-  // const data = { myCookie: `${myCookie}` };
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-  //     const jwt = await response.json();
-  //     return jwt;
-  //   }
-  //   const abc = fetchData();
-  // monthly_report = jwt.stats.monthly_report;
-  // monthly_paid = jwt.stats.monthly_paid;
-  // avg_paid = jwt.stats.avg_paid;
-  // mmm_reports = jwt.stats.mmm_reports;
-  // mmm_paid = jwt.stats.mmm_paid;
-  // mmm_avg = jwt.stats.mmm_avg;
-  // open = jwt.report_counts.open;
-  // resolved = jwt.report_counts.resolved;
-  // NA = jwt.report_cvss.NA;
+  const monthly_paid =
+    profileStats && profileStats.stats && profileStats.stats.monthly_paid;
+
+  const avg_paid =
+    profileStats && profileStats.stats && profileStats.stats.avg_paid;
+
+  const mmm_paid =
+    profileStats && profileStats.stats && profileStats.stats.mmm_paid;
+
+  const mmm_reports =
+    profileStats && profileStats.stats && profileStats.stats.mmm_reports;
+
+  const mmm_avg =
+    profileStats && profileStats.stats && profileStats.stats.mmm_avg;
+
+  const open =
+    profileStats && profileStats.stats && profileStats.report_counts.open;
+
+  const resolved =
+    profileStats && profileStats.stats && profileStats.report_counts.resolved;
+
+  const NA =
+    profileStats && profileStats.stats && profileStats.report_cvss.NA;
+
+  const dups =
+    profileStats && profileStats.stats && profileStats.report_cvss.dups;
+
+  const info =
+    profileStats && profileStats.stats && profileStats.report_cvss.info;
+
+  const medium =
+    profileStats && profileStats.stats && profileStats.report_cvss.medium;
+
+  const high =
+    profileStats && profileStats.stats && profileStats.report_cvss.high;
+
+  const critical =
+    profileStats && profileStats.stats && profileStats.report_cvss.critical;
+
+
+
+
   // dups = jwt.report_cvss.dups;
   // info = jwt.report_cvss.info;
   // medium = jwt.report_cvss.medium;
@@ -235,7 +235,7 @@ function BusinessProfile() {
               <center>
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
-                  <h3 className="bus-profile-company-name">{}</h3>
+                  <h3 className="bus-profile-company-name">{ }</h3>
                 </div>
               </center>
               <div className="stats">
@@ -246,7 +246,7 @@ function BusinessProfile() {
                       <label className="bus-profile-label">
                         Monthly Received Reports:
                       </label>
-                      <span className="bus-profile-span">{abcd}</span>
+                      <span className="bus-profile-span">{monthly_report}</span>
                     </div>
                     <div className="column-div2">
                       <label className="bus-profile-label">
@@ -337,7 +337,7 @@ function BusinessProfile() {
                       <span className="bus-profile-span">{info}</span>
                     </div>
                     <div className="column-div2">
-                      <label className="bus-profile-label">critical:</label>
+                      <label className="bus-profile-label">Critical:</label>
                       <span className="bus-profile-span">{critical}</span>
                     </div>
                   </div>
@@ -350,24 +350,5 @@ function BusinessProfile() {
     </>
   );
 }
-
-BusinessProfile.defaultProps = {
-  companyLogo: { Avat },
-  companyName: "Buggify LLC",
-  monthlyReceivedReports: 1,
-  receivedReportsLast90Days: 0,
-  monthlyBountiesPaid: 0,
-  bountiesPaidLast90Days: 0,
-  averageBountyPaidMonthly: 0,
-  averageBountiesPaidLast90Days: 0.0,
-  openReport: 0,
-  resolvedReport: 0,
-  na: 0,
-  medium: 0,
-  duplicate: 0,
-  high: 0,
-  informative: 0,
-  critical: 0,
-};
 
 export default BusinessProfile;
