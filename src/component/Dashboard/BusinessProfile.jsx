@@ -18,7 +18,6 @@ import { SiBigbluebutton, SiReactrouter } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 
-
 var jwt,
   monthly_report,
   monthly_paid,
@@ -37,7 +36,6 @@ var jwt,
 
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
-
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -166,45 +164,64 @@ function DashboardNavbar() {
   );
 }
 
-const BusinessProfile = async (e) => {
+function BusinessProfile() {
+  const [profileStats, setProfileStats] = useState(undefined);
 
   useEffect(() => {
-    const myCookie = Cookies.get("myCookie");
-    const url = "http://127.0.0.1:5173/profileStats";
-    const data = { myCookie: `${myCookie}` };
-    async function fetchData() {
-      const response = await fetch(url, {
+    async function fetchProfileStats() {
+      const requestOptions = {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const jwt = await response.json();
-      monthly_report = jwt.stats.monthly_report;
-      monthly_paid = jwt.stats.monthly_paid;
-      avg_paid = jwt.stats.avg_paid;
-      mmm_reports = jwt.stats.mmm_reports;
-      mmm_paid = jwt.stats.mmm_paid;
-      mmm_avg = jwt.stats.mmm_avg;
-      open = jwt.report_counts.open;
-      resolved = jwt.report_counts.resolved;
-      NA = jwt.report_cvss.NA;
-      dups = jwt.report_cvss.dups;
-      info = jwt.report_cvss.info;
-      medium = jwt.report_cvss.medium;
-      high = jwt.report_cvss.high;
-      critical = jwt.report_cvss.critical;
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ myCookie: `${Cookies.get("myCookie")}` }),
+      };
 
+      const response = await fetch(
+        "http://127.0.0.1:5173/profileStats",
+        requestOptions
+      );
+      const data = await response.json();
+      setProfileStats(data);
     }
-    fetchData();
 
-
-    alert(monthly_report);
-
+    fetchProfileStats();
   }, []);
 
+  // Use the profileStats state variable in other parts of the app
+  const abcd =
+    profileStats && profileStats.stats && profileStats.stats.monthly_report;
+  console.log(abcd);
+  // const myCookie = Cookies.get("myCookie");
 
+  // const url = "http://127.0.0.1:5173/profileStats";
+  // const data = { myCookie: `${myCookie}` };
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(url, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //     });
+  //     const jwt = await response.json();
+  //     return jwt;
+  //   }
+  //   const abc = fetchData();
+  // monthly_report = jwt.stats.monthly_report;
+  // monthly_paid = jwt.stats.monthly_paid;
+  // avg_paid = jwt.stats.avg_paid;
+  // mmm_reports = jwt.stats.mmm_reports;
+  // mmm_paid = jwt.stats.mmm_paid;
+  // mmm_avg = jwt.stats.mmm_avg;
+  // open = jwt.report_counts.open;
+  // resolved = jwt.report_counts.resolved;
+  // NA = jwt.report_cvss.NA;
+  // dups = jwt.report_cvss.dups;
+  // info = jwt.report_cvss.info;
+  // medium = jwt.report_cvss.medium;
+  // high = jwt.report_cvss.high;
+  // critical = jwt.report_cvss.critical;
+  // });
   return (
     <>
       <div className="bus-profile">
@@ -218,7 +235,7 @@ const BusinessProfile = async (e) => {
               <center>
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
-                  <h3 className="bus-profile-company-name">{ }</h3>
+                  <h3 className="bus-profile-company-name">{}</h3>
                 </div>
               </center>
               <div className="stats">
@@ -229,9 +246,7 @@ const BusinessProfile = async (e) => {
                       <label className="bus-profile-label">
                         Monthly Received Reports:
                       </label>
-                      <span className="bus-profile-span">
-                        {monthly_report}
-                      </span>
+                      <span className="bus-profile-span">{abcd}</span>
                     </div>
                     <div className="column-div2">
                       <label className="bus-profile-label">
@@ -277,9 +292,7 @@ const BusinessProfile = async (e) => {
                 <div className="bus-profile-stat-div">
                   <div class="column">
                     <div className="column-div1">
-                      <label className="bus-profile-label">
-                        Open Reports:
-                      </label>
+                      <label className="bus-profile-label">Open Reports:</label>
                       <span className="bus-profile-span">{open}</span>
                     </div>
                     <div className="column-div2">
@@ -320,9 +333,7 @@ const BusinessProfile = async (e) => {
 
                   <div class="column">
                     <div className="column-div1">
-                      <label className="bus-profile-label">
-                        Informative:
-                      </label>
+                      <label className="bus-profile-label">Informative:</label>
                       <span className="bus-profile-span">{info}</span>
                     </div>
                     <div className="column-div2">
@@ -339,7 +350,6 @@ const BusinessProfile = async (e) => {
     </>
   );
 }
-
 
 BusinessProfile.defaultProps = {
   companyLogo: { Avat },
