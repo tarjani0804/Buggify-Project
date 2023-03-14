@@ -14,7 +14,6 @@ const C3 = () => {
     e.preventDefault();
     const url = "http://127.0.0.1:5173/agreementBug";
     const myCookie = Cookies.get("myCookie");
-    alert(myCookie);
     const data = {
       myCookie: `${myCookie}`,
     };
@@ -27,8 +26,10 @@ const C3 = () => {
     });
     const jwt = await response.json();
     const username2 = jwt.status;
-    if(username2 == "BugBounty"){
-        window.location.href = "/BusinessProfile";
+    if (username2 == "BugBounty") {
+      window.location.href = "/BusinessProfile";
+    } else {
+      alert(`Somthing Went Wrong`);
     }
   };
 

@@ -353,17 +353,18 @@ app.post("/agreementRed", middleware, async (req, res) => {
     const scope = new ScopeDB(data2);
     const resposva = scope.save();
     console.log(await resposva);
-    res.status(200).json({ typeofProgram: "RedTeam" });
+    res.status(200).json({ status: "RedTeam" });
   } catch (e) {
     res.status(400).json({ status: "Something Went Wrong" });
   }
 });
 
 app.post("/profileStats", middleware, async (req, res) => {
-  const id = res.id;
+  const id = req.buss_id;
   try {
     // define new schema bussstats and export here, add 1 sample business data
-    const prof = await BussStats.find(id);
+    const prof = await BussStats.find({ buss_id: `${id}` });
+    console.log(prof);
     const parsed = prof[0].stats.monthly_report;
     console.log(parsed);
     res.status(200).json({
@@ -394,47 +395,51 @@ app.post("/profileStats", middleware, async (req, res) => {
   }
 });
 
-app.get("/insertStats", middleware, async (req, res) => {
-  const id = req.auth;
-  const data = {
-    buss_id: `${id}`,
-    stats: {
-      monthly_report: 0,
-      monthly_paid: 0,
-      avg_paid: 0,
-      mmm_reports: 0,
-      mmm_paid: 0,
-      mmm_avg: 0,
-    },
-    report_counts: { open: 0, resolved: 0 },
-    report_cvss: { NA: 0, dups: 0, info: 0, medium: 0, high: 0, critical: 0 },
-  };
-  const user = new BussStats(data);
-  const result = await user.save();
-  res.status(200).json({
-    buss_id: `${result.buss_id}`,
-    stats: {
-      monthly_report: `${result.monthly_report}`,
-      monthly_paid: `${result.monthly_paid}`,
-      avg_paid: `${result.avg_paid}`,
-      "90_reports": `${result.mmm_reports}`,
-      "90_paid": `${result.mmm_paid}`,
-      "90_avg": `${result.mmm_avg}`,
-    },
-    report_counts: {
-      open: 32,
-      resolved: 1345,
-    },
-    report_cvss: {
-      "N/A": 48,
-      dup: 400,
-      info: 200,
-      medium: 177,
-      high: 390,
-      critical: 130,
-    },
-  });
-});
+// app.post("/insertStats", middleware, async (req, res) => {
+//   const id = req.buss_id;
+//   try{
+//   const data = {
+//     buss_id: `${id}`,
+//     stats: {
+//       monthly_report: 1,
+//       monthly_paid: 0,
+//       avg_paid: 0,
+//       mmm_reports: 0,
+//       mmm_paid: 0,
+//       mmm_avg: 0,
+//     },
+//     report_counts: { open: 0, resolved: 0 },
+//     report_cvss: { NA: 0, dups: 0, info: 0, medium: 0, high: 0, critical: 0 },
+//   };
+//   const user = new BussStats(data);
+//   const result = await user.save();
+//   res.status(200).json({
+//     buss_id: `${result.buss_id}`,
+//     stats: {
+//       monthly_report: `${result.monthly_report}`,
+//       monthly_paid: `${result.monthly_paid}`,
+//       avg_paid: `${result.avg_paid}`,
+//       "90_reports": `${result.mmm_reports}`,
+//       "90_paid": `${result.mmm_paid}`,
+//       "90_avg": `${result.mmm_avg}`,
+//     },
+//     report_counts: {
+//       open: 32,
+//       resolved: 1345,
+//     },
+//     report_cvss: {
+//       "N/A": 48,
+//       dup: 400,
+//       info: 200,
+//       medium: 177,
+//       high: 390,
+//       critical: 130,
+//     },
+//   });
+// }catch(e){
+//   res.status(400).json({status: `Somthing Went Wrong`})
+// }
+// });
 
 app.patch("/setScope", middleware, async (req, res) => {
   const buss_id = req.buss_id;

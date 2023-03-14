@@ -15,10 +15,6 @@ import Avat from '../image/avat1.png';
 
 
 function DashboardNavbar() {
-
-
-
-
     const [isMenuOpen, setIsMenuOpen] = useState(true);
 
     const handleMenuToggle = () => {

@@ -14,7 +14,6 @@ const C3 = () => {
     e.preventDefault();
     const url = "http://127.0.0.1:5173/agreementRed";
     const myCookie = Cookies.get("myCookie");
-    alert(myCookie);
     const data = {
       myCookie: `${myCookie}`,
     };
@@ -29,6 +28,8 @@ const C3 = () => {
     const username2 = jwt.status;
     if (username2 == "RedTeam") {
       window.location.href = "/BusinessProfile";
+    } else {
+      alert("Somthing Went Wrong");
     }
   };
 
