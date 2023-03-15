@@ -159,6 +159,7 @@ app.post("/researcher", async (req, res) => {
 
 app.post("/userfetch", async (req, res) => {
   try {
+    console.log('hit');
     const { username, password } = req.body;
     if (!username || !password) {
       return res.status(400).json({ error: "Plz fill the data" });
@@ -886,6 +887,7 @@ app.patch("/setScope", middleware, async (req, res) => {
 });
 
 app.get("/profileBuss/:buss_id", async (req, res) => {
+  console.log('hit');
   const buss_id = req.params.buss_id;
   const buss = await Buss.find({ buss_id: `${buss_id}` });
   res.status(200).json({
@@ -898,6 +900,7 @@ app.get("/profileBuss/:buss_id", async (req, res) => {
 });
 
 app.get("/profileRes/:rsrc_id", async (req, res) => {
+  console.log('hit');
   const rsrc_id = req.params.rsrc_id;
   const buss = await Rsrc.find({ rsrc_id: `${rsrc_id}` });
   res.status(200).json({
@@ -947,6 +950,7 @@ app.patch("/settingBus", middleware, async (req, res) => {
 app.patch("/settingRes", middleware, async (req, res) => {
   id = req.id;
   rsrc_id = req.rsrc_id;
+  console.log('hit');
   if (req.body.username != "") {
     const username = req.body.username;
     const result = await Rsrc.findByIdAndUpdate(id, {

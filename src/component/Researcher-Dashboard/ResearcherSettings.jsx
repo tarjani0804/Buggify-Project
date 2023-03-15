@@ -1,444 +1,513 @@
 import React, { useState, useEffect } from "react";
 
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
-import { BsJournalBookmark } from 'react-icons/bs';
-import { RiFolderHistoryLine, RiLogoutBoxRLine, RiQuestionLine } from 'react-icons/ri';
-import { IoSettingsOutline, IoNotificationsSharp } from 'react-icons/io5';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { SiBigbluebutton } from 'react-icons/si';
-import { ImProfile } from 'react-icons/im';
-import { TbReportSearch } from 'react-icons/tb';
+import { BsJournalBookmark } from "react-icons/bs";
+import {
+  RiFolderHistoryLine,
+  RiLogoutBoxRLine,
+  RiQuestionLine,
+} from "react-icons/ri";
+import { IoSettingsOutline, IoNotificationsSharp } from "react-icons/io5";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { SiBigbluebutton } from "react-icons/si";
+import { ImProfile } from "react-icons/im";
+import { TbReportSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
-import Avat from '../image/avat1.png';
+import Avat from "../image/avat1.png";
+import Cookies from "js-cookie";
 
 function ResearcherNavbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
-    const handleMenuToggle = () => {
-        setIsMenuOpen(!isMenuOpen)
-    };
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-    const Navigate = useNavigate();
-    const gotoResearcherProfile = () => {
-        Navigate('/researcherProfile')
-    };
-    const gotoTrackReports = () => {
-        Navigate('/track-report')
-    };
-    const gotoBuountyHistory = () => {
-        Navigate('/bounty-history')
-    };
-    const gotoBookmarkedProgram = () => {
-        Navigate('/bookmarked-program')
-    };
-    const gotoNotification = () => {
-        Navigate('/dashboard-notification')
-    };
-    const gotoSetting = () => {
-        Navigate('/dashboard-settings')
-    };
+  const Navigate = useNavigate();
+  const gotoResearcherProfile = () => {
+    Navigate("/researcherProfile");
+  };
+  const gotoTrackReports = () => {
+    Navigate("/track-report");
+  };
+  const gotoBuountyHistory = () => {
+    Navigate("/bounty-history");
+  };
+  const gotoBookmarkedProgram = () => {
+    Navigate("/bookmarked-program");
+  };
+  const gotoNotification = () => {
+    Navigate("/dashboard-notification");
+  };
+  const gotoSetting = () => {
+    Navigate("/dashboard-settings");
+  };
 
-    const gotoFAQs = () => {
-        Navigate('/researcherFAQs')
-    }
+  const gotoFAQs = () => {
+    Navigate("/researcherFAQs");
+  };
 
-    return (
-        <nav className={`navbar ${isMenuOpen ? 'open' : 'close'}`}>
+  return (
+    <nav className={`navbar ${isMenuOpen ? "open" : "close"}`}>
+      <div
+        className={`navbar-toggle ${isMenuOpen ? "navopen" : "navclose"}`}
+        onClick={handleMenuToggle}
+      >
+        {isMenuOpen ? <FiChevronLeft /> : <FiChevronRight />}
+      </div>
+      <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
+        <li>
+          <span className="back-link-icon navbar-menu-icon">
+            <AiOutlineArrowLeft />
+          </span>
+          {isMenuOpen && (
+            <span className="back-link navbar-menu-item">Back to Home</span>
+          )}
+        </li>
+        <hr className={`navbar-hr ${isMenuOpen ? "open" : ""}`} />
+        <li onClick={gotoResearcherProfile}>
+          <span className="navbar-menu-icon">
+            <ImProfile />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Researcher Profile</span>
+          )}
+        </li>
+        <li onClick={gotoTrackReports}>
+          <span className="navbar-menu-icon" style={{ color: "#ffffff" }}>
+            <TbReportSearch />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Track Report</span>}
+        </li>
 
-            <div className={`navbar-toggle ${isMenuOpen ? 'navopen' : 'navclose'}`} onClick={handleMenuToggle}>
-                {isMenuOpen ? <FiChevronLeft /> : <FiChevronRight />}
-            </div>
-            <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
-                <li >
-                    <span className="back-link-icon navbar-menu-icon"><AiOutlineArrowLeft /></span>
-                    {isMenuOpen && <span className="back-link navbar-menu-item">Back to Home</span>}
-                </li>
-                <hr className={`navbar-hr ${isMenuOpen ? 'open' : ''}`} />
-                <li onClick={gotoResearcherProfile} >
-                    <span className="navbar-menu-icon"><ImProfile /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Researcher Profile</span>}
-                </li>
-                <li onClick={gotoTrackReports}>
-                    <span className="navbar-menu-icon" style={{ color: "#ffffff" }}><TbReportSearch /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Track Report</span>}
-                </li>
+        <li onClick={gotoBuountyHistory}>
+          <span className="navbar-menu-icon">
+            <RiFolderHistoryLine />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Bounty History</span>
+          )}
+        </li>
+        <li onClick={gotoBookmarkedProgram}>
+          <span className="navbar-menu-icon">
+            <BsJournalBookmark />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Bookmarked Program</span>
+          )}
+        </li>
+        <li onClick={gotoNotification}>
+          <span className="navbar-menu-icon">
+            <IoNotificationsSharp />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Notification</span>}
+        </li>
+        <li>
+          <span className="navbar-menu-icon">
+            <RiLogoutBoxRLine />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Logout</span>}
+        </li>
+        <hr className={`navbar-hr ${isMenuOpen ? "open" : ""}`} />
 
-                <li onClick={gotoBuountyHistory}>
-                    <span className="navbar-menu-icon"><RiFolderHistoryLine /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Bounty History</span>}
-                </li>
-                <li onClick={gotoBookmarkedProgram}>
-                    <span className="navbar-menu-icon"><BsJournalBookmark /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Bookmarked Program</span>}
-                </li>
-                <li onClick={gotoNotification}>
-                    <span className="navbar-menu-icon"><IoNotificationsSharp /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Notification</span>}
-                </li>
-                <li >
-                    <span className="navbar-menu-icon"><RiLogoutBoxRLine /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Logout</span>}
-                </li>
-                <hr className={`navbar-hr ${isMenuOpen ? 'open' : ''}`} />
-
-
-                <li className="dashboard-link" onClick={gotoSetting}>
-                    <span className="navbar-menu-icon"><IoSettingsOutline /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">Settings</span>}
-                </li>
-                <li onClick={gotoFAQs}>
-                    <span className="navbar-menu-icon"><RiQuestionLine /></span>
-                    {isMenuOpen && <span className="navbar-menu-item">FAQs</span>}
-                </li>
-            </ul>
-
-        </nav>);
-
+        <li className="dashboard-link" onClick={gotoSetting}>
+          <span className="navbar-menu-icon">
+            <IoSettingsOutline />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Settings</span>}
+        </li>
+        <li onClick={gotoFAQs}>
+          <span className="navbar-menu-icon">
+            <RiQuestionLine />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">FAQs</span>}
+        </li>
+      </ul>
+    </nav>
+  );
 }
-
-
 
 const ResearcherSettings = (props) => {
-
-
-    const countries = [
-        { name: "Afghanistan", code: "AF" },
-        { name: "Åland Islands", code: "AX" },
-        { name: "Albania", code: "AL" },
-        { name: "Algeria", code: "DZ" },
-        { name: "American Samoa", code: "AS" },
-        { name: "AndorrA", code: "AD" },
-        { name: "Angola", code: "AO" },
-        { name: "Anguilla", code: "AI" },
-        { name: "Antarctica", code: "AQ" },
-        { name: "Antigua and Barbuda", code: "AG" },
-        { name: "Argentina", code: "AR" },
-        { name: "Armenia", code: "AM" },
-        { name: "Aruba", code: "AW" },
-        { name: "Australia", code: "AU" },
-        { name: "Austria", code: "AT" },
-        { name: "Azerbaijan", code: "AZ" },
-        { name: "Bahamas", code: "BS" },
-        { name: "Bahrain", code: "BH" },
-        { name: "Bangladesh", code: "BD" },
-        { name: "Barbados", code: "BB" },
-        { name: "Belarus", code: "BY" },
-        { name: "Belgium", code: "BE" },
-        { name: "Belize", code: "BZ" },
-        { name: "Benin", code: "BJ" },
-        { name: "Bermuda", code: "BM" },
-        { name: "Bhutan", code: "BT" },
-        { name: "Bolivia", code: "BO" },
-        { name: "Bosnia and Herzegovina", code: "BA" },
-        { name: "Botswana", code: "BW" },
-        { name: "Bouvet Island", code: "BV" },
-        { name: "Brazil", code: "BR" },
-        { name: "British Indian Ocean Territory", code: "IO" },
-        { name: "Brunei Darussalam", code: "BN" },
-        { name: "Bulgaria", code: "BG" },
-        { name: "Burkina Faso", code: "BF" },
-        { name: "Burundi", code: "BI" },
-        { name: "Cambodia", code: "KH" },
-        { name: "Cameroon", code: "CM" },
-        { name: "Canada", code: "CA" },
-        { name: "Cape Verde", code: "CV" },
-        { name: "Cayman Islands", code: "KY" },
-        { name: "Central African Republic", code: "CF" },
-        { name: "Chad", code: "TD" },
-        { name: "Chile", code: "CL" },
-        { name: "China", code: "CN" },
-        { name: "Christmas Island", code: "CX" },
-        { name: "Cocos (Keeling) Islands", code: "CC" },
-        { name: "Colombia", code: "CO" },
-        { name: "Comoros", code: "KM" },
-        { name: "Congo", code: "CG" },
-        { name: "Congo, The Democratic Republic of the", code: "CD" },
-        { name: "Cook Islands", code: "CK" },
-        { name: "Costa Rica", code: "CR" },
-        { name: "Cote D'Ivoire", code: "CI" },
-        { name: "Croatia", code: "HR" },
-        { name: "Cuba", code: "CU" },
-        { name: "Cyprus", code: "CY" },
-        { name: "Czech Republic", code: "CZ" },
-        { name: "Denmark", code: "DK" },
-        { name: "Djibouti", code: "DJ" },
-        { name: "Dominica", code: "DM" },
-        { name: "Dominican Republic", code: "DO" },
-        { name: "Ecuador", code: "EC" },
-        { name: "Egypt", code: "EG" },
-        { name: "El Salvador", code: "SV" },
-        { name: "Equatorial Guinea", code: "GQ" },
-        { name: "Eritrea", code: "ER" },
-        { name: "Estonia", code: "EE" },
-        { name: "Ethiopia", code: "ET" },
-        { name: "Falkland Islands (Malvinas)", code: "FK" },
-        { name: "Faroe Islands", code: "FO" },
-        { name: "Fiji", code: "FJ" },
-        { name: "Finland", code: "FI" },
-        { name: "France", code: "FR" },
-        { name: "French Guiana", code: "GF" },
-        { name: "French Polynesia", code: "PF" },
-        { name: "French Southern Territories", code: "TF" },
-        { name: "Gabon", code: "GA" },
-        { name: "Gambia", code: "GM" },
-        { name: "Georgia", code: "GE" },
-        { name: "Germany", code: "DE" },
-        { name: "Ghana", code: "GH" },
-        { name: "Gibraltar", code: "GI" },
-        { name: "Greece", code: "GR" },
-        { name: "Greenland", code: "GL" },
-        { name: "Grenada", code: "GD" },
-        { name: "Guadeloupe", code: "GP" },
-        { name: "Guam", code: "GU" },
-        { name: "Guatemala", code: "GT" },
-        { name: "Guernsey", code: "GG" },
-        { name: "Guinea", code: "GN" },
-        { name: "Guinea-Bissau", code: "GW" },
-        { name: "Guyana", code: "GY" },
-        { name: "Haiti", code: "HT" },
-        { name: "Heard Island and Mcdonald Islands", code: "HM" },
-        { name: "Holy See (Vatican City State)", code: "VA" },
-        { name: "Honduras", code: "HN" },
-        { name: "Hong Kong", code: "HK" },
-        { name: "Hungary", code: "HU" },
-        { name: "Iceland", code: "IS" },
-        { name: "India", code: "IN" },
-        { name: "Indonesia", code: "ID" },
-        { name: "Iran, Islamic Republic Of", code: "IR" },
-        { name: "Iraq", code: "IQ" },
-        { name: "Ireland", code: "IE" },
-        { name: "Isle of Man", code: "IM" },
-        { name: "Israel", code: "IL" },
-        { name: "Italy", code: "IT" },
-        { name: "Jamaica", code: "JM" },
-        { name: "Japan", code: "JP" },
-        { name: "Jersey", code: "JE" },
-        { name: "Jordan", code: "JO" },
-        { name: "Kazakhstan", code: "KZ" },
-        { name: "Kenya", code: "KE" },
-        { name: "Kiribati", code: "KI" },
-        { name: "Korea, Democratic People'S Republic of", code: "KP" },
-        { name: "Korea, Republic of", code: "KR" },
-        { name: "Kuwait", code: "KW" },
-        { name: "Kyrgyzstan", code: "KG" },
-        { name: "Lao People'S Democratic Republic", code: "LA" },
-        { name: "Latvia", code: "LV" },
-        { name: "Lebanon", code: "LB" },
-        { name: "Lesotho", code: "LS" },
-        { name: "Liberia", code: "LR" },
-        { name: "Libyan Arab Jamahiriya", code: "LY" },
-        { name: "Liechtenstein", code: "LI" },
-        { name: "Lithuania", code: "LT" },
-        { name: "Luxembourg", code: "LU" },
-        { name: "Macao", code: "MO" },
-        { name: "Macedonia, The Former Yugoslav Republic of", code: "MK" },
-        { name: "Madagascar", code: "MG" },
-        { name: "Malawi", code: "MW" },
-        { name: "Malaysia", code: "MY" },
-        { name: "Maldives", code: "MV" },
-        { name: "Mali", code: "ML" },
-        { name: "Malta", code: "MT" },
-        { name: "Marshall Islands", code: "MH" },
-        { name: "Martinique", code: "MQ" },
-        { name: "Mauritania", code: "MR" },
-        { name: "Mauritius", code: "MU" },
-        { name: "Mayotte", code: "YT" },
-        { name: "Mexico", code: "MX" },
-        { name: "Micronesia, Federated States of", code: "FM" },
-        { name: "Moldova, Republic of", code: "MD" },
-        { name: "Monaco", code: "MC" },
-        { name: "Mongolia", code: "MN" },
-        { name: "Montserrat", code: "MS" },
-        { name: "Morocco", code: "MA" },
-        { name: "Mozambique", code: "MZ" },
-        { name: "Myanmar", code: "MM" },
-        { name: "Namibia", code: "NA" },
-        { name: "Nauru", code: "NR" },
-        { name: "Nepal", code: "NP" },
-        { name: "Netherlands", code: "NL" },
-        { name: "Netherlands Antilles", code: "AN" },
-        { name: "New Caledonia", code: "NC" },
-        { name: "New Zealand", code: "NZ" },
-        { name: "Nicaragua", code: "NI" },
-        { name: "Niger", code: "NE" },
-        { name: "Nigeria", code: "NG" },
-        { name: "Niue", code: "NU" },
-        { name: "Norfolk Island", code: "NF" },
-        { name: "Northern Mariana Islands", code: "MP" },
-        { name: "Norway", code: "NO" },
-        { name: "Oman", code: "OM" },
-        { name: "Pakistan", code: "PK" },
-        { name: "Palau", code: "PW" },
-        { name: "Palestinian Territory, Occupied", code: "PS" },
-        { name: "Panama", code: "PA" },
-        { name: "Papua New Guinea", code: "PG" },
-        { name: "Paraguay", code: "PY" },
-        { name: "Peru", code: "PE" },
-        { name: "Philippines", code: "PH" },
-        { name: "Pitcairn", code: "PN" },
-        { name: "Poland", code: "PL" },
-        { name: "Portugal", code: "PT" },
-        { name: "Puerto Rico", code: "PR" },
-        { name: "Qatar", code: "QA" },
-        { name: "Reunion", code: "RE" },
-        { name: "Romania", code: "RO" },
-        { name: "Russian Federation", code: "RU" },
-        { name: "RWANDA", code: "RW" },
-        { name: "Saint Helena", code: "SH" },
-        { name: "Saint Kitts and Nevis", code: "KN" },
-        { name: "Saint Lucia", code: "LC" },
-        { name: "Saint Pierre and Miquelon", code: "PM" },
-        { name: "Saint Vincent and the Grenadines", code: "VC" },
-        { name: "Samoa", code: "WS" },
-        { name: "San Marino", code: "SM" },
-        { name: "Sao Tome and Principe", code: "ST" },
-        { name: "Saudi Arabia", code: "SA" },
-        { name: "Senegal", code: "SN" },
-        { name: "Serbia and Montenegro", code: "CS" },
-        { name: "Seychelles", code: "SC" },
-        { name: "Sierra Leone", code: "SL" },
-        { name: "Singapore", code: "SG" },
-        { name: "Slovakia", code: "SK" },
-        { name: "Slovenia", code: "SI" },
-        { name: "Solomon Islands", code: "SB" },
-        { name: "Somalia", code: "SO" },
-        { name: "South Africa", code: "ZA" },
-        { name: "South Georgia and the South Sandwich Islands", code: "GS" },
-        { name: "Spain", code: "ES" },
-        { name: "Sri Lanka", code: "LK" },
-        { name: "Sudan", code: "SD" },
-        { name: "Suriname", code: "SR" },
-        { name: "Svalbard and Jan Mayen", code: "SJ" },
-        { name: "Swaziland", code: "SZ" },
-        { name: "Sweden", code: "SE" },
-        { name: "Switzerland", code: "CH" },
-        { name: "Syrian Arab Republic", code: "SY" },
-        { name: "Taiwan, Province of China", code: "TW" },
-        { name: "Tajikistan", code: "TJ" },
-        { name: "Tanzania, United Republic of", code: "TZ" },
-        { name: "Thailand", code: "TH" },
-        { name: "Timor-Leste", code: "TL" },
-        { name: "Togo", code: "TG" },
-        { name: "Tokelau", code: "TK" },
-        { name: "Tonga", code: "TO" },
-        { name: "Trinidad and Tobago", code: "TT" },
-        { name: "Tunisia", code: "TN" },
-        { name: "Turkey", code: "TR" },
-        { name: "Turkmenistan", code: "TM" },
-        { name: "Turks and Caicos Islands", code: "TC" },
-        { name: "Tuvalu", code: "TV" },
-        { name: "Uganda", code: "UG" },
-        { name: "Ukraine", code: "UA" },
-        { name: "United Arab Emirates", code: "AE" },
-        { name: "United Kingdom", code: "GB" },
-        { name: "United States", code: "US" },
-        { name: "United States Minor Outlying Islands", code: "UM" },
-        { name: "Uruguay", code: "UY" },
-        { name: "Uzbekistan", code: "UZ" },
-        { name: "Vanuatu", code: "VU" },
-        { name: "Venezuela", code: "VE" },
-        { name: "Viet Nam", code: "VN" },
-        { name: "Virgin Islands, British", code: "VG" },
-        { name: "Virgin Islands, U.S.", code: "VI" },
-        { name: "Wallis and Futuna", code: "WF" },
-        { name: "Western Sahara", code: "EH" },
-        { name: "Yemen", code: "YE" },
-        { name: "Zambia", code: "ZM" },
-        { name: "Zimbabwe", code: "ZW" },
-    ];
-
-
-    const [emailId, setEmailId] = useState();
-    const [Password, setPassword] = useState();
-    const [selectedCountry, setSelectedCountry] = useState();
-
-    const handleCountryChange = (event) => {
-        setSelectedCountry(event.target.value);
-    };
-    const handleProfileUpdate = () => {
-
+  const countries = [
+    { name: "Afghanistan", code: "AF" },
+    { name: "Åland Islands", code: "AX" },
+    { name: "Albania", code: "AL" },
+    { name: "Algeria", code: "DZ" },
+    { name: "American Samoa", code: "AS" },
+    { name: "AndorrA", code: "AD" },
+    { name: "Angola", code: "AO" },
+    { name: "Anguilla", code: "AI" },
+    { name: "Antarctica", code: "AQ" },
+    { name: "Antigua and Barbuda", code: "AG" },
+    { name: "Argentina", code: "AR" },
+    { name: "Armenia", code: "AM" },
+    { name: "Aruba", code: "AW" },
+    { name: "Australia", code: "AU" },
+    { name: "Austria", code: "AT" },
+    { name: "Azerbaijan", code: "AZ" },
+    { name: "Bahamas", code: "BS" },
+    { name: "Bahrain", code: "BH" },
+    { name: "Bangladesh", code: "BD" },
+    { name: "Barbados", code: "BB" },
+    { name: "Belarus", code: "BY" },
+    { name: "Belgium", code: "BE" },
+    { name: "Belize", code: "BZ" },
+    { name: "Benin", code: "BJ" },
+    { name: "Bermuda", code: "BM" },
+    { name: "Bhutan", code: "BT" },
+    { name: "Bolivia", code: "BO" },
+    { name: "Bosnia and Herzegovina", code: "BA" },
+    { name: "Botswana", code: "BW" },
+    { name: "Bouvet Island", code: "BV" },
+    { name: "Brazil", code: "BR" },
+    { name: "British Indian Ocean Territory", code: "IO" },
+    { name: "Brunei Darussalam", code: "BN" },
+    { name: "Bulgaria", code: "BG" },
+    { name: "Burkina Faso", code: "BF" },
+    { name: "Burundi", code: "BI" },
+    { name: "Cambodia", code: "KH" },
+    { name: "Cameroon", code: "CM" },
+    { name: "Canada", code: "CA" },
+    { name: "Cape Verde", code: "CV" },
+    { name: "Cayman Islands", code: "KY" },
+    { name: "Central African Republic", code: "CF" },
+    { name: "Chad", code: "TD" },
+    { name: "Chile", code: "CL" },
+    { name: "China", code: "CN" },
+    { name: "Christmas Island", code: "CX" },
+    { name: "Cocos (Keeling) Islands", code: "CC" },
+    { name: "Colombia", code: "CO" },
+    { name: "Comoros", code: "KM" },
+    { name: "Congo", code: "CG" },
+    { name: "Congo, The Democratic Republic of the", code: "CD" },
+    { name: "Cook Islands", code: "CK" },
+    { name: "Costa Rica", code: "CR" },
+    { name: "Cote D'Ivoire", code: "CI" },
+    { name: "Croatia", code: "HR" },
+    { name: "Cuba", code: "CU" },
+    { name: "Cyprus", code: "CY" },
+    { name: "Czech Republic", code: "CZ" },
+    { name: "Denmark", code: "DK" },
+    { name: "Djibouti", code: "DJ" },
+    { name: "Dominica", code: "DM" },
+    { name: "Dominican Republic", code: "DO" },
+    { name: "Ecuador", code: "EC" },
+    { name: "Egypt", code: "EG" },
+    { name: "El Salvador", code: "SV" },
+    { name: "Equatorial Guinea", code: "GQ" },
+    { name: "Eritrea", code: "ER" },
+    { name: "Estonia", code: "EE" },
+    { name: "Ethiopia", code: "ET" },
+    { name: "Falkland Islands (Malvinas)", code: "FK" },
+    { name: "Faroe Islands", code: "FO" },
+    { name: "Fiji", code: "FJ" },
+    { name: "Finland", code: "FI" },
+    { name: "France", code: "FR" },
+    { name: "French Guiana", code: "GF" },
+    { name: "French Polynesia", code: "PF" },
+    { name: "French Southern Territories", code: "TF" },
+    { name: "Gabon", code: "GA" },
+    { name: "Gambia", code: "GM" },
+    { name: "Georgia", code: "GE" },
+    { name: "Germany", code: "DE" },
+    { name: "Ghana", code: "GH" },
+    { name: "Gibraltar", code: "GI" },
+    { name: "Greece", code: "GR" },
+    { name: "Greenland", code: "GL" },
+    { name: "Grenada", code: "GD" },
+    { name: "Guadeloupe", code: "GP" },
+    { name: "Guam", code: "GU" },
+    { name: "Guatemala", code: "GT" },
+    { name: "Guernsey", code: "GG" },
+    { name: "Guinea", code: "GN" },
+    { name: "Guinea-Bissau", code: "GW" },
+    { name: "Guyana", code: "GY" },
+    { name: "Haiti", code: "HT" },
+    { name: "Heard Island and Mcdonald Islands", code: "HM" },
+    { name: "Holy See (Vatican City State)", code: "VA" },
+    { name: "Honduras", code: "HN" },
+    { name: "Hong Kong", code: "HK" },
+    { name: "Hungary", code: "HU" },
+    { name: "Iceland", code: "IS" },
+    { name: "India", code: "IN" },
+    { name: "Indonesia", code: "ID" },
+    { name: "Iran, Islamic Republic Of", code: "IR" },
+    { name: "Iraq", code: "IQ" },
+    { name: "Ireland", code: "IE" },
+    { name: "Isle of Man", code: "IM" },
+    { name: "Israel", code: "IL" },
+    { name: "Italy", code: "IT" },
+    { name: "Jamaica", code: "JM" },
+    { name: "Japan", code: "JP" },
+    { name: "Jersey", code: "JE" },
+    { name: "Jordan", code: "JO" },
+    { name: "Kazakhstan", code: "KZ" },
+    { name: "Kenya", code: "KE" },
+    { name: "Kiribati", code: "KI" },
+    { name: "Korea, Democratic People'S Republic of", code: "KP" },
+    { name: "Korea, Republic of", code: "KR" },
+    { name: "Kuwait", code: "KW" },
+    { name: "Kyrgyzstan", code: "KG" },
+    { name: "Lao People'S Democratic Republic", code: "LA" },
+    { name: "Latvia", code: "LV" },
+    { name: "Lebanon", code: "LB" },
+    { name: "Lesotho", code: "LS" },
+    { name: "Liberia", code: "LR" },
+    { name: "Libyan Arab Jamahiriya", code: "LY" },
+    { name: "Liechtenstein", code: "LI" },
+    { name: "Lithuania", code: "LT" },
+    { name: "Luxembourg", code: "LU" },
+    { name: "Macao", code: "MO" },
+    { name: "Macedonia, The Former Yugoslav Republic of", code: "MK" },
+    { name: "Madagascar", code: "MG" },
+    { name: "Malawi", code: "MW" },
+    { name: "Malaysia", code: "MY" },
+    { name: "Maldives", code: "MV" },
+    { name: "Mali", code: "ML" },
+    { name: "Malta", code: "MT" },
+    { name: "Marshall Islands", code: "MH" },
+    { name: "Martinique", code: "MQ" },
+    { name: "Mauritania", code: "MR" },
+    { name: "Mauritius", code: "MU" },
+    { name: "Mayotte", code: "YT" },
+    { name: "Mexico", code: "MX" },
+    { name: "Micronesia, Federated States of", code: "FM" },
+    { name: "Moldova, Republic of", code: "MD" },
+    { name: "Monaco", code: "MC" },
+    { name: "Mongolia", code: "MN" },
+    { name: "Montserrat", code: "MS" },
+    { name: "Morocco", code: "MA" },
+    { name: "Mozambique", code: "MZ" },
+    { name: "Myanmar", code: "MM" },
+    { name: "Namibia", code: "NA" },
+    { name: "Nauru", code: "NR" },
+    { name: "Nepal", code: "NP" },
+    { name: "Netherlands", code: "NL" },
+    { name: "Netherlands Antilles", code: "AN" },
+    { name: "New Caledonia", code: "NC" },
+    { name: "New Zealand", code: "NZ" },
+    { name: "Nicaragua", code: "NI" },
+    { name: "Niger", code: "NE" },
+    { name: "Nigeria", code: "NG" },
+    { name: "Niue", code: "NU" },
+    { name: "Norfolk Island", code: "NF" },
+    { name: "Northern Mariana Islands", code: "MP" },
+    { name: "Norway", code: "NO" },
+    { name: "Oman", code: "OM" },
+    { name: "Pakistan", code: "PK" },
+    { name: "Palau", code: "PW" },
+    { name: "Palestinian Territory, Occupied", code: "PS" },
+    { name: "Panama", code: "PA" },
+    { name: "Papua New Guinea", code: "PG" },
+    { name: "Paraguay", code: "PY" },
+    { name: "Peru", code: "PE" },
+    { name: "Philippines", code: "PH" },
+    { name: "Pitcairn", code: "PN" },
+    { name: "Poland", code: "PL" },
+    { name: "Portugal", code: "PT" },
+    { name: "Puerto Rico", code: "PR" },
+    { name: "Qatar", code: "QA" },
+    { name: "Reunion", code: "RE" },
+    { name: "Romania", code: "RO" },
+    { name: "Russian Federation", code: "RU" },
+    { name: "RWANDA", code: "RW" },
+    { name: "Saint Helena", code: "SH" },
+    { name: "Saint Kitts and Nevis", code: "KN" },
+    { name: "Saint Lucia", code: "LC" },
+    { name: "Saint Pierre and Miquelon", code: "PM" },
+    { name: "Saint Vincent and the Grenadines", code: "VC" },
+    { name: "Samoa", code: "WS" },
+    { name: "San Marino", code: "SM" },
+    { name: "Sao Tome and Principe", code: "ST" },
+    { name: "Saudi Arabia", code: "SA" },
+    { name: "Senegal", code: "SN" },
+    { name: "Serbia and Montenegro", code: "CS" },
+    { name: "Seychelles", code: "SC" },
+    { name: "Sierra Leone", code: "SL" },
+    { name: "Singapore", code: "SG" },
+    { name: "Slovakia", code: "SK" },
+    { name: "Slovenia", code: "SI" },
+    { name: "Solomon Islands", code: "SB" },
+    { name: "Somalia", code: "SO" },
+    { name: "South Africa", code: "ZA" },
+    { name: "South Georgia and the South Sandwich Islands", code: "GS" },
+    { name: "Spain", code: "ES" },
+    { name: "Sri Lanka", code: "LK" },
+    { name: "Sudan", code: "SD" },
+    { name: "Suriname", code: "SR" },
+    { name: "Svalbard and Jan Mayen", code: "SJ" },
+    { name: "Swaziland", code: "SZ" },
+    { name: "Sweden", code: "SE" },
+    { name: "Switzerland", code: "CH" },
+    { name: "Syrian Arab Republic", code: "SY" },
+    { name: "Taiwan, Province of China", code: "TW" },
+    { name: "Tajikistan", code: "TJ" },
+    { name: "Tanzania, United Republic of", code: "TZ" },
+    { name: "Thailand", code: "TH" },
+    { name: "Timor-Leste", code: "TL" },
+    { name: "Togo", code: "TG" },
+    { name: "Tokelau", code: "TK" },
+    { name: "Tonga", code: "TO" },
+    { name: "Trinidad and Tobago", code: "TT" },
+    { name: "Tunisia", code: "TN" },
+    { name: "Turkey", code: "TR" },
+    { name: "Turkmenistan", code: "TM" },
+    { name: "Turks and Caicos Islands", code: "TC" },
+    { name: "Tuvalu", code: "TV" },
+    { name: "Uganda", code: "UG" },
+    { name: "Ukraine", code: "UA" },
+    { name: "United Arab Emirates", code: "AE" },
+    { name: "United Kingdom", code: "GB" },
+    { name: "United States", code: "US" },
+    { name: "United States Minor Outlying Islands", code: "UM" },
+    { name: "Uruguay", code: "UY" },
+    { name: "Uzbekistan", code: "UZ" },
+    { name: "Vanuatu", code: "VU" },
+    { name: "Venezuela", code: "VE" },
+    { name: "Viet Nam", code: "VN" },
+    { name: "Virgin Islands, British", code: "VG" },
+    { name: "Virgin Islands, U.S.", code: "VI" },
+    { name: "Wallis and Futuna", code: "WF" },
+    { name: "Western Sahara", code: "EH" },
+    { name: "Yemen", code: "YE" },
+    { name: "Zambia", code: "ZM" },
+    { name: "Zimbabwe", code: "ZW" },
+  ];
+  const [userName, setUsername] = useState();
+  const [emailId, setEmailId] = useState();
+  const [Password, setPassword] = useState();
+  const [selectedCountry, setSelectedCountry] = useState();
+  const [data, setData] = useState();
+  useEffect(() => {
+    async function fetchProfileStats() {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ myCookie: `${Cookies.get("myCookie")}` }),
+      };
+      const response = await fetch(
+        `http://127.0.0.1:5173/profileRes/${Cookies.get("rsrc_id")}`
+      );
+      const data = await response.json();
+      //   console.log(data);
+      setData(data);
     }
-    return (
-        <>
 
-            <div className="res-profile">
+    fetchProfileStats();
+  }, []);
 
-                <div className="bus-profile-divs">
-                    <div className="bus-profile-div1">
-                        <ResearcherNavbar />
-                    </div>
-                    <div className="bus-profile-div2">
-                        <h1 className="bus-profile-div2-h">Setting</h1>
+  const handleCountryChange = (event) => {
+    setSelectedCountry(event.target.value);
+  };
+  const handleProfileUpdate = async (e) => {
+    e.preventDefault();
+    const myCookie = Cookies.get("myCookie");
+    const data2 = {
+      myCookie: `${myCookie}`,
+      username: `${userName}`,
+      email: `${emailId}`,
+      password: `${Password}`,
+      country: `${selectedCountry}`,
+    };
+    const response = await fetch(`http://127.0.0.1:5173/settingRes`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data2),
+    });
+    const jwt = await response.json();
+    alert(jwt.status);
+    window.location.href = "/dashboard-settings";
+  };
+  return (
+    <>
+      <div className="res-profile">
+        <div className="bus-profile-divs">
+          <div className="bus-profile-div1">
+            <ResearcherNavbar />
+          </div>
+          <div className="bus-profile-div2">
+            <h1 className="bus-profile-div2-h">Setting</h1>
 
-
-
-                        <center><div className="bus-profile-header">
-                            <img src={Avat} className="bus-profile-company-logo" />
-                            <h3 className="bus-profile-company-name">{props.rUsername}</h3>
-                        </div></center>
-                        <div className="stats">
-
-
-
-                            <form className="researcher-form">
-                                <div className="column-div1 res-form">
-                                    <label className="res-form-label">Email Id : {props.email} </label>
-                                    <input className="res-input"
-                                        type="text"
-                                        value={emailId}
-                                        onChange={(event) => setEmailId(event.target.value)} />
-                                </div>
-                                <div className="column-div1 res-form">
-                                    <label className="res-form-label">Password: </label>
-                                    <input className="res-input"
-                                        type="password"
-                                        value={Password}
-                                        onChange={(event) => setPassword(event.target.value)} />
-                                </div>
-
-                                <div className="column-div1 res-form">
-                                    <label className="res-form-label">Country: {props.country}</label>
-                                    <select
-                                        className="res-input"
-                                        id="country"
-                                        value={selectedCountry}
-                                        onChange={handleCountryChange}
-                                    >
-                                        <option value="">Select a country</option>
-                                        {countries.map((country) => (
-                                            <option
-                                                className="dashboard-form-option"
-                                                key={country.code}
-
-                                                value={country.name}>
-                                                {" "}
-                                                {country.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="button_ani dashboard-button" onClick={handleProfileUpdate}>
-                                    <button type="submit" className="button2">Update Profile</button>
-                                </div>
-                            </form>
-
-                        </div>
-                    </div>
+            <center>
+              <div className="bus-profile-header">
+                <img src={Avat} className="bus-profile-company-logo" />
+                <h3 className="bus-profile-company-name">
+                  {data && data.username}
+                </h3>
+              </div>
+            </center>
+            <div className="stats">
+              <form className="researcher-form">
+                <div className="column-div1 res-form">
+                  <label className="res-form-label">
+                    Email Id : {data && data.email}{" "}
+                  </label>
+                  <input
+                    className="res-input"
+                    type="text"
+                    value={emailId}
+                    onChange={(event) => setEmailId(event.target.value)}
+                  />
                 </div>
-            </div>
-        </>
-    )
-}
+                <div className="column-div1 res-form">
+                  <label className="res-form-label">Password: </label>
+                  <input
+                    className="res-input"
+                    type="password"
+                    value={Password}
+                    onChange={(event) => setPassword(event.target.value)}
+                  />
+                </div>
 
+                <div className="column-div1 res-form">
+                  <label className="res-form-label">
+                    Country: {data && data.country}
+                  </label>
+                  <select
+                    className="res-input"
+                    id="country"
+                    value={selectedCountry}
+                    onChange={handleCountryChange}
+                  >
+                    <option value="">Select a country</option>
+                    {countries.map((country) => (
+                      <option
+                        className="dashboard-form-option"
+                        key={country.code}
+                        value={country.name}
+                      >
+                        {" "}
+                        {country.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div
+                  className="button_ani dashboard-button"
+                  onClick={handleProfileUpdate}
+                >
+                  <button type="submit" className="button2">
+                    Update Profile
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 ResearcherSettings.defaultProps = {
-    researcherAvtar: '',
-    rUsername: 'User Name',
-    email: "xyz@gmail.com",
-    password: "12wtezm",
-    country: "India",
-}
-
+  researcherAvtar: "",
+  rUsername: "User Name",
+  email: "xyz@gmail.com",
+  password: "12wtezm",
+  country: "India",
+};
 
 export default ResearcherSettings;
