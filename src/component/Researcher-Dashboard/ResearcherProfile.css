@@ -112,8 +112,8 @@
 .researcher-form {
     margin-top: 5rem;
     /* text-align: center; */
-    width: 50%;
-    margin-left: calc(25%);
+    width: 80%;
+    margin-left: calc(20%);
 }
 
 .res-form {
@@ -142,8 +142,6 @@
     box-shadow: 0px 0px 3px #04ff69;
     border: none;
 }
-
-
 
 
 

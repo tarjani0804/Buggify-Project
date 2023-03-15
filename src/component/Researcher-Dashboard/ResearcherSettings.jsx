@@ -443,6 +443,17 @@ const ResearcherSettings = (props) => {
               <form className="researcher-form">
                 <div className="column-div1 res-form">
                   <label className="res-form-label">
+                    User Name : {data && data.username}
+                  </label>
+                  <input
+                    className="res-input"
+                    type="text"
+                    value={userName}
+                    onChange={(event) => setUsername(event.target.value)}
+                  />
+                </div>
+                <div className="column-div1 res-form">
+                  <label className="res-form-label">
                     Email Id : {data && data.email}{" "}
                   </label>
                   <input
@@ -485,15 +496,16 @@ const ResearcherSettings = (props) => {
                     ))}
                   </select>
                 </div>
-                <div
-                  className="button_ani dashboard-button"
-                  onClick={handleProfileUpdate}
-                >
-                  <button type="submit" className="button2">
-                    Update Profile
-                  </button>
-                </div>
+
               </form>
+              <div
+                className="button_ani dashboard-button"
+                onClick={handleProfileUpdate}
+              >
+                <button type="submit" className="button2">
+                  Update Profile
+                </button>
+              </div>
             </div>
           </div>
         </div>
