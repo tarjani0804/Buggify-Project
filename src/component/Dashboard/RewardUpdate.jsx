@@ -116,7 +116,7 @@ const BusinessProfile = (props) => {
     const [newPayout, setNewPayout] = useState("")
 
     const handleRewardUpdate = () => {
-
+        // data outgoing for reward update
     }
 
     return (

@@ -103,6 +103,9 @@ function ResearcherNavbar() {
 
 const BookmarkedProgram = (props) => {
 
+
+    // data incoming for bookmarked program
+
     return (
         <>
 

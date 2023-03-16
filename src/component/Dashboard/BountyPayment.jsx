@@ -116,6 +116,10 @@ const BusinessProfile = (props) => {
     const [paidTo, setPaidTo] = useState("")
 
     const handleAddPaymentInfo = () => {
+
+        // data outgoing for bounty payment 
+
+
     }
     return (
         <>

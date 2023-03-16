@@ -111,6 +111,10 @@ function DashboardNavbar() {
 
 const BusinessProfile = (props) => {
 
+    // Data incoming for report info  
+
+
+
 
     return (
         <>

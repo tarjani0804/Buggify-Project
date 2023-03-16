@@ -100,6 +100,9 @@ function ResearcherNavbar() {
 
 const BountyHistory = (props) => {
 
+
+    // data incoming for bounty hiistory
+
     return (
         <>
 

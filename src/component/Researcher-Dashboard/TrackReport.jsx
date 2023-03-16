@@ -131,6 +131,11 @@ function OpenReports() {
   const gotoReportInfo = () => {
     navigate("/researcher-ReportInfo");
   };
+
+
+  // data incoming for open report 
+
+
   return (
     <div>
       <div className="track-report">
@@ -164,6 +169,8 @@ function ResolvedReports() {
   const gotoReportInfo = () => {
     navigate("/researcher-ReportInfo");
   };
+
+  // data incoming for resolved report 
 
   return (
     <div>
@@ -234,17 +241,15 @@ const TrackReports = (props) => {
                 <div className="track-report-menu-list">
                   <ul>
                     <li
-                      className={`track-report-menu-list-li ${
-                        OpenSelected ? "listselected" : ""
-                      }`}
+                      className={`track-report-menu-list-li ${OpenSelected ? "listselected" : ""
+                        }`}
                       onClick={handleOpenSelected}
                     >
                       Open
                     </li>
                     <li
-                      className={`track-report-menu-list-li ${
-                        ResolvedSelected ? "listselected" : ""
-                      }`}
+                      className={`track-report-menu-list-li ${ResolvedSelected ? "listselected" : ""
+                        }`}
                       onClick={handleResolvedSelected}
                     >
                       Resolved

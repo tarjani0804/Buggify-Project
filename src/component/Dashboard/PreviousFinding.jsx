@@ -116,6 +116,9 @@ const BusinessProfile = (props) => {
         navigate('/ReportInfo')
     }
 
+
+    // Data incoming for previous finding
+
     return (
         <>
 

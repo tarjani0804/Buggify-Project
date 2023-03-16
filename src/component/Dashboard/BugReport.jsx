@@ -116,6 +116,9 @@ const BusinessProfile = (props) => {
     }
 
 
+
+    // Data incoming for bug report
+
     return (
         <>
 

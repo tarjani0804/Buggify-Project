@@ -97,7 +97,7 @@ function ResearcherNavbar() {
 }
 
 const BusinessProfile = (props) => {
-
+    // data incoming for researcher report info
 
     return (
         <>

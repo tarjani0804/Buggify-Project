@@ -120,11 +120,12 @@ const BusinessProfile = (props) => {
     }
 
     async function handleSearchClick() {
-        const results = await searchDatabase(query);
-        // Do something with the results, e.g. update a state variable
+        // search report based on report id 
+
     }
     const handleSubmit = () => {
 
+        // data outgoing for retesting
     }
 
     return (

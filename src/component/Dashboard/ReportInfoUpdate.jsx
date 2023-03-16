@@ -111,10 +111,19 @@ function DashboardNavbar() {
 
 const BusinessProfile = (props) => {
 
+
+    //  data incoming for report info
+
+
+
     const [cvss, setcvss] = useState();
     const [remark, setremark] = useState();
 
+
     const handleSubmit = () => {
+
+
+        // data outgoing for report info update
 
     }
 

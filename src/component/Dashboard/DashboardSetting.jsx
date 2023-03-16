@@ -18,6 +18,15 @@ import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
+
+
+
+
 function DashboardNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
 
@@ -420,6 +429,13 @@ const BusinessProfile = (props) => {
     const handleCountryChange = (event) => {
         setSelectedCountry(event.target.value);
     };
+
+    const notify = () => {
+        toast.success("Profile Updated !", {
+            position: toast.POSITION.TOP_RIGHT
+        })
+    };
+
     const handleProfileUpdate = async (e) => {
         e.preventDefault();
         const myCookie = Cookies.get("myCookie");
@@ -439,8 +455,13 @@ const BusinessProfile = (props) => {
             body: JSON.stringify(data2),
         });
         const jwt = await response.json();
-        alert(jwt.status);
+
+
+
+
+
         window.location.href = "/DashboardSetting";
+
     };
 
     return (
@@ -450,7 +471,14 @@ const BusinessProfile = (props) => {
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
                     </div>
+
+
                     <div className="bus-profile-div2">
+
+                        <ToastContainer />
+
+
+
                         <h1 className="bus-profile-div2-h">Setting</h1>
                         <center>
                             <div className="bus-profile-header">
@@ -531,7 +559,7 @@ const BusinessProfile = (props) => {
                             </form>
                             <div
                                 className="button_ani dashboard-button"
-                                onClick={handleProfileUpdate}
+                                onClick={() => { handleProfileUpdate(); notify() }}
                             >
                                 <button type="submit" className="button2">
                                     Update Profile
