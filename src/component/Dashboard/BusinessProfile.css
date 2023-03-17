@@ -509,3 +509,89 @@
     width: fit-content;
     margin-top: 20rem;
 }
+
+
+.btn2 {
+    cursor: pointer;
+    content: " ";
+    color: #ffffff;
+    background-color: #ff0404;
+    padding: 15px 40px;
+    font-weight: 400;
+    border: none;
+    text-align: center;
+    box-shadow: 0 0 1px #ff0404, 0 0 1px #ff0404, 0 0 1px #ff0404, 0 0 5px #ff0404;
+    animation: neonBtn 1s ease-in-out infinite alternate;
+}
+
+@keyframes neonBtn {
+    to {
+        box-shadow: 0 0 5px #ff0404, 0 0 0px #ff0404, 0 0 5px #ff0404, 0 0 5px #ff0404;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.confirmation-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    height: 20%;
+    background-color: #141414;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2;
+    text-align: center;
+}
+
+.confirmation-div p {
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.confirmation-yes {
+    position: fixed;
+    left: 10rem;
+    width: 10rem;
+    height: 3rem;
+    font-size: 14px;
+    background-color: #141414;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.confirmation-yes:hover {
+    color: #ff0404;
+}
+
+.confirmation-no {
+    position: fixed;
+    left: 20rem;
+    width: 10rem;
+    height: 3rem;
+    font-size: 14px;
+    background-color: #141414;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 2rem;
+}
