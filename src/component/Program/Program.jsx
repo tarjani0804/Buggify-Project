@@ -9,6 +9,10 @@ const Program = () => {
 
   const gotoPrograms = () => {
     navigate("/Program");
+
+    // set cookie of prog_id and redirect to inner program of that prog_id
+
+
   };
   const gotoLeaderBoard = () => {
     navigate("/ProgramLeaderBoard");
@@ -23,80 +27,9 @@ const Program = () => {
     fetchProfileStats();
   }, []);
 
-  const prog1 = profileStats && profileStats[0];
+  const prog1 = profileStats;
   console.log(prog1);
-  const Programs = [
-    {
-      id: 1,
-      name: "Google VDP",
-      icon: Google,
-      resolved: 210,
-      averageBounty: "$750",
-      launchDate: "2/2019",
-      feature: "Manged by Buggify",
-      assetType: "All",
-    },
-    {
-      id: 2,
-      name: "Google VDP",
-      icon: Google,
-      resolved: 220,
-      averageBounty: "$750",
-      launchDate: "2/2017",
-      feature: "Manged by Buggify",
-      assetType: "All",
-    },
-    {
-      id: 3,
-      name: "Google VDP",
-      icon: Google,
-      resolved: 230,
-      averageBounty: "$750",
-      launchDate: "6/2016",
-      feature: "Manged by Buggify",
-      assetType: "Domains",
-    },
-    {
-      id: 4,
-      name: "Google VDP",
-      icon: Google,
-      resolved: 230,
-      averageBounty: "$750",
-      launchDate: "6/2016",
-      feature: "Manged by Buggify",
-      assetType: "IoT",
-    },
-    {
-      id: 5,
-      name: "Google VDP",
-      icon: Google,
-      resolved: 230,
-      averageBounty: "$750",
-      launchDate: "6/2016",
-      feature: "Manged by Buggify",
-      assetType: "Android",
-    },
-    {
-      id: 6,
-      name: "Google VDP",
-      icon: Google,
-      resolved: 230,
-      averageBounty: "$750",
-      launchDate: "6/2016",
-      feature: "Offer Bounty",
-      assetType: "Windows",
-    },
-    {
-      id: 7,
-      name: "Google VDP",
-      icon: Google,
-      resolved: 230,
-      averageBounty: "$750",
-      launchDate: "6/2016",
-      feature: "Less Response Time",
-      assetType: "iOS",
-    },
-  ];
+
 
   return (
     <>
@@ -134,19 +67,16 @@ const Program = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {Programs.map((program, index) => (
+                  {prog1.map((program, index) => (
                     <tr key={program.id}>
                       <td className="program-heading">
-                        <img
-                          className="program-icon"
-                          src={program.icon}
-                          alt="program icon"
-                        />
-                        {program.name}
+
+                        {program.company_name}
                       </td>
-                      <td>{program.resolved}</td>
-                      <td>{program.averageBounty}</td>
-                      <td>{program.launchDate}</td>
+                      <td>{program.Resolved}</td>
+                      <td>{program.Avg_Bounty}</td>
+                      <td>{program.Launch_Date
+                      }</td>
                     </tr>
                   ))}
                 </tbody>
