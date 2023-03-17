@@ -977,32 +977,32 @@ app.patch("/settingRes", middleware, async (req, res) => {
   }
   res.status(200).json({ status: "Profile Updated" });
 });
-
+//done
 app.patch("/setReward", middleware, async (req, res) => {
   const buss_id = req.buss_id;
   try {
     const findby1 = RewardDB.find({ buss_id: `${buss_id}` });
     const ds1 = await findby1;
     const new_id = ds1[0].id;
-    if (req.body.low != "") {
+    if (req.body.low != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         low: `${req.body.low}`,
       });
       console.log(result);
     }
-    if (req.body.medium != "") {
+    if (req.body.medium != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         medium: `${req.body.medium}`,
       });
       console.log(result);
     }
-    if (req.body.high != "") {
+    if (req.body.high != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         high: `${req.body.high}`,
       });
       console.log(result);
     }
-    if (req.body.critical != "") {
+    if (req.body.critical != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         critical: `${req.body.critical}`,
       });
