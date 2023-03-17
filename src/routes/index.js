@@ -159,7 +159,7 @@ app.post("/researcher", async (req, res) => {
 
 app.post("/userfetch", async (req, res) => {
   try {
-    console.log('hit');
+    console.log("hit");
     const { username, password } = req.body;
     if (!username || !password) {
       return res.status(400).json({ error: "Plz fill the data" });
@@ -887,7 +887,7 @@ app.patch("/setScope", middleware, async (req, res) => {
 });
 
 app.get("/profileBuss/:buss_id", async (req, res) => {
-  console.log('hit');
+  console.log("hit");
   const buss_id = req.params.buss_id;
   const buss = await Buss.find({ buss_id: `${buss_id}` });
   res.status(200).json({
@@ -900,7 +900,7 @@ app.get("/profileBuss/:buss_id", async (req, res) => {
 });
 
 app.get("/profileRes/:rsrc_id", async (req, res) => {
-  console.log('hit');
+  console.log("hit");
   const rsrc_id = req.params.rsrc_id;
   const buss = await Rsrc.find({ rsrc_id: `${rsrc_id}` });
   res.status(200).json({
@@ -950,7 +950,7 @@ app.patch("/settingBus", middleware, async (req, res) => {
 app.patch("/settingRes", middleware, async (req, res) => {
   id = req.id;
   rsrc_id = req.rsrc_id;
-  console.log('hit');
+  console.log("hit");
   if (req.body.username != "") {
     const username = req.body.username;
     const result = await Rsrc.findByIdAndUpdate(id, {
@@ -984,25 +984,25 @@ app.patch("/setReward", middleware, async (req, res) => {
     const findby1 = RewardDB.find({ buss_id: `${buss_id}` });
     const ds1 = await findby1;
     const new_id = ds1[0].id;
-    if (req.body.low != "") {
+    if (req.body.low != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         low: `${req.body.low}`,
       });
       console.log(result);
     }
-    if (req.body.medium != "") {
+    if (req.body.medium != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         medium: `${req.body.medium}`,
       });
       console.log(result);
     }
-    if (req.body.high != "") {
+    if (req.body.high != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         high: `${req.body.high}`,
       });
       console.log(result);
     }
-    if (req.body.critical != "") {
+    if (req.body.critical != ``) {
       const result = await RewardDB.findByIdAndUpdate(new_id, {
         critical: `${req.body.critical}`,
       });
@@ -1012,7 +1012,8 @@ app.patch("/setReward", middleware, async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: "Somthing went wrong" });
   }
-}); // Test this API
+});
+//done
 
 app.delete("/delAccount", middleware, async (req, res) => {
   const buss_id = req.buss_id;
@@ -1023,7 +1024,7 @@ app.delete("/delAccount", middleware, async (req, res) => {
   console.log(id);
   if (buss_id) {
     const resp = await Buss.findByIdAndDelete(id);
-    res.status(200).json({ status: "business account deleted" });
+    res.status(200).json({ status: "Business account deleted" });
   } else {
     if (rsrc_id) {
       const resp = await Rsrc.findByIdAndDelete(id);
@@ -1036,6 +1037,7 @@ app.delete("/delAccount", middleware, async (req, res) => {
 
 app.get("/listPrograms", async (req, res) => {
   try {
+    console.log('hit');
     const programs = await ProgramDB.find({});
     res.status(200).json(programs);
   } catch (err) {
