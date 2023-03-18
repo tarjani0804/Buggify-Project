@@ -421,6 +421,35 @@ const ResearcherSettings = (props) => {
     alert(jwt.status);
     window.location.href = "/dashboard-settings";
   };
+
+
+
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleDeleteAccount = () => {
+    console.log("Account deleted");
+  };
+
+  const handleConfirmationYes = () => {
+    handleDeleteAccount();
+    setShowConfirmation(false);
+  };
+
+  const handleConfirmationNo = () => {
+    setShowConfirmation(false);
+  };
+
+  const handleClick = () => {
+    setShowConfirmation(true);
+  };
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="res-profile">
@@ -498,14 +527,47 @@ const ResearcherSettings = (props) => {
                 </div>
 
               </form>
-              <div
-                className="button_ani dashboard-button"
-                onClick={handleProfileUpdate}
-              >
-                <button type="submit" className="button2">
-                  Update Profile
-                </button>
+              <div style={{ display: "flex", width: "40%", marginLeft: "30%" }}>
+
+                <div
+                  className="button_ani dashboard-button"
+                  onClick={handleProfileUpdate}
+                >
+                  <button type="submit" className="button2">
+                    Update Profile
+                  </button>
+                </div>
+
+                <div
+                  className="button_ani dashboard-button"
+                  onClick={handleClick}
+                >
+                  <button type="submit" className="btn2">
+                    Delete Account
+                  </button>
+                </div>
+
               </div>
+
+              {showConfirmation && (
+                <div className="back">
+                  <div className="confirmation-div">
+                    <p >Are you sure you want to delete your account?</p>
+                    <button onClick={handleConfirmationYes}
+                      className="confirmation-yes"
+
+                    >Yes</button>
+                    <button onClick={handleConfirmationNo}
+                      className="confirmation-no"
+                    >No</button>
+                  </div>
+                </div>
+              )}
+
+
+
+
+
             </div>
           </div>
         </div>

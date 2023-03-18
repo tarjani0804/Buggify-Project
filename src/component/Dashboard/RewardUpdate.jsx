@@ -17,6 +17,8 @@ import { SiBigbluebutton } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
+import { ToastContainer, toast } from "react-toastify";
+
 
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -160,6 +162,22 @@ const BusinessProfile = (props) => {
     high: ``,
     critical: ``,
   };
+
+
+
+
+  const alerts = (mess) => {
+    toast.success(mess, {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  };
+
+  const alertWrong = () => {
+    toast.error("Wrong Asset Severity", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  };
+
   const handleRewardUpdate = async () => {
     if (assetSeverity == "low" || assetSeverity == "LOW") {
       data.low = newPayout;
@@ -171,7 +189,9 @@ const BusinessProfile = (props) => {
         body: JSON.stringify(data),
       });
       const jwt = await response.json();
-      alert(jwt.status);
+      const mess = jwt.status;
+      alerts(mess);
+
     } else {
       if (assetSeverity == "medium" || assetSeverity == "MEDIUM") {
         data.medium = newPayout;
@@ -183,7 +203,9 @@ const BusinessProfile = (props) => {
           body: JSON.stringify(data),
         });
         const jwt = await response.json();
-        alert(jwt.status);
+        const mess = jwt.status;
+        alerts(mess);
+
       } else {
         if (assetSeverity == "high" || assetSeverity == "HIGH") {
           data.high = newPayout;
@@ -195,7 +217,8 @@ const BusinessProfile = (props) => {
             body: JSON.stringify(data),
           });
           const jwt = await response.json();
-          alert(jwt.status);
+          const mess = jwt.status;
+          alerts(mess);
         } else {
           if (assetSeverity == "critical" || assetSeverity == "CRITICAL") {
             data.critical = newPayout;
@@ -207,9 +230,11 @@ const BusinessProfile = (props) => {
               body: JSON.stringify(data),
             });
             const jwt = await response.json();
-            alert(jwt.status);
+            const mess = jwt.status;
+            alerts(mess);
           } else {
-            alert("Wrong Asset Severity");
+
+            alertWrong();
           }
         }
       }
@@ -224,6 +249,7 @@ const BusinessProfile = (props) => {
             <DashboardNavbar />
           </div>
           <div className="bus-profile-div2">
+            <ToastContainer />
             <center>
               <h1 className="bus-profile-div2-h">Reward Update</h1>
               <div className="bus-profile-header">

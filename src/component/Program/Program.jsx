@@ -17,7 +17,7 @@ const Program = () => {
   const gotoLeaderBoard = () => {
     navigate("/ProgramLeaderBoard");
   };
-  const [profileStats, setProfileStats] = useState(undefined);
+  const [profileStats, setProfileStats] = useState();
   useEffect(() => {
     async function fetchProfileStats() {
       const response = await fetch("http://127.0.0.1:5173/listPrograms");
@@ -30,6 +30,32 @@ const Program = () => {
   const prog1 = profileStats;
   console.log(prog1);
 
+
+
+
+
+  // Alternate of using map 
+
+
+
+  // const rows = [];
+
+  // if (profileStats) {
+  //   for (let i = 0; i < profileStats.length; i++) {
+  //     const program = profileStats[i];
+  //     rows.push(
+  //       <tr key={program.id}>
+  //         <td className="program-heading">{program.company_name}</td>
+  //         <td>{program.Resolved}</td>
+  //         <td>{program.Avg_Bounty}</td>
+  //         <td>{program.Launch_Date}</td>
+  //       </tr>
+  //     );
+  //   }
+  // }
+
+
+  // Alternate of using map
 
   return (
     <>
@@ -57,30 +83,37 @@ const Program = () => {
 
           <div className="program-divs-programs">
             <div className="programs-div">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Programs</th>
-                    <th>Resolved</th>
-                    <th>Average bounty</th>
-                    <th>Launch Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {prog1.map((program, index) => (
-                    <tr key={program.id}>
-                      <td className="program-heading">
 
-                        {program.company_name}
-                      </td>
-                      <td>{program.Resolved}</td>
-                      <td>{program.Avg_Bounty}</td>
-                      <td>{program.Launch_Date
-                      }</td>
+
+
+              {profileStats && profileStats.length > 0 ? (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Programs</th>
+                      <th>Resolved</th>
+                      <th>Average bounty</th>
+                      <th>Launch Date</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {profileStats.map((program, index) => (
+                      <tr key={program.id}>
+                        <td className="program-heading">{program.company_name}</td>
+                        <td>{program.Resolved}</td>
+                        <td>{program.Avg_Bounty}</td>
+                        <td>{program.Launch_Date}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <p>Loading data...</p>
+              )}
+
+
+
+
             </div>
           </div>
         </div>

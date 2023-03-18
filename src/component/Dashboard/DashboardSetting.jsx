@@ -598,17 +598,10 @@ const BusinessProfile = (props) => {
                                     </button>
                                 </div>
 
-
-
-
-
-
-
-
                             </div>
 
                             {showConfirmation && (
-                                <div className="overlay">
+                                <div className="back">
                                     <div className="confirmation-div">
                                         <p >Are you sure you want to delete your account?</p>
                                         <button onClick={handleConfirmationYes}

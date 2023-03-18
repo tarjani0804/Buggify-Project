@@ -530,7 +530,7 @@
     }
 }
 
-.overlay {
+.back {
     position: fixed;
     top: 0;
     left: 0;
@@ -547,13 +547,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 30%;
-    height: 20%;
+    height: max-content;
     background-color: #141414;
     padding: 20px;
     border-radius: 10px;
     z-index: 2;
     text-align: center;
 }
+
 
 .confirmation-div p {
     margin-bottom: 10px;
@@ -565,8 +566,6 @@
 }
 
 .confirmation-yes {
-    position: fixed;
-    left: 10rem;
     width: 10rem;
     height: 3rem;
     font-size: 14px;
@@ -583,8 +582,6 @@
 }
 
 .confirmation-no {
-    position: fixed;
-    left: 20rem;
     width: 10rem;
     height: 3rem;
     font-size: 14px;
