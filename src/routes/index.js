@@ -38,22 +38,26 @@ app.use(cookieParser());
 
 const middleware = async (req, res, next) => {
   const token = req.body.myCookie;
-  const decode = jwt.verify(token, KEY);
-  const auth = decode._id;
-  req.id = auth;
-  const findby1 = Buss.findById(auth);
-  const ds1 = await findby1;
-  if (ds1 != null) {
-    const bus_id = ds1.buss_id;
-    req.buss_id = bus_id;
-    next();
-  }
-  const findby2 = Rsrc.findById(auth);
-  const ds2 = await findby2;
-  if (ds2 != null) {
-    const rsc_id = ds2.rsrc_id;
-    req.rsrc_id = rsc_id;
-    next();
+  try {
+    const decode = jwt.verify(token, KEY);
+    const auth = decode._id;
+    req.id = auth;
+    const findby1 = Buss.findById(auth);
+    const ds1 = await findby1;
+    if (ds1 != null) {
+      const bus_id = ds1.buss_id;
+      req.buss_id = bus_id;
+      next();
+    }
+    const findby2 = Rsrc.findById(auth);
+    const ds2 = await findby2;
+    if (ds2 != null) {
+      const rsc_id = ds2.rsrc_id;
+      req.rsrc_id = rsc_id;
+      next();
+    }
+  } catch (e) {
+    res.status(400).json({ status: `Authentication Denied` });
   }
 };
 
@@ -913,35 +917,13 @@ app.get("/profileRes/:rsrc_id", async (req, res) => {
 app.patch("/settingBus", middleware, async (req, res) => {
   id = req.id;
   buss_id = req.buss_id;
-  if (req.body.username != "") {
+  var username = req.body.username;
+  const respo = await Buss.findById(id);
+  if (req.body.username != 'undefined') {
     const username = req.body.username;
     const result = await Buss.findByIdAndUpdate(id, {
       username: `${username}`,
     });
-    console.log(result);
-  }
-  if (req.body.email != "") {
-    const email = req.body.email;
-    const result = await Buss.findByIdAndUpdate(id, { email: `${email}` });
-    console.log(result);
-  }
-  if (req.body.password != "") {
-    const password = req.body.password;
-    const hashed = hasher(password);
-    console.log(hashed);
-    const result = await Buss.findByIdAndUpdate(id, { password: `${hashed}` });
-    console.log(result);
-  }
-  if (req.body.position != "") {
-    const position = req.body.position;
-    const result = await Buss.findByIdAndUpdate(id, {
-      position: `${position}`,
-    });
-    console.log(result);
-  }
-  if (req.body.country != "") {
-    const country = req.body.country;
-    const result = await Buss.findByIdAndUpdate(id, { country: `${country}` });
     console.log(result);
   }
   res.status(200).json({ status: "Profile Updated" });
@@ -951,6 +933,7 @@ app.patch("/settingRes", middleware, async (req, res) => {
   id = req.id;
   rsrc_id = req.rsrc_id;
   console.log("hit");
+  try{
   if (req.body.username != "") {
     const username = req.body.username;
     const result = await Rsrc.findByIdAndUpdate(id, {
@@ -976,6 +959,9 @@ app.patch("/settingRes", middleware, async (req, res) => {
     console.log(result);
   }
   res.status(200).json({ status: "Profile Updated" });
+}catch(e){
+  res.status(400).json({status: `Profile Update Fail`});
+}
 });
 
 app.patch("/setReward", middleware, async (req, res) => {
@@ -1037,7 +1023,7 @@ app.delete("/delAccount", middleware, async (req, res) => {
 
 app.get("/listPrograms", async (req, res) => {
   try {
-    console.log('hit');
+    console.log("hit");
     const programs = await ProgramDB.find({});
     res.status(200).json(programs);
   } catch (err) {

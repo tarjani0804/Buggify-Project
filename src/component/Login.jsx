@@ -23,6 +23,7 @@ const LoginForm = () => {
       body: JSON.stringify(data),
     });
     const jwt = await response.json();
+    console.log(jwt.status);
     username2 = jwt.username; //set this in component
     if (rememberMe == true) {
       Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 14, path: "/" });
