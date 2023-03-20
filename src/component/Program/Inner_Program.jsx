@@ -156,7 +156,7 @@ function Policy() {
     </div>
   );
 }
-function Scope_and_Reward() {
+const Scope_and_Reward = () => {
   const program = [
     {
       id: 1,
@@ -341,7 +341,7 @@ const Inner_Program = (props) => {
       (item) => item.asset_type
     );
     for (let i = 0; i < 10; i++) {
-      if (in_assets[i]) {
+      if (out_assets[i]) {
         console.log(out_assets[i]);
         console.log(out_assets_type[i]);
       }
@@ -355,6 +355,10 @@ const Inner_Program = (props) => {
     var rd_medium = rdval.medium;
     var rd_high = rdval.high;
     var rd_critical = rdval.critical;
+    console.log(rd_low);
+    console.log(rd_medium);
+    console.log(rd_high);
+    console.log(rd_critical);
 
     document.getElementById("low").innerHTML = rd_low;
     document.getElementById("medium").innerHTML = rd_medium;

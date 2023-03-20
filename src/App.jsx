@@ -140,7 +140,7 @@ function App() {
             </>
           } />
 
-          <Route path='/program-inner-program' element={
+          <Route path='/inner-program' element={
             <>
               <Navbar />
               <InnerProgram />

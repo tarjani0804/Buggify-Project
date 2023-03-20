@@ -72,8 +72,22 @@ const ContactNotification = () => {
     const [mailTo, setMailTo] = useState();
     const [message, setMessage] = useState();
 
-    const handleSubmit = () => {
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const data = {
+            mailto: `${mailTo}`,
+            message: `${message}`
+          };
+          const response = await fetch(`http://127.0.0.1:5173/mailem`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+          const jwt = await response.json();
+          alert(jwt.status);
+          window.location.href = '/ContactNotification';
     }
 
 

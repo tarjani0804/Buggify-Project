@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-
 import { BsJournalBookmark } from "react-icons/bs";
 import {
   RiFolderHistoryLine,

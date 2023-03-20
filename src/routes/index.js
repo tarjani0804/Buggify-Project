@@ -917,47 +917,49 @@ app.get("/profileRes/:rsrc_id", async (req, res) => {
 app.patch("/settingBus", middleware, async (req, res) => {
   id = req.id;
   buss_id = req.buss_id;
-  try{
-  if (req.body.username != "undefined") {
-    const username = req.body.username;
-    const result = await Buss.findByIdAndUpdate(id, {
-      username: `${username}`,
-    });
+  try {
+    if (req.body.username != "undefined") {
+      const username = req.body.username;
+      const result = await Buss.findByIdAndUpdate(id, {
+        username: `${username}`,
+      });
+    }
+    if (req.body.email != "undefined") {
+      const email = req.body.email;
+      const result = await Buss.findByIdAndUpdate(id, {
+        email: `${email}`,
+      });
+    }
+    if (req.body.position != "undefined") {
+      const position = req.body.position;
+      const result = await Buss.findByIdAndUpdate(id, {
+        position: `${position}`,
+      });
+    }
+    if (req.body.password != "undefined") {
+      const password = req.body.password;
+      const hashed = hasher(password);
+      console.log(hashed);
+      const result = await Buss.findByIdAndUpdate(id, {
+        password: `${hashed}`,
+      });
+    }
+    if (req.body.country != "undefined") {
+      const country = req.body.country;
+      const result = await Buss.findByIdAndUpdate(id, {
+        country: `${country}`,
+      });
+    }
+    res.status(200).json({ status: "Profile Updated" });
+  } catch (e) {
+    res.status(400).json({ status: `Profile Update Fail` });
   }
-  if (req.body.email != "undefined") {
-    const email = req.body.email;
-    const result = await Buss.findByIdAndUpdate(id, {
-      email: `${email}`,
-    });
-  }
-  if (req.body.position != "undefined") {
-    const position = req.body.position;
-    const result = await Buss.findByIdAndUpdate(id, {
-      position: `${position}`,
-    });
-  }
-  if (req.body.password != "undefined") {
-    const password = req.body.password;
-    const hashed = hasher(password);
-    console.log(hashed);
-    const result = await Buss.findByIdAndUpdate(id, { password: `${hashed}` });
-  }
-  if (req.body.country != "undefined") {
-    const country = req.body.country;
-    const result = await Buss.findByIdAndUpdate(id, {
-      country: `${country}`,
-    });
-  }
-  res.status(200).json({ status: "Profile Updated" });
-}catch(e){
-  res.status(400).json({status: `Profile Update Fail`})
-}
 });
 
 app.patch("/settingRes", middleware, async (req, res) => {
   id = req.id;
   rsrc_id = req.rsrc_id;
-  try{
+  try {
     if (req.body.username != "undefined") {
       const username = req.body.username;
       const result = await Rsrc.findByIdAndUpdate(id, {
@@ -974,7 +976,9 @@ app.patch("/settingRes", middleware, async (req, res) => {
       const password = req.body.password;
       const hashed = hasher(password);
       console.log(hashed);
-      const result = await Rsrc.findByIdAndUpdate(id, { password: `${hashed}` });
+      const result = await Rsrc.findByIdAndUpdate(id, {
+        password: `${hashed}`,
+      });
     }
     if (req.body.country != "undefined") {
       const country = req.body.country;
@@ -983,8 +987,8 @@ app.patch("/settingRes", middleware, async (req, res) => {
       });
     }
     res.status(200).json({ status: "Profile Updated" });
-  }catch(e){
-    res.status(400).json({status: `Profile Update Fail`})
+  } catch (e) {
+    res.status(400).json({ status: `Profile Update Fail` });
   }
 });
 
@@ -1023,7 +1027,6 @@ app.patch("/setReward", middleware, async (req, res) => {
     res.status(400).json({ status: "Somthing went wrong" });
   }
 });
-//done
 
 app.delete("/delAccount", middleware, async (req, res) => {
   const buss_id = req.buss_id;
@@ -1059,6 +1062,7 @@ app.get("/programScIn/:prog_id", async (req, res) => {
   const buss_id = req.params.prog_id;
   const sc_info = await ScopeDB.find({ buss_id: `${buss_id}` });
   const val1 = sc_info[0].in_scope;
+  console.log(val1);
   res.status(200).json(val1);
 });
 
@@ -1066,6 +1070,7 @@ app.get("/programScOut/:prog_id", async (req, res) => {
   const buss_id = req.params.prog_id;
   const sc_info = await ScopeDB.find({ buss_id: `${buss_id}` });
   const val1 = sc_info[0].out_scope;
+  console.log(val1);
   res.status(200).json(val1);
 });
 
@@ -1083,10 +1088,10 @@ app.get("/programRd/:prog_id", async (req, res) => {
     critical: `${val4}`,
   });
 });
-
+// done
 app.post("/mailem", async (req, res) => {
   const mailto = req.body.mailto;
-  const msg = req.body.msg;
+  const msg = req.body.message;
   sendotp(msg, mailto);
   res.status(200).json({ status: `Mail Sent to ${mailto}` });
 });

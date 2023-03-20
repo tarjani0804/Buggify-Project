@@ -19,7 +19,6 @@ import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 
-
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
@@ -163,19 +162,16 @@ const BusinessProfile = (props) => {
     critical: ``,
   };
 
-
-
-
   const alerts = (mess) => {
     toast.success(mess, {
-      position: toast.POSITION.TOP_RIGHT
-    })
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   const alertWrong = () => {
     toast.error("Wrong Asset Severity", {
-      position: toast.POSITION.TOP_RIGHT
-    })
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   const handleRewardUpdate = async () => {
@@ -190,8 +186,8 @@ const BusinessProfile = (props) => {
       });
       const jwt = await response.json();
       const mess = jwt.status;
+      window.location.href = "/rewardUpdate";
       alerts(mess);
-
     } else {
       if (assetSeverity == "medium" || assetSeverity == "MEDIUM") {
         data.medium = newPayout;
@@ -204,8 +200,8 @@ const BusinessProfile = (props) => {
         });
         const jwt = await response.json();
         const mess = jwt.status;
+        window.location.href = "/rewardUpdate";
         alerts(mess);
-
       } else {
         if (assetSeverity == "high" || assetSeverity == "HIGH") {
           data.high = newPayout;
@@ -218,6 +214,7 @@ const BusinessProfile = (props) => {
           });
           const jwt = await response.json();
           const mess = jwt.status;
+          window.location.href = "/rewardUpdate";
           alerts(mess);
         } else {
           if (assetSeverity == "critical" || assetSeverity == "CRITICAL") {
@@ -231,9 +228,9 @@ const BusinessProfile = (props) => {
             });
             const jwt = await response.json();
             const mess = jwt.status;
+            window.location.href = "/rewardUpdate";
             alerts(mess);
           } else {
-
             alertWrong();
           }
         }
@@ -260,7 +257,7 @@ const BusinessProfile = (props) => {
               </div>
             </center>
             <div className="stats">
-              <p className="bus-profie-stat-h">In-Scope</p>
+              
               <div className="bus-profile-stat-div">
                 <form className="dashboard-form">
                   <div className="column-div1">
