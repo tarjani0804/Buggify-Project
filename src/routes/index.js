@@ -1088,14 +1088,14 @@ app.get("/programRd/:prog_id", async (req, res) => {
     critical: `${val4}`,
   });
 });
-// done
+
 app.post("/mailem", async (req, res) => {
   const mailto = req.body.mailto;
   const msg = req.body.message;
   sendotp(msg, mailto);
   res.status(200).json({ status: `Mail Sent to ${mailto}` });
 });
-
+// done
 app.post("/scheduleExam", async (req, res) => {
   try {
     const exam_info = req.body;
