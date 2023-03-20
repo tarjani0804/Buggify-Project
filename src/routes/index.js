@@ -1095,7 +1095,7 @@ app.post("/mailem", async (req, res) => {
   sendotp(msg, mailto);
   res.status(200).json({ status: `Mail Sent to ${mailto}` });
 });
-// done
+
 app.post("/scheduleExam", async (req, res) => {
   try {
     const exam_info = req.body;
@@ -1123,7 +1123,7 @@ app.post("/certInfo", async (req, res) => {
     res.status(400).json({ status: `Fail to issue certificate` });
   }
 });
-
+// done
 app.post("/bookmarkIn", middleware, async (req, res) => {
   //apply when click on bookmark button when not bookmarked
   const buss_id = req.body.prog_id;
