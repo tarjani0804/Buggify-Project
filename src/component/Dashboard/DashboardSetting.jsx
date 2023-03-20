@@ -411,29 +411,8 @@ const BusinessProfile = (props) => {
     position: `${Position}`,
     country: `${selectedCountry}`,
   };
-  if(data2.username == undefined){
-    data2.username == (data && data.username);
-  }
-  if(data2.email == undefined){
-    data2.email == (data && data.email);
-  }
-  if(data2.position == undefined){
-    data2.position == (data && data.position);
-  }
-  if(data2.password == undefined){
-    data2.password == (data && data.password);
-  }
-  if(data2.country == undefined){
-    data2.country == (data && data.country);
-  }
   useEffect(() => {
     async function fetchProfileStats() {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ myCookie: `${Cookies.get("myCookie")}` }),
-      };
-
       const response = await fetch(
         `http://127.0.0.1:5173/profileBuss/${Cookies.get("buss_id")}`
       );

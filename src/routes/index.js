@@ -917,51 +917,75 @@ app.get("/profileRes/:rsrc_id", async (req, res) => {
 app.patch("/settingBus", middleware, async (req, res) => {
   id = req.id;
   buss_id = req.buss_id;
-  var username = req.body.username;
-  const respo = await Buss.findById(id);
-  if (req.body.username != 'undefined') {
+  try{
+  if (req.body.username != "undefined") {
     const username = req.body.username;
     const result = await Buss.findByIdAndUpdate(id, {
       username: `${username}`,
     });
-    console.log(result);
+  }
+  if (req.body.email != "undefined") {
+    const email = req.body.email;
+    const result = await Buss.findByIdAndUpdate(id, {
+      email: `${email}`,
+    });
+  }
+  if (req.body.position != "undefined") {
+    const position = req.body.position;
+    const result = await Buss.findByIdAndUpdate(id, {
+      position: `${position}`,
+    });
+  }
+  if (req.body.password != "undefined") {
+    const password = req.body.password;
+    const hashed = hasher(password);
+    console.log(hashed);
+    const result = await Buss.findByIdAndUpdate(id, { password: `${hashed}` });
+  }
+  if (req.body.country != "undefined") {
+    const country = req.body.country;
+    const result = await Buss.findByIdAndUpdate(id, {
+      country: `${country}`,
+    });
   }
   res.status(200).json({ status: "Profile Updated" });
+}catch(e){
+  res.status(400).json({status: `Profile Update Fail`})
+}
 });
 
 app.patch("/settingRes", middleware, async (req, res) => {
   id = req.id;
   rsrc_id = req.rsrc_id;
-  console.log("hit");
   try{
-  if (req.body.username != "") {
-    const username = req.body.username;
-    const result = await Rsrc.findByIdAndUpdate(id, {
-      username: `${username}`,
-    });
-    console.log(result);
+    if (req.body.username != "undefined") {
+      const username = req.body.username;
+      const result = await Rsrc.findByIdAndUpdate(id, {
+        username: `${username}`,
+      });
+    }
+    if (req.body.email != "undefined") {
+      const email = req.body.email;
+      const result = await Rsrc.findByIdAndUpdate(id, {
+        email: `${email}`,
+      });
+    }
+    if (req.body.password != "undefined") {
+      const password = req.body.password;
+      const hashed = hasher(password);
+      console.log(hashed);
+      const result = await Rsrc.findByIdAndUpdate(id, { password: `${hashed}` });
+    }
+    if (req.body.country != "undefined") {
+      const country = req.body.country;
+      const result = await Rsrc.findByIdAndUpdate(id, {
+        country: `${country}`,
+      });
+    }
+    res.status(200).json({ status: "Profile Updated" });
+  }catch(e){
+    res.status(400).json({status: `Profile Update Fail`})
   }
-  if (req.body.email != "") {
-    const email = req.body.email;
-    const result = await Rsrc.findByIdAndUpdate(id, { email: `${email}` });
-    console.log(result);
-  }
-  if (req.body.password != "") {
-    const password = req.body.password;
-    const hashed = hasher(password);
-    console.log(hashed);
-    const result = await Rsrc.findByIdAndUpdate(id, { password: `${hashed}` });
-    console.log(result);
-  }
-  if (req.body.country != "") {
-    const country = req.body.country;
-    const result = await Rsrc.findByIdAndUpdate(id, { country: `${country}` });
-    console.log(result);
-  }
-  res.status(200).json({ status: "Profile Updated" });
-}catch(e){
-  res.status(400).json({status: `Profile Update Fail`});
-}
 });
 
 app.patch("/setReward", middleware, async (req, res) => {

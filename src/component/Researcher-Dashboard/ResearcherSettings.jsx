@@ -379,18 +379,20 @@ const ResearcherSettings = (props) => {
   const [Password, setPassword] = useState();
   const [selectedCountry, setSelectedCountry] = useState();
   const [data, setData] = useState();
+  const myCookie = Cookies.get("myCookie");
+  const data2 = {
+    myCookie: `${myCookie}`,
+    username: `${userName}`,
+    email: `${emailId}`,
+    password: `${Password}`,
+    country: `${selectedCountry}`,
+  };
   useEffect(() => {
     async function fetchProfileStats() {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ myCookie: `${Cookies.get("myCookie")}` }),
-      };
       const response = await fetch(
         `http://127.0.0.1:5173/profileRes/${Cookies.get("rsrc_id")}`
       );
       const data = await response.json();
-      //   console.log(data);
       setData(data);
     }
 
@@ -400,16 +402,15 @@ const ResearcherSettings = (props) => {
   const handleCountryChange = (event) => {
     setSelectedCountry(event.target.value);
   };
+
+  const notify = () => {
+    toast.success("Profile Updated !", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
-    const myCookie = Cookies.get("myCookie");
-    const data2 = {
-      myCookie: `${myCookie}`,
-      username: `${userName}`,
-      email: `${emailId}`,
-      password: `${Password}`,
-      country: `${selectedCountry}`,
-    };
     const response = await fetch(`http://127.0.0.1:5173/settingRes`, {
       method: "PATCH",
       headers: {
@@ -418,16 +419,25 @@ const ResearcherSettings = (props) => {
       body: JSON.stringify(data2),
     });
     const jwt = await response.json();
-    alert(jwt.status);
     window.location.href = "/dashboard-settings";
+    notify();
   };
-
-
 
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const handleDeleteAccount = () => {
-    console.log("Account deleted");
+  const handleDeleteAccount = async () => {
+    const myCookie = Cookies.get("myCookie");
+    const data = { myCookie: `${myCookie}` };
+    const response = await fetch(`http://127.0.0.1:5173/delAccount`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const jwt = await response.json();
+    window.location.href = "/";
+    console.log(jwt.status);
   };
 
   const handleConfirmationYes = () => {
@@ -442,13 +452,6 @@ const ResearcherSettings = (props) => {
   const handleClick = () => {
     setShowConfirmation(true);
   };
-
-
-
-
-
-
-
 
   return (
     <>
@@ -525,10 +528,8 @@ const ResearcherSettings = (props) => {
                     ))}
                   </select>
                 </div>
-
               </form>
               <div style={{ display: "flex", width: "40%", marginLeft: "30%" }}>
-
                 <div
                   className="button_ani dashboard-button"
                   onClick={handleProfileUpdate}
@@ -546,28 +547,27 @@ const ResearcherSettings = (props) => {
                     Delete Account
                   </button>
                 </div>
-
               </div>
 
               {showConfirmation && (
                 <div className="back">
                   <div className="confirmation-div">
-                    <p >Are you sure you want to delete your account?</p>
-                    <button onClick={handleConfirmationYes}
+                    <p>Are you sure you want to delete your account?</p>
+                    <button
+                      onClick={handleConfirmationYes}
                       className="confirmation-yes"
-
-                    >Yes</button>
-                    <button onClick={handleConfirmationNo}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      onClick={handleConfirmationNo}
                       className="confirmation-no"
-                    >No</button>
+                    >
+                      No
+                    </button>
                   </div>
                 </div>
               )}
-
-
-
-
-
             </div>
           </div>
         </div>
@@ -576,12 +576,12 @@ const ResearcherSettings = (props) => {
   );
 };
 
-ResearcherSettings.defaultProps = {
-  researcherAvtar: "",
-  rUsername: "User Name",
-  email: "xyz@gmail.com",
-  password: "12wtezm",
-  country: "India",
-};
+// ResearcherSettings.defaultProps = {
+//   researcherAvtar: "",
+//   rUsername: "User Name",
+//   email: "xyz@gmail.com",
+//   password: "12wtezm",
+//   country: "India",
+// };
 
 export default ResearcherSettings;
