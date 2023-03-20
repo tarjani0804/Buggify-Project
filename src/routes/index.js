@@ -453,6 +453,7 @@ app.post("/profileStats", middleware, async (req, res) => {
 app.patch("/setScope", middleware, async (req, res) => {
   const buss_id = req.buss_id;
   console.log(buss_id);
+  try{
   const in_scope_asset = req.body.in_scope.asset;
   const in_scope_asset_type = req.body.in_scope.asset_type;
   const in_scope_impact = req.body.in_scope.impact;
@@ -494,13 +495,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                           $set: { "in_scope.ten.elb": `${in_scope_elb}` },
                         };
                         result = await ScopeDB.updateOne(filter, update);
-                        if (result.modifiedCount > 0) {
-                          console.log("Document updated successfully");
-                        } else {
-                          console.log(
-                            "Document not found or update unsuccessful"
-                          );
-                        }
                       }
                     } else {
                       const filter = { _id: `${new_id}` };
@@ -522,13 +516,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                         $set: { "in_scope.nine.elb": `${in_scope_elb}` },
                       };
                       result = await ScopeDB.updateOne(filter, update);
-                      if (result.modifiedCount > 0) {
-                        console.log("Document updated successfully");
-                      } else {
-                        console.log(
-                          "Document not found or update unsuccessful"
-                        );
-                      }
                     }
                   } else {
                     const filter = { _id: `${new_id}` };
@@ -550,11 +537,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                       $set: { "in_scope.eight.elb": `${in_scope_elb}` },
                     };
                     result = await ScopeDB.updateOne(filter, update);
-                    if (result.modifiedCount > 0) {
-                      console.log("Document updated successfully");
-                    } else {
-                      console.log("Document not found or update unsuccessful");
-                    }
                   }
                 } else {
                   const filter = { _id: `${new_id}` };
@@ -576,11 +558,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                     $set: { "in_scope.seven.elb": `${in_scope_elb}` },
                   };
                   result = await ScopeDB.updateOne(filter, update);
-                  if (result.modifiedCount > 0) {
-                    console.log("Document updated successfully");
-                  } else {
-                    console.log("Document not found or update unsuccessful");
-                  }
                 }
               } else {
                 const filter = { _id: `${new_id}` };
@@ -598,11 +575,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                 result = await ScopeDB.updateOne(filter, update);
                 update = { $set: { "in_scope.six.elb": `${in_scope_elb}` } };
                 result = await ScopeDB.updateOne(filter, update);
-                if (result.modifiedCount > 0) {
-                  console.log("Document updated successfully");
-                } else {
-                  console.log("Document not found or update unsuccessful");
-                }
               }
             } else {
               const filter = { _id: `${new_id}` };
@@ -620,11 +592,6 @@ app.patch("/setScope", middleware, async (req, res) => {
               result = await ScopeDB.updateOne(filter, update);
               update = { $set: { "in_scope.five.elb": `${in_scope_elb}` } };
               result = await ScopeDB.updateOne(filter, update);
-              if (result.modifiedCount > 0) {
-                console.log("Document updated successfully");
-              } else {
-                console.log("Document not found or update unsuccessful");
-              }
             }
           } else {
             const filter = { _id: `${new_id}` };
@@ -640,11 +607,6 @@ app.patch("/setScope", middleware, async (req, res) => {
             result = await ScopeDB.updateOne(filter, update);
             update = { $set: { "in_scope.four.elb": `${in_scope_elb}` } };
             result = await ScopeDB.updateOne(filter, update);
-            if (result.modifiedCount > 0) {
-              console.log("Document updated successfully");
-            } else {
-              console.log("Document not found or update unsuccessful");
-            }
           }
         } else {
           const filter = { _id: `${new_id}` };
@@ -660,11 +622,6 @@ app.patch("/setScope", middleware, async (req, res) => {
           result = await ScopeDB.updateOne(filter, update);
           update = { $set: { "in_scope.three.elb": `${in_scope_elb}` } };
           result = await ScopeDB.updateOne(filter, update);
-          if (result.modifiedCount > 0) {
-            console.log("Document updated successfully");
-          } else {
-            console.log("Document not found or update unsuccessful");
-          }
         }
       } else {
         const filter = { _id: `${new_id}` };
@@ -678,11 +635,6 @@ app.patch("/setScope", middleware, async (req, res) => {
         result = await ScopeDB.updateOne(filter, update);
         update = { $set: { "in_scope.two.elb": `${in_scope_elb}` } };
         result = await ScopeDB.updateOne(filter, update);
-        if (result.modifiedCount > 0) {
-          console.log("Document updated successfully");
-        } else {
-          console.log("Document not found or update unsuccessful");
-        }
       }
     } else {
       const filter = { _id: `${new_id}` };
@@ -696,11 +648,6 @@ app.patch("/setScope", middleware, async (req, res) => {
       result = await ScopeDB.updateOne(filter, update);
       update = { $set: { "in_scope.one.elb": `${in_scope_elb}` } };
       result = await ScopeDB.updateOne(filter, update);
-      if (result.modifiedCount > 0) {
-        console.log("Document updated successfully");
-      } else {
-        console.log("Document not found or update unsuccessful");
-      }
     }
   }
   if (out_scope_asset) {
@@ -726,13 +673,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                           },
                         };
                         result = await ScopeDB.updateOne(filter, update);
-                        if (result.modifiedCount > 0) {
-                          console.log("Document updated successfully");
-                        } else {
-                          console.log(
-                            "Document not found or update unsuccessful"
-                          );
-                        }
                       }
                     } else {
                       const filter = { _id: `${new_id}` };
@@ -746,13 +686,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                         },
                       };
                       result = await ScopeDB.updateOne(filter, update);
-                      if (result.modifiedCount > 0) {
-                        console.log("Document updated successfully");
-                      } else {
-                        console.log(
-                          "Document not found or update unsuccessful"
-                        );
-                      }
                     }
                   } else {
                     const filter = { _id: `${new_id}` };
@@ -766,11 +699,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                       },
                     };
                     result = await ScopeDB.updateOne(filter, update);
-                    if (result.modifiedCount > 0) {
-                      console.log("Document updated successfully");
-                    } else {
-                      console.log("Document not found or update unsuccessful");
-                    }
                   }
                 } else {
                   const filter = { _id: `${new_id}` };
@@ -784,11 +712,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                     },
                   };
                   result = await ScopeDB.updateOne(filter, update);
-                  if (result.modifiedCount > 0) {
-                    console.log("Document updated successfully");
-                  } else {
-                    console.log("Document not found or update unsuccessful");
-                  }
                 }
               } else {
                 const filter = { _id: `${new_id}` };
@@ -802,11 +725,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                   },
                 };
                 result = await ScopeDB.updateOne(filter, update);
-                if (result.modifiedCount > 0) {
-                  console.log("Document updated successfully");
-                } else {
-                  console.log("Document not found or update unsuccessful");
-                }
               }
             } else {
               const filter = { _id: `${new_id}` };
@@ -820,11 +738,6 @@ app.patch("/setScope", middleware, async (req, res) => {
                 },
               };
               result = await ScopeDB.updateOne(filter, update);
-              if (result.modifiedCount > 0) {
-                console.log("Document updated successfully");
-              } else {
-                console.log("Document not found or update unsuccessful");
-              }
             }
           } else {
             const filter = { _id: `${new_id}` };
@@ -836,11 +749,6 @@ app.patch("/setScope", middleware, async (req, res) => {
               $set: { "out_scope.four.asset_type": `${out_scope_asset_type}` },
             };
             result = await ScopeDB.updateOne(filter, update);
-            if (result.modifiedCount > 0) {
-              console.log("Document updated successfully");
-            } else {
-              console.log("Document not found or update unsuccessful");
-            }
           }
         } else {
           const filter = { _id: `${new_id}` };
@@ -852,11 +760,6 @@ app.patch("/setScope", middleware, async (req, res) => {
             $set: { "out_scope.three.asset_type": `${out_scope_asset_type}` },
           };
           result = await ScopeDB.updateOne(filter, update);
-          if (result.modifiedCount > 0) {
-            console.log("Document updated successfully");
-          } else {
-            console.log("Document not found or update unsuccessful");
-          }
         }
       } else {
         const filter = { _id: `${new_id}` };
@@ -866,11 +769,6 @@ app.patch("/setScope", middleware, async (req, res) => {
           $set: { "out_scope.two.asset_type": `${out_scope_asset_type}` },
         };
         result = await ScopeDB.updateOne(filter, update);
-        if (result.modifiedCount > 0) {
-          console.log("Document updated successfully");
-        } else {
-          console.log("Document not found or update unsuccessful");
-        }
       }
     } else {
       const filter = { _id: `${new_id}` };
@@ -880,18 +778,16 @@ app.patch("/setScope", middleware, async (req, res) => {
         $set: { "out_scope.one.asset_type": `${out_scope_asset_type}` },
       };
       result = await ScopeDB.updateOne(filter, update);
-      if (result.modifiedCount > 0) {
-        console.log("Document updated successfully");
-      } else {
-        console.log("Document not found or update unsuccessful");
-      }
     }
   }
   // const jsd = JSON.stringify(data)
   // const scope = new ScopeDB(data)
   // const resposva = scope.save()
   // console.log(await resposva)
-  res.status(200).send("done");
+  res.status(200).json({status: `Scope Updated`});
+  }catch(e){
+    res.status(400).json({status: `Fail to Update`})
+  }
 });
 
 app.get("/profileBuss/:buss_id", async (req, res) => {

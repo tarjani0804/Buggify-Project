@@ -442,8 +442,8 @@ const BusinessProfile = (props) => {
     });
     const jwt = await response.json();
     if ((jwt.status = "Profile Updated")) {
-      window.location.href = "/DashboardSetting";
       notify();
+      window.location.href = "/DashboardSetting";
     }
   };
 
