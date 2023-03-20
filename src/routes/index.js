@@ -308,10 +308,14 @@ app.post("/agreementBug", middleware, async (req, res) => {
 
 app.post("/agreementRed", middleware, async (req, res) => {
   const id = req.id;
+  console.log("endpoint hit");
   try {
-    const val = await Buss.findByIdAndUpdate(id, { typeofProgram: `RedTeam` });
+    const val = await Buss.findByIdAndUpdate(id, {
+      typeofProgram: `RedTeam`,
+    });
     console.log(val.typeofProgram);
     console.log(val.buss_id);
+    console.log(val.company_name);
     const data = {
       buss_id: `${val.buss_id}`,
       stats: {
@@ -327,7 +331,7 @@ app.post("/agreementRed", middleware, async (req, res) => {
     };
     const stats = new BussStats(data);
     const statsres = stats.save();
-    console.log(await statsres);
+    console.log("Stats");
     const data2 = {
       buss_id: `${val.buss_id}`,
       in_scope: {
@@ -355,9 +359,9 @@ app.post("/agreementRed", middleware, async (req, res) => {
         ten: { asset: "", asset_type: "" },
       },
     };
-    const scope = new ScopeDB(data2);
-    const resposva = scope.save();
-    console.log(await resposva);
+    const stats2 = new ScopeDB(data2);
+    const statsres2 = stats2.save();
+    console.log("Scope");
     res.status(200).json({ status: "RedTeam" });
   } catch (e) {
     res.status(400).json({ status: "Something Went Wrong" });
