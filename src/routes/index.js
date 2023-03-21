@@ -453,223 +453,252 @@ app.post("/profileStats", middleware, async (req, res) => {
 app.patch("/setScope", middleware, async (req, res) => {
   const buss_id = req.buss_id;
   console.log(buss_id);
-  try{
-  const in_scope_asset = req.body.in_scope.asset;
-  const in_scope_asset_type = req.body.in_scope.asset_type;
-  const in_scope_impact = req.body.in_scope.impact;
-  const in_scope_elb = req.body.in_scope.elb;
-  const out_scope_asset = req.body.out_scope.asset;
-  const out_scope_asset_type = req.body.out_scope.asset_type;
-  const findby1 = ScopeDB.find({ buss_id: `${buss_id}` });
-  const ds1 = await findby1;
-  const new_id = ds1[0].id;
-  if (in_scope_asset) {
-    if (ds1[0].in_scope.one.asset) {
-      if (ds1[0].in_scope.two.asset) {
-        if (ds1[0].in_scope.three.asset) {
-          if (ds1[0].in_scope.four.asset) {
-            if (ds1[0].in_scope.five.asset) {
-              if (ds1[0].in_scope.six.asset) {
-                if (ds1[0].in_scope.seven.asset) {
-                  if (ds1[0].in_scope.eight.asset) {
-                    if (ds1[0].in_scope.nine.asset) {
-                      if (ds1[0].in_scope.ten.asset) {
-                        console.log("In-Scope Limit Exceeds");
+  try {
+    const in_scope_asset = req.body.in_scope.asset;
+    const in_scope_asset_type = req.body.in_scope.asset_type;
+    const in_scope_impact = req.body.in_scope.impact;
+    const in_scope_elb = req.body.in_scope.elb;
+    const out_scope_asset = req.body.out_scope.asset;
+    const out_scope_asset_type = req.body.out_scope.asset_type;
+    const findby1 = ScopeDB.find({ buss_id: `${buss_id}` });
+    const ds1 = await findby1;
+    const new_id = ds1[0].id;
+    if (in_scope_asset) {
+      if (ds1[0].in_scope.one.asset) {
+        if (ds1[0].in_scope.two.asset) {
+          if (ds1[0].in_scope.three.asset) {
+            if (ds1[0].in_scope.four.asset) {
+              if (ds1[0].in_scope.five.asset) {
+                if (ds1[0].in_scope.six.asset) {
+                  if (ds1[0].in_scope.seven.asset) {
+                    if (ds1[0].in_scope.eight.asset) {
+                      if (ds1[0].in_scope.nine.asset) {
+                        if (ds1[0].in_scope.ten.asset) {
+                          console.log("In-Scope Limit Exceeds");
+                        } else {
+                          const filter = { _id: `${new_id}` };
+                          let update = {
+                            $set: { "in_scope.ten.asset": `${in_scope_asset}` },
+                          };
+                          let result = await ScopeDB.updateOne(filter, update);
+                          update = {
+                            $set: {
+                              "in_scope.ten.asset_type": `${in_scope_asset_type}`,
+                            },
+                          };
+                          result = await ScopeDB.updateOne(filter, update);
+                          update = {
+                            $set: {
+                              "in_scope.ten.impact": `${in_scope_impact}`,
+                            },
+                          };
+                          result = await ScopeDB.updateOne(filter, update);
+                          update = {
+                            $set: { "in_scope.ten.elb": `${in_scope_elb}` },
+                          };
+                          result = await ScopeDB.updateOne(filter, update);
+                        }
                       } else {
                         const filter = { _id: `${new_id}` };
                         let update = {
-                          $set: { "in_scope.ten.asset": `${in_scope_asset}` },
+                          $set: { "in_scope.nine.asset": `${in_scope_asset}` },
                         };
                         let result = await ScopeDB.updateOne(filter, update);
                         update = {
                           $set: {
-                            "in_scope.ten.asset_type": `${in_scope_asset_type}`,
+                            "in_scope.nine.asset_type": `${in_scope_asset_type}`,
                           },
                         };
                         result = await ScopeDB.updateOne(filter, update);
                         update = {
-                          $set: { "in_scope.ten.impact": `${in_scope_impact}` },
+                          $set: {
+                            "in_scope.nine.impact": `${in_scope_impact}`,
+                          },
                         };
                         result = await ScopeDB.updateOne(filter, update);
                         update = {
-                          $set: { "in_scope.ten.elb": `${in_scope_elb}` },
+                          $set: { "in_scope.nine.elb": `${in_scope_elb}` },
                         };
                         result = await ScopeDB.updateOne(filter, update);
                       }
                     } else {
                       const filter = { _id: `${new_id}` };
                       let update = {
-                        $set: { "in_scope.nine.asset": `${in_scope_asset}` },
+                        $set: { "in_scope.eight.asset": `${in_scope_asset}` },
                       };
                       let result = await ScopeDB.updateOne(filter, update);
                       update = {
                         $set: {
-                          "in_scope.nine.asset_type": `${in_scope_asset_type}`,
+                          "in_scope.eight.asset_type": `${in_scope_asset_type}`,
                         },
                       };
                       result = await ScopeDB.updateOne(filter, update);
                       update = {
-                        $set: { "in_scope.nine.impact": `${in_scope_impact}` },
+                        $set: { "in_scope.eight.impact": `${in_scope_impact}` },
                       };
                       result = await ScopeDB.updateOne(filter, update);
                       update = {
-                        $set: { "in_scope.nine.elb": `${in_scope_elb}` },
+                        $set: { "in_scope.eight.elb": `${in_scope_elb}` },
                       };
                       result = await ScopeDB.updateOne(filter, update);
                     }
                   } else {
                     const filter = { _id: `${new_id}` };
                     let update = {
-                      $set: { "in_scope.eight.asset": `${in_scope_asset}` },
+                      $set: { "in_scope.seven.asset": `${in_scope_asset}` },
                     };
                     let result = await ScopeDB.updateOne(filter, update);
                     update = {
                       $set: {
-                        "in_scope.eight.asset_type": `${in_scope_asset_type}`,
+                        "in_scope.seven.asset_type": `${in_scope_asset_type}`,
                       },
                     };
                     result = await ScopeDB.updateOne(filter, update);
                     update = {
-                      $set: { "in_scope.eight.impact": `${in_scope_impact}` },
+                      $set: { "in_scope.seven.impact": `${in_scope_impact}` },
                     };
                     result = await ScopeDB.updateOne(filter, update);
                     update = {
-                      $set: { "in_scope.eight.elb": `${in_scope_elb}` },
+                      $set: { "in_scope.seven.elb": `${in_scope_elb}` },
                     };
                     result = await ScopeDB.updateOne(filter, update);
                   }
                 } else {
                   const filter = { _id: `${new_id}` };
                   let update = {
-                    $set: { "in_scope.seven.asset": `${in_scope_asset}` },
+                    $set: { "in_scope.six.asset": `${in_scope_asset}` },
                   };
                   let result = await ScopeDB.updateOne(filter, update);
                   update = {
                     $set: {
-                      "in_scope.seven.asset_type": `${in_scope_asset_type}`,
+                      "in_scope.six.asset_type": `${in_scope_asset_type}`,
                     },
                   };
                   result = await ScopeDB.updateOne(filter, update);
                   update = {
-                    $set: { "in_scope.seven.impact": `${in_scope_impact}` },
+                    $set: { "in_scope.six.impact": `${in_scope_impact}` },
                   };
                   result = await ScopeDB.updateOne(filter, update);
-                  update = {
-                    $set: { "in_scope.seven.elb": `${in_scope_elb}` },
-                  };
+                  update = { $set: { "in_scope.six.elb": `${in_scope_elb}` } };
                   result = await ScopeDB.updateOne(filter, update);
                 }
               } else {
                 const filter = { _id: `${new_id}` };
                 let update = {
-                  $set: { "in_scope.six.asset": `${in_scope_asset}` },
+                  $set: { "in_scope.five.asset": `${in_scope_asset}` },
                 };
                 let result = await ScopeDB.updateOne(filter, update);
                 update = {
-                  $set: { "in_scope.six.asset_type": `${in_scope_asset_type}` },
+                  $set: {
+                    "in_scope.five.asset_type": `${in_scope_asset_type}`,
+                  },
                 };
                 result = await ScopeDB.updateOne(filter, update);
                 update = {
-                  $set: { "in_scope.six.impact": `${in_scope_impact}` },
+                  $set: { "in_scope.five.impact": `${in_scope_impact}` },
                 };
                 result = await ScopeDB.updateOne(filter, update);
-                update = { $set: { "in_scope.six.elb": `${in_scope_elb}` } };
+                update = { $set: { "in_scope.five.elb": `${in_scope_elb}` } };
                 result = await ScopeDB.updateOne(filter, update);
               }
             } else {
               const filter = { _id: `${new_id}` };
               let update = {
-                $set: { "in_scope.five.asset": `${in_scope_asset}` },
+                $set: { "in_scope.four.asset": `${in_scope_asset}` },
               };
               let result = await ScopeDB.updateOne(filter, update);
               update = {
-                $set: { "in_scope.five.asset_type": `${in_scope_asset_type}` },
+                $set: { "in_scope.four.asset_type": `${in_scope_asset_type}` },
               };
               result = await ScopeDB.updateOne(filter, update);
               update = {
-                $set: { "in_scope.five.impact": `${in_scope_impact}` },
+                $set: { "in_scope.four.impact": `${in_scope_impact}` },
               };
               result = await ScopeDB.updateOne(filter, update);
-              update = { $set: { "in_scope.five.elb": `${in_scope_elb}` } };
+              update = { $set: { "in_scope.four.elb": `${in_scope_elb}` } };
               result = await ScopeDB.updateOne(filter, update);
             }
           } else {
             const filter = { _id: `${new_id}` };
             let update = {
-              $set: { "in_scope.four.asset": `${in_scope_asset}` },
+              $set: { "in_scope.three.asset": `${in_scope_asset}` },
             };
             let result = await ScopeDB.updateOne(filter, update);
             update = {
-              $set: { "in_scope.four.asset_type": `${in_scope_asset_type}` },
+              $set: { "in_scope.three.asset_type": `${in_scope_asset_type}` },
             };
             result = await ScopeDB.updateOne(filter, update);
-            update = { $set: { "in_scope.four.impact": `${in_scope_impact}` } };
+            update = {
+              $set: { "in_scope.three.impact": `${in_scope_impact}` },
+            };
             result = await ScopeDB.updateOne(filter, update);
-            update = { $set: { "in_scope.four.elb": `${in_scope_elb}` } };
+            update = { $set: { "in_scope.three.elb": `${in_scope_elb}` } };
             result = await ScopeDB.updateOne(filter, update);
           }
         } else {
           const filter = { _id: `${new_id}` };
-          let update = {
-            $set: { "in_scope.three.asset": `${in_scope_asset}` },
-          };
+          let update = { $set: { "in_scope.two.asset": `${in_scope_asset}` } };
           let result = await ScopeDB.updateOne(filter, update);
           update = {
-            $set: { "in_scope.three.asset_type": `${in_scope_asset_type}` },
+            $set: { "in_scope.two.asset_type": `${in_scope_asset_type}` },
           };
           result = await ScopeDB.updateOne(filter, update);
-          update = { $set: { "in_scope.three.impact": `${in_scope_impact}` } };
+          update = { $set: { "in_scope.two.impact": `${in_scope_impact}` } };
           result = await ScopeDB.updateOne(filter, update);
-          update = { $set: { "in_scope.three.elb": `${in_scope_elb}` } };
+          update = { $set: { "in_scope.two.elb": `${in_scope_elb}` } };
           result = await ScopeDB.updateOne(filter, update);
         }
       } else {
         const filter = { _id: `${new_id}` };
-        let update = { $set: { "in_scope.two.asset": `${in_scope_asset}` } };
+        let update = { $set: { "in_scope.one.asset": `${in_scope_asset}` } };
         let result = await ScopeDB.updateOne(filter, update);
         update = {
-          $set: { "in_scope.two.asset_type": `${in_scope_asset_type}` },
+          $set: { "in_scope.one.asset_type": `${in_scope_asset_type}` },
         };
         result = await ScopeDB.updateOne(filter, update);
-        update = { $set: { "in_scope.two.impact": `${in_scope_impact}` } };
+        update = { $set: { "in_scope.one.impact": `${in_scope_impact}` } };
         result = await ScopeDB.updateOne(filter, update);
-        update = { $set: { "in_scope.two.elb": `${in_scope_elb}` } };
+        update = { $set: { "in_scope.one.elb": `${in_scope_elb}` } };
         result = await ScopeDB.updateOne(filter, update);
       }
-    } else {
-      const filter = { _id: `${new_id}` };
-      let update = { $set: { "in_scope.one.asset": `${in_scope_asset}` } };
-      let result = await ScopeDB.updateOne(filter, update);
-      update = {
-        $set: { "in_scope.one.asset_type": `${in_scope_asset_type}` },
-      };
-      result = await ScopeDB.updateOne(filter, update);
-      update = { $set: { "in_scope.one.impact": `${in_scope_impact}` } };
-      result = await ScopeDB.updateOne(filter, update);
-      update = { $set: { "in_scope.one.elb": `${in_scope_elb}` } };
-      result = await ScopeDB.updateOne(filter, update);
     }
-  }
-  if (out_scope_asset) {
-    if (ds1[0].out_scope.one.asset) {
-      if (ds1[0].out_scope.two.asset) {
-        if (ds1[0].out_scope.three.asset) {
-          if (ds1[0].out_scope.four.asset) {
-            if (ds1[0].out_scope.five.asset) {
-              if (ds1[0].out_scope.six.asset) {
-                if (ds1[0].out_scope.seven.asset) {
-                  if (ds1[0].out_scope.eight.asset) {
-                    if (ds1[0].out_scope.nine.asset) {
-                      if (ds1[0].out_scope.ten.asset) {
+    if (out_scope_asset) {
+      if (ds1[0].out_scope.one.asset) {
+        if (ds1[0].out_scope.two.asset) {
+          if (ds1[0].out_scope.three.asset) {
+            if (ds1[0].out_scope.four.asset) {
+              if (ds1[0].out_scope.five.asset) {
+                if (ds1[0].out_scope.six.asset) {
+                  if (ds1[0].out_scope.seven.asset) {
+                    if (ds1[0].out_scope.eight.asset) {
+                      if (ds1[0].out_scope.nine.asset) {
+                        if (ds1[0].out_scope.ten.asset) {
+                        } else {
+                          const filter = { _id: `${new_id}` };
+                          let update = {
+                            $set: {
+                              "out_scope.ten.asset": `${out_scope_asset}`,
+                            },
+                          };
+                          let result = await ScopeDB.updateOne(filter, update);
+                          update = {
+                            $set: {
+                              "out_scope.ten.asset_type": `${out_scope_asset_type}`,
+                            },
+                          };
+                          result = await ScopeDB.updateOne(filter, update);
+                        }
                       } else {
                         const filter = { _id: `${new_id}` };
                         let update = {
-                          $set: { "out_scope.ten.asset": `${out_scope_asset}` },
+                          $set: {
+                            "out_scope.nine.asset": `${out_scope_asset}`,
+                          },
                         };
                         let result = await ScopeDB.updateOne(filter, update);
                         update = {
                           $set: {
-                            "out_scope.ten.asset_type": `${out_scope_asset_type}`,
+                            "out_scope.nine.asset_type": `${out_scope_asset_type}`,
                           },
                         };
                         result = await ScopeDB.updateOne(filter, update);
@@ -677,12 +706,12 @@ app.patch("/setScope", middleware, async (req, res) => {
                     } else {
                       const filter = { _id: `${new_id}` };
                       let update = {
-                        $set: { "out_scope.nine.asset": `${out_scope_asset}` },
+                        $set: { "out_scope.eight.asset": `${out_scope_asset}` },
                       };
                       let result = await ScopeDB.updateOne(filter, update);
                       update = {
                         $set: {
-                          "out_scope.nine.asset_type": `${out_scope_asset_type}`,
+                          "out_scope.eight.asset_type": `${out_scope_asset_type}`,
                         },
                       };
                       result = await ScopeDB.updateOne(filter, update);
@@ -690,12 +719,12 @@ app.patch("/setScope", middleware, async (req, res) => {
                   } else {
                     const filter = { _id: `${new_id}` };
                     let update = {
-                      $set: { "out_scope.eight.asset": `${out_scope_asset}` },
+                      $set: { "out_scope.seven.asset": `${out_scope_asset}` },
                     };
                     let result = await ScopeDB.updateOne(filter, update);
                     update = {
                       $set: {
-                        "out_scope.eight.asset_type": `${out_scope_asset_type}`,
+                        "out_scope.seven.asset_type": `${out_scope_asset_type}`,
                       },
                     };
                     result = await ScopeDB.updateOne(filter, update);
@@ -703,12 +732,12 @@ app.patch("/setScope", middleware, async (req, res) => {
                 } else {
                   const filter = { _id: `${new_id}` };
                   let update = {
-                    $set: { "out_scope.seven.asset": `${out_scope_asset}` },
+                    $set: { "out_scope.six.asset": `${out_scope_asset}` },
                   };
                   let result = await ScopeDB.updateOne(filter, update);
                   update = {
                     $set: {
-                      "out_scope.seven.asset_type": `${out_scope_asset_type}`,
+                      "out_scope.six.asset_type": `${out_scope_asset_type}`,
                     },
                   };
                   result = await ScopeDB.updateOne(filter, update);
@@ -716,12 +745,12 @@ app.patch("/setScope", middleware, async (req, res) => {
               } else {
                 const filter = { _id: `${new_id}` };
                 let update = {
-                  $set: { "out_scope.six.asset": `${out_scope_asset}` },
+                  $set: { "out_scope.five.asset": `${out_scope_asset}` },
                 };
                 let result = await ScopeDB.updateOne(filter, update);
                 update = {
                   $set: {
-                    "out_scope.six.asset_type": `${out_scope_asset_type}`,
+                    "out_scope.five.asset_type": `${out_scope_asset_type}`,
                   },
                 };
                 result = await ScopeDB.updateOne(filter, update);
@@ -729,12 +758,12 @@ app.patch("/setScope", middleware, async (req, res) => {
             } else {
               const filter = { _id: `${new_id}` };
               let update = {
-                $set: { "out_scope.five.asset": `${out_scope_asset}` },
+                $set: { "out_scope.four.asset": `${out_scope_asset}` },
               };
               let result = await ScopeDB.updateOne(filter, update);
               update = {
                 $set: {
-                  "out_scope.five.asset_type": `${out_scope_asset_type}`,
+                  "out_scope.four.asset_type": `${out_scope_asset_type}`,
                 },
               };
               result = await ScopeDB.updateOne(filter, update);
@@ -742,51 +771,42 @@ app.patch("/setScope", middleware, async (req, res) => {
           } else {
             const filter = { _id: `${new_id}` };
             let update = {
-              $set: { "out_scope.four.asset": `${out_scope_asset}` },
+              $set: { "out_scope.three.asset": `${out_scope_asset}` },
             };
             let result = await ScopeDB.updateOne(filter, update);
             update = {
-              $set: { "out_scope.four.asset_type": `${out_scope_asset_type}` },
+              $set: { "out_scope.three.asset_type": `${out_scope_asset_type}` },
             };
             result = await ScopeDB.updateOne(filter, update);
           }
         } else {
           const filter = { _id: `${new_id}` };
           let update = {
-            $set: { "out_scope.three.asset": `${out_scope_asset}` },
+            $set: { "out_scope.two.asset": `${out_scope_asset}` },
           };
           let result = await ScopeDB.updateOne(filter, update);
           update = {
-            $set: { "out_scope.three.asset_type": `${out_scope_asset_type}` },
+            $set: { "out_scope.two.asset_type": `${out_scope_asset_type}` },
           };
           result = await ScopeDB.updateOne(filter, update);
         }
       } else {
         const filter = { _id: `${new_id}` };
-        let update = { $set: { "out_scope.two.asset": `${out_scope_asset}` } };
+        let update = { $set: { "out_scope.one.asset": `${out_scope_asset}` } };
         let result = await ScopeDB.updateOne(filter, update);
         update = {
-          $set: { "out_scope.two.asset_type": `${out_scope_asset_type}` },
+          $set: { "out_scope.one.asset_type": `${out_scope_asset_type}` },
         };
         result = await ScopeDB.updateOne(filter, update);
       }
-    } else {
-      const filter = { _id: `${new_id}` };
-      let update = { $set: { "out_scope.one.asset": `${out_scope_asset}` } };
-      let result = await ScopeDB.updateOne(filter, update);
-      update = {
-        $set: { "out_scope.one.asset_type": `${out_scope_asset_type}` },
-      };
-      result = await ScopeDB.updateOne(filter, update);
     }
-  }
-  // const jsd = JSON.stringify(data)
-  // const scope = new ScopeDB(data)
-  // const resposva = scope.save()
-  // console.log(await resposva)
-  res.status(200).json({status: `Scope Updated`});
-  }catch(e){
-    res.status(400).json({status: `Fail to Update`})
+    // const jsd = JSON.stringify(data)
+    // const scope = new ScopeDB(data)
+    // const resposva = scope.save()
+    // console.log(await resposva)
+    res.status(200).json({ status: `Scope Updated` });
+  } catch (e) {
+    res.status(400).json({ status: `Fail to Update` });
   }
 });
 
@@ -1023,7 +1043,7 @@ app.post("/certInfo", async (req, res) => {
     res.status(400).json({ status: `Fail to issue certificate` });
   }
 });
-// done
+
 app.post("/bookmarkIn", middleware, async (req, res) => {
   //apply when click on bookmark button when not bookmarked
   const buss_id = req.body.prog_id;
@@ -1072,7 +1092,7 @@ app.post("/bookmarkShow", async (req, res) => {
     res.status(200).json({ status: 0 });
   }
 });
-
+// done
 const random5 = () => {
   const length = 5;
   let result = "";
@@ -1092,6 +1112,7 @@ app.post("/submitReport", middleware, async (req, res) => {
   const buss_id = req.body.buss_id;
   const report_title = req.body.report_title;
   const reproduce_steps = req.body.reproduce_steps;
+  console.log(reproduce_steps);
   const poc1 = req.body.poc1;
   const poc2 = req.body.poc2;
   const poc3 = req.body.poc3;
@@ -1122,9 +1143,9 @@ app.post("/submitReport", middleware, async (req, res) => {
   try {
     const structdb = new ReportDB(data);
     const outdb = await structdb.save();
-    res.status(200).json(outdb);
+    res.status(200).json({status: `Report ${final} Submitted Successfully`});
   } catch (e) {
-    res.status(400).json({ status: "Fail to insert report" });
+    res.status(400).json({ status: "Fail to Submit report" });
   }
 });
 

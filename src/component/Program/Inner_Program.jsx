@@ -301,7 +301,7 @@ const Inner_Program = (props) => {
   const isBookmarked = bookmarkSelected;
 
   const handleBookmark = () => {
-    setBookmarkSelected(bookmarked === 0 ? 1 : 0);
+    setBookmarkSelected(bookmarked === 0 ? 0 : 1);
     console.log("Bookmark", isBookmarked);
     const myCookie = Cookies.get("myCookie");
     const prog_id = Cookies.get("prog_id");
