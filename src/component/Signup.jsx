@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import "./signin.css";
 import "./Login.css";
+import { ToastContainer, toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 // import { Form, Input, Label, Dropdown, Checkbox, Button } from "semantic-ui-react";
 var username2;
 
@@ -14,6 +17,15 @@ const SignInForm = () => {
   const [position, setPosition] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showconfirmPassword, setShowconfirmPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleShowconfirmPassword = () => {
+    setShowconfirmPassword(!showconfirmPassword);
+  };
 
   const countries = [
     { name: "Afghanistan", code: "AF" },
@@ -264,10 +276,20 @@ const SignInForm = () => {
   const handleCountryChange = (event) => {
     setSelectedCountry(event.target.value);
   };
-
+  const passandconfirmpass = () => {
+    toast.error("Password and Confirm Password is not matching", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  };
+  const alert = () => {
+    toast.info("Something went Wrong", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password == confirmPassword) {
+      //  Business Account
       if (companyName == "" && position == "") {
         const url = "http://127.0.0.1:5173/researcher";
         const data = {
@@ -295,10 +317,11 @@ const SignInForm = () => {
             Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
             window.location.href = "/Researcher";
           } else {
-            alert(`Somthing went wrong`);
+            alert();
           }
         }
       } else {
+        // Researcher Account
         if (companyName != "" && position != "") {
           const url = "http://127.0.0.1:5173/business";
           const data = {
@@ -339,7 +362,7 @@ const SignInForm = () => {
         }
       }
     } else {
-      alert(`Password and Confirm Password is not matching`);
+      passandconfirmpass();
     }
   };
 
@@ -349,6 +372,7 @@ const SignInForm = () => {
 
   return (
     <div className="signin">
+      <ToastContainer />
       <form className="login-form">
         <h2 style={{ textAlign: "center" }} className="signin-h">
           Sign In
@@ -378,27 +402,40 @@ const SignInForm = () => {
 
         <div>
           <label className="signin-label">Password*</label>
-          <input
-            className="signin-input"
-            type="password"
-            name="password"
-            minLength="8"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
+          <div className="password-input-container">
+            <input
+              className="signin-input"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              minLength="8"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+
+            />
+
+            <span className="password-toggle-icon" onClick={toggleShowPassword}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+
+          </div>
         </div>
         <div>
           <label className="signin-label">Confirm Password*</label>
-          <input
-            className="signin-input"
-            type="password"
-            name="confirmPassword"
-            minLength="8"
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
-            required
-          />
+          <div className="password-input-container">
+            <input
+              className="signin-input"
+              type={showconfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              minLength="8"
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
+              required
+            />
+            <span className="password-toggle-icon" onClick={toggleShowconfirmPassword}>
+              {showconfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
         </div>
         <div>
           <label className="signin-label">Company Name</label>

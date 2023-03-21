@@ -37,6 +37,20 @@
     font-size: 14px;
 }
 
+.password-input-container {
+    position: relative;
+}
+
+.password-toggle-icon {
+    /* background-color: #04ff69; */
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
 .signin-checkbox {
     margin-top: 3rem;
     margin-left: calc(30%);

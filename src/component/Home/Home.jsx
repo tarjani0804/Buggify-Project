@@ -18,7 +18,6 @@ function Home() {
 	const location = useLocation();
 
 	useEffect(() => {
-		console.log("useEffect called");
 		if (scrollTo === "homes8" && scrollRef.current) {
 			setTimeout(() => {
 				console.log("scrolling to Homes8");

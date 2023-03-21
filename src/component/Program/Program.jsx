@@ -17,7 +17,7 @@ const Program = () => {
   const gotoLeaderBoard = () => {
     navigate("/ProgramLeaderBoard");
   };
-  const [profileStats, setProfileStats] = useState();
+  const [profileStats, setProfileStats] = useState(undefined);
   useEffect(() => {
     async function fetchProfileStats() {
       const response = await fetch("http://127.0.0.1:5173/listPrograms");
@@ -33,29 +33,22 @@ const Program = () => {
 
 
 
+  const rows = [];
 
-  // Alternate of using map 
+  if (profileStats) {
+    for (let i = 0; i < profileStats.length; i++) {
+      const program = profileStats[i];
+      rows.push(
+        <tr key={program.id}>
+          <td className="program-heading">{program.company_name}</td>
+          <td>{program.Resolved}</td>
+          <td>{program.Avg_Bounty}</td>
+          <td>{program.Launch_Date}</td>
+        </tr>
+      );
+    }
+  }
 
-
-
-  // const rows = [];
-
-  // if (profileStats) {
-  //   for (let i = 0; i < profileStats.length; i++) {
-  //     const program = profileStats[i];
-  //     rows.push(
-  //       <tr key={program.id}>
-  //         <td className="program-heading">{program.company_name}</td>
-  //         <td>{program.Resolved}</td>
-  //         <td>{program.Avg_Bounty}</td>
-  //         <td>{program.Launch_Date}</td>
-  //       </tr>
-  //     );
-  //   }
-  // }
-
-
-  // Alternate of using map
 
   return (
     <>
@@ -86,30 +79,21 @@ const Program = () => {
 
 
 
-              {profileStats && profileStats.length > 0 ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Programs</th>
-                      <th>Resolved</th>
-                      <th>Average bounty</th>
-                      <th>Launch Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {profileStats.map((program, index) => (
-                      <tr key={program.id}>
-                        <td className="program-heading">{program.company_name}</td>
-                        <td>{program.Resolved}</td>
-                        <td>{program.Avg_Bounty}</td>
-                        <td>{program.Launch_Date}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : (
-                <p>Loading data...</p>
-              )}
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Programs</th>
+                    <th>Resolved</th>
+                    <th>Average bounty</th>
+                    <th>Launch Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows}
+                </tbody>
+              </table>
+
 
 
 
