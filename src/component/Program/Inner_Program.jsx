@@ -154,52 +154,35 @@ function Policy() {
   );
 }
 var in_scope = [
-  {
-    1: { asset: "abc.com", asset_type: "web", impact: "high", elb: "yes" },
-    2: { asset: "", asset_type: "", impact: "", elb: "" },
-    3: { asset: "", asset_type: "", impact: "", elb: "" },
-    4: { asset: "", asset_type: "", impact: "", elb: "" },
-    5: { asset: "", asset_type: "", impact: "", elb: "" },
-    6: { asset: "", asset_type: "", impact: "", elb: "" },
-    7: { asset: "", asset_type: "", impact: "", elb: "" },
-    8: { asset: "", asset_type: "", impact: "", elb: "" },
-    9: { asset: "", asset_type: "", impact: "", elb: "" },
-    10: { asset: "", asset_type: "", impact: "", elb: "" },
-  },
+
+  { id: 1, asset: "abc.com", asset_type: "Web", impact: "high", elb: "Yes" },
+  { id: 2, asset: "def.com", asset_type: "API", impact: "critical", elb: "No" },
+  { id: 3, asset: "ghi.com", asset_type: "IoT", impact: "medium", elb: "Yes" },
+  { id: 4, asset: "jkl.com", asset_type: "Web", impact: "low", elb: "No" },
+  { id: 5, asset: "mno.com", asset_type: "Mobile", impact: "critical", elb: "No" },
+  { id: 6, asset: "pqr.com", asset_type: "Mobile", impact: "critical", elb: "No" },
+  { id: 7, asset: "stu.com", asset_type: "CIDR", impact: "high", elb: "Yes" },
+  { id: 8, asset: "vwx.com", asset_type: "API", impact: "low", elb: "No" },
+  { id: 9, asset: "yza.com", asset_type: "Mobile", impact: "high", elb: "Yes" },
+  { id: 10, asset: "bcd.com", asset_type: "Web", impact: "critical", elb: "Yes" },
 ];
 var out_scope = [
-  {
-    1: { asset: "", asset_type: "" },
-    2: { asset: "", asset_type: "" },
-    3: { asset: "", asset_type: "" },
-    4: { asset: "", asset_type: "" },
-    5: { asset: "", asset_type: "" },
-    6: { asset: "", asset_type: "" },
-    7: { asset: "", asset_type: "" },
-    8: { asset: "", asset_type: "" },
-    9: { asset: "", asset_type: "" },
-    10: { asset: "", asset_type: "" },
-  },
+  { id: 1, asset: "zyx.com", asset_type: "Mobile" },
+  { id: 2, asset: "wvu.com", asset_type: "IoT" },
+  { id: 3, asset: "tsr.com", asset_type: "CIDR" },
+  { id: 4, asset: "qpo.com", asset_type: "Web" },
+  { id: 5, asset: "nml.com", asset_type: "API" },
+  { id: 6, asset: "kji.com", asset_type: "Mobile" },
+  { id: 7, asset: "hgf.com", asset_type: "IoT" },
+  { id: 8, asset: "edc.com", asset_type: "API" },
+  { id: 9, asset: "baz.com", asset_type: "Web" },
+  { id: 10, asset: "yxw.com", asset_type: "Mobile" },
+
 ];
 
 const Scope_and_Reward = () => {
   //change this program and set value of in_scope and out_scope
-  const program = [
-    {
-      id: 1,
-      asset: "*.buggify.com",
-      asset_type: "web",
-      impact: "High",
-      elb: "yes",
-    },
-    {
-      id: 2,
-      asset: "*.buggify.com",
-      asset_type: "web",
-      impact: "High",
-      elb: "yes",
-    },
-  ];
+
 
   return (
     <div className="program-sar-div">
@@ -259,7 +242,7 @@ const Scope_and_Reward = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {program.map((program, index) => (
+                  {in_scope.map((program, index) => (
                     <tr key={program.id}>
                       <td>{program.asset}</td>
                       <td>{program.asset_type}</td>
@@ -286,7 +269,7 @@ const Scope_and_Reward = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {program.map((program, index) => (
+                  {out_scope.map((program, index) => (
                     <tr key={program.id}>
                       <td>{program.asset}</td>
                       <td>{program.asset_type}</td>
