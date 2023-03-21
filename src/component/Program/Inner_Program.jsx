@@ -305,11 +305,10 @@ const Scope_and_Reward = () => {
 const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
   const [scopeSelected, setScopeSelected] = useState();
-
+  const [bookmarked, setBookemarked] = useState(0);
 
   // Use this for cookies (default)
   // const [bookmarkSelected, setBookmarkSelected] = useState(0);
-
 
   // use this for local storage
   const [bookmarkSelected, setBookmarkSelected] = useState(
@@ -319,24 +318,71 @@ const Inner_Program = (props) => {
   const isBookmarked = bookmarkSelected;
 
   const handleBookmark = () => {
-    setBookmarkSelected(bookmarkSelected === 0 ? 1 : 0);
+    setBookmarkSelected(bookmarked === 0 ? 1 : 0);
     console.log("Bookmark", isBookmarked);
+    const myCookie = Cookies.get("myCookie");
+    const prog_id = Cookies.get("prog_id");
+    const data = {
+      myCookie: `${myCookie}`,
+      prog_id: `${prog_id}`,
+    };
+    if (bookmarked == 0) {
+      const serve = async () => {
+        const response = await fetch(`http://127.0.0.1:5173/bookmarkIn`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const jwt = await response.json();
+        setBookemarked(jwt.status);
+      };
+      serve();
+    } else {
+      if (bookmarked == 1) {
+        const serve = async () => {
+          const response = await fetch(`http://127.0.0.1:5173/bookmarkOut`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+          const jwt = await response.json();
+          setBookemarked(jwt.status);
+        };
+        serve();
+      }
+    }
   };
-
 
   // Use this for cookies (default)
   useEffect(() => {
-    console.log(bookmarkSelected);
-  }, [bookmarkSelected]);
-
-
-  // use this for local storage
-  useEffect(() => {
-    localStorage.setItem("bookmarkSelected", bookmarkSelected);
-  }, [bookmarkSelected]);
-
+    async function fetchProfileStats() {
+      const rsrc_id = Cookies.get("rsrc_id");
+      if (rsrc_id != undefined) {
+        const prog_id = Cookies.get("prog_id");
+        const data = {
+          prog_id: `${prog_id}`,
+          rsrc_id: `${rsrc_id}`,
+        };
+        const response = await fetch(`http://127.0.0.1:5173/bookmarkShow`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const jwt = await response.json();
+        setBookemarked(jwt.status);
+      }
+    }
+    fetchProfileStats();
+  }, []);
 
   const handlePolicySelected = () => {
+    console.log(bookmarked);
     localStorage.setItem("listPath", "policy");
     setpolicySelected(true);
     setScopeSelected(false);
@@ -461,7 +507,7 @@ const Inner_Program = (props) => {
                   <h5>
                     Bookmark{" "}
                     <span onClick={handleBookmark}>
-                      {bookmarkSelected ? (
+                      {bookmarked ? (
                         <BsBookmarkCheckFill
                           style={{
                             fontSize: "16px",
@@ -517,15 +563,17 @@ const Inner_Program = (props) => {
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward

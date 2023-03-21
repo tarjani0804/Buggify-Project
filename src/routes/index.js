@@ -1054,16 +1054,16 @@ app.post("/bookmarkOut", middleware, async (req, res) => {
       { rsrc_id: `${rsrc_id}` },
       { $pull: { buss_id: `${buss_id}` } }
     );
-    res.status(200).json({ status: 1 });
+    res.status(200).json({ status: 0 });
   } else {
     res.status(200).json({ status: 0 });
   }
 });
 
-app.post("/bookmarkShow", middleware, async (req, res) => {
+app.post("/bookmarkShow", async (req, res) => {
   // apply when inner-program page load
   const buss_id = req.body.prog_id;
-  const rsrc_id = req.rsrc_id;
+  const rsrc_id = req.body.rsrc_id;
   const data = await BookmarkDB.find({ rsrc_id: `${rsrc_id}` });
   const arraybhau = data[0].buss_id;
   if (arraybhau.includes(buss_id)) {
