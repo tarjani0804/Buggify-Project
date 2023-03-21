@@ -75,7 +75,7 @@ th {
 .program-heading {
   display: flex;
   align-items: center;
-
+  cursor: pointer;
 }
 
 .program-icon {

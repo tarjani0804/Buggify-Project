@@ -10,8 +10,6 @@ const Program = () => {
 
   const gotoPrograms = () => {
     navigate("/Program");
-
-    // set cookie of prog_id and redirect to inner program of that prog_id
   };
   const gotoLeaderBoard = () => {
     navigate("/ProgramLeaderBoard");
@@ -35,7 +33,7 @@ const Program = () => {
       expires: 14,
       path: "/",
     });
-    window.location.href="/inner-program";
+    window.location.href = "/inner-program";
   };
 
   const rows = [];
