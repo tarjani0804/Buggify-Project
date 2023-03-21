@@ -153,6 +153,35 @@ function Policy() {
     </div>
   );
 }
+var in_scope = [
+  {
+    1: { asset: "abc.com", asset_type: "web", impact: "high", elb: "yes" },
+    2: { asset: "", asset_type: "", impact: "", elb: "" },
+    3: { asset: "", asset_type: "", impact: "", elb: "" },
+    4: { asset: "", asset_type: "", impact: "", elb: "" },
+    5: { asset: "", asset_type: "", impact: "", elb: "" },
+    6: { asset: "", asset_type: "", impact: "", elb: "" },
+    7: { asset: "", asset_type: "", impact: "", elb: "" },
+    8: { asset: "", asset_type: "", impact: "", elb: "" },
+    9: { asset: "", asset_type: "", impact: "", elb: "" },
+    10: { asset: "", asset_type: "", impact: "", elb: "" },
+  },
+];
+var out_scope = [
+  {
+    1: { asset: "", asset_type: "" },
+    2: { asset: "", asset_type: "" },
+    3: { asset: "", asset_type: "" },
+    4: { asset: "", asset_type: "" },
+    5: { asset: "", asset_type: "" },
+    6: { asset: "", asset_type: "" },
+    7: { asset: "", asset_type: "" },
+    8: { asset: "", asset_type: "" },
+    9: { asset: "", asset_type: "" },
+    10: { asset: "", asset_type: "" },
+  },
+];
+
 const Scope_and_Reward = () => {
   //change this program and set value of in_scope and out_scope
   const program = [
