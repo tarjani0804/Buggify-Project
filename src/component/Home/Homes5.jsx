@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import './Homes5.css'
-import web from '../image/web.png';
-import malware from '../image/malware.png';
-import netsec from '../image/netsec.png';
 import academy1 from '../image/academy1.png';
 import academy2 from '../image/academy2.png';
 import academy3 from '../image/academy3.png';
@@ -12,15 +9,22 @@ import academy6 from '../image/academy6.png';
 import academy7 from '../image/academy7.png';
 import academy8 from '../image/academy8.png';
 
-
-
 import right from '../image/right.png';
 
 import left from '../image/left.png';
 
 const Homes5 = () => {
 
-    const [allImages, setAllImages] = useState([academy1, academy2, academy3, academy4, academy5, academy6, academy7, academy8])
+    const allImages = [
+        { path: '/PentestingWithPython', image: academy1 },
+        { path: '/BashWithBeginner', image: academy2 },
+        { path: '/WebApplicationPentesting', image: academy3 },
+        { path: '/OffensiveRedTeaming', image: academy4 },
+        { path: '/MalwareAnalysis', image: academy5 },
+        { path: '/ActiveDirectoryExploitation', image: academy6 },
+        { path: '/MobileAppPentesting', image: academy7 },
+        { path: '/ApiPentesting', image: academy8 }
+    ];
     const [currentIndex, setCurrentIndex] = useState(0);
     const maxIndex = allImages.length - 3;
 
@@ -31,6 +35,12 @@ const Homes5 = () => {
     const handleRightArrowClick = () => {
         setCurrentIndex(currentIndex + 1 > maxIndex ? maxIndex : currentIndex + 1);
     };
+
+
+    function togo(path) {
+        window.location.href = path;
+    }
+
     const styles = {
         div: {
             backgroundColor: '#141414',
@@ -80,7 +90,8 @@ const Homes5 = () => {
                     />
                     <div className="slider-container">
                         {allImages.slice(currentIndex, currentIndex + 3).map((allImages, index) => (
-                            <img key={index} src={allImages} className="section-five-img" />
+                            <img key={index} src={allImages.image} className="section-five-img"
+                                onClick={() => togo(allImages.path)} />
                         ))}
                     </div>
                     <img
