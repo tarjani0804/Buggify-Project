@@ -305,7 +305,16 @@ const Scope_and_Reward = () => {
 const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
   const [scopeSelected, setScopeSelected] = useState();
-  const [bookmarkSelected, setBookmarkSelected] = useState(0);
+
+
+  // Use this for cookies (default)
+  // const [bookmarkSelected, setBookmarkSelected] = useState(0);
+
+
+  // use this for local storage
+  const [bookmarkSelected, setBookmarkSelected] = useState(
+    parseInt(localStorage.getItem("bookmarkSelected")) || 0
+  );
 
   const isBookmarked = bookmarkSelected;
 
@@ -313,6 +322,19 @@ const Inner_Program = (props) => {
     setBookmarkSelected(bookmarkSelected === 0 ? 1 : 0);
     console.log("Bookmark", isBookmarked);
   };
+
+
+  // Use this for cookies (default)
+  useEffect(() => {
+    console.log(bookmarkSelected);
+  }, [bookmarkSelected]);
+
+
+  // use this for local storage
+  useEffect(() => {
+    localStorage.setItem("bookmarkSelected", bookmarkSelected);
+  }, [bookmarkSelected]);
+
 
   const handlePolicySelected = () => {
     localStorage.setItem("listPath", "policy");
@@ -495,17 +517,15 @@ const Inner_Program = (props) => {
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${
-                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${
-                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward
