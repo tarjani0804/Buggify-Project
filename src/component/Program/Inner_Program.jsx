@@ -6,9 +6,6 @@ import { HiOutlineBellAlert, HiBellAlert } from "react-icons/hi2";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 function Policy() {
   return (
     <div className="program-policy-div">
@@ -157,6 +154,7 @@ function Policy() {
   );
 }
 const Scope_and_Reward = () => {
+  //change this program and set value of in_scope and out_scope
   const program = [
     {
       id: 1,
@@ -171,8 +169,8 @@ const Scope_and_Reward = () => {
       asset_type: "web",
       impact: "High",
       elb: "yes",
-    }
-  ]
+    },
+  ];
 
   return (
     <div className="program-sar-div">
@@ -184,19 +182,27 @@ const Scope_and_Reward = () => {
           <div className="program-reward-level">
             <div className="reward-low-div">
               <h3 className="reward-low-h">Low</h3>
-              <span className="reward-low-span" id="low">0</span>
+              <span className="reward-low-span" id="low">
+                0
+              </span>
             </div>
             <div className="reward-medium-div">
               <h3 className="reward-medium-h">Medium</h3>
-              <span className="reward-medium-span" id="medium">0</span>
+              <span className="reward-medium-span" id="medium">
+                0
+              </span>
             </div>
             <div className="reward-high-div">
               <h3 className="reward-high-h">High</h3>
-              <span className="reward-high-span" id="high">0</span>
+              <span className="reward-high-span" id="high">
+                0
+              </span>
             </div>
             <div className="reward-critical-div">
               <h3 className="reward-critical-h">Critical</h3>
-              <span className="reward-critical-span" id="critical">0</span>
+              <span className="reward-critical-span" id="critical">
+                0
+              </span>
             </div>
           </div>
           <div className="program-reward-div-p">
@@ -214,7 +220,6 @@ const Scope_and_Reward = () => {
             <h3 className="program-scope-div1-h">In-Scope</h3>
 
             <div className="program-scope-div-table">
-
               <table>
                 <thead>
                   <tr>
@@ -227,7 +232,6 @@ const Scope_and_Reward = () => {
                 <tbody>
                   {program.map((program, index) => (
                     <tr key={program.id}>
-
                       <td>{program.asset}</td>
                       <td>{program.asset_type}</td>
                       <td>{program.impact}</td>
@@ -237,19 +241,14 @@ const Scope_and_Reward = () => {
                 </tbody>
               </table>
             </div>
-
           </div>
-
         </div>
-
-
 
         <div className="program-scope-div">
           <div className="program-scope-div1">
             <h3 className="program-scope-div1-h">Out-of-Scope</h3>
 
             <div className="program-scope-div-table">
-
               <table>
                 <thead>
                   <tr>
@@ -260,7 +259,6 @@ const Scope_and_Reward = () => {
                 <tbody>
                   {program.map((program, index) => (
                     <tr key={program.id}>
-
                       <td>{program.asset}</td>
                       <td>{program.asset_type}</td>
                     </tr>
@@ -268,23 +266,12 @@ const Scope_and_Reward = () => {
                 </tbody>
               </table>
             </div>
-
           </div>
-
         </div>
-
-
-
-
       </div>
-
-
-
-
     </div>
   );
-}
-
+};
 
 const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
@@ -293,11 +280,9 @@ const Inner_Program = (props) => {
 
   const isBookmarked = bookmarkSelected;
 
-
   const handleBookmark = () => {
     setBookmarkSelected(bookmarkSelected === 0 ? 1 : 0);
     console.log("Bookmark", isBookmarked);
-
   };
 
   const handlePolicySelected = () => {
@@ -310,8 +295,8 @@ const Inner_Program = (props) => {
     localStorage.setItem("listPath", "scope");
     setScopeSelected(true);
     setpolicySelected(false);
-    const prog_id = Cookies.get('prog_id')
-    alert(prog_id)
+    const prog_id = Cookies.get("prog_id");
+    alert(prog_id);
     console.log("In Scope");
     const in_scope = await fetch(
       `http://127.0.0.1:5173/programScIn/${prog_id}`
@@ -323,6 +308,8 @@ const Inner_Program = (props) => {
     );
     var in_impact = Object.values(scopeval1).map((item) => item.impact);
     var in_elb = Object.values(scopeval1).map((item) => item.elb);
+    // set this in_scope data to table of in_scope, remove const program in upper function or set by making in_scope const in upper program and then map them using this loop
+
     for (let i = 0; i < 10; i++) {
       if (in_assets[i]) {
         console.log(in_assets[i]);
@@ -340,6 +327,7 @@ const Inner_Program = (props) => {
     var out_assets_type = Object.values(scopeval2).map(
       (item) => item.asset_type
     );
+    // set this out_scope data to table of out_scope, remove const program in upper function or set by making out_scope const in upper program and then map them using this loop
     for (let i = 0; i < 10; i++) {
       if (out_assets[i]) {
         console.log(out_assets[i]);
@@ -347,9 +335,7 @@ const Inner_Program = (props) => {
       }
     }
     console.log("Reward");
-    const reward = await fetch(
-      `http://127.0.0.1:5173/programRd/${prog_id}`
-    );
+    const reward = await fetch(`http://127.0.0.1:5173/programRd/${prog_id}`);
     const rdval = await reward.json();
     var rd_low = rdval.low;
     var rd_medium = rdval.medium;
@@ -366,8 +352,6 @@ const Inner_Program = (props) => {
     document.getElementById("critical").innerHTML = rd_critical;
   };
 
-
-
   useEffect(() => {
     // Get the stored list path from local storage
     const storedListPath = localStorage.getItem("listPath");
@@ -382,14 +366,10 @@ const Inner_Program = (props) => {
     }
   }, []);
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const gotoSubmitReport = () => {
-    navigate('/program-submitReport');
-  }
-
-
-
+    navigate("/program-submitReport");
+  };
 
   return (
     <>
@@ -449,7 +429,6 @@ const Inner_Program = (props) => {
                       )}
                     </span>
                   </h5>
-
                 </div>
 
                 <div className="submit-button" onClick={gotoSubmitReport}>
@@ -487,15 +466,17 @@ const Inner_Program = (props) => {
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward
@@ -532,7 +513,7 @@ Inner_Program.defaultProps = {
       asset_type: "web",
       impact: "High",
       elb: "yes",
-    }
-  ]
+    },
+  ],
 };
 export default Inner_Program;

@@ -3,6 +3,7 @@ import "./Program.css";
 import { useNavigate } from "react-router-dom";
 import Poster from "../image/program_poster.png";
 import Google from "../image/Google.png";
+import Cookies from "js-cookie";
 
 const Program = () => {
   const navigate = useNavigate();
@@ -11,8 +12,6 @@ const Program = () => {
     navigate("/Program");
 
     // set cookie of prog_id and redirect to inner program of that prog_id
-
-
   };
   const gotoLeaderBoard = () => {
     navigate("/ProgramLeaderBoard");
@@ -30,8 +29,14 @@ const Program = () => {
   const prog1 = profileStats;
   console.log(prog1);
 
-
-
+  const handleSubmit = (event, id) => {
+    event.preventDefault();
+    Cookies.set("prog_id", `${profileStats[id].buss_id}`, {
+      expires: 14,
+      path: "/",
+    });
+    window.location.href="/inner-program";
+  };
 
   const rows = [];
 
@@ -40,7 +45,12 @@ const Program = () => {
       const program = profileStats[i];
       rows.push(
         <tr key={program.id}>
-          <td className="program-heading">{program.company_name}</td>
+          <td
+            className="program-heading"
+            onClick={(event) => handleSubmit(event, i)}
+          >
+            {program.company_name}
+          </td>
           <td>{program.Resolved}</td>
           <td>{program.Avg_Bounty}</td>
           <td>{program.Launch_Date}</td>
@@ -48,7 +58,6 @@ const Program = () => {
       );
     }
   }
-
 
   return (
     <>
@@ -76,10 +85,6 @@ const Program = () => {
 
           <div className="program-divs-programs">
             <div className="programs-div">
-
-
-
-
               <table>
                 <thead>
                   <tr>
@@ -89,15 +94,8 @@ const Program = () => {
                     <th>Launch Date</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {rows}
-                </tbody>
+                <tbody>{rows}</tbody>
               </table>
-
-
-
-
-
             </div>
           </div>
         </div>
