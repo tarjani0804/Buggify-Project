@@ -213,7 +213,8 @@ const BusinessProfile = (props) => {
             body: JSON.stringify(data),
         });
         const jwt = await response.json();
-        console.log(jwt);
+        alert(jwt.status);
+        window.location.href = "/ScopeSetting";
     };
 
     return (

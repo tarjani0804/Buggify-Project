@@ -1,6 +1,8 @@
 import React, { useRef, useLayoutEffect } from "react";
 import Cookies from "js-cookie";
 import "./RedTeam_Agreement.css";
+import { ToastContainer, toast } from "react-toastify";
+
 
 const C3 = () => {
   const scrollTo = useRef();
@@ -9,6 +11,12 @@ const C3 = () => {
       window.scrollTo(0, 0);
     }
   });
+
+  const alert = () => {
+    toast.error("Something went Wrong", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,16 +34,18 @@ const C3 = () => {
     });
     const jwt = await response.json();
     const username2 = jwt.status;
+
     if (username2 == "RedTeam") {
       window.location.href = "/BusinessProfile";
     } else {
-      alert("Somthing Went Wrong");
+      alert();
     }
   };
 
   return (
     <>
       <div className="company-c3" ref={scrollTo}>
+        <ToastContainer />
         <h1 className="company-c3-h">
           Agreement for Private Red Team Engagement
         </h1>

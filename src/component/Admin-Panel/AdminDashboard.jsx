@@ -71,7 +71,7 @@ function DashboardNavbar() {
 const AdminDashboard = () => {
     return (
         <>
-            <div className="bus-profile">
+            <div className="admin-dashboard">
 
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">

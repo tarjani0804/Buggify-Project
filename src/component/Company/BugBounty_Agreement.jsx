@@ -10,6 +10,13 @@ const C3 = () => {
     }
   });
 
+
+  const alert = () => {
+    toast.error("Something went Wrong", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = "http://127.0.0.1:5173/agreementBug";
@@ -29,7 +36,7 @@ const C3 = () => {
     if (username2 == "BugBounty") {
       window.location.href = "/BusinessProfile";
     } else {
-      alert(`Somthing Went Wrong`);
+      alert();
     }
   };
 
