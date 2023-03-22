@@ -1192,22 +1192,22 @@ app.patch("/reportfetch/:report_id", async (req, res) => {
   }
 });
 
-app.get("/trackRep/:isOld", middleware, async (req, res) => {
+app.post("/trackRep", middleware, async (req, res) => {
   const buss_id = req.buss_id;
-  const isOld = req.params.isOld;
+  const rep_type = req.body.rep_type;
   if (buss_id) {
-    if (isOld == "open") {
+    if (rep_type == "open") {
       const reps = await ReportDB.find({ buss_id: `${buss_id}`, isOld: false });
       res.status(200).json(reps);
     } else {
-      if (isOld == "resolved") {
+      if (rep_type == "resolved") {
         const reps = await ReportDB.find({
           buss_id: `${buss_id}`,
           isOld: true,
         });
-        res.status(200).json(reps);
+        res.status(200).json({resp: `${reps}`});
       } else {
-        res.status(400).send("Somthing went wrong");
+        res.status(400).json({resp: "Somthing went wrong"});
       }
     }
   } else {
@@ -1257,7 +1257,7 @@ app.get("/retestingReportFetch/:report_id", async (req, res) => {
       report_id: `${report_id}`,
       retesting: true,
     });
-    res.status(200).json(rep);
+    res.status(200).json({status: `${rep}`});
   } catch (e) {
     res
       .status(400)
