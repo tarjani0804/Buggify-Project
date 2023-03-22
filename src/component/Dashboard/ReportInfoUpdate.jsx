@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
-import './BusinessProfile.css';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { MdAddBusiness, MdSecurityUpdateGood } from 'react-icons/md';
-import { VscReport } from 'react-icons/vsc';
-import { BsPlusSquareDotted } from 'react-icons/bs';
-import { RiUserSettingsLine, RiFileHistoryLine, RiLogoutBoxRLine, RiQuestionLine } from 'react-icons/ri';
-import { TbReportAnalytics } from 'react-icons/tb';
-import { IoSettingsOutline } from 'react-icons/io5';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { SiBigbluebutton } from 'react-icons/si';
+import "./BusinessProfile.css";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { MdAddBusiness, MdSecurityUpdateGood } from "react-icons/md";
+import { VscReport } from "react-icons/vsc";
+import { BsPlusSquareDotted } from "react-icons/bs";
+import {
+    RiUserSettingsLine,
+    RiFileHistoryLine,
+    RiLogoutBoxRLine,
+    RiQuestionLine,
+} from "react-icons/ri";
+import { TbReportAnalytics } from "react-icons/tb";
+import { IoSettingsOutline } from "react-icons/io5";
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { SiBigbluebutton } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
@@ -144,18 +149,24 @@ function DashboardNavbar() {
 }
 
 const BusinessProfile = (props) => {
-
-
     //  data incoming for report info
-
-
-
+    const [report, setReport] = useState("");
     const [cvss, setcvss] = useState();
-    const [remark, setremark] = useState();
+    const [note, setremark] = useState();
+    const report_id = Cookies.get("report_id");
+    useEffect(() => {
+        const fetchProfileStats = async () => {
+            const response = await fetch(
+                `http://127.0.0.1:5173/reportfetch/${report_id}`
+            );
+            const data = await response.json();
+            setReport(data[0]);
+        };
+        fetchProfileStats();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // data outgoing for report info update
         const data = {
             cvss: `${cvss}`,
             note: `${note}`,
@@ -172,24 +183,31 @@ const BusinessProfile = (props) => {
         );
         const jwt = await response.json();
         alert(jwt.status);
+        window.location.href = "/ReportInfoUpdate";
     };
+    // show this data
+    console.log(report.report_title);
 
     return (
         <>
-
             <div className="bus-profile">
-
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
                     </div>
                     <div className="bus-profile-div2">
-                        <center><h1 className="bus-profile-div2-h">Bug Report</h1></center>
+                        <center>
+                            <h1 className="bus-profile-div2-h">Bug Report</h1>
+                        </center>
                         <div className="dashboard">
-                            <center>  <div className="bus-profile-header">
-                                <img src={Avat} className="bus-profile-company-logo" />
-                                <h3 className="bus-profile-company-name">{props.companyName}</h3>
-                            </div>
+                            <center>
+                                {" "}
+                                <div className="bus-profile-header">
+                                    <img src={Avat} className="bus-profile-company-logo" />
+                                    <h3 className="bus-profile-company-name">
+                                        {props.companyName}
+                                    </h3>
+                                </div>
                             </center>
 
                             <div className="bus-profile-report-update">
