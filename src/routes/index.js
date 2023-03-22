@@ -1092,7 +1092,7 @@ app.post("/bookmarkShow", async (req, res) => {
     res.status(200).json({ status: 0 });
   }
 });
-// done
+
 const random5 = () => {
   const length = 5;
   let result = "";
@@ -1143,17 +1143,17 @@ app.post("/submitReport", middleware, async (req, res) => {
   try {
     const structdb = new ReportDB(data);
     const outdb = await structdb.save();
-    res.status(200).json({status: `Report ${final} Submitted Successfully`});
+    res.status(200).json({ status: `Report ${final} Submitted Successfully` });
   } catch (e) {
     res.status(400).json({ status: "Fail to Submit report" });
   }
 });
-
+// done
 app.get("/reportfetch/:report_id", async (req, res) => {
   const report_id = req.params.report_id;
   const rep = await ReportDB.find({ report_id: `${report_id}` });
   res.status(200).json(rep);
-});
+}); //done in retesting
 
 app.patch("/reportfetch/:report_id", async (req, res) => {
   const cvss = req.body.cvss;
@@ -1231,6 +1231,7 @@ app.post("/closeReport", middleware, async (req, res) => {
 });
 
 app.patch("/reopenReport", middleware, async (req, res) => {
+  console.log("hit");
   const buss_id = req.buss_id;
   const report_id = req.body.report_id;
   const repval = await ReportDB.find({ report_id: `${report_id}` });
@@ -1247,7 +1248,7 @@ app.patch("/reopenReport", middleware, async (req, res) => {
       res.status(400).json({ status: `No Report with this Id exists` });
     }
   }
-});
+}); //done
 
 app.get("/retestingReportFetch/:report_id", async (req, res) => {
   const report_id = req.params.report_id;
