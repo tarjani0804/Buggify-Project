@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import "./BusinessProfile.css";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { MdAddBusiness, MdSecurityUpdateGood } from "react-icons/md";
@@ -148,6 +148,8 @@ function DashboardNavbar() {
     );
 }
 
+
+
 const BusinessProfile = (props) => {
     //  data incoming for report info
     const [report, setReport] = useState("");
@@ -188,9 +190,16 @@ const BusinessProfile = (props) => {
     // show this data
     console.log(report.report_title);
 
+
+    const scrollRef = useRef(null);
+    useLayoutEffect(() => {
+        if (scrollRef.current) {
+            window.scrollTo(0, 0);
+        }
+    }, []);
     return (
         <>
-            <div className="bus-profile">
+            <div className="bus-profile" ref={scrollRef}>
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">
                         <DashboardNavbar />
