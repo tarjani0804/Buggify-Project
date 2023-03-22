@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import './BusinessProfile.css';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { MdAddBusiness, MdSecurityUpdateGood } from 'react-icons/md';
@@ -148,11 +148,15 @@ const BusinessProfile = (props) => {
 
     //  data incoming for report info
 
-
+    const scrollRef = useRef(null);
+    useLayoutEffect(() => {
+        if (scrollRef.current) {
+            window.scrollTo(0, 0);
+        }
+    }, []);
 
     const [cvss, setcvss] = useState();
     const [remark, setremark] = useState();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         // data outgoing for report info update
@@ -177,7 +181,7 @@ const BusinessProfile = (props) => {
     return (
         <>
 
-            <div className="bus-profile">
+            <div className="bus-profile" ref={scrollRef}>
 
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">
