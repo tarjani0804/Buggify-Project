@@ -150,10 +150,6 @@ function DashboardNavbar() {
 
 const BusinessProfile = (props) => {
   const navigate = useNavigate();
-  const gotoReportInfoUpdate = () => {
-    navigate("/ReportInfoUpdate");
-
-  };
   const myCookie = Cookies.get("myCookie");
   // const report_id = report.report_id
   const [reportList, setReportList] = useState();
@@ -176,16 +172,22 @@ const BusinessProfile = (props) => {
     fetchProfileStats();
   }, []);
   console.log(reportList);
-
+  const gotoReportInfoUpdate = (val) => {
+    Cookies.set("report_id", `${reportList[val].report_id}`, {
+      expires: 14,
+      path: "/",
+    });
+    navigate("/ReportInfoUpdate");
+  };
+  const handleSubmit1 = (event, id) => {
+    gotoReportInfoUpdate(id);
+  };
   const reportlist = [];
   if (reportList) {
     for (let i = 0; i < reportList.length; i++) {
       const reports = reportList[i];
       reportlist.push(
-        <div
-          key={reports.id}
-          className="bus-profile-bug-report-div"
-        >
+        <div key={reports.id} className="bus-profile-bug-report-div">
           <div className="bus-profile-bug-report-divtitle">
             <p className="bus-profile-bug-report-div-title-p">
               Report Title: {reports.report_title}
@@ -196,20 +198,14 @@ const BusinessProfile = (props) => {
           </div>
           <p
             className="bus-profile-bug-report-div-link1"
-            onClick={gotoReportInfoUpdate}
+            onClick={(event) => handleSubmit1(event, i)}
           >
             Check Report
           </p>
         </div>
       );
-
     }
-
-
   }
-
-
-
 
   // Incoming report is set in reportList, map it like list of program from program page
 
@@ -234,9 +230,7 @@ const BusinessProfile = (props) => {
                 </center>
                 <div className="stats">
                   <p className="bus-profie-stat-h">Active Bug Reports</p>
-                  <div className="bus-profile-bug-report">
-                    {reportlist}
-                  </div>
+                  <div className="bus-profile-bug-report">{reportlist}</div>
                 </div>
               </div>
             </center>
