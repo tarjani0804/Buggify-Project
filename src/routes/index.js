@@ -1251,7 +1251,7 @@ app.get("/retestingReportFetch/:report_id", async (req, res) => {
       .status(400)
       .json({ status: `No Retest Report with given report_id exists` });
   }
-});
+}); // for res
 
 app.patch("/paymentclearance", async (req, res) => {
   const report_id = req.body.report_id;
@@ -1273,7 +1273,7 @@ app.patch("/paymentclearance", async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: `Fail to Update Payment Information` });
   }
-});
+}); //done
 
 app.post("/bountyinfo", middleware, async (req, res) => {
   const buss_id = req.buss_id;
@@ -1297,7 +1297,7 @@ app.post("/bountyinfo", middleware, async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: "Fail" });
   }
-});
+}); 
 
 app.post("/previousFindings", middleware, async (req, res) => {
   const buss_id = req.buss_id;
