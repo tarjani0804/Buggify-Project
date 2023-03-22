@@ -152,6 +152,8 @@ function DashboardNavbar() {
 const BusinessProfile = (props) => {
   const [query, setQuery] = useState("");
   const [report, setReport] = useState("");
+  const [showReport, setShowReport] = useState(false);
+
 
   function handleInputChange(event) {
     setQuery(event.target.value);
@@ -162,6 +164,8 @@ const BusinessProfile = (props) => {
     const resp = await fetch(`http://127.0.0.1:5173/reportfetch/${query}`);
     const out = await resp.json();
     setReport(out[0]);
+
+    setShowReport(true);
   };
   const handleSubmit = async (e) => {
     const myCookie = Cookies.get("myCookie");
@@ -180,6 +184,10 @@ const BusinessProfile = (props) => {
     const jwt = await response.json();
     alert(jwt.status);
     // data outgoing for retesting
+
+
+
+
   };
   console.log(report.report_title);
   console.log(report.report_id);
@@ -223,7 +231,7 @@ const BusinessProfile = (props) => {
                     value={query}
                     onChange={handleInputChange}
                     placeholder="Enter Report Id :"
-                    // onChange={(event) => setReportSearch(event.target.value)}
+                  // onChange={(event) => setReportSearch(event.target.value)}
                   />
                   <div>
                     <button
@@ -236,23 +244,20 @@ const BusinessProfile = (props) => {
                 </div>
               </form>
               /* report div */
-              <div className="report-div">
+              <div className="report-div" style={{ display: showReport ? 'block' : 'none' }} >
                 <div className="bus-profile-bug-report-divtitle">
                   <p className="bus-profile-bug-report-div-title-p">
-                    Report Title: {props.reportTitle}
+                    Report Title: {report.report_title}
                   </p>
                   <p className="bus-profile-bug-report-div-id-p">
-                    Report Id: {props.reportId}
+                    Report Id: {report.report_id}
                   </p>
                 </div>
                 <div className="report-steps">
                   <p className="bus-profile-bug-report-div-title-p">
                     Steps to Reproduce :
-                    {BusinessProfile.defaultProps.reportSteps.map((report) => (
-                      <li className="report-div-steps-li" key={report.id}>
-                        {report.li}
-                      </li>
-                    ))}
+                    <p className="report-note-p"> {report.reproduce_steps}</p>
+
                   </p>
                 </div>
 
@@ -260,40 +265,61 @@ const BusinessProfile = (props) => {
                   <p className="bus-profile-bug-report-div-title-p">
                     Proof-of-Concept :
                   </p>
-                  <p className="report-proof-link-of-poc">
-                    Link of POC screenshot: {props.linkOfPOC}
-                  </p>
-                  {BusinessProfile.defaultProps.pocLink.map((poclink) => (
-                    <p className="report-proof-link-of-poc" key={poclink.id}>
-                      Additional Link :{poclink.li}
-                    </p>
-                  ))}
+                  <ul>
+                    <li>
+                      <a href={report.poc1} className="report-proof-link-of-poc">
+                        Link 1
+                      </a>
+                    </li>
+                    <li>
+                      <a href={report.poc2} className="report-proof-link-of-poc">
+                        Link 2
+                      </a>
+                    </li>
+                    <li>
+                      <a href={report.poc3} className="report-proof-link-of-poc">
+                        Link 3
+                      </a>
+                    </li>
+                    <li>
+                      <a href={report.poc4} className="report-proof-link-of-poc">
+                        Link 4
+                      </a>
+                    </li>
+                    <li>
+                      <a href={report.poc5} className="report-proof-link-of-poc">
+                        Link 5
+                      </a>
+                    </li>
+                  </ul>
                 </div>
                 <div className="report-proof">
                   <p className="bus-profile-bug-report-div-title-p">
-                    CVSS Score: {props.CvssScore}
+                    CVSS Score:
+                    <p className="report-note-p"> {report.cvss}</p>
+
                   </p>
                 </div>
                 <div className="report-proof">
                   <p className="bus-profile-bug-report-div-title-p">
-                    Attack Scenario:{" "}
+                    Attack Scenario:
                   </p>
-                  <p className="report-proof-link-of-poc">{props.attack}</p>
+                  <p className="report-proof-link-of-poc">{report.attack_scenario}</p>
                 </div>
                 <div className="report-proof">
                   <p className="bus-profile-bug-report-div-title-p">
-                    Remediation:{" "}
+                    Remediation:
                   </p>
-                  <p className="report-proof-link-of-poc">{props.remedi}</p>
+                  <p className="report-proof-link-of-poc">{report.remediation}</p>
                 </div>
                 <div className="report-proof">
                   <p className="bus-profile-bug-report-div-title-p">
                     Note by Company:{" "}
                   </p>
-                  <p className="report-note-p"> {props.nbc}</p>
+                  <p className="report-note-p"> {report.note}</p>
                 </div>
               </div>
-              <div className="button_ani retesting-button">
+              <div className="button_ani retesting-button" style={{ display: showReport ? 'block' : 'none' }}>
                 <button className="btn" onClick={handleSubmit}>
                   Request for Retesting
                 </button>
@@ -308,65 +334,7 @@ const BusinessProfile = (props) => {
 
 BusinessProfile.defaultProps = {
   companyLogo: "",
-  companyName: "Company",
-  reportTitle: "Reflected XSS in search field of abc.def.com",
-  reportId: "#a7ag3-jh48g",
-  reportSteps: [
-    {
-      id: "1",
-      li: "Search field of https://abc.def.com/page?search=abc",
-    },
-    {
-      id: "2",
-      li:
-        "Replace Payload “><script>alert(document.cookie);</script> with abc in search parameter ",
-    },
-    {
-      id: "3",
-      li:
-        "Entering this payload will show alert popup having cookie of current user ",
-    },
-    {
-      id: "4",
-      li: "bkfaeb",
-    },
-    {
-      id: "5",
-      li: " iflakenflkan ",
-    },
-    {
-      id: "6",
-      li: "flaflakefa",
-    },
-    {
-      id: "7",
-      li: " akfvajfuafka",
-    },
-  ],
-  linkOfPOC: "https://drive.amazing.com ",
-  pocLink: [
-    {
-      id: "1",
-      li: "link1",
-    },
-    {
-      id: "2",
-      li: "link2 ",
-    },
-    {
-      id: "3",
-      li: "link3 ",
-    },
-    {
-      id: "4",
-      li: "link4",
-    },
-  ],
-  CvssScore: "Low (3.0 CVSS)",
-  attack: "djcbjsdbcshdbcuijskdbvyufdhvbyudfh",
-  remedi: "wkssalmkdcnfhgryhdsjkehysgdfxjkr",
-  nbc:
-    "We have successfully fixed bug.We Encourage you to ensure fix of bug is working or not, and if still there is any vulnerability found, Reference this Report ID and Report as new bug.Thank you for Securing Def Limited.Based on CVSS calculation score 2.4, you will be awarded with 300$ Bounty.Please send us your banking detail at secure @def.com with Report ID and Proofs mentioned in Payout Policy as per regulations.",
-};
+  companyName: "Buggify LLC",
+}
 
 export default BusinessProfile;
