@@ -167,7 +167,6 @@ const BusinessProfile = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // data outgoing for report info update
     const data = {
       cvss: `${cvss}`,
       note: `${note}`,
@@ -184,6 +183,7 @@ const BusinessProfile = (props) => {
     );
     const jwt = await response.json();
     alert(jwt.status);
+    window.location.href = "/ReportInfoUpdate";
   };
   // show this data
   console.log(report.report_title);
