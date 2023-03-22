@@ -1174,23 +1174,11 @@ app.patch("/reportfetch/:report_id", async (req, res) => {
         { note: `${note}` }
       );
     }
-    if (bounty != "") {
-      await ReportDB.updateOne(
-        { report_id: `${report_id}` },
-        { bounty: `${bounty}` }
-      );
-    }
-    if (payment_id != "") {
-      await ReportDB.updateOne(
-        { report_id: `${report_id}` },
-        { payment_id: `${payment_id}` }
-      );
-    }
     res.status(200).json({ status: `Report Updated Successfully` });
   } catch (e) {
     res.status(400).json({ status: `Fail to Update Report` });
   }
-});
+}); // done
 
 app.post("/trackRep", middleware, async (req, res) => {
   const buss_id = req.buss_id;
@@ -1221,14 +1209,14 @@ app.post("/closeReport", middleware, async (req, res) => {
   try {
     const repup = await ReportDB.updateOne(
       { buss_id: `${buss_id}`, report_id: `${report_id}`, isOld: false },
-      { $set: { isOld: true } }
+      { $set: { isOld: true, retesting: false } }
     );
     console.log(repup);
     res.status(200).json({ status: `Report is Closed` });
   } catch (e) {
     res.status(400).json({ status: `Somthing went wrong` });
   }
-});
+}); //done
 
 app.patch("/reopenReport", middleware, async (req, res) => {
   console.log("hit");
