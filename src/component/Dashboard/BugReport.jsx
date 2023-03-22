@@ -152,8 +152,10 @@ const BusinessProfile = (props) => {
   const navigate = useNavigate();
   const gotoReportInfoUpdate = () => {
     navigate("/ReportInfoUpdate");
+
   };
   const myCookie = Cookies.get("myCookie");
+  // const report_id = report.report_id
   const [reportList, setReportList] = useState();
   const data = {
     myCookie: `${myCookie}`,
@@ -174,6 +176,41 @@ const BusinessProfile = (props) => {
     fetchProfileStats();
   }, []);
   console.log(reportList);
+
+  const reportlist = [];
+  if (reportList) {
+    for (let i = 0; i < reportList.length; i++) {
+      const reports = reportList[i];
+      reportlist.push(
+        <div
+          key={reports.id}
+          className="bus-profile-bug-report-div"
+        >
+          <div className="bus-profile-bug-report-divtitle">
+            <p className="bus-profile-bug-report-div-title-p">
+              Report Title: {reports.report_title}
+            </p>
+            <p className="bus-profile-bug-report-div-id-p">
+              Report Id: {reports.report_id}
+            </p>
+          </div>
+          <p
+            className="bus-profile-bug-report-div-link1"
+            onClick={gotoReportInfoUpdate}
+          >
+            Check Report
+          </p>
+        </div>
+      );
+
+    }
+
+
+  }
+
+
+
+
   // Incoming report is set in reportList, map it like list of program from program page
 
   return (
@@ -198,27 +235,7 @@ const BusinessProfile = (props) => {
                 <div className="stats">
                   <p className="bus-profie-stat-h">Active Bug Reports</p>
                   <div className="bus-profile-bug-report">
-                    {BusinessProfile.defaultProps.reports.map((title) => (
-                      <div
-                        key={title.id}
-                        className="bus-profile-bug-report-div"
-                      >
-                        <div className="bus-profile-bug-report-divtitle">
-                          <p className="bus-profile-bug-report-div-title-p">
-                            Report Title: {title.reportTitle}
-                          </p>
-                          <p className="bus-profile-bug-report-div-id-p">
-                            Report Id: {title.reportId}
-                          </p>
-                        </div>
-                        <p
-                          className="bus-profile-bug-report-div-link1"
-                          onClick={gotoReportInfoUpdate}
-                        >
-                          Check Report
-                        </p>
-                      </div>
-                    ))}
+                    {reportlist}
                   </div>
                 </div>
               </div>
