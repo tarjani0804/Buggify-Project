@@ -1193,16 +1193,16 @@ app.patch("/reportfetch/:report_id", async (req, res) => {
 });
 
 app.post("/trackRep", middleware, async (req, res) => {
-  const buss_id = req.buss_id;
+  const rsrc_id = req.rsrc_id;
   const rep_type = req.body.rep_type;
-  if (buss_id) {
+  if (rsrc_id) {
     if (rep_type == "open") {
-      const reps = await ReportDB.find({ buss_id: `${buss_id}`, isOld: false });
+      const reps = await ReportDB.find({ rsrc_id: `${rsrc_id}`, isOld: false });
       res.status(200).json(reps);
     } else {
       if (rep_type == "resolved") {
         const reps = await ReportDB.find({
-          buss_id: `${buss_id}`,
+          rsrc_id: `${rsrc_id}`,
           isOld: true,
         });
         res.status(200).json({resp: `${reps}`});
@@ -1213,7 +1213,7 @@ app.post("/trackRep", middleware, async (req, res) => {
   } else {
     res.status(400).send("Invalid Business Account");
   }
-});
+}); // for res
 
 app.post("/closeReport", middleware, async (req, res) => {
   const buss_id = req.buss_id;
