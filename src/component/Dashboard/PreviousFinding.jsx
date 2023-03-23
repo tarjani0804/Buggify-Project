@@ -171,7 +171,34 @@ const BusinessProfile = (props) => {
     }
     fetchProfileStats();
   }, []);
+
+
   console.log(reportList);
+
+  const reportlist = [];
+  if (reportList) {
+    for (let i = 0; i < reportList.length; i++) {
+      const reports = reportList[i];
+      reportlist.push(
+        <div key={reports.id} className="bus-profile-bug-report-div">
+          <div className="bus-profile-bug-report-divtitle">
+            <p className="bus-profile-bug-report-div-title-p">
+              Report Title: {reports.report_title}
+            </p>
+            <p className="bus-profile-bug-report-div-id-p">
+              Report Id: {reports.report_id}
+            </p>
+          </div>
+          <p
+            className="bus-profile-bug-report-div-link1"
+            onClick={(event) => handleSubmit1(event, i)}
+          >
+            Check Report
+          </p>
+        </div>
+      );
+    }
+  }
 
   const gotoReportInfoUpdate = (val) => {
     Cookies.set("report_id", `${reportList[val].report_id}`, {
@@ -208,27 +235,7 @@ const BusinessProfile = (props) => {
                     Previous Findings (Closed)
                   </p>
                   <div className="bus-profile-bug-report">
-                    {BusinessProfile.defaultProps.reports.map((title) => (
-                      <div
-                        key={title.id}
-                        className="bus-profile-bug-report-div"
-                      >
-                        <div className="bus-profile-bug-report-divtitle">
-                          <p className="bus-profile-bug-report-div-title-p">
-                            Report Title: {title.reportTitle}
-                          </p>
-                          <p className="bus-profile-bug-report-div-id-p">
-                            Report Id: {title.reportId}
-                          </p>
-                        </div>
-                        <p
-                          className="bus-profile-bug-report-div-link1"
-                          onClick={(event) => handleSubmit1(event, id)}
-                        >
-                          Check Report
-                        </p>
-                      </div>
-                    ))}
+                    {reportlist}
                   </div>
                 </div>
               </div>

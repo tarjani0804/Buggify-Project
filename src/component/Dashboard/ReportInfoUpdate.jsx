@@ -366,11 +366,6 @@ const BusinessProfile = (props) => {
 };
 
 BusinessProfile.defaultProps = {
-<<<<<<< HEAD
-  companyLogo: "",
-  companyName: "Buggfy LLC",
-
-=======
   companyLogo: "",
   companyName: "Buggfy LLC",
   reportId: "#a7ag3-jh38g",
@@ -427,7 +422,6 @@ BusinessProfile.defaultProps = {
   ],
   attack: "bfcjbfjhreufhvnjkehuf",
   remeda: "njsagysgbcfysgbyxgbygbidsx",
->>>>>>> 2cc25d3436fdcb4a91ffdd4c60703a0e610a795c
 };
 
 export default BusinessProfile;

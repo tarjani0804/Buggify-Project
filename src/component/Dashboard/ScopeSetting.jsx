@@ -157,11 +157,12 @@ const BusinessProfile = (props) => {
     const [selectedEligible, setEligible] = useState("");
 
     const assetTypes = [
-        { id: "1", type: "Mobile" },
-        { id: "2", type: "API" },
-        { id: "3", type: "Source Code Review" },
-        { id: "4", type: "CIDR" },
-        { id: "5", type: "IoT" },
+        { id: "1", type: "Web" },
+        { id: "2", type: "Mobile" },
+        { id: "3", type: "API" },
+        { id: "4", type: "Source Code Review" },
+        { id: "5", type: "CIDR" },
+        { id: "6", type: "IoT" },
     ];
 
     const handleInAssetTypeChange = (event) => {
@@ -172,15 +173,16 @@ const BusinessProfile = (props) => {
     };
 
     const impactLevel = [
-        { id: "1", type: "High" },
-        { id: "2", type: "Medium" },
-        { id: "3", type: "Low" },
+        { id: "1", type: "Critical" },
+        { id: "2", type: "High" },
+        { id: "3", type: "Medium" },
+        { id: "4", type: "Low" },
     ];
     const handleImpactLevelChange = (event) => {
         setImpactLevel(event.target.value);
     };
 
-    const eligibles = [{ id: "1", type: "No" }];
+    const eligibles = [{ id: "1", type: "Yes" }, { id: "2", type: "No" }];
 
     const handleEligibleChange = (event) => {
         setEligible(event.target.value);
@@ -250,7 +252,7 @@ const BusinessProfile = (props) => {
                                         </div>
                                         <div className="column-div1">
                                             <label className="dashboard-form-label">
-                                                Asset Type:{" "}
+                                                Asset Type:
                                             </label>
                                             <select
                                                 className="dashboard-input"
@@ -258,7 +260,7 @@ const BusinessProfile = (props) => {
                                                 value={selectedInAssetType}
                                                 onChange={handleInAssetTypeChange}
                                             >
-                                                <option value="">Web</option>
+                                                <option value="">Select Asset Type</option>
                                                 {assetTypes.map((assettype) => (
                                                     <option
                                                         className="dashboard-form-option"
@@ -281,7 +283,7 @@ const BusinessProfile = (props) => {
                                                 value={selectedImpactLevel}
                                                 onChange={handleImpactLevelChange}
                                             >
-                                                <option value="">Critical</option>
+                                                <option value="">Select Impact Level</option>
                                                 {impactLevel.map((impactlevel) => (
                                                     <option
                                                         className="dashboard-form-option"
@@ -296,7 +298,7 @@ const BusinessProfile = (props) => {
                                         </div>
                                         <div className="column-div1">
                                             <label className="dashboard-form-label">
-                                                Eligible for Bounty?{" "}
+                                                Eligible for Bounty?
                                             </label>
                                             <select
                                                 className="dashboard-input input3"
@@ -304,7 +306,7 @@ const BusinessProfile = (props) => {
                                                 value={selectedEligible}
                                                 onChange={handleEligibleChange}
                                             >
-                                                <option value="">Yes</option>
+                                                <option value="">Select Eligibility</option>
                                                 {eligibles.map((eligible) => (
                                                     <option
                                                         className="dashboard-form-option"
@@ -332,7 +334,7 @@ const BusinessProfile = (props) => {
 
                                         <div className="column-div1">
                                             <label className="dashboard-form-label">
-                                                Asset Type:{" "}
+                                                Asset Type:
                                             </label>
                                             <select
                                                 className="dashboard-input"
@@ -340,7 +342,7 @@ const BusinessProfile = (props) => {
                                                 value={selectedOutAssetType}
                                                 onChange={handleOutAssetTypeChange}
                                             >
-                                                <option value="">Web</option>
+                                                <option value="">Select Asset Type</option>
                                                 {assetTypes.map((assettype) => (
                                                     <option
                                                         className="dashboard-form-option"
