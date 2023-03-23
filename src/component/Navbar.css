@@ -59,22 +59,42 @@ li {
     margin-top: 30px;
 }
 
-.menu-link ul li a {
-    text-transform: capitalize;
-    /* color: #7a7a7a; */
-    transition: 0.5s;
-}
-
-.menu-link ul li :hover>a {
+.menu-link ul li :hover {
     color: rgb(0, 176, 206);
-    transition: 0.5s;
     width: 100%;
 }
 
-ul li.active a {
+ul li.active {
     color: #ffffff;
     font-weight: bold;
 }
+
+.username-div {
+    position: relative;
+    font-size: 16px;
+    margin: 35px auto 0;
+    justify-content: end;
+    align-items: center;
+    display: grid;
+    grid-column: 4/5;
+}
+
+.username-container {
+    background-color: #04ff69;
+    color: #000000;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.logout-btn {
+    position: absolute;
+    bottom: -20px;
+    left: 2rem;
+    color: #878787;
+    cursor: pointer;
+    transition: 5s;
+}
+
 
 
 .button_ani {
@@ -88,15 +108,6 @@ ul li.active a {
     display: grid;
     grid-column: 4/5;
 }
-
-.button-div {
-    color: #04FF69;
-    position: relative;
-    background-color: #1b1b1b;
-    margin-top: 2rem;
-    transition-duration: 10s;
-}
-
 
 .btn {
     padding: 10px 30px;

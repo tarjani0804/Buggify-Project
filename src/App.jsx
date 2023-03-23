@@ -95,6 +95,11 @@ import AdminDashboard from './component/Admin-Panel/AdminDashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
+  const [username, setUsername] = useState("");
+
+  function handleLogin(username) {
+    setUsername(username);
+  }
 
   return (
     <>
@@ -106,6 +111,7 @@ function App() {
 
           <Route path='/' element={
             <>
+
               <Navbar />
               <Home />
               <Footer />
@@ -165,7 +171,7 @@ function App() {
           <Route path='/Login' element={
             <>
               <NoNavbar />
-              <Login />
+              <Login onLogin={handleLogin} />
               <NoFooter />
             </>
           } />

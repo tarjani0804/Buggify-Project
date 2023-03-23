@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { BsList } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+
+
 
 function MyList() {
 	const items = [
@@ -47,7 +49,7 @@ function MyList() {
 
 
 const Navbar = () => {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
 	const [showMediaIcons, setShowMediaIcons] = useState(false);
 	const navigate = useNavigate();
@@ -57,17 +59,32 @@ const Navbar = () => {
 	const gotoHome = () => {
 		navigate('/')
 	}
+	const [username2, setUsername] = useState("");
 
-	// login form ma login button click kare taire aa handle ma setIsLoggedIn in value true thase 
-	// tho isLoggedIn valu div (i.e. userName ) display thase tho aa login form ma aa handle avu joiye ne 
+	useEffect(() => {
+		const storedUsername = localStorage.getItem("username");
+		if (storedUsername) {
+			setUsername(storedUsername);
+		}
+	}, []);
+	console.log(username2);
+	const [showLogout, setShowLogout] = useState(false);
 
-	const handleLogin = () => {
-		// Perform login logic...
-		setIsLoggedIn(true);
+
+	const handleShowLogout = () => {
+		if (showLogout) {
+			setShowLogout(false);
+		} else {
+			setShowLogout(true);
+		}
 	}
-	const buttonContent = isLoggedIn ? 'Welcome, John' : 'Try Buggify';
-
+	const handleLogout = () => {
+		localStorage.removeItem("username");
+		setUsername("");
+		setShowLogout(false);
+	}
 	const navActiveIndex = Number(window.localStorage.getItem("navActiveIndex"));
+
 
 
 	return (
@@ -75,23 +92,30 @@ const Navbar = () => {
 
 			<nav className="main-nav">
 				<div className="logo">
-					<h2 onClick={gotoHome} className="mint">Buggify</h2>
+					<h2 onClick={gotoHome} className="mint">Buggify </h2>
 				</div>
 				<div
 					className={showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"}
 				>
 					<MyList />
 
-					{isLoggedIn ? (
-						<div className="button_ani try-btn">
-							<button className="btn">Welcome, John</button>
+					{username2 ? (
+						<div className="username-div">
+							<div className="username-container">
+								<span onClick={handleShowLogout}>{`${username2}`}</span>
+							</div>
+							{showLogout && (
+								<div className="logout-btn" onClick={handleLogout}>
+									Logout
+								</div>
+							)}
+
 						</div>
 					) : (
 						<div className="button_ani try-btn" onClick={gotoLogin}>
 							<button className="btn">Try Buggify</button>
 						</div>
 					)}
-
 				</div>
 
 				<div className="social-media">

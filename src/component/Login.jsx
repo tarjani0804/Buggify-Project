@@ -4,10 +4,15 @@ import "./Login.css";
 
 var username2;
 
-const LoginForm = () => {
-  const [username, setUserName] = useState("");
+
+
+
+const LoginForm = ({ onLogin }) => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -25,11 +30,16 @@ const LoginForm = () => {
     const jwt = await response.json();
     console.log(jwt.status);
     username2 = jwt.username; //set this in component
+    console.log(username2);
+
+    onLogin(username2);
+    localStorage.setItem("username", username2);
+
     if (rememberMe == true) {
       Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 14, path: "/" });
       if (jwt.buss_id) {
         Cookies.set("buss_id", `${jwt.buss_id}`, { expires: 14, path: "/" });
-        window.location.href = "/BusinessProfile";
+        window.location.href = "/businessProfile";
       } else {
         if (jwt.rsrc_id) {
           Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 14, path: "/" });
@@ -42,7 +52,7 @@ const LoginForm = () => {
       Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 2, path: "/" });
       if (jwt.buss_id) {
         Cookies.set("buss_id", `${jwt.buss_id}`, { expires: 2, path: "/" });
-        window.location.href = "/BusinessProfile";
+        window.location.href = "/businessProfile";
       } else {
         if (jwt.rsrc_id) {
           Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
@@ -77,7 +87,7 @@ const LoginForm = () => {
             id="username"
             className="login-form-input"
             value={username}
-            onChange={(e) => setUserName(e.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
             required
           />
           {/* <label htmlFor="username" className="login-label">Username:</label>
