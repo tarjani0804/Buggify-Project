@@ -149,7 +149,7 @@ function DashboardNavbar() {
   );
 }
 
-const BusinessProfile = (props) => {
+const BusinessProfile = () => {
   const [query, setQuery] = useState("");
   const [report, setReport] = useState("");
   const [showReport, setShowReport] = useState(false);

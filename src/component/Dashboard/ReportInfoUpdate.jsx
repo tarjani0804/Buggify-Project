@@ -222,22 +222,19 @@ const BusinessProfile = (props) => {
                             <div className="bus-profile-report-update">
                                 <div className="bus-profile-bug-report-divtitle">
                                     <p className="bus-profile-bug-report-div-title-p">
-                                        Report Title: {props.reportTitle}{" "}
+                                        Report Title: {report.report_title}
                                     </p>
                                     <p className="bus-profile-bug-report-div-id-p">
-                                        Report Id: {props.reportId}{" "}
+                                        Report Id: {report.report_id}
                                     </p>
                                 </div>
                             </div>
                             <div className="bus-profile-report-update">
-                                <div className="bus-profile-report-update-steps">
+                                <div className="report-steps">
                                     <p className="bus-profile-bug-report-div-title-p">
                                         Steps to Reproduce :
-                                        {BusinessProfile.defaultProps.reportSteps.map((report) => (
-                                            <li className="report-div-steps-li" key={report.id}>
-                                                {report.li}
-                                            </li>
-                                        ))}
+                                        <p className="report-note-p"> {report.reproduce_steps}</p>
+
                                     </p>
                                 </div>
 
@@ -245,23 +242,45 @@ const BusinessProfile = (props) => {
                                     <p className="bus-profile-bug-report-div-title-p">
                                         Proof-of-Concept :
                                     </p>
-                                    {BusinessProfile.defaultProps.pocLink.map((poclink) => (
-                                        <p className="report-proof-link-of-poc" key={poclink.id}>
-                                            Additional Link :{poclink.li}
-                                        </p>
-                                    ))}
+                                    <ul>
+                                        <li>
+                                            <a href={report.poc1} className="report-proof-link-of-poc">
+                                                Link 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={report.poc2} className="report-proof-link-of-poc">
+                                                Link 2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={report.poc3} className="report-proof-link-of-poc">
+                                                Link 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={report.poc4} className="report-proof-link-of-poc">
+                                                Link 4
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href={report.poc5} className="report-proof-link-of-poc">
+                                                Link 5
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div className="report-proof">
                                     <p className="bus-profile-bug-report-div-title-p">
-                                        Attack Scenario:{" "}
+                                        Attack Scenario:
                                     </p>
-                                    <p className="report-proof-link-of-poc"> {props.attack} </p>
+                                    <p className="report-proof-link-of-poc">{report.attack_scenario}</p>
                                 </div>
                                 <div className="report-proof">
                                     <p className="bus-profile-bug-report-div-title-p">
                                         Remediation:{" "}
                                     </p>
-                                    <p className="report-proof-link-of-poc"> {props.remeda} </p>
+                                    <p className="report-proof-link-of-poc"> {report.remediation} </p>
                                 </div>
                             </div>
 
@@ -307,60 +326,7 @@ const BusinessProfile = (props) => {
 BusinessProfile.defaultProps = {
     companyLogo: "",
     companyName: "Buggfy LLC",
-    reportId: "#a7ag3-jh38g",
-    reportTitle: "XSS in Search Field of abc.def.com",
-    reportSteps: [
-        {
-            id: "1",
-            li: "Search field of https://abc.def.com/page?search=abc",
-        },
-        {
-            id: "2",
-            li:
-                "Replace Payload “><script>alert(document.cookie);</script> with abc in search parameter ",
-        },
-        {
-            id: "3",
-            li:
-                "Entering this payload will show alert popup having cookie of current user ",
-        },
-        {
-            id: "4",
-            li: "bkfaeb",
-        },
-        {
-            id: "5",
-            li: " iflakenflkan ",
-        },
-        {
-            id: "6",
-            li: "flaflakefa",
-        },
-        {
-            id: "7",
-            li: " akfvajfuafka",
-        },
-    ],
-    pocLink: [
-        {
-            id: "1",
-            li: "link1",
-        },
-        {
-            id: "2",
-            li: "link2 ",
-        },
-        {
-            id: "3",
-            li: "link3 ",
-        },
-        {
-            id: "4",
-            li: "link4",
-        },
-    ],
-    attack: "bfcjbfjhreufhvnjkehuf",
-    remeda: "njsagysgbcfysgbyxgbygbidsx",
+
 };
 
 export default BusinessProfile;

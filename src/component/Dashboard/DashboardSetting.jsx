@@ -429,12 +429,15 @@ const BusinessProfile = (props) => {
   const notify = () => {
     toast.success("Profile Updated !", {
       position: toast.POSITION.TOP_RIGHT,
-      onClose: () => window.location.reload(),
+      autoClose: 15000,
+      onClose: () => {
+        window.location.reload();
+      }
     });
   };
 
 
-  const [isLoading, setIsLoading] = useState(false);
+
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     const response = await fetch(`http://127.0.0.1:5173/settingBus`, {
@@ -446,11 +449,7 @@ const BusinessProfile = (props) => {
     });
     const jwt = await response.json();
     if (jwt.status === "Profile Updated") {
-      setIsLoading(true);
-      toast.success("Profile Updated !", {
-        position: toast.POSITION.TOP_RIGHT,
-        onClose: () => window.location.reload(),
-      });
+      notify();
     }
   };
 
@@ -493,7 +492,7 @@ const BusinessProfile = (props) => {
           </div>
 
           <div className="bus-profile-div2">
-            <ToastContainer />
+            <ToastContainer autoClose={8000} />
 
             <h1 className="bus-profile-div2-h">Setting</h1>
             <center>
@@ -576,7 +575,6 @@ const BusinessProfile = (props) => {
                 <div
                   className="button_ani dashboard-button"
                   onClick={handleProfileUpdate}
-                  disabled={isLoading}
                 >
                   <button type="submit" className="button2">
                     Update Profile

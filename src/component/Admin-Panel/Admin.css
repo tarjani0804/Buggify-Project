@@ -41,6 +41,12 @@
     padding-left: 2.25rem;
 }
 
+.admin-dashboard {
+    background-color: #0b0b0b;
+    height: max-content;
+    padding-bottom: 15rem;
+}
+
 
 /* Payment Clearance */
 

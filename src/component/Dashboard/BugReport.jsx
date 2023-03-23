@@ -148,10 +148,10 @@ function DashboardNavbar() {
   );
 }
 
-const BusinessProfile = (props) => {
+const BusinessProfile = () => {
   const navigate = useNavigate();
   const myCookie = Cookies.get("myCookie");
-  // const report_id = report.report_id
+
   const [reportList, setReportList] = useState();
   const data = {
     myCookie: `${myCookie}`,
@@ -244,20 +244,6 @@ const BusinessProfile = (props) => {
 BusinessProfile.defaultProps = {
   companyLogo: "",
   companyName: "Buggify LLC",
-  reports: [
-    {
-      id: "1",
-      reportId: "#a7ag3-jh38g",
-      reportTitle: "XSS in Search Field of abc.def.com",
-      reportLink: "",
-    },
-    {
-      id: "2",
-      reportId: "#v3jd8-st62s ",
-      reportTitle: "CSRF in Password Change Function of staging.def.com",
-      reportLink: "",
-    },
-  ],
 };
 
 export default BusinessProfile;
