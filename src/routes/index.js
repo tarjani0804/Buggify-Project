@@ -1193,9 +1193,9 @@ app.post("/trackRep", middleware, async (req, res) => {
           buss_id: `${buss_id}`,
           isOld: true,
         });
-        res.status(200).json({resp: `${reps}`});
+        res.status(200).json({ resp: `${reps}` });
       } else {
-        res.status(400).json({resp: "Somthing went wrong"});
+        res.status(400).json({ resp: "Somthing went wrong" });
       }
     }
   } else {
@@ -1245,7 +1245,7 @@ app.get("/retestingReportFetch/:report_id", async (req, res) => {
       report_id: `${report_id}`,
       retesting: true,
     });
-    res.status(200).json({status: `${rep}`});
+    res.status(200).json({ status: `${rep}` });
   } catch (e) {
     res
       .status(400)
@@ -1297,7 +1297,7 @@ app.post("/bountyinfo", middleware, async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: "Fail" });
   }
-}); 
+}); // done
 
 app.post("/previousFindings", middleware, async (req, res) => {
   const buss_id = req.buss_id;
