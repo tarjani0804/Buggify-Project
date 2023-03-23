@@ -1174,23 +1174,11 @@ app.patch("/reportfetch/:report_id", async (req, res) => {
         { note: `${note}` }
       );
     }
-    if (bounty != "") {
-      await ReportDB.updateOne(
-        { report_id: `${report_id}` },
-        { bounty: `${bounty}` }
-      );
-    }
-    if (payment_id != "") {
-      await ReportDB.updateOne(
-        { report_id: `${report_id}` },
-        { payment_id: `${payment_id}` }
-      );
-    }
     res.status(200).json({ status: `Report Updated Successfully` });
   } catch (e) {
     res.status(400).json({ status: `Fail to Update Report` });
   }
-});
+}); // done
 
 app.post("/trackRep", middleware, async (req, res) => {
   const buss_id = req.buss_id;
@@ -1205,9 +1193,9 @@ app.post("/trackRep", middleware, async (req, res) => {
           buss_id: `${buss_id}`,
           isOld: true,
         });
-        res.status(200).json({resp: `${reps}`});
+        res.status(200).json({ resp: `${reps}` });
       } else {
-        res.status(400).json({resp: "Somthing went wrong"});
+        res.status(400).json({ resp: "Somthing went wrong" });
       }
     }
   } else {
@@ -1221,14 +1209,14 @@ app.post("/closeReport", middleware, async (req, res) => {
   try {
     const repup = await ReportDB.updateOne(
       { buss_id: `${buss_id}`, report_id: `${report_id}`, isOld: false },
-      { $set: { isOld: true } }
+      { $set: { isOld: true, retesting: false } }
     );
     console.log(repup);
     res.status(200).json({ status: `Report is Closed` });
   } catch (e) {
     res.status(400).json({ status: `Somthing went wrong` });
   }
-});
+}); //done
 
 app.patch("/reopenReport", middleware, async (req, res) => {
   console.log("hit");
@@ -1257,13 +1245,13 @@ app.get("/retestingReportFetch/:report_id", async (req, res) => {
       report_id: `${report_id}`,
       retesting: true,
     });
-    res.status(200).json({status: `${rep}`});
+    res.status(200).json({ status: `${rep}` });
   } catch (e) {
     res
       .status(400)
       .json({ status: `No Retest Report with given report_id exists` });
   }
-});
+}); // for res
 
 app.patch("/paymentclearance", async (req, res) => {
   const report_id = req.body.report_id;
@@ -1285,7 +1273,7 @@ app.patch("/paymentclearance", async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: `Fail to Update Payment Information` });
   }
-});
+}); //done
 
 app.post("/bountyinfo", middleware, async (req, res) => {
   const buss_id = req.buss_id;
@@ -1309,7 +1297,7 @@ app.post("/bountyinfo", middleware, async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: "Fail" });
   }
-});
+}); // done
 
 app.post("/previousFindings", middleware, async (req, res) => {
   const buss_id = req.buss_id;
