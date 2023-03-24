@@ -1307,7 +1307,7 @@ app.post("/previousFindings", middleware, async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: `Fail to Fetch Old Reports` });
   }
-});
+}); // done
 
 app.post("/bountyhistory", middleware, async (req, res) => {
   const rsrc_id = req.rsrc_id;
@@ -1351,7 +1351,7 @@ app.get("/leaderboard", async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: `Failed to fetch leaderboard information` });
   }
-});
+}); // done
 
 app.post("/leaderin", async (req, res) => {
   let number = "";
@@ -1375,7 +1375,7 @@ app.post("/leaderin", async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: `Unable to add Researcher, Try Again!` });
   }
-});
+}); // add 15 more
 
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
