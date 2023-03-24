@@ -51,6 +51,12 @@
     cursor: pointer;
 }
 
+@media(max-width: 1920px){
+    .password-toggle-icon {
+        right: 32%;
+    }
+}
+
 .signin-checkbox {
     margin-top: 3rem;
     margin-left: calc(30%);
