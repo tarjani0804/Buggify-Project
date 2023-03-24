@@ -154,6 +154,7 @@ const BusinessProfile = (props) => {
   const [rsrcId, setRsrcID] = useState("");
   const [reportId, setReportID] = useState("");
   const myCookie = Cookies.get("myCookie");
+  const companyName = Cookies.get("companyName");
   const handleSubmit = async (e) => {
     // data outgoing for bounty payment
     const data = {
@@ -190,7 +191,7 @@ const BusinessProfile = (props) => {
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
                   <h3 className="bus-profile-company-name">
-                    {props.companyName}
+                    {companyName}
                   </h3>
                 </div>
               </center>

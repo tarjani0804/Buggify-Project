@@ -164,6 +164,7 @@ const BusinessProfile = (props) => {
     };
     fetchProfileStats();
   }, []);
+  const companyName = Cookies.get("companyName");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -229,7 +230,7 @@ const BusinessProfile = (props) => {
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
                   <h3 className="bus-profile-company-name">
-                    {props.companyName}
+                    {companyName}
                   </h3>
                 </div>
               </center>

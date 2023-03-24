@@ -4,14 +4,10 @@ import "./Login.css";
 
 var username2;
 
-
-
-
 const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +35,10 @@ const LoginForm = ({ onLogin }) => {
       Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 14, path: "/" });
       if (jwt.buss_id) {
         Cookies.set("buss_id", `${jwt.buss_id}`, { expires: 14, path: "/" });
+        Cookies.set("companyName", `${jwt.companyName}`, {
+          expires: 14,
+          path: "/",
+        });
         window.location.href = "/businessProfile";
       } else {
         if (jwt.rsrc_id) {
@@ -52,6 +52,10 @@ const LoginForm = ({ onLogin }) => {
       Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 2, path: "/" });
       if (jwt.buss_id) {
         Cookies.set("buss_id", `${jwt.buss_id}`, { expires: 2, path: "/" });
+        Cookies.set("companyName", `${jwt.companyName}`, {
+          expires: 2,
+          path: "/",
+        });
         window.location.href = "/businessProfile";
       } else {
         if (jwt.rsrc_id) {

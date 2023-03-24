@@ -454,7 +454,7 @@ const BusinessProfile = (props) => {
   };
 
   const [showConfirmation, setShowConfirmation] = useState(false);
-
+  const companyName = Cookies.get("companyName");
   const handleDeleteAccount = async () => {
     const myCookie = Cookies.get("myCookie");
     const data = { myCookie: `${myCookie}` };
@@ -499,7 +499,7 @@ const BusinessProfile = (props) => {
               <div className="bus-profile-header">
                 <img src={Avat} className="bus-profile-company-logo" />
                 <h3 className="bus-profile-company-name">
-                  {data && data.company_name}
+                  {companyName}
                 </h3>
               </div>
             </center>

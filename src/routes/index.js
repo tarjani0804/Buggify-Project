@@ -176,9 +176,11 @@ app.post("/userfetch", async (req, res) => {
         console.log(password);
         console.log(password2);
         if (password == password2) {
+          console.log(user1Login.company_name);
           const token = user1Login.tokens[0].token;
           const buss_id = user1Login.buss_id;
           const username = user1Login.username;
+          const companyName = user1Login.company_name
           console.log(token);
           console.log(username);
           console.log(buss_id);
@@ -187,6 +189,7 @@ app.post("/userfetch", async (req, res) => {
             jwttoken: `${token}`,
             buss_id: `${buss_id}`,
             username: `${username}`,
+            companyName: `${companyName}`
           });
         } else {
           res.status(400).json({ status: "Wrong Credentials" });

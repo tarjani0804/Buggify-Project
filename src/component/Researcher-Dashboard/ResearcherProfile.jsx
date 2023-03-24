@@ -126,6 +126,8 @@ function ResearcherNavbar() {
 }
 
 const ResearcherProfile = (props) => {
+  
+
   return (
     <>
       <div className="res-profile">
@@ -157,27 +159,6 @@ const ResearcherProfile = (props) => {
                   <div className="res-column-div1">
                     <label className="res-profile-label">Country: </label>
                     <span className="res-profile-span">{props.country}</span>
-                  </div>
-                </div>
-
-                <p className="bus-profie-stat-h">Statistics</p>
-
-                <div className="res-profile-div">
-                  <div className="res-column-div1">
-                    <label className="res-profile-label">
-                      Submitted Reports:{" "}
-                    </label>
-                    <span className="res-profile-span">{props.sReports}</span>
-                  </div>
-                  <div className="res-column-div1">
-                    <label className="res-profile-label">Open Reports: </label>
-                    <span className="res-profile-span">{props.oReports}</span>
-                  </div>
-                  <div className="res-column-div1">
-                    <label className="res-profile-label">
-                      Resolved Reports:{" "}
-                    </label>
-                    <span className="res-profile-span">{props.cReports}</span>
                   </div>
                 </div>
               </div>

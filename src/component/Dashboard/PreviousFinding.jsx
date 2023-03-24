@@ -154,6 +154,7 @@ const BusinessProfile = (props) => {
   // Data incoming for previous finding
   const [reportList, setReportList] = useState();
   const myCookie = Cookies.get("myCookie");
+  const companyName = Cookies.get("companyName");
   const data = {
     myCookie: `${myCookie}`,
   };
@@ -226,7 +227,7 @@ const BusinessProfile = (props) => {
                   <div className="bus-profile-header">
                     <img src={Avat} className="bus-profile-company-logo" />
                     <h3 className="bus-profile-company-name">
-                      {props.companyName}
+                      {companyName}
                     </h3>
                   </div>
                 </center>
