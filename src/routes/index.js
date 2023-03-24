@@ -180,7 +180,7 @@ app.post("/userfetch", async (req, res) => {
           const token = user1Login.tokens[0].token;
           const buss_id = user1Login.buss_id;
           const username = user1Login.username;
-          const companyName = user1Login.company_name
+          const companyName = user1Login.company_name;
           console.log(token);
           console.log(username);
           console.log(buss_id);
@@ -189,7 +189,7 @@ app.post("/userfetch", async (req, res) => {
             jwttoken: `${token}`,
             buss_id: `${buss_id}`,
             username: `${username}`,
-            companyName: `${companyName}`
+            companyName: `${companyName}`,
           });
         } else {
           res.status(400).json({ status: "Wrong Credentials" });
@@ -1093,6 +1093,27 @@ app.post("/bookmarkShow", async (req, res) => {
     res.status(200).json({ status: 1 });
   } else {
     res.status(200).json({ status: 0 });
+  }
+});
+
+app.post("/listBookmark", middleware, async (req, res) => {
+  const rsrc_id = req.rsrc_id;
+  try {
+    const book = await BookmarkDB.find({ rsrc_id: `${rsrc_id}` });
+    const buss = book[0].buss_id;
+    const lengthlwa = buss.length;
+    var i = 0;
+    var oy = [];
+    for (i; i < lengthlwa; i++) {
+      const res1 = await Buss.find({ buss_id: `${buss[i]}` });
+      oy[i] = res1[0].company_name;
+    }
+    res.status(200).json(oy);
+  } catch (e) {
+    {
+      console.log(e);
+      res.status(400);
+    }
   }
 });
 
