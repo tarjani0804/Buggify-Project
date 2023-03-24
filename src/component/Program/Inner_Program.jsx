@@ -290,10 +290,7 @@ const Inner_Program = (props) => {
   const [scopeSelected, setScopeSelected] = useState();
   const [bookmarked, setBookemarked] = useState(0);
 
-  // Use this for cookies (default)
-  // const [bookmarkSelected, setBookmarkSelected] = useState(0);
 
-  // use this for local storage
   const [bookmarkSelected, setBookmarkSelected] = useState(
     parseInt(localStorage.getItem("bookmarkSelected")) || 0
   );
@@ -466,13 +463,7 @@ const Inner_Program = (props) => {
               <h1 className="inner-program-heading-section-div1-2-h">
                 {props.program_name}
               </h1>
-              <a
-                className="inner-program-heading-section-div1-2-a"
-                href={props.program_link}
-                target="_blank"
-              >
-                {props.program_link}
-              </a>
+
               <div className="inner-program-heading-section-div1-2-div">
                 <div className="program-launch-div">
                   <h5>Program Launch</h5>
@@ -513,46 +504,21 @@ const Inner_Program = (props) => {
               </div>
             </div>
           </div>
-          <div className="inner-program-heading-section-div2">
-            <div className="program-bug-resolved-div">
-              <h5>Bug Resolved</h5>
-              <p>{props.bug_resolved}</p>
-            </div>
-            <div className="program-asset-in-scope-div">
-              <h5>Asset In-Scope</h5>
-              <p>{props.asset_in_scope}</p>
-            </div>
-            <div className="average-bounty-paid-div">
-              <h5>Average Bounties Paid</h5>
-              <p>
-                {"$"} {props.avg_bounties_paid}
-              </p>
-            </div>
-            <div className="time-respond-div">
-              <h5>Average Time to Respond</h5>
-              <p>{props.avg_time_respond}</p>
-            </div>
-            <div className="time-triage-div">
-              <h5>Average Time to Triage</h5>
-              <p>{props.avg_time_triage}</p>
-            </div>
-          </div>
+
         </div>
         <div>
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${
-                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${
-                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward

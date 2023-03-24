@@ -7,8 +7,7 @@
     background-color: #ffffff;
     /* height: 500px; */
     border: 30px solid #389af5;
-    display: grid;
-    grid-template-columns: 1.5fr 0.8fr;
+    width: 100%;
 }
 
 .inner-program-heading-section-div1 {
@@ -53,18 +52,19 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 5rem;
+    width: 100%;
 }
 
 .program-launch-div {
-    margin-right: 3rem;
+    margin-right: 10rem;
 }
 
 .program-type-div {
-    margin-right: 3rem;
+    margin-right: 10rem;
 }
 
 .submit-button {
-    margin-left: 5rem;
+    margin-left: 12rem;
 }
 
 .sub-button {

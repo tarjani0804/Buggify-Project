@@ -156,30 +156,36 @@ function OpenReports() {
     fetchProfileStats();
   }, []);
   console.log(bountyList);
-
+  const openlist = [];
+  if (bountyList) {
+    for (let i = 0; i < bountyList.length; i++) {
+      const reports = bountyList[i];
+      openlist.push(
+        <div key={reports.id} className="bus-profile-bug-report-div">
+          <div className="bus-profile-bug-report-divtitle">
+            <p className="bus-profile-bug-report-div-title-p">
+              Report Title: {reports.report_title}
+            </p>
+            <p className="bus-profile-bug-report-div-id-p">
+              Report Id: {reports.report_id}
+            </p>
+          </div>
+          <p
+            className="res-track-report-list-link"
+            onClick={gotoReportInfo}
+          >
+            Check More info
+          </p>
+        </div>
+      );
+    }
+  }
 
   return (
     <div>
       <div className="track-report">
         <div className="track-reports-div">
-          {TrackReports.defaultProps.reports.map((title) => (
-            <div key={title.id} className="res-track-report-list-div">
-              <div className="bus-profile-bug-report-divtitle">
-                <p className="bus-profile-bug-report-div-title-p">
-                  Report Title: {title.reportTitle}
-                </p>
-                <p className="bus-profile-bug-report-div-id-p">
-                  Report Id: {title.reportId}
-                </p>
-              </div>
-              <p
-                className="res-track-report-list-link"
-                onClick={gotoReportInfo}
-              >
-                Check More info
-              </p>
-            </div>
-          ))}
+          {openlist}
         </div>
       </div>
     </div>
@@ -192,7 +198,6 @@ function ResolvedReports() {
     navigate("/researcher-ReportInfo");
   };
 
-  // data incoming for resolved report
   const [bountyList, setBountyList] = useState();
   useEffect(() => {
     async function fetchProfileStats() {
@@ -215,33 +220,36 @@ function ResolvedReports() {
   }, []);
   console.log(bountyList);
 
+  const resolvedlist = [];
+  if (bountyList) {
+    for (let i = 0; i < bountyList.length; i++) {
+      const reports = bountyList[i];
+      resolvedlist.push(
+        <div key={reports.id} className="bus-profile-bug-report-div">
+          <div className="bus-profile-bug-report-divtitle">
+            <p className="bus-profile-bug-report-div-title-p">
+              Report Title: {reports.report_title}
+            </p>
+            <p className="bus-profile-bug-report-div-id-p">
+              Report Id: {reports.report_id}
+            </p>
+          </div>
+          <p
+            className="bus-profile-bug-report-div-link1"
+            onClick={(event) => handleSubmit1(event, i)}
+          >
+            Check Report
+          </p>
+        </div>
+      );
+    }
+  }
+
   return (
     <div>
       <div className="track-report">
         <div className="track-reports-div">
-          {TrackReports.defaultProps.Resolvedreports.map((title) => (
-            <div key={title.id} className="res-track-report-list-div">
-              <div className="bus-profile-bug-report-divtitle">
-                <p className="bus-profile-bug-report-div-title-p">
-                  Report Title: {title.reportTitle}
-                </p>
-                <p className="bus-profile-bug-report-div-id-p">
-                  Report Id: {title.reportId}
-                </p>
-              </div>
-              <div style={{ display: "flex", position: "relative" }}>
-                <p
-                  className="res-track-report-list-link"
-                  onClick={gotoReportInfo}
-                >
-                  Check More Info
-                </p>
-                <p className="res-track-report-list-date">
-                  Resolved Date: {title.reportDate}
-                </p>
-              </div>
-            </div>
-          ))}
+          {resolvedlist}
         </div>
       </div>
     </div>

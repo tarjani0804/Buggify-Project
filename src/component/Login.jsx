@@ -1,6 +1,9 @@
 import React, { useState, useLayoutEffect, useRef } from "react";
 import Cookies from "js-cookie";
 import "./Login.css";
+import { ToastContainer, toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
 
 var username2;
 
@@ -8,6 +11,11 @@ const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +53,7 @@ const LoginForm = ({ onLogin }) => {
           Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 14, path: "/" });
           window.location.href = "/ResearcherProfile";
         } else {
-          alert(`Wrong Credentials`);
+          alert();
         }
       }
     } else {
@@ -62,11 +70,17 @@ const LoginForm = ({ onLogin }) => {
           Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
           window.location.href = "/ResearcherProfile";
         } else {
-          alert(`Wrong Credentials`);
+          alert();
         }
       }
     }
   };
+
+  const alert = () => {
+    toast.error("Wron Credentials", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  }
   const handleRememberMeChange = () => {
     setRememberMe(!rememberMe);
   };
@@ -81,6 +95,7 @@ const LoginForm = ({ onLogin }) => {
   return (
     <div className="login" ref={scrollRef}>
       <h2 className="login-h">Login</h2>
+      <ToastContainer />
       <form className="login-form">
         <div className="login-username">
           <label htmlFor="username" className="login-label">
@@ -94,25 +109,28 @@ const LoginForm = ({ onLogin }) => {
             onChange={(event) => setUsername(event.target.value)}
             required
           />
-          {/* <label htmlFor="username" className="login-label">Username:</label>
-                    <input type="text" id="username" className="login-form-input" /> */}
+
         </div>
         <div className="login-username">
-          <label htmlFor="password" className="login-label">
-            Password:
+          <label htmlFor="password" className="login-label">  Password:
           </label>
-          <input
-            type="password"
-            id="password"
-            className="login-form-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="password-input-container">
+
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              className="login-form-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span className="password-toggle-icon" onClick={toggleShowPassword}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
         </div>
         <div>
-          {/* <input type="checkbox" id="remember-me" className="login-checkbox" />
-                    <label htmlFor="remember-me" className="login-checkbox-label">Remember me for a week</label> */}
+
           <input
             type="checkbox"
             id="rememberMe"
@@ -131,16 +149,12 @@ const LoginForm = ({ onLogin }) => {
         </div>
       </form>
       <p className="login-p">
-        Don't have a account?{" "}
+        Don't have a account?
         <a href="/Signup" style={{ color: "#04ff69" }}>
           Create an account
         </a>
       </p>
-      <p className="login-forgot-password">
-        <a href="/forgot" style={{ color: "#04ff69" }}>
-          Forgot Password
-        </a>
-      </p>
+
     </div>
   );
 };

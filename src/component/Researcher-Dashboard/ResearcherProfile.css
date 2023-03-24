@@ -222,6 +222,7 @@
     letter-spacing: 1px;
     position: absolute;
     right: calc(2%);
+    cursor: pointer;
 }
 
 .bookmarked-ul li {

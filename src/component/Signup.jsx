@@ -286,10 +286,20 @@ const SignInForm = () => {
       position: toast.POSITION.TOP_RIGHT
     })
   }
+  const alertPosition = () => {
+    toast.info("Company Name or Position missing for Bussiness Account", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  }
+  const alertWrong = () => {
+    toast.info("Something went wrong", {
+      position: toast.POSITION.TOP_RIGHT
+    })
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password == confirmPassword) {
-      //  Business Account
+      // Researcher Account
       if (companyName == "" && position == "") {
         const url = "http://127.0.0.1:5173/researcher";
         const data = {
@@ -354,11 +364,11 @@ const SignInForm = () => {
               });
               window.location.href = "/Researcher";
             } else {
-              alert(`Somthing went wrong`);
+              alertWrong();
             }
           }
         } else {
-          alert("Company Name or Position Missing for Business Account");
+          alertPosition();
         }
       }
     } else {
@@ -438,7 +448,7 @@ const SignInForm = () => {
           </div>
         </div>
         <div>
-          <label className="signin-label">Company Name</label>
+          <label className="signin-label">Company Name (For Business Account)</label>
           <input
             className="signin-input"
             type="text"
@@ -448,7 +458,7 @@ const SignInForm = () => {
           />
         </div>
         <div>
-          <label className="signin-label">Position</label>
+          <label className="signin-label">Position (For Business Account)</label>
           <input
             className="signin-input"
             type="text"
@@ -468,7 +478,6 @@ const SignInForm = () => {
             <option value="">Select a country</option>
             {countries.map((country) => (
               <option key={country.code} value={country.name}>
-                {" "}
                 {country.name}
               </option>
             ))}
