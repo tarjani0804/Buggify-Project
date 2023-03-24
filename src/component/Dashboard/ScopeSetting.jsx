@@ -155,7 +155,7 @@ const BusinessProfile = (props) => {
     const [selectedOutAssetType, setSelectedOutAssetType] = useState("");
     const [selectedImpactLevel, setImpactLevel] = useState("");
     const [selectedEligible, setEligible] = useState("");
-
+    const companyName = Cookies.get('companyName');
     const assetTypes = [
         { id: "1", type: "Web" },
         { id: "2", type: "Mobile" },
@@ -233,7 +233,7 @@ const BusinessProfile = (props) => {
                                 <div className="bus-profile-header">
                                     <img src={Avat} className="bus-profile-company-logo" />
                                     <h3 className="bus-profile-company-name">
-                                        {props.companyName}
+                                        {companyName}
                                     </h3>
                                 </div>
                             </center>

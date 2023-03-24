@@ -2,7 +2,7 @@ import React from "react";
 import './Homes7.css'
 
 const homes7 = ({ videoId }) => {
-    const youtubeEmbedUrl = `https://www.youtube.com/embed/${videoId}`;
+    const youtubeEmbedUrl = `https://www.youtube.com/embed/vWcYNFArIQo`;
 
 
     return (
@@ -14,7 +14,7 @@ const homes7 = ({ videoId }) => {
                 <div className="responsive-youtube-container">
                     <iframe
                         className="responsive-youtube-video"
-                        src={`https://www.youtube.com/embed/${videoId}`}
+                        src={`https://www.youtube.com/embed/vWcYNFArIQo`}
                         frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen

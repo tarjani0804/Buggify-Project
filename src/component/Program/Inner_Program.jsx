@@ -466,10 +466,6 @@ const Inner_Program = (props) => {
               <h1 className="inner-program-heading-section-div1-2-h">
                 {props.program_name}
               </h1>
-              <p className="inner-program-heading-section-div1-2-p">
-                {props.program_description}
-              </p>
-              <br></br>
               <a
                 className="inner-program-heading-section-div1-2-a"
                 href={props.program_link}
@@ -574,8 +570,6 @@ const Inner_Program = (props) => {
 
 Inner_Program.defaultProps = {
   program_name: "Shopify",
-  program_description:
-    "Shopify is a multi-channel commerce platform that helps people sell online, in-store, and everywhere in between.",
   program_link: "https://www.shopify.com",
 
   program_launch: "2/2016 ",
