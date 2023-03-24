@@ -151,7 +151,7 @@ function DashboardNavbar() {
 
 function BusinessProfile() {
   const [profileStats, setProfileStats] = useState(undefined);
-
+  const companyName = Cookies.get('companyName');
   useEffect(() => {
     async function fetchProfileStats() {
       const requestOptions = {
@@ -235,7 +235,7 @@ function BusinessProfile() {
               <center>
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
-                  <h3 className="bus-profile-company-name">{ }</h3>
+                  <h3 className="bus-profile-company-name">{companyName}</h3>
                 </div>
               </center>
               <div className="stats">
