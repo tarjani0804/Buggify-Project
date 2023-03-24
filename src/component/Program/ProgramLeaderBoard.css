@@ -1,0 +1,53 @@
+.program-leaderboard-div {
+    padding-bottom: 15rem;
+}
+
+.program-leaderboard-div1 {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: 5rem 1fr 1fr 1fr 5rem;
+}
+
+.position1 {
+    grid-column: 2/3;
+    margin-top: 7rem;
+}
+
+.position-div1-img {
+    width: 40%;
+    border-radius: 50%;
+    margin-left: 30%;
+}
+
+.position1-div2-p1 {
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+}
+
+.position1-div2-p2 {
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+}
+
+.position1-div2-p3 {
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 2.8rem;
+    letter-spacing: 1px;
+}
+
+.position2 {
+    margin-top: 2rem;
+}
+
+.position3 {
+    margin-top: 7rem;
+}
