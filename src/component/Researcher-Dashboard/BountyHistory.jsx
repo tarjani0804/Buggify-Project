@@ -132,23 +132,64 @@ const BountyHistory = (props) => {
   const [bountyList, setBountyList] = useState();
   useEffect(() => {
     async function fetchProfileStats() {
-        const myCookie = Cookies.get('myCookie')
-        const data = {
-            myCookie: `${myCookie}`
-        }
-        const response = await fetch(`http://127.0.0.1:5173/bountyhistory`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
+      const myCookie = Cookies.get('myCookie')
+      const data = {
+        myCookie: `${myCookie}`
+      }
+      const response = await fetch(`http://127.0.0.1:5173/bountyhistory`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const jwt = await response.json();
       setBountyList(jwt);
     }
     fetchProfileStats();
   }, []);
   console.log(bountyList);
+
+
+
+  const bounties = [];
+
+  if (bountyList) {
+    for (let i = 0; i < bountyList.length; i++) {
+      const bounty = bountyList[i];
+      bounties.push(
+        <div className="track-report">
+          <div className="track-reports-div">
+
+            <div key={bounty.id} className="res-track-report-list-div">
+              <div
+                style={{
+                  display: "flex",
+                  position: "relative",
+                  paddingTop: "2rem",
+                }}
+              >
+                <p className="bus-profile-bug-report-div-title-p">
+                  Bounty Amount: {bounty.bounty}
+                </p>
+                <p className="bus-profile-bug-report-div-id-p">
+                  Report Id: {bounty.report_id}
+                </p>
+              </div>
+              <div className="bus-profile-bug-report-divtitle">
+                <p className="bus-profile-bug-report-div-title-p">
+                  Date of Payment: {bounty.updatedAt}
+                </p>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )
+    }
+  }
+
 
   return (
     <>
@@ -168,36 +209,7 @@ const BountyHistory = (props) => {
                   </h3>
                 </div>
               </center>
-              <div className="track-report">
-                <div className="track-reports-div">
-                  {BountyHistory.defaultProps.bounty.map((title) => (
-                    <div key={title.id} className="res-track-report-list-div">
-                      <div
-                        style={{
-                          display: "flex",
-                          position: "relative",
-                          paddingTop: "2rem",
-                        }}
-                      >
-                        <p className="bus-profile-bug-report-div-title-p">
-                          Bounty Amount: {title.bAmount}
-                        </p>
-                        <p className="bus-profile-bug-report-div-id-p">
-                          Company Name: {title.companyName}
-                        </p>
-                      </div>
-                      <div className="bus-profile-bug-report-divtitle">
-                        <p className="bus-profile-bug-report-div-title-p">
-                          Date of Payment: {title.dop}
-                        </p>
-                        <p className="bus-profile-bug-report-div-id-p">
-                          Report Id: {title.rId}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {bounties}
             </div>
           </div>
         </div>
