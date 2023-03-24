@@ -10,6 +10,8 @@ import { ImProfile } from 'react-icons/im';
 import { TbReportSearch } from 'react-icons/tb';
 import Avat from '../image/avat1.png';
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+
 
 function ResearcherNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -97,6 +99,7 @@ function ResearcherNavbar() {
 }
 
 const BusinessProfile = () => {
+    const [report, setReport] = useState("");
     const companyName = Cookies.get("companyName");
 
     const report_id = Cookies.get("report_id");
