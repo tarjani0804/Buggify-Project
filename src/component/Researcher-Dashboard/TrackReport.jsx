@@ -14,6 +14,7 @@ import { ImProfile } from "react-icons/im";
 import { TbReportSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
+import Cookies from "js-cookie";
 
 function ResearcherNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -134,6 +135,27 @@ function OpenReports() {
 
 
   // data incoming for open report 
+  const [bountyList, setBountyList] = useState();
+  useEffect(() => {
+    async function fetchProfileStats() {
+      const myCookie = Cookies.get('myCookie')
+      const data = {
+        myCookie: `${myCookie}`,
+        rep_type: "open"
+      }
+      const response = await fetch(`http://127.0.0.1:5173/trackRep`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const jwt = await response.json();
+      setBountyList(jwt);
+    }
+    fetchProfileStats();
+  }, []);
+  console.log(bountyList);
 
 
   return (
@@ -170,7 +192,28 @@ function ResolvedReports() {
     navigate("/researcher-ReportInfo");
   };
 
-  // data incoming for resolved report 
+  // data incoming for resolved report
+  const [bountyList, setBountyList] = useState();
+  useEffect(() => {
+    async function fetchProfileStats() {
+      const myCookie = Cookies.get('myCookie')
+      const data = {
+        myCookie: `${myCookie}`,
+        rep_type: "resolved"
+      }
+      const response = await fetch(`http://127.0.0.1:5173/trackRep`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const jwt = await response.json();
+      setBountyList(jwt);
+    }
+    fetchProfileStats();
+  }, []);
+  console.log(bountyList);
 
   return (
     <div>
