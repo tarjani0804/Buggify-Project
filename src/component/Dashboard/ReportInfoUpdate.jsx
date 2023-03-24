@@ -185,6 +185,7 @@ const BusinessProfile = (props) => {
     alert(jwt.status);
     window.location.href = "/ReportInfoUpdate";
   };
+
   const myCookie = Cookies.get("myCookie");
   const handleSubmit2 = async (e) => {
     e.preventDefault();

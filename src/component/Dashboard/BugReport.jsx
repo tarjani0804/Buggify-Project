@@ -148,7 +148,7 @@ function DashboardNavbar() {
   );
 }
 
-const BusinessProfile = () => {
+const BusinessProfile = (props) => {
   const navigate = useNavigate();
   const myCookie = Cookies.get("myCookie");
 
@@ -172,16 +172,10 @@ const BusinessProfile = () => {
     fetchProfileStats();
   }, []);
   console.log(reportList);
-  const gotoReportInfoUpdate = (val) => {
-    Cookies.set("report_id", `${reportList[val].report_id}`, {
-      expires: 14,
-      path: "/",
-    });
-    navigate("/ReportInfoUpdate");
-  };
-  const handleSubmit1 = (event, id) => {
-    gotoReportInfoUpdate(id);
-  };
+
+
+
+
   const reportlist = [];
   if (reportList) {
     for (let i = 0; i < reportList.length; i++) {
@@ -207,6 +201,16 @@ const BusinessProfile = () => {
     }
   }
 
+  const gotoReportInfoUpdate = (val) => {
+    Cookies.set("report_id", `${reportList[val].report_id}`, {
+      expires: 14,
+      path: "/",
+    });
+    navigate("/ReportInfoUpdate");
+  };
+  const handleSubmit1 = (event, id) => {
+    gotoReportInfoUpdate(id);
+  };
   // Incoming report is set in reportList, map it like list of program from program page
 
   return (

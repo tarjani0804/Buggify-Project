@@ -200,6 +200,8 @@ const BusinessProfile = (props) => {
     }
   }
 
+
+
   const gotoReportInfoUpdate = (val) => {
     Cookies.set("report_id", `${reportList[val].report_id}`, {
       expires: 14,
