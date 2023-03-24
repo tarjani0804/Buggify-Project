@@ -13,6 +13,7 @@ import { ImProfile } from "react-icons/im";
 import { TbReportSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
+import Cookies from "js-cookie";
 
 function ResearcherNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -127,7 +128,17 @@ function ResearcherNavbar() {
 
 const ResearcherProfile = (props) => {
   
-
+  const rsrc_id = Cookies.get("rsrc_id")
+  const [bountyList, setBountyList] = useState()
+  useEffect(() => {
+    async function fetchProfileStats() {
+      const response = await fetch(`http://127.0.0.1:5173/profileRes/${rsrc_id}`);
+      const jwt = await response.json();
+      setBountyList(jwt);
+    }
+    fetchProfileStats();
+  }, []);
+  console.log(bountyList);
   return (
     <>
       <div className="res-profile">
@@ -142,7 +153,7 @@ const ResearcherProfile = (props) => {
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
                   <h3 className="bus-profile-company-name">
-                    {props.rUsername}
+                    {bountyList && bountyList.username}
                   </h3>
                 </div>
               </center>
@@ -150,15 +161,15 @@ const ResearcherProfile = (props) => {
                 <div className="res-profile-div">
                   <div className="res-column-div1">
                     <label className="res-profile-label">Researcher Id: </label>
-                    <span className="res-profile-span">{props.rId}</span>
+                    <span className="res-profile-span">{rsrc_id}</span>
                   </div>
                   <div className="res-column-div1">
                     <label className="res-profile-label">Email: </label>
-                    <span className="res-profile-span">{props.rEmail}</span>
+                    <span className="res-profile-span">{bountyList && bountyList.email}</span>
                   </div>
                   <div className="res-column-div1">
                     <label className="res-profile-label">Country: </label>
-                    <span className="res-profile-span">{props.country}</span>
+                    <span className="res-profile-span">{bountyList && bountyList.country}</span>
                   </div>
                 </div>
               </div>

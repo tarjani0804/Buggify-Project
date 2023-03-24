@@ -12,6 +12,7 @@ import { ImProfile } from 'react-icons/im';
 import { TbReportSearch } from 'react-icons/tb';
 import { useNavigate } from "react-router-dom";
 import Avat from '../image/avat1.png';
+import Cookies from "js-cookie";
 
 
 function ResearcherNavbar() {
@@ -105,6 +106,26 @@ const BookmarkedProgram = (props) => {
 
 
     // data incoming for bookmarked program
+    const [bountyList, setBountyList] = useState();
+  useEffect(() => {
+    async function fetchProfileStats() {
+      const myCookie = Cookies.get('myCookie')
+      const data = {
+        myCookie: `${myCookie}`
+      }
+      const response = await fetch(`http://127.0.0.1:5173/listBookmark`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const jwt = await response.json();
+      setBountyList(jwt);
+    }
+    fetchProfileStats();
+  }, []);
+  console.log(bountyList);
 
     return (
         <>
