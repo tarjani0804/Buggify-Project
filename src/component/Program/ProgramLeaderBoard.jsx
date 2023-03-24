@@ -46,51 +46,62 @@ const ProgramLeaderBoard = () => {
 
 
   const position1 = [];
-  const pos1 = leaderList[1];
-  position1.push(
-    <div>
-      <div className="position1-div1">
-        <img className="position-div1-img" src={Position1img}></img>
-      </div>
-      <div className="position1-div2">
-        <p className="position1-div2-p1">{pos1.username}</p>
-        <p className="position1-div2-p2">{pos1.country}</p>
-        <p className="position1-div2-p3">{pos1.impact}</p>
-      </div>
-    </div>
-  )
+  if (leaderList) {
+    for (let i = 1; i < 2; i++) {
+      const pos1 = leaderList[i];
+      position1.push(
+        <div>
+          <div className="position1-div1">
+            <img className="position-div1-img" src={Position1img}></img>
+          </div>
+          <div className="position1-div2">
+            <p className="position1-div2-p1">{pos1.username}</p>
+            <p className="position1-div2-p2">{pos1.country}</p>
+            <p className="position1-div2-p3">{pos1.impact}</p>
+          </div>
+        </div>
+      )
+    }
+  }
 
   const position2 = [];
-  const pos2 = leaderList[0];
-  position2.push(
-    <div>
-      <div className="position1-div1">
-        <img className="position-div1-img" src={Position2img}></img>
-      </div>
-      <div className="position1-div2">
-        <p className="position1-div2-p1">{pos2.username}</p>
-        <p className="position1-div2-p2">{pos2.country}</p>
-        <p className="position1-div2-p3">{pos2.impact}</p>
-      </div>
-    </div>
-  )
+  if (leaderList) {
+    for (let i = 0; i < 1; i++) {
+      const pos2 = leaderList[i];
+      position2.push(
+        <div>
+          <div className="position1-div1">
+            <img className="position-div1-img" src={Position2img}></img>
+          </div>
+          <div className="position1-div2">
+            <p className="position1-div2-p1">{pos2.username}</p>
+            <p className="position1-div2-p2">{pos2.country}</p>
+            <p className="position1-div2-p3">{pos2.impact}</p>
+          </div>
+        </div>
+      )
+    }
+  }
 
 
   const position3 = [];
-  const pos3 = leaderList[2];
-  position3.push(
-    <div>
-      <div className="position1-div1">
-        <img className="position-div1-img" src={Position3img}></img>
-      </div>
-      <div className="position1-div1">
-        <p className="position1-div2-p1">{pos3.username}</p>
-        <p className="position1-div2-p2">{pos3.country}</p>
-        <p className="position1-div2-p3">{pos3.impact}</p>
-      </div>
-    </div>
-  )
-
+  if (leaderList) {
+    for (let i = 2; i < 3; i++) {
+      const pos3 = leaderList[i];
+      position3.push(
+        <div>
+          <div className="position1-div1">
+            <img className="position-div1-img" src={Position3img}></img>
+          </div>
+          <div className="position1-div1">
+            <p className="position1-div2-p1">{pos3.username}</p>
+            <p className="position1-div2-p2">{pos3.country}</p>
+            <p className="position1-div2-p3">{pos3.impact}</p>
+          </div>
+        </div>
+      )
+    }
+  }
 
 
 
