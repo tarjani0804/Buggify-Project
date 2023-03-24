@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { BsJournalBookmark } from 'react-icons/bs';
