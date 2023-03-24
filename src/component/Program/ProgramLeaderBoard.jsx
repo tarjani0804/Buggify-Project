@@ -22,6 +22,26 @@ const ProgramLeaderBoard = () => {
   }, []);
   console.log(leaderList);
 
+
+  const leaderboardlist = [];
+
+  if (leaderList) {
+    for (let i = 0; i < 2; i++) {
+      const pos = leaderList[i];
+      leaderboardlist.push(
+        <div key={pos.id}>
+          <p>{pos.username}</p>
+        </div>
+      )
+    }
+  }
+
+
+
+
+
+
+
   return (
     <>
       <div className="program">

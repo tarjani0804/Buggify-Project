@@ -16,6 +16,7 @@ import { TbReportSearch } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
+import { toast, ToastContainer } from "react-toastify";
 
 function ResearcherNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -130,6 +131,7 @@ function ResearcherNavbar() {
 
 const ResearcherNotification = (props) => {
   const [notificationList, setNotificationList] = useState();
+  const [mess, setMess] = useState(undefined);
   const navigate = useNavigate();
   const gotoReportInfo = () => {
     alert(notificationList[val].report_id);
@@ -156,21 +158,85 @@ const ResearcherNotification = (props) => {
       });
       const jwt = await response.json();
       setNotificationList(jwt);
+
+      if (jwt.status == "There is not any Notification for you") {
+        setMess(jwt.status);
+      }
+
     }
     fetchProfileStats();
   }, []);
+
+
+
   console.log(notificationList);
+  const notifications = [];
+  if (notificationList) {
+    for (let i = 0; i < notificationList.length; i++) {
+      const noti = notificationList[i];
+      notifications.push(
+        <div key={noti.id} >
+          <div
+            style={{
+              display: "flex",
+              position: "relative",
+              paddingTop: "2rem",
+            }}
+          >
+            <p
+              style={{
+                color: "#878787",
+                fontSize: "14px",
+                margin: "2rem 5rem 2rem 2rem",
+                lineHeight: "2.8rem",
+                letterSpacing: "1px",
+              }}
+            >
+              {noti.report_title}
+            </p>
+            <p
+              style={{
+                position: "absolute",
+                right: "5rem",
+                textDecoration: "underline",
+                color: "#ffffff",
+                fontSize: "14px",
+                lineHeight: "2.8rem",
+                letterSpacing: "1px",
+                margin: "2rem 5rem 2rem 2rem",
+                cursor: "pointer",
+              }}
+              onClick={(event) => handleSubmit1(event, i)}
+            >
+              Check
+            </p>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  const gotoReportInfoUpdate = (val) => {
+    Cookies.set("report_id", `${notificationList[val].report_id}`, {
+      expires: 14,
+      path: "/",
+    });
+    navigate("/researcher-ReportInfo");
+  };
+
 
   const handleSubmit1 = (event, id) => {
-    gotoReportInfo(id);
+    gotoReportInfoUpdate(id);
   };
   return (
     <>
       <div className="res-profile">
+        <ToastContainer />
         <div className="bus-profile-divs">
           <div className="bus-profile-div1">
             <ResearcherNavbar />
           </div>
+
           <div className="bus-profile-div2">
             <h1 className="bus-profile-div2-h">Notification</h1>
             <div className="dashboard">
@@ -184,45 +250,25 @@ const ResearcherNotification = (props) => {
               </center>
               <div className="track-report">
                 <div className="track-reports-div">
-                  {ResearcherNotification.defaultProps.company.map((title) => (
-                    <div key={title.id} className="res-track-report-list-div">
-                      <div
-                        style={{
-                          display: "flex",
-                          position: "relative",
-                          paddingTop: "2rem",
-                        }}
-                      >
-                        <p
-                          style={{
-                            color: "#878787",
-                            fontSize: "14px",
-                            margin: "2rem 5rem 2rem 2rem",
-                            lineHeight: "2.8rem",
-                            letterSpacing: "1px",
-                          }}
-                        >
-                          {title.companyName} has requested for Retesting
-                        </p>
-                        <p
-                          style={{
-                            position: "absolute",
-                            right: "5rem",
-                            textDecoration: "underline",
-                            color: "#ffffff",
-                            fontSize: "14px",
-                            lineHeight: "2.8rem",
-                            letterSpacing: "1px",
-                            margin: "2rem 5rem 2rem 2rem",
-                            cursor: "pointer",
-                          }}
-                          onClick={(event) => handleSubmit1(event, i)}
-                        >
-                          Check
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                  <div className="res-track-report-list-div">
+
+                    {mess ? (
+                      <p style={{
+                        color: "#878787",
+                        fontSize: "14px",
+                        margin: "2rem 5rem 2rem 2rem",
+                        lineHeight: "2.8rem",
+                        letterSpacing: "1px",
+                      }}>
+                        {mess}
+                      </p>
+                    ) : (
+                      <>
+                        {notifications}
+                      </>
+                    )}
+
+                  </div>
                 </div>
               </div>
             </div>

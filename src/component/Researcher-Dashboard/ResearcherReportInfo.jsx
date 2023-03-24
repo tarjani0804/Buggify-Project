@@ -10,6 +10,8 @@ import { ImProfile } from 'react-icons/im';
 import { TbReportSearch } from 'react-icons/tb';
 import Avat from '../image/avat1.png';
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
+
 
 function ResearcherNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -96,7 +98,32 @@ function ResearcherNavbar() {
 
 }
 
-const BusinessProfile = (props) => {
+const BusinessProfile = () => {
+    const [report, setReport] = useState("");
+    const companyName = Cookies.get("companyName");
+
+    const report_id = Cookies.get("report_id");
+    useEffect(() => {
+        const fetchProfileStats = async () => {
+            const response = await fetch(
+                `http://127.0.0.1:5173/reportfetch/${report_id}`
+            );
+            const data = await response.json();
+            setReport(data[0]);
+        };
+        fetchProfileStats();
+    }, []);
+    const myCookie = Cookies.get("myCookie");
+
+
+    const scrollRef = useRef(null);
+    useLayoutEffect(() => {
+        if (scrollRef.current) {
+            window.scrollTo(0, 0);
+        }
+    }, []);
+
+
     // data incoming for researcher report info
 
     return (
@@ -113,49 +140,93 @@ const BusinessProfile = (props) => {
                         <div className="dashboard">
                             <center>  <div className="bus-profile-header">
                                 <img src={Avat} className="bus-profile-company-logo" />
-                                <h3 className="bus-profile-company-name">{props.companyName}</h3>
+                                <h3 className="bus-profile-company-name">{companyName}</h3>
                             </div>
                             </center>
 
                             <div className="bus-profile-report-update">
-
-                                <div className="bus-profile-bug-report-divtitle" >
-                                    <p className="bus-profile-bug-report-div-title-p">Report Title: {props.reportTitle} </p>
-                                    <p className="bus-profile-bug-report-div-id-p" >Report Id: {props.reportId} </p>
+                                <div className="bus-profile-bug-report-divtitle">
+                                    <p className="bus-profile-bug-report-div-title-p">
+                                        Report Title: {report.report_title}
+                                    </p>
+                                    <p className="bus-profile-bug-report-div-id-p">
+                                        Report Id: {report.report_id}
+                                    </p>
                                 </div>
-
                             </div>
                             <div className="bus-profile-report-update">
-
-                                <div className="bus-profile-report-update-steps">
-
-                                    <p className="bus-profile-bug-report-div-title-p">Steps to Reproduce :
-                                        {(BusinessProfile.defaultProps.reportSteps.map((report) => (
-                                            <li className="report-div-steps-li" key={report.id}>{report.li}</li>
-                                        )))}
+                                <div className="report-steps">
+                                    <p className="bus-profile-bug-report-div-title-p">
+                                        Steps to Reproduce :
+                                        <p className="report-note-p"> {report.reproduce_steps}</p>
                                     </p>
-
                                 </div>
 
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Proof-of-Concept :</p>
-                                    {(BusinessProfile.defaultProps.pocLink.map((poclink) => (
-                                        <p className="report-proof-link-of-poc" key={poclink.id} >Additional Link :{poclink.li}
-                                        </p>
-                                    )))}
+                                    <p className="bus-profile-bug-report-div-title-p">
+                                        Proof-of-Concept :
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <a
+                                                href={report.poc1}
+                                                className="report-proof-link-of-poc"
+                                            >
+                                                Link 1
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href={report.poc2}
+                                                className="report-proof-link-of-poc"
+                                            >
+                                                Link 2
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href={report.poc3}
+                                                className="report-proof-link-of-poc"
+                                            >
+                                                Link 3
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href={report.poc4}
+                                                className="report-proof-link-of-poc"
+                                            >
+                                                Link 4
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a
+                                                href={report.poc5}
+                                                className="report-proof-link-of-poc"
+                                            >
+                                                Link 5
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Attack Scenario: </p>
-                                    <p className="report-proof-link-of-poc"> {props.attack} </p>
+                                    <p className="bus-profile-bug-report-div-title-p">
+                                        Attack Scenario:
+                                    </p>
+                                    <p className="report-proof-link-of-poc">
+                                        {report.attack_scenario}
+                                    </p>
                                 </div>
                                 <div className="report-proof">
-                                    <p className="bus-profile-bug-report-div-title-p">Remediation: </p>
-                                    <p className="report-proof-link-of-poc"> {props.remeda} </p>
+                                    <p className="bus-profile-bug-report-div-title-p">
+                                        Remediation:{" "}
+                                    </p>
+                                    <p className="report-proof-link-of-poc">
+                                        {" "}
+                                        {report.remediation}{" "}
+                                    </p>
                                 </div>
-
-
                             </div>
-
 
 
 
