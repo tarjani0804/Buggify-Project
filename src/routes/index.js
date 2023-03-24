@@ -1324,7 +1324,7 @@ app.post("/bountyhistory", middleware, async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: `Fail to fetch bounty history` });
   }
-});
+}); // done
 
 app.post("/notifications", middleware, async (req, res) => {
   const rsrc_id = req.rsrc_id;
@@ -1342,7 +1342,7 @@ app.post("/notifications", middleware, async (req, res) => {
   } catch (e) {
     res.status(400).json({ status: `Operation Fail` });
   }
-});
+}); //done
 
 app.get("/leaderboard", async (req, res) => {
   try {

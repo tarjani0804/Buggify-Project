@@ -201,6 +201,7 @@ const BusinessProfile = () => {
   console.log(report.attack_scenario);
   console.log(report.remediation);
   console.log(report.note);
+  const companyName = Cookies.get('companyName');
   return (
     <>
       <div className="bus-profile">
@@ -214,7 +215,7 @@ const BusinessProfile = () => {
               <div className="bus-profile-header">
                 <img src={Avat} className="bus-profile-company-logo" />
                 <h3 className="bus-profile-company-name">
-                  {props.companyName}
+                  {companyName}
                 </h3>
               </div>
             </center>
@@ -332,9 +333,6 @@ const BusinessProfile = () => {
   );
 };
 
-BusinessProfile.defaultProps = {
-  companyLogo: "",
-  companyName: "Buggify LLC",
-}
+
 
 export default BusinessProfile;
