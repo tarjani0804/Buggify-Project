@@ -1103,10 +1103,11 @@ app.post("/listBookmark", middleware, async (req, res) => {
     const buss = book[0].buss_id;
     const lengthlwa = buss.length;
     var i = 0;
-    var oy = {};
+    var oy = [];
     for (i; i < lengthlwa; i++) {
       const res1 = await Buss.find({ buss_id: `${buss[i]}` });
-      oy[buss[i]] = res1[0].company_name;
+      oy[i] = res1[0].company_name;
+      oy[i + lengthlwa] = buss[i];
     }
     res.status(200).json(oy);
   } catch (e) {
@@ -1116,6 +1117,8 @@ app.post("/listBookmark", middleware, async (req, res) => {
     }
   }
 });
+
+app.post("/purchasedCourse")
 
 const random5 = () => {
   const length = 5;
