@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Inner_Program.css";
 import { BsBookmarkPlus, BsBookmarkCheckFill } from "react-icons/bs";
 import { HiOutlineBellAlert, HiBellAlert } from "react-icons/hi2";
-
+import ProgramLogo from "../image/inner_program_logo.png";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -155,29 +155,14 @@ function Policy() {
 }
 var in_scope = [
 
-  { id: 1, asset: "abc.com", asset_type: "Web", impact: "high", elb: "Yes" },
-  { id: 2, asset: "def.com", asset_type: "API", impact: "critical", elb: "No" },
-  { id: 3, asset: "ghi.com", asset_type: "IoT", impact: "medium", elb: "Yes" },
-  { id: 4, asset: "jkl.com", asset_type: "Web", impact: "low", elb: "No" },
-  { id: 5, asset: "mno.com", asset_type: "Mobile", impact: "critical", elb: "No" },
-  { id: 6, asset: "pqr.com", asset_type: "Mobile", impact: "critical", elb: "No" },
-  { id: 7, asset: "stu.com", asset_type: "CIDR", impact: "high", elb: "Yes" },
-  { id: 8, asset: "vwx.com", asset_type: "API", impact: "low", elb: "No" },
-  { id: 9, asset: "yza.com", asset_type: "Mobile", impact: "high", elb: "Yes" },
-  { id: 10, asset: "bcd.com", asset_type: "Web", impact: "critical", elb: "Yes" },
+  { id: 1, asset: "*.buggify.com", asset_type: "Web", impact: "critical", elb: "Yes" },
+  { id: 2, asset: "*.buggif.in", asset_type: "Web", impact: "high", elb: "Yes" },
+  { id: 3, asset: "buggify.com/api/v1", asset_type: "API", impact: "critical", elb: "Yes" },
+  { id: 4, asset: "com.buggify.app", asset_type: "Mobile", impact: "high", elb: "Yes" },
 ];
 var out_scope = [
-  { id: 1, asset: "zyx.com", asset_type: "Mobile" },
-  { id: 2, asset: "wvu.com", asset_type: "IoT" },
-  { id: 3, asset: "tsr.com", asset_type: "CIDR" },
-  { id: 4, asset: "qpo.com", asset_type: "Web" },
-  { id: 5, asset: "nml.com", asset_type: "API" },
-  { id: 6, asset: "kji.com", asset_type: "Mobile" },
-  { id: 7, asset: "hgf.com", asset_type: "IoT" },
-  { id: 8, asset: "edc.com", asset_type: "API" },
-  { id: 9, asset: "baz.com", asset_type: "Web" },
-  { id: 10, asset: "yxw.com", asset_type: "Mobile" },
-
+  { id: 1, asset: "docs.buggify.com", asset_type: "Web" },
+  { id: 2, asset: "blog.buggify.in", asset_type: "Web" },
 ];
 
 const Scope_and_Reward = () => {
@@ -455,7 +440,7 @@ const Inner_Program = (props) => {
           <div className="inner-program-heading-section-div1">
             <div className="inner-program-heading-section-div1-1">
               <img
-                src={props.ProgramIcon}
+                src={ProgramLogo}
                 className="inner-program-heading-section-div1-img"
               />
             </div>
@@ -535,7 +520,7 @@ const Inner_Program = (props) => {
 };
 
 Inner_Program.defaultProps = {
-  program_name: "Shopify",
+  program_name: "Buggify",
   program_link: "https://www.shopify.com",
 
   program_launch: "2/2016 ",
