@@ -150,7 +150,7 @@ const BountyHistory = (props) => {
   }, []);
   console.log(bountyList);
 
-
+  const username = Cookies.get("username")
 
   const bounties = [];
 
@@ -205,7 +205,7 @@ const BountyHistory = (props) => {
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
                   <h3 className="bus-profile-company-name">
-                    {props.rUsername}
+                    {username}
                   </h3>
                 </div>
               </center>

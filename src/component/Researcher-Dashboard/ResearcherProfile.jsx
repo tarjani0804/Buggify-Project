@@ -139,6 +139,7 @@ const ResearcherProfile = (props) => {
     fetchProfileStats();
   }, []);
   console.log(bountyList);
+  Cookies.set("username", `${bountyList && bountyList.username}`, { expires: 2, path: "/" });
   return (
     <>
       <div className="res-profile">

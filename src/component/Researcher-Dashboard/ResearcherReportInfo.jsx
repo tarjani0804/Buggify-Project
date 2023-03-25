@@ -114,7 +114,7 @@ const BusinessProfile = () => {
         fetchProfileStats();
     }, []);
     const myCookie = Cookies.get("myCookie");
-
+    const username = Cookies.get("username")
 
     const scrollRef = useRef(null);
     useLayoutEffect(() => {
@@ -140,7 +140,7 @@ const BusinessProfile = () => {
                         <div className="dashboard">
                             <center>  <div className="bus-profile-header">
                                 <img src={Avat} className="bus-profile-company-logo" />
-                                <h3 className="bus-profile-company-name">{companyName}</h3>
+                                <h3 className="bus-profile-company-name">{username}</h3>
                             </div>
                             </center>
 

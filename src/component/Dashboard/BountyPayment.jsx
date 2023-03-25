@@ -172,6 +172,7 @@ const BusinessProfile = (props) => {
       body: JSON.stringify(data),
     });
     await response.json();
+    window.location.href = "/BountyPayment";
   };
 
   return (

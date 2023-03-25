@@ -167,7 +167,7 @@ const ResearcherNotification = (props) => {
     fetchProfileStats();
   }, []);
 
-
+  const username = Cookies.get("username")
 
   console.log(notificationList);
   const notifications = [];
@@ -244,7 +244,7 @@ const ResearcherNotification = (props) => {
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
                   <h3 className="bus-profile-company-name">
-                    {props.rUsername}
+                    {username}
                   </h3>
                 </div>
               </center>
