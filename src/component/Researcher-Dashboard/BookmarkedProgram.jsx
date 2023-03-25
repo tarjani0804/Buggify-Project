@@ -130,6 +130,7 @@ function ResearcherNavbar() {
 }
 
 const BookmarkedProgram = (props) => {
+<<<<<<< HEAD
   // data incoming for bookmarked program
   const [bountyList, setBountyList] = useState();
   useEffect(() => {
@@ -147,11 +148,55 @@ const BookmarkedProgram = (props) => {
       });
       const jwt = await response.json();
       setBountyList(jwt);
-    }
-    fetchProfileStats();
-  }, []);
-  console.log(bountyList);
+=======
 
+
+    // data incoming for bookmarked program
+    const [bountyList, setBountyList] = useState();
+    useEffect(() => {
+        async function fetchProfileStats() {
+            const myCookie = Cookies.get('myCookie')
+            const data = {
+                myCookie: `${myCookie}`
+            }
+            const response = await fetch(`http://127.0.0.1:5173/listBookmark`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            const jwt = await response.json();
+            setBountyList(jwt);
+        }
+        fetchProfileStats();
+    }, []);
+    console.log(bountyList);
+
+    const handlegotoHunting = () => {
+        window.location.href = "/inner-program";
+>>>>>>> fad3409e68083a12cefae4b644c34ef26bf38b44
+    }
+
+    const openlist = [];
+    if (bountyList) {
+        for (let i = 0; i < bountyList.length; i++) {
+            const book = bountyList[i];
+            openlist.push(
+                <div key={book.id} className="res-track-report-list-div">
+
+                    <div className="bus-profile-bug-report-divtitle">
+                        <li className="bus-profile-bug-report-div-title-p" style={{ marginLeft: "4rem" }}> {bountyList[i]}</li>
+                        <p className="res-bookmarked-list-link" onClick={handlegotoHunting}>Start Hunting</p>
+                    </div>
+
+                </div>
+            );
+        }
+    }
+    console.log(openlist);
+
+<<<<<<< HEAD
   return (
     <>
       <div className="res-profile">
@@ -168,6 +213,37 @@ const BookmarkedProgram = (props) => {
                   <h3 className="bus-profile-company-name">
                     {props.rUsername}
                   </h3>
+=======
+    return (
+        <>
+
+            <div className="res-profile">
+
+                <div className="bus-profile-divs">
+                    <div className="bus-profile-div1">
+                        <ResearcherNavbar />
+                    </div>
+                    <div className="bus-profile-div2">
+                        <h1 className="bus-profile-div2-h">Bookmarked Program</h1>
+                        <div className="dashboard">
+                            <center><div className="bus-profile-header">
+                                <img src={Avat} className="bus-profile-company-logo" />
+                                <h3 className="bus-profile-company-name">{props.rUsername}</h3>
+                            </div></center>
+                            <div className="track-report">
+                                <div className="track-reports-div">
+                                    <ol className="bookmarked-ul">
+                                        {openlist}
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+>>>>>>> fad3409e68083a12cefae4b644c34ef26bf38b44
                 </div>
               </center>
               <div className="track-report">

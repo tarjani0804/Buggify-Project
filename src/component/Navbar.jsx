@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { BsList } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-
+import Cookies from "js-cookie";
 
 
 function MyList() {
@@ -59,6 +59,21 @@ const Navbar = () => {
 	const gotoHome = () => {
 		navigate('/')
 	}
+	const gotoDashboard = () => {
+		const buss_id = Cookies.get("buss_id");
+		const rsrc_id = Cookies.get("rsrc_id");
+
+		if (buss_id) {
+			navigate('/businessProfile');
+		}
+		else {
+			if (rsrc_id) {
+				navigate('/ResearcherProfile');
+			}
+		}
+
+
+	}
 	const [username2, setUsername] = useState("");
 
 	useEffect(() => {
@@ -105,8 +120,21 @@ const Navbar = () => {
 								<span onClick={handleShowLogout}>{`${username2}`}</span>
 							</div>
 							{showLogout && (
-								<div className="logout-btn" onClick={handleLogout}>
-									Logout
+								<div className="logout-btn" >
+									<div style={{
+										marginTop: "1rem",
+										textAlign: "center",
+										width: "inherit"
+									}} onClick={gotoDashboard}>
+										Dashboard
+									</div>
+									<div style={{
+										marginTop: "1rem",
+										textAlign: "center",
+										marginBottom: "1rem",
+									}} onClick={handleLogout}>
+										Logout
+									</div>
 								</div>
 							)}
 

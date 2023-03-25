@@ -82,20 +82,19 @@ ul li.active {
 .username-container {
     background-color: #04ff69;
     color: #000000;
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
+
 }
 
 .logout-btn {
     position: absolute;
-    bottom: -20px;
-    left: 2rem;
+    top: 60px;
     color: #878787;
     cursor: pointer;
-    transition: 5s;
+    display: block;
+    left: 2rem;
 }
-
-
 
 .button_ani {
     display: inline-block;

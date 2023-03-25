@@ -129,7 +129,7 @@ const BusinessProfile = () => {
     return (
         <>
 
-            <div className="bus-profile">
+            <div className="bus-profile" ref={scrollRef}>
 
                 <div className="bus-profile-divs">
                     <div className="bus-profile-div1">

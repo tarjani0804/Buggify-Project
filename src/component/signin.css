@@ -44,16 +44,25 @@
 .password-toggle-icon {
     /* background-color: #04ff69; */
     font-size: 15px;
-    position: absolute;
-    top: 50%;
-    right: 25%;
+
     transform: translateY(-50%);
     cursor: pointer;
 }
 
-@media(max-width: 1920px){
+@media (max-width: 1200px) {
     .password-toggle-icon {
-        right: 32%;
+
+        position: absolute;
+        top: 50%;
+        right: 25%;
+    }
+}
+
+@media(max-width: 1920px) {
+    .password-toggle-icon {
+        position: absolute;
+        top: 50%;
+        right: 25%;
     }
 }
 
