@@ -46,6 +46,16 @@ function ResearcherNavbar() {
     Navigate("/researcherFAQs");
   };
 
+  const logout = () => {
+    Cookies.remove('userName');
+    Cookies.remove('companyName');
+    Cookies.remove('buss_id');
+    Cookies.remove('rsrc_id');
+    Cookies.remove('myCookie');
+    Cookies.remove('prog_id');
+    Navigate("/");
+  };
+
   return (
     <nav className={`navbar ${isMenuOpen ? "open" : "close"}`}>
       <div
@@ -101,7 +111,7 @@ function ResearcherNavbar() {
           </span>
           {isMenuOpen && <span className="navbar-menu-item">Notification</span>}
         </li>
-        <li>
+        <li onClick={logout}>
           <span className="navbar-menu-icon">
             <RiLogoutBoxRLine />
           </span>
@@ -127,7 +137,7 @@ function ResearcherNavbar() {
 }
 
 const ResearcherProfile = (props) => {
-  
+
   const rsrc_id = Cookies.get("rsrc_id")
   const [bountyList, setBountyList] = useState()
   useEffect(() => {

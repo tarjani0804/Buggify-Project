@@ -42,7 +42,18 @@ function ResearcherNavbar() {
 
     const gotoFAQs = () => {
         Navigate('/researcherFAQs')
-    }
+    };
+
+
+    const logout = () => {
+        Cookies.remove('userName');
+        Cookies.remove('companyName');
+        Cookies.remove('buss_id');
+        Cookies.remove('rsrc_id');
+        Cookies.remove('myCookie');
+        Cookies.remove('prog_id');
+        Navigate("/");
+    };
 
     return (
         <nav className={`navbar ${isMenuOpen ? 'open' : 'close'}`}>
@@ -77,7 +88,7 @@ function ResearcherNavbar() {
                     <span className="navbar-menu-icon"><IoNotificationsSharp /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Notification</span>}
                 </li>
-                <li >
+                <li onClick={logout}>
                     <span className="navbar-menu-icon"><RiLogoutBoxRLine /></span>
                     {isMenuOpen && <span className="navbar-menu-item">Logout</span>}
                 </li>
