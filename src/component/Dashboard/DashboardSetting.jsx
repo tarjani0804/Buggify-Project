@@ -61,6 +61,7 @@ function DashboardNavbar() {
     Cookies.remove('userName');
     Cookies.remove('companyName');
     Cookies.remove('buss_id');
+    Cookies.remove('rsrc_id');
     Cookies.remove('myCookie');
     Cookies.remove('prog_id');
     Navigate("/");
