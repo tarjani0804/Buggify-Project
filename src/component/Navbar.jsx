@@ -77,12 +77,12 @@ const Navbar = () => {
 	const [username2, setUsername] = useState("");
 
 	useEffect(() => {
-		const storedUsername = localStorage.getItem("username");
+		const storedUsername = Cookies.get("userName")
 		if (storedUsername) {
 			setUsername(storedUsername);
 		}
 	}, []);
-	console.log(username2);
+
 	const [showLogout, setShowLogout] = useState(false);
 
 
@@ -94,7 +94,11 @@ const Navbar = () => {
 		}
 	}
 	const handleLogout = () => {
-		localStorage.removeItem("username");
+		Cookies.remove("userName");
+		Cookies.remove('companyName');
+		Cookies.remove('buss_id');
+		Cookies.remove('myCookie');
+		Cookies.remove('prog_id');
 		setUsername("");
 		setShowLogout(false);
 	}
