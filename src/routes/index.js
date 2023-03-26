@@ -1107,7 +1107,7 @@ app.post("/listBookmark", middleware, async (req, res) => {
     for (i; i < lengthlwa; i++) {
       const res1 = await Buss.find({ buss_id: `${buss[i]}` });
       oy[i] = res1[0].company_name;
-      oy[i + lengthlwa] = buss[i];
+      // oy[i + lengthlwa] = buss[i];
     }
     res.status(200).json(oy);
   } catch (e) {

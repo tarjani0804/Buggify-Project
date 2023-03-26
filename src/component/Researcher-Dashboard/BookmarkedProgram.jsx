@@ -131,7 +131,6 @@ function ResearcherNavbar() {
 
 const BookmarkedProgram = (props) => {
 
-
   // data incoming for bookmarked program
   const [bountyList, setBountyList] = useState();
   useEffect(() => {
@@ -152,11 +151,12 @@ const BookmarkedProgram = (props) => {
     }
     fetchProfileStats();
   }, []);
+  const username = Cookies.get("username")
   console.log(bountyList);
 
   const handlegotoHunting = () => {
     window.location.href = "/inner-program";
-  }
+  };
 
   const openlist = [];
   if (bountyList) {
@@ -164,12 +164,18 @@ const BookmarkedProgram = (props) => {
       const book = bountyList[i];
       openlist.push(
         <div key={book.id} className="res-track-report-list-div">
-
           <div className="bus-profile-bug-report-divtitle">
-            <li className="bus-profile-bug-report-div-title-p" style={{ marginLeft: "4rem" }}> {bountyList[i]}</li>
-            <p className="res-bookmarked-list-link" onClick={handlegotoHunting}>Start Hunting</p>
+            <li
+              className="bus-profile-bug-report-div-title-p"
+              style={{ marginLeft: "4rem" }}
+            >
+              {" "}
+              {bountyList[i]}
+            </li>
+            <p className="res-bookmarked-list-link" onClick={handlegotoHunting}>
+              Start Hunting
+            </p>
           </div>
-
         </div>
       );
     }
@@ -188,15 +194,17 @@ const BookmarkedProgram = (props) => {
           <div className="bus-profile-div2">
             <h1 className="bus-profile-div2-h">Bookmarked Program</h1>
             <div className="dashboard">
-              <center><div className="bus-profile-header">
-                <img src={Avat} className="bus-profile-company-logo" />
-                <h3 className="bus-profile-company-name">{props.rUsername}</h3>
-              </div></center>
+              <center>
+                <div className="bus-profile-header">
+                  <img src={Avat} className="bus-profile-company-logo" />
+                  <h3 className="bus-profile-company-name">
+                    {username}
+                  </h3>
+                </div>
+              </center>
               <div className="track-report">
                 <div className="track-reports-div">
-                  <ol className="bookmarked-ul">
-                    {openlist}
-                  </ol>
+                  <ol className="bookmarked-ul">{openlist}</ol>
                 </div>
 
               </div>
@@ -204,6 +212,31 @@ const BookmarkedProgram = (props) => {
 
 
 
+          </div>
+        </div>
+
+        <div className="track-report">
+          <div className="track-reports-div">
+            <ol className="bookmarked-ul">
+              {BookmarkedProgram.defaultProps.bookmarked.map((title) => (
+                <div key={title.id} className="res-track-report-list-div">
+                  <div className="bus-profile-bug-report-divtitle">
+                    <li
+                      className="bus-profile-bug-report-div-title-p"
+                      style={{ marginLeft: "4rem" }}
+                    >
+                      {" "}
+                      {title.programTitle}
+                    </li>
+                    <p className="res-bookmarked-list-link">
+                      <a href="" className="res-track-report-list-link">
+                        Start Hunting {title.programLink}
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </ol>
           </div>
         </div>
 

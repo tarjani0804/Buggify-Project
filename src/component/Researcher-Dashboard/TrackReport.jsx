@@ -156,6 +156,7 @@ function OpenReports() {
     fetchProfileStats();
   }, []);
   console.log(bountyList);
+  const username = Cookies.get("username")
   const openlist = [];
   if (bountyList) {
     for (let i = 0; i < bountyList.length; i++) {
@@ -219,7 +220,6 @@ function ResolvedReports() {
     fetchProfileStats();
   }, []);
   console.log(bountyList);
-
   const resolvedlist = [];
   if (bountyList) {
     for (let i = 0; i < bountyList.length; i++) {
@@ -268,7 +268,7 @@ const TrackReports = (props) => {
     setOpenSelected(false);
     setResolvedSelected(true);
   };
-
+  const username = Cookies.get("username")
   return (
     <>
       <div className="res-profile">
@@ -284,7 +284,7 @@ const TrackReports = (props) => {
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
                   <h3 className="bus-profile-company-name">
-                    {props.rUsername}
+                    {username}
                   </h3>
                 </div>
               </center>
