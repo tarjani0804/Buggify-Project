@@ -195,7 +195,7 @@ const ResearcherNotification = (props) => {
           >
             <p
               style={{
-                color: "#878787",
+                color: "#ffffff",
                 fontSize: "14px",
                 margin: "2rem 5rem 2rem 2rem",
                 lineHeight: "2.8rem",
@@ -209,7 +209,7 @@ const ResearcherNotification = (props) => {
                 position: "absolute",
                 right: "5rem",
                 textDecoration: "underline",
-                color: "#ffffff",
+                color: "#04ff69 ",
                 fontSize: "14px",
                 lineHeight: "2.8rem",
                 letterSpacing: "1px",

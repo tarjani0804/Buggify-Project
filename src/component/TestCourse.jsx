@@ -4,92 +4,63 @@ import ReactPlayer from 'react-player';
 import './TestCourse.css';
 
 const CourseVideo = () => {
-    // const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
     const [videoProgress, setVideoProgress] = useState(0);
-    const [currentVideoListIndex, setCurrentVideoListIndex] = useState(0);
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
 
-    const handleCompleteLesson = () => {
-        if (currentVideoListIndex < courseData.videos.length - 1) {
-            setCurrentVideoListIndex(currentVideoListIndex + 1);
-        }
+    const courseData = [
+
+        { id: 1, title: 'Video 1', url: 'https://www.youtube.com/watch?v=eVI0Ny5cZ2c', completed: false },
+        { id: 2, title: 'Video 2', url: 'https://www.youtube.com/watch?v=zHxgZJCy9fA', completed: false },
+        { id: 3, title: 'Video 3', url: 'https://www.youtube.com/watch?v=kKOzvqkP4UM', completed: false },
+        { id: 4, title: 'Video 4', url: 'https://www.youtube.com/watch?v=POgrNo4xRko', completed: false },
+        { id: 5, title: 'Video 5', url: 'https://youtube.com/watch?v=7utwZYKweho', completed: false },
+
+        { id: 6, title: 'Video 6', url: 'https://www.youtube.com/watch?v=zHxgZJCy9fA' },
+        { id: 7, title: 'Video 7', url: 'https://example.com/video7.mp4' },
+        { id: 8, title: 'Video 8', url: 'https://example.com/video8.mp4' },
+        { id: 9, title: 'Video 9', url: 'https://example.com/video9.mp4' },
+        { id: 10, title: 'Video 10', url: 'https://example.com/video10.mp4' },
+
+    ];
+    const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
+    const [currentVideoUrl, setCurrentVideoUrl] = useState(courseData[0].url);
+    const [currentVideoTitle, setCurrentVideoTitle] = useState(courseData[0].title);
+
+    const handleVideoClick = (id, title, url) => {
+        setCurrentVideoId(id);
+        setCurrentVideoTitle(title);
+        setCurrentVideoUrl(url);
     };
 
-
     const handleNextLessonClick = () => {
-        if (currentVideoIndex < courseData.videos[0].videosList.length - 1) {
-            setCurrentVideoIndex(currentVideoIndex + 1);
+        const currentVideoIndex = courseData.findIndex((video) => video.id === currentVideoId);
+        if (currentVideoIndex < courseData.length - 1) {
+            const nextVideo = courseData[currentVideoIndex + 1];
+            setCurrentVideoId(nextVideo.id);
+            setCurrentVideoUrl(nextVideo.url);
+            setCurrentVideoTitle(nextVideo.title);
         }
     };
 
     const handlePreviousLessonClick = () => {
+        const currentVideoIndex = courseData.findIndex((video) => video.id === currentVideoId);
         if (currentVideoIndex > 0) {
-            setCurrentVideoIndex(currentVideoIndex - 1);
+            const previousVideo = courseData[currentVideoIndex - 1];
+            setCurrentVideoId(previousVideo.id);
+            setCurrentVideoUrl(previousVideo.url);
+            setCurrentVideoTitle(previousVideo.title);
         }
     };
+
+    const [completedVideos, setCompletedVideos] = useState([]);
     const handleVideoEnd = () => {
-        if (
-            currentVideoIndex < courseData.videos.length - 1 &&
-            courseData.videos[currentVideoIndex].videosList.length - 1
-        ) {
-            setCurrentVideoIndex(currentVideoIndex + 1);
-        } else {
-            setVideoProgress(1);
-        }
+        console.log("Video End");
+
     };
 
 
-    const [currentLesson, setCurrentLesson] = useState(0);
-    const [currentVideo, setCurrentVideo] = useState(0);
 
-
-
-    const handleVideoCompletion = () => {
-        if (currentVideo === courseData.videos[0].videosList[currentLesson].length - 1) {
-            // mark current lesson as completed
-            videosList[currentLesson].forEach(video => {
-                video.completed = true;
-            });
-
-            // move to next lesson
-            setCurrentLesson(currentLesson + 1);
-            setCurrentVideo(0);
-        } else {
-            // move to next video in current lesson
-            setCurrentVideo(currentVideo + 1);
-        }
-    }
-
-
-
-
-    const courseData = {
-        videos: [
-            {
-                id: 1,
-                title: 'Introduction',
-                videosList: [
-                    { id: 1, title: 'Video 1', url: 'https://www.youtube.com/watch?v=eVI0Ny5cZ2c', completed: false },
-                    { id: 2, title: 'Video 2', url: 'https://www.youtube.com/watch?v=zHxgZJCy9fA', completed: false },
-                    { id: 3, title: 'Video 3', url: 'hhttps://www.youtube.com/@TCMSecurityAcademy', completed: false },
-                    { id: 4, title: 'Video 4', url: 'https://www.youtube.com/watch?v=POgrNo4xRko', completed: false },
-                    { id: 5, title: 'Video 5', url: 'https://youtube.com/watch?v=7utwZYKweho', completed: false },
-                ],
-            },
-            {
-                id: 2,
-                title: 'Basics of Networking',
-                videosList: [
-                    { id: 6, title: 'Video 6', url: 'https://example.com/video6.mp4' },
-                    { id: 7, title: 'Video 7', url: 'https://example.com/video7.mp4' },
-                    { id: 8, title: 'Video 8', url: 'https://example.com/video8.mp4' },
-                    { id: 9, title: 'Video 9', url: 'https://example.com/video9.mp4' },
-                    { id: 10, title: 'Video 10', url: 'https://example.com/video10.mp4' },
-                ],
-            },
-        ],
-    };
 
 
 
@@ -106,25 +77,18 @@ const CourseVideo = () => {
                         </div>
                         <div>
                             <ul className="academy-course-video-list">
-                                {courseData.videos.map((video, index) => (
-                                    <li key={video.id}>
-                                        <h2>{video.title}</h2>
-                                        <ul>
-                                            {video.videosList.map((videoList) => (
-                                                <li
-                                                    key={videoList.id}>
+                                <h2 className="academy-course-video-list-h" >Introduction</h2>
+                                {courseData.slice(0, 5).map((video, index) => (
+                                    <li key={video.id} onClick={() => handleVideoClick(video.id, video.title, video.url)}>
 
-                                                    {videoList.title}
+                                        {video.title}
+                                    </li>
+                                ))}
+                                <h2 className="academy-course-video-list-h" >Basic of Networking</h2>
+                                {courseData.slice(5, 10).map((video, index) => (
+                                    <li key={video.id} onClick={() => handleVideoClick(video.id, video.title, video.url)}>
 
-                                                    <span style={{
-                                                        color: "#878787",
-                                                        marginLeft: "2rem",
-                                                        fontSize: "16px",
-                                                    }}>  {videoProgress >= (index + 1) / courseData.videos[1].videosList.length && "✔"}
-                                                    </span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        {video.title}
                                     </li>
                                 ))}
                             </ul>
@@ -136,29 +100,30 @@ const CourseVideo = () => {
                     {/* Video Player */}
                     <div className="academy-course-video-videos">
                         <h2 className="academy-course-video-videos-h">
-                            {courseData.videos[0].videosList[currentVideoIndex].title}
+                            {currentVideoTitle}
                         </h2>
                         <ReactPlayer
                             controls
-                            url={courseData.videos[0].videosList[currentVideoIndex].url}
+                            url={currentVideoUrl}
                             onEnded={handleVideoEnd}
 
                             className="academy-course-video-videos-video-player"
                         />
                         <div>
-                            {currentVideoIndex > 0 && (
+                            {currentVideoId !== 1 && (
                                 <button onClick={handlePreviousLessonClick} className="previous-button">
                                     Previous Lesson
                                 </button>
                             )}
-                            {currentVideoIndex < courseData.videos[0].videosList.length - 1 ? (
-                                <button onClick={handleNextLessonClick} className="next-button" >
+                            {currentVideoIndex < courseData.length - 1 ? (
+                                <button onClick={handleNextLessonClick} className="next-button">
                                     Complete and Next Lesson
                                 </button>
                             ) : (
                                 <button className="complete-course-button">Complete Course</button>
                             )}
                         </div>
+
                     </div>
                 </div>
             </div >

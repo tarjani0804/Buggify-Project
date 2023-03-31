@@ -71,13 +71,11 @@ const Navbar = () => {
 				navigate('/ResearcherProfile');
 			}
 		}
-
-
 	}
 	const [username2, setUsername] = useState("");
 
 	useEffect(() => {
-		const storedUsername = Cookies.get("userName")
+		const storedUsername = Cookies.get("username")
 		if (storedUsername) {
 			setUsername(storedUsername);
 		}
@@ -99,6 +97,7 @@ const Navbar = () => {
 		Cookies.remove('buss_id');
 		Cookies.remove('myCookie');
 		Cookies.remove('prog_id');
+		navigate("/");
 		setUsername("");
 		setShowLogout(false);
 	}
