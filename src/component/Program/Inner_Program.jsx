@@ -274,7 +274,10 @@ const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
   const [scopeSelected, setScopeSelected] = useState();
   const [bookmarked, setBookemarked] = useState(0);
-
+  const prog_id = Cookies.get('prog_id');
+  if(prog_id == undefined){
+    window.location.href = "/program";
+  }
 
   const [bookmarkSelected, setBookmarkSelected] = useState(
     parseInt(localStorage.getItem("bookmarkSelected")) || 0

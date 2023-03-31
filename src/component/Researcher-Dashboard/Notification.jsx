@@ -19,6 +19,10 @@ import Cookies from "js-cookie";
 import { toast, ToastContainer } from "react-toastify";
 
 function ResearcherNavbar() {
+  const rsrc_id = Cookies.get('rsrc_id');
+  if(rsrc_id == undefined){
+    window.location.href = "/";
+  }
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleMenuToggle = () => {
