@@ -17,6 +17,7 @@ import { SiBigbluebutton } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
+import { Nav } from "react-bootstrap";
 
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -55,6 +56,17 @@ function DashboardNavbar() {
   };
   const gotoFAQs = () => {
     Navigate("/FAQs");
+  };
+
+
+  const logout = () => {
+    Cookies.remove('userName');
+    Cookies.remove('companyName');
+    Cookies.remove('buss_id');
+    Cookies.remove('rsrc_id');
+    Cookies.remove('myCookie');
+    Cookies.remove('prog_id');
+    Navigate("/");
   };
 
   return (
@@ -127,7 +139,7 @@ function DashboardNavbar() {
             <span className="navbar-menu-item">Previous finding</span>
           )}
         </li>
-        <li>
+        <li onClick={logout}>
           <span className="navbar-menu-icon">
             <RiLogoutBoxRLine />
           </span>

@@ -53,8 +53,19 @@
     border: 1px solid #04ff69;
     margin: 1.5rem 0rem;
     padding-right: 2rem;
+    cursor: pointer;
 }
 
+.academy-course-video-list-h {
+    color: #ffffff;
+    font-size: 16px;
+    padding: 0.2rem;
+    letter-spacing: 1px;
+    line-height: 2.8rem;
+    /* border: 1px solid #04ff69; */
+    margin: 1.5rem 0rem;
+    padding-right: 2rem;
+}
 
 
 .previous-button {

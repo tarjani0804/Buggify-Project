@@ -1,6 +1,7 @@
 .inner-program {
     background-color: #0b0b0b;
     padding-bottom: 10rem;
+    padding-top: 5rem;
 }
 
 .inner-program-heading-section {
@@ -167,7 +168,7 @@
 }
 
 .program-policy-intro-div-p1 {
-    color: #878787;
+    color: #bebebe;
     font-size: 14px;
     line-height: 2.8rem;
     letter-spacing: 1px;
@@ -182,14 +183,14 @@
 }
 
 .program-policy-intro-div-p2 {
-    color: #878787;
+    color: #bebebe;
     font-size: 14px;
     line-height: 2.8rem;
     letter-spacing: 1px;
 }
 
 .program-policy-intro-div-p3 {
-    color: #878787;
+    color: #bebebe;
     font-size: 14px;
     line-height: 2.8rem;
     letter-spacing: 1px;

@@ -49,6 +49,16 @@ function ResearcherNavbar() {
     Navigate("/researcherFAQs");
   };
 
+  const logout = () => {
+    Cookies.remove('userName');
+    Cookies.remove('companyName');
+    Cookies.remove('buss_id');
+    Cookies.remove('rsrc_id');
+    Cookies.remove('myCookie');
+    Cookies.remove('prog_id');
+    Navigate("/");
+  };
+
   return (
     <nav className={`navbar ${isMenuOpen ? "open" : "close"}`}>
       <div
@@ -104,7 +114,7 @@ function ResearcherNavbar() {
           </span>
           {isMenuOpen && <span className="navbar-menu-item">Notification</span>}
         </li>
-        <li>
+        <li onClick={logout}>
           <span className="navbar-menu-icon">
             <RiLogoutBoxRLine />
           </span>
@@ -130,14 +140,15 @@ function ResearcherNavbar() {
 }
 
 const BookmarkedProgram = (props) => {
+
   // data incoming for bookmarked program
   const [bountyList, setBountyList] = useState();
   useEffect(() => {
     async function fetchProfileStats() {
-      const myCookie = Cookies.get("myCookie");
+      const myCookie = Cookies.get('myCookie')
       const data = {
-        myCookie: `${myCookie}`,
-      };
+        myCookie: `${myCookie}`
+      }
       const response = await fetch(`http://127.0.0.1:5173/listBookmark`, {
         method: "POST",
         headers: {
@@ -183,7 +194,9 @@ const BookmarkedProgram = (props) => {
 
   return (
     <>
+
       <div className="res-profile">
+
         <div className="bus-profile-divs">
           <div className="bus-profile-div1">
             <ResearcherNavbar />
@@ -203,8 +216,37 @@ const BookmarkedProgram = (props) => {
                 <div className="track-reports-div">
                   <ol className="bookmarked-ul">{openlist}</ol>
                 </div>
+
               </div>
             </div>
+
+
+
+          </div>
+        </div>
+
+        <div className="track-report">
+          <div className="track-reports-div">
+            <ol className="bookmarked-ul">
+              {BookmarkedProgram.defaultProps.bookmarked.map((title) => (
+                <div key={title.id} className="res-track-report-list-div">
+                  <div className="bus-profile-bug-report-divtitle">
+                    <li
+                      className="bus-profile-bug-report-div-title-p"
+                      style={{ marginLeft: "4rem" }}
+                    >
+                      {" "}
+                      {title.programTitle}
+                    </li>
+                    <p className="res-bookmarked-list-link">
+                      <a href="" className="res-track-report-list-link">
+                        Start Hunting {title.programLink}
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </ol>
           </div>
         </div>
 
@@ -233,6 +275,9 @@ const BookmarkedProgram = (props) => {
           </div>
         </div>
       </div>
+
+
+
     </>
   );
 };

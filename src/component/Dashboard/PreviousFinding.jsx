@@ -13,7 +13,6 @@ import {
 import { TbReportAnalytics } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { SiBigbluebutton } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
@@ -55,6 +54,16 @@ function DashboardNavbar() {
   };
   const gotoFAQs = () => {
     Navigate("/FAQs");
+  };
+
+  const logout = () => {
+    Cookies.remove('userName');
+    Cookies.remove('companyName');
+    Cookies.remove('buss_id');
+    Cookies.remove('rsrc_id');
+    Cookies.remove('myCookie');
+    Cookies.remove('prog_id');
+    Navigate("/");
   };
 
   return (
@@ -127,7 +136,7 @@ function DashboardNavbar() {
             <span className="navbar-menu-item">Previous finding</span>
           )}
         </li>
-        <li>
+        <li onClick={logout}>
           <span className="navbar-menu-icon">
             <RiLogoutBoxRLine />
           </span>

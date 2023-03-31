@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './WhyBuggify.css';
 import { useNavigate } from "react-router-dom";
 import Why from '../Buggify1.mp4';
@@ -12,6 +12,8 @@ const WhyBuggify = () => {
     const gotoLogin = () => {
         navigate('/Login')
     }
+
+    const [selected, setSelected] = useState(2);
 
     return (
         <>
@@ -27,49 +29,135 @@ const WhyBuggify = () => {
 
 
                 <h3 className="h1">For Companies</h3>
+
+
+                <div className="whybuggify-divs">
+
+                    <div className="d1">
+                        <img className="d1-span"
+                            style={{ backgroundColor: selected === 1 ? "#07c7fe" : "#003e8b" }}
+                            onClick={() => setSelected(1)}
+                            src=""
+                        />
+
+                        <p className="d1-p"
+                            style={{ color: selected === 1 ? "#07c7fe" : "#ffffff" }}>Improved Security</p>
+                    </div>
+                    <div className="d2">
+                        <img className="d1-span"
+                            style={{ backgroundColor: selected === 2 ? "#07c7fe" : "#003e8b" }}
+                            onClick={() => setSelected(2)}
+                        />
+                        <p className="d1-p"
+                            style={{ color: selected === 2 ? "#07c7fe" : "#ffffff" }}>
+                            Cost Effective
+                        </p>
+                    </div>
+                    <div className="d3">
+                        <img className="d1-span"
+                            style={{ backgroundColor: selected === 3 ? "#07c7fe" : "#003e8b" }}
+                            onClick={() => setSelected(3)}
+                        />
+                        <p className="d1-p"
+                            style={{ color: selected === 3 ? "#07c7fe" : "#ffffff" }}>
+                            Rapid Detection
+                        </p>
+                    </div>
+
+
+                    <div className="d4">
+                        <img className="d1-span"
+                            style={{ backgroundColor: selected === 4 ? "#07c7fe" : "#003e8b" }}
+                            onClick={() => setSelected(4)}
+                        />
+                        <p className="d1-p"
+                            style={{ color: selected === 4 ? "#07c7fe" : "#ffffff" }}>
+                            Good Reputation
+                        </p>
+                    </div>
+                    <div className="d5">
+                        <img className="d1-span"
+                            style={{ backgroundColor: selected === 5 ? "#07c7fe" : "#003e8b" }}
+                            onClick={() => setSelected(5)}
+                        />
+                        <p className="d1-p"
+                            style={{ color: selected === 5 ? "#07c7fe" : "#ffffff" }}>
+                            Legal Compliance
+                        </p>
+                    </div>
+                    <div className="d6">
+                        <img className="d1-span"
+                            style={{ backgroundColor: selected === 6 ? "#07c7fe" : "#003e8b" }}
+                            onClick={() => setSelected(6)}
+                        />
+                        <p className="d1-p"
+                            style={{ color: selected === 6 ? "#07c7fe" : "#ffffff" }}>
+                            Skill Diversity
+                        </p>
+                    </div>
+                    <div className="d7">
+                        <img className="d1-span"
+                            style={{ backgroundColor: selected === 7 ? "#07c7fe" : "#003e8b" }}
+                            onClick={() => setSelected(7)}
+                        />
+                        <p className="d1-p"
+                            style={{ color: selected === 7 ? "#07c7fe" : "#ffffff" }}>
+                            Simplified Reporting
+                        </p>
+                    </div>
+
+                </div>
+
                 <div className="whybuggify-div">
-                    <p className="whybuggify-div-p">
-                        <span className="whybuggify-span" style={{ color: "#ffffff" }}>
-                            Improved Security:
-                        </span>
-                        By utilizing a bug bounty platform, companies can tap into the expertise of a diverse group of researchers who can identify and report vulnerabilities that may have gone unnoticed otherwise.This can help the company improve its security posture and reduce the risk of cyber - attacks.
-                    </p>
-                    <p className="whybuggify-div-p">
-                        <span className="whybuggify-span" style={{ color: "#ffffff" }}>
-                            Cost - Effective:
-                        </span>
-                        Bug bounty programs are often more cost - effective than traditional methods of identifying vulnerabilities such as hiring security consultants or running in -house security testing teams.Companies can set aside a specific budget for bug bounty programs and pay rewards only for valid vulnerabilities reported.
-                    </p>
-                    <p className="whybuggify-div-p">
-                        <span className="whybuggify-span" style={{ color: "#ffffff" }}>
-                            Faster Identification and Resolution of Vulnerabilities:
-                        </span>
-                        Bug bounty programs allow companies to identify vulnerabilities quickly and fix them before they can be exploited.This can help prevent potential data breaches, reputational damage, and financial losses.
-                    </p>
-                    <p className="whybuggify-div-p">
-                        <span className="whybuggify-span" style={{ color: "#ffffff" }}>
-                            Positive Public Image:
-                        </span>
-                        Companies that run bug bounty programs demonstrate their commitment to security and willingness to work with the security community to improve their security posture.This can improve their reputation and enhance customer trust and loyalty.
-                    </p>
-                    <p className="whybuggify-div-p">
-                        <span className="whybuggify-span" style={{ color: "#ffffff" }}>
-                            Compliance with Regulations:
-                        </span>
-                        Many industries and regulatory bodies require companies to demonstrate that they have a robust security posture and are taking proactive measures to identify and remediate vulnerabilities.Running a bug bounty program can help companies meet these requirements.
-                    </p>
-                    <p className="whybuggify-div-p">
-                        <span className="whybuggify-span" style={{ color: "#ffffff" }}>
-                            Access to a Wide Pool of Talent:
-                        </span>
-                        Bug bounty programs allow companies to tap into the expertise of a large pool of researchers who come from diverse backgrounds and possess a range of skills and knowledge.This can help companies identify vulnerabilities that may have been missed by their in -house security teams.
-                    </p>
-                    <p className="whybuggify-div-p">
-                        <span className="whybuggify-span" style={{ color: "#ffffff" }}>
-                            Streamlined Reporting and Communication:
-                        </span>
-                        Bug bounty platforms provide companies with a streamlined way to receive vulnerability reports and communicate with researchers.This can save time and resources for both the company and the researchers.
-                    </p>
+
+                    {selected === 1 && (
+                        <p className="whybuggify-div-p">
+
+                            By utilizing a bug bounty platform, companies can tap into the expertise of a diverse group of researchers who can identify and report vulnerabilities that may have gone unnoticed otherwise.This can help the company improve its security posture and reduce the risk of cyber - attacks.
+                        </p>
+                    )}
+
+                    {selected === 2 && (
+                        <p className="whybuggify-div-p">
+
+                            Bug bounty programs are often more cost - effective than traditional methods of identifying vulnerabilities such as hiring security consultants or running in -house security testing teams.Companies can set aside a specific budget for bug bounty programs and pay rewards only for valid vulnerabilities reported.
+                        </p>
+                    )}
+
+                    {selected === 3 && (
+                        <p className="whybuggify-div-p">
+
+                            Bug bounty programs allow companies to identify vulnerabilities quickly and fix them before they can be exploited.This can help prevent potential data breaches, reputational damage, and financial losses.
+                        </p>
+                    )}
+
+                    {selected === 4 && (
+                        <p className="whybuggify-div-p">
+
+                            Companies that run bug bounty programs demonstrate their commitment to security and willingness to work with the security community to improve their security posture.This can improve their reputation and enhance customer trust and loyalty.
+                        </p>
+                    )}
+
+                    {selected === 5 && (
+                        <p className="whybuggify-div-p">
+
+                            Many industries and regulatory bodies require companies to demonstrate that they have a robust security posture and are taking proactive measures to identify and remediate vulnerabilities.Running a bug bounty program can help companies meet these requirements.
+                        </p>
+                    )}
+
+                    {selected === 6 && (
+                        <p className="whybuggify-div-p">
+
+                            Bug bounty programs allow companies to tap into the expertise of a large pool of researchers who come from diverse backgrounds and possess a range of skills and knowledge.This can help companies identify vulnerabilities that may have been missed by their in -house security teams.
+                        </p>
+                    )}
+
+                    {selected === 7 && (
+                        <p className="whybuggify-div-p">
+
+                            Bug bounty platforms provide companies with a streamlined way to receive vulnerability reports and communicate with researchers.This can save time and resources for both the company and the researchers.
+                        </p>
+                    )}
                 </div>
 
                 <h3 className="h1">For Researchers</h3>

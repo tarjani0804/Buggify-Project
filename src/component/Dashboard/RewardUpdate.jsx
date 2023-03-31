@@ -58,6 +58,16 @@ function DashboardNavbar() {
     Navigate("/FAQs");
   };
 
+  const logout = () => {
+    Cookies.remove('userName');
+    Cookies.remove('companyName');
+    Cookies.remove('buss_id');
+    Cookies.remove('rsrc_id');
+    Cookies.remove('myCookie');
+    Cookies.remove('prog_id');
+    Navigate("/");
+  };
+
   return (
     <nav className={`navbar ${isMenuOpen ? "open" : "close"}`}>
       <div
@@ -128,7 +138,7 @@ function DashboardNavbar() {
             <span className="navbar-menu-item">Previous finding</span>
           )}
         </li>
-        <li>
+        <li onClick={logout}>
           <span className="navbar-menu-icon">
             <RiLogoutBoxRLine />
           </span>
@@ -260,7 +270,7 @@ const BusinessProfile = (props) => {
               </div>
             </center>
             <div className="stats">
-              
+
               <div className="bus-profile-stat-div">
                 <form className="dashboard-form">
                   <div className="column-div1">

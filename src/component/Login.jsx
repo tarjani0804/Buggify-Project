@@ -47,6 +47,10 @@ const LoginForm = ({ onLogin }) => {
           expires: 14,
           path: "/",
         });
+        Cookies.set("userName", `${jwt.username}`, {
+          expires: 14,
+          path: "/",
+        });
         window.location.href = "/businessProfile";
       } else {
         if (jwt.rsrc_id) {
