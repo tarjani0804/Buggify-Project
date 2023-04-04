@@ -21,8 +21,11 @@ const BookmarkDB = require("../models/bookmarkedDB");
 const ReportDB = require("../models/ReportDB");
 const BountyDB = require("../models/paymentDB");
 const LeaderboardDB = require("../models/leaderboardDB");
+const AcademyDB = require("../models/academyDB");
 const sendotp = require("./mailer");
 const { array } = require("i/lib/util");
+const Razorpay = require("razorpay");
+const crypto = require("crypto");
 
 //vars
 const KEY = process.env.SECRET_KEY;
@@ -149,6 +152,15 @@ app.post("/researcher", async (req, res) => {
         if (findbook == "") {
           const newbook = new BookmarkDB({
             buss_id: [],
+            rsrc_id: `${number}`,
+          });
+          const out = await newbook.save();
+          console.log(out);
+        }
+        const findbook2 = await AcademyDB.find({ rsrc_id });
+        if (findbook2 == "") {
+          const newbook = new AcademyDB({
+            course_id: [],
             rsrc_id: `${number}`,
           });
           const out = await newbook.save();
@@ -1118,7 +1130,7 @@ app.post("/listBookmark", middleware, async (req, res) => {
   }
 });
 
-app.post("/purchasedCourse")
+app.post("/purchasedCourse");
 
 const random5 = () => {
   const length = 5;
@@ -1420,6 +1432,71 @@ app.post("/leaderin", async (req, res) => {
     res.status(400).json({ status: `Unable to add Researcher, Try Again!` });
   }
 }); // add 15 more
+//order API
+app.post("/order", middleware, async (req, res) => {
+  try {
+    const instance = new Razorpay({
+      key_id: process.env.KEY_ID,
+      key_secret: process.env.KEY_SECRET,
+    });
+    const options = {
+      amount: req.body.amount * 100,
+      currency: "USD",
+      receipt: crypto.randomBytes(10).toString("hex"),
+    };
+    instance.orders.create(options, (error, order) => {
+      if (error) {
+        console.log(error);
+        res.status(500).json({ data: `Something Went Wrong` });
+      } else {
+        res.status(200).json({ data: order });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: `Internal Server Error` });
+  }
+});
+
+//payment verify API
+app.post("/verify", async (req, res) => {
+  try {
+    const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
+    } = req.body;
+    const sign = razorpay_order_id + "|" + razorpay_payment_id;
+    const expectedSign = crypto
+      .createHmac("sha256", process.env.KEY_SECRET)
+      .update(sign.toString())
+      .digest("hex");
+    if (razorpay_signature !== expectedSign) {
+      res.status(200).json({ status: `Payment Successfully Done` });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: `Internal Server Error` });
+  }
+});
+
+app.post("/courseAdd", middleware, async (req, res) => {
+  const course_id = req.body.course_id;
+  const rsrc_id = req.rsrc_id;
+  const data = await AcademyDB.find({ rsrc_id: `${rsrc_id}` });
+  console.log(data);
+  const arraybhau = data[0].course_id;
+  if (arraybhau.includes(course_id)) {
+    res.status(200).json({ status: 0 });
+  } else {
+    const abc = await AcademyDB.updateOne(
+      { rsrc_id: `${rsrc_id}` },
+      { $push: { course_id: `${course_id}` } }
+    );
+    const final = abc;
+    res.status(200).json({ status: final });
+  }
+});
 
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
