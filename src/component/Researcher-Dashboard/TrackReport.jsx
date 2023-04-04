@@ -17,6 +17,10 @@ import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
 
 function ResearcherNavbar() {
+  const rsrc_id = Cookies.get("rsrc_id");
+  if (rsrc_id == undefined) {
+    window.location.href = "/";
+  }
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleMenuToggle = () => {
@@ -48,12 +52,12 @@ function ResearcherNavbar() {
   };
 
   const logout = () => {
-    Cookies.remove('userName');
-    Cookies.remove('companyName');
-    Cookies.remove('buss_id');
-    Cookies.remove('rsrc_id');
-    Cookies.remove('myCookie');
-    Cookies.remove('prog_id');
+    Cookies.remove("userName");
+    Cookies.remove("companyName");
+    Cookies.remove("buss_id");
+    Cookies.remove("rsrc_id");
+    Cookies.remove("myCookie");
+    Cookies.remove("prog_id");
     Navigate("/");
   };
 
@@ -143,16 +147,15 @@ function OpenReports() {
     navigate("/researcher-ReportInfo");
   };
 
-
-  // data incoming for open report 
+  // data incoming for open report
   const [bountyList, setBountyList] = useState();
   useEffect(() => {
     async function fetchProfileStats() {
-      const myCookie = Cookies.get('myCookie')
+      const myCookie = Cookies.get("myCookie");
       const data = {
         myCookie: `${myCookie}`,
-        rep_type: "open"
-      }
+        rep_type: "open",
+      };
       const response = await fetch(`http://127.0.0.1:5173/trackRep`, {
         method: "POST",
         headers: {
@@ -166,7 +169,7 @@ function OpenReports() {
     fetchProfileStats();
   }, []);
   console.log(bountyList);
-  const username = Cookies.get("username")
+  const username = Cookies.get("username");
   const openlist = [];
   if (bountyList) {
     for (let i = 0; i < bountyList.length; i++) {
@@ -181,10 +184,7 @@ function OpenReports() {
               Report Id: {reports.report_id}
             </p>
           </div>
-          <p
-            className="res-track-report-list-link"
-            onClick={gotoReportInfo}
-          >
+          <p className="res-track-report-list-link" onClick={gotoReportInfo}>
             Check More info
           </p>
         </div>
@@ -195,9 +195,7 @@ function OpenReports() {
   return (
     <div>
       <div className="track-report">
-        <div className="track-reports-div">
-          {openlist}
-        </div>
+        <div className="track-reports-div">{openlist}</div>
       </div>
     </div>
   );
@@ -212,11 +210,11 @@ function ResolvedReports() {
   const [bountyList, setBountyList] = useState();
   useEffect(() => {
     async function fetchProfileStats() {
-      const myCookie = Cookies.get('myCookie')
+      const myCookie = Cookies.get("myCookie");
       const data = {
         myCookie: `${myCookie}`,
-        rep_type: "resolved"
-      }
+        rep_type: "resolved",
+      };
       const response = await fetch(`http://127.0.0.1:5173/trackRep`, {
         method: "POST",
         headers: {
@@ -258,9 +256,7 @@ function ResolvedReports() {
   return (
     <div>
       <div className="track-report">
-        <div className="track-reports-div">
-          {resolvedlist}
-        </div>
+        <div className="track-reports-div">{resolvedlist}</div>
       </div>
     </div>
   );
@@ -278,7 +274,7 @@ const TrackReports = (props) => {
     setOpenSelected(false);
     setResolvedSelected(true);
   };
-  const username = Cookies.get("username")
+  const username = Cookies.get("username");
   return (
     <>
       <div className="res-profile">
@@ -293,24 +289,24 @@ const TrackReports = (props) => {
               <center>
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
-                  <h3 className="bus-profile-company-name">
-                    {username}
-                  </h3>
+                  <h3 className="bus-profile-company-name">{username}</h3>
                 </div>
               </center>
               <div className="stats">
                 <div className="track-report-menu-list">
                   <ul>
                     <li
-                      className={`track-report-menu-list-li ${OpenSelected ? "listselected" : ""
-                        }`}
+                      className={`track-report-menu-list-li ${
+                        OpenSelected ? "listselected" : ""
+                      }`}
                       onClick={handleOpenSelected}
                     >
                       Open
                     </li>
                     <li
-                      className={`track-report-menu-list-li ${ResolvedSelected ? "listselected" : ""
-                        }`}
+                      className={`track-report-menu-list-li ${
+                        ResolvedSelected ? "listselected" : ""
+                      }`}
                       onClick={handleResolvedSelected}
                     >
                       Resolved

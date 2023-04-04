@@ -3,18 +3,22 @@ import Cookies from "js-cookie";
 import "./RedTeam_Agreement.css";
 
 const C3 = () => {
+  const abc = Cookies.get("buss_id");
+  if (abc == undefined) {
+    window.location.href = "/Login";
+  }
   const scrollTo = useRef();
+  
   useLayoutEffect(() => {
     if (scrollTo.current) {
       window.scrollTo(0, 0);
     }
   });
 
-
   const alert = () => {
     toast.error("Something went Wrong", {
-      position: toast.POSITION.TOP_RIGHT
-    })
+      position: toast.POSITION.TOP_RIGHT,
+    });
   };
 
   const handleSubmit = async (e) => {

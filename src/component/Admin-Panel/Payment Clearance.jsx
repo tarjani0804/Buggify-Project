@@ -9,7 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
-
+  const abc = Cookies.get("admin_id");
+  if (abc == undefined) {
+    window.location.href = "/";
+  }
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };

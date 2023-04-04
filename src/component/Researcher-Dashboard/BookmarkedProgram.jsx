@@ -19,6 +19,10 @@ import Avat from "../image/avat1.png";
 import Cookies from "js-cookie";
 
 function ResearcherNavbar() {
+  const rsrc_id = Cookies.get('rsrc_id');
+  if(rsrc_id == undefined){
+    window.location.href = "/";
+  }
   const [isMenuOpen, setIsMenuOpen] = useState(true);
 
   const handleMenuToggle = () => {

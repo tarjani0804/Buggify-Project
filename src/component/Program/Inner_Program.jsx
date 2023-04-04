@@ -274,7 +274,10 @@ const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
   const [scopeSelected, setScopeSelected] = useState();
   const [bookmarked, setBookemarked] = useState(0);
-
+  const prog_id = Cookies.get('prog_id');
+  if(prog_id == undefined){
+    window.location.href = "/program";
+  }
 
   const [bookmarkSelected, setBookmarkSelected] = useState(
     parseInt(localStorage.getItem("bookmarkSelected")) || 0
@@ -358,7 +361,6 @@ const Inner_Program = (props) => {
     setScopeSelected(true);
     setpolicySelected(false);
     const prog_id = Cookies.get("prog_id");
-    alert(prog_id);
     console.log("In Scope");
     const in_scope = await fetch(
       `http://127.0.0.1:5173/programScIn/${prog_id}`
@@ -523,7 +525,7 @@ Inner_Program.defaultProps = {
   program_name: "Buggify",
   program_link: "https://www.shopify.com",
 
-  program_launch: "2/2016 ",
+  program_launch: "3/2023 ",
   program_type: "Bug  Bounty Program",
 
   bug_resolved: "1570",

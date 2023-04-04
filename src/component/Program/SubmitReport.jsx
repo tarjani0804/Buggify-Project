@@ -16,7 +16,9 @@ const SubmitReport = (props) => {
   const [remediation, setRemediation] = useState();
   const myCookie = Cookies.get('myCookie')
   const prog_id = Cookies.get('prog_id')
-
+  if (prog_id == undefined) {
+    window.location.href = "/program";
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {

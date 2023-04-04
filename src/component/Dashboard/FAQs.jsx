@@ -14,7 +14,10 @@ import { useNavigate } from "react-router-dom";
 
 function DashboardNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
-
+    const abc = Cookies.get('buss_id');
+  if(abc == undefined){
+    window.location.href = "/";
+  }
     const handleMenuToggle = () => {
         setIsMenuOpen(!isMenuOpen);
     };
