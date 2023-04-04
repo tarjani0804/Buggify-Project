@@ -18,6 +18,7 @@ import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -37,6 +38,12 @@ const Researcher = () => {
         setFirstIndex(newIndex > maxIndex ? newIndex % (maxIndex + 2) : newIndex);
     };
 
+
+
+    const navigate = useNavigate();
+    const gotoLogin = () => {
+        navigate('/login');
+    }
     return (
         <>
             <div className='researcher'>
@@ -129,6 +136,43 @@ const Researcher = () => {
                                 className="arrow-right"
                                 onClick={handleRightIconClick}
                             />
+                        </div>
+                    </div>
+
+
+                    <div className="researcher-div3">
+                        <h1 className="reasearcher-div3-h">Start your Career as Bug Bounty Hunter</h1>
+                        <div className="responsive-youtube-container">
+                            <iframe
+                                className="responsive-youtube-video"
+                                src={`https://www.youtube.com/embed/FDeuOhE5MhU`}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+
+                    </div>
+
+
+
+                    <div className="researcher-div4">
+                        <div className="resarcher-div4-div">
+                            <h1 className="resarcher-div4-div-h">Get started with <span style={{
+                                color: "#04ff69"
+                            }}>Buggify</span></h1>
+                            <div className="researcher-flex">
+                                <p className="resarcher-div4-div-p">Help Secure Internet, Get Started Hacking Big Brands</p>
+
+                                <div style={{ marginTop: "-4rem" }}>
+                                    <div className="button_ani  resarcher-div4-div-button" onClick={gotoLogin}>
+                                        <button className="btn" >
+                                            Try Buggify
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

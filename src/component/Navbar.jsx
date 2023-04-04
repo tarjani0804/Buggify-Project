@@ -91,11 +91,13 @@ const Navbar = () => {
 		}
 	}
 	const handleLogout = () => {
-		Cookies.remove("userName");
+		Cookies.remove("username");
 		Cookies.remove('companyName');
 		Cookies.remove('buss_id');
 		Cookies.remove('myCookie');
 		Cookies.remove('prog_id');
+		Cookies.remove('userName');
+		Cookies.remove('rsrc_id');
 		navigate("/");
 		setUsername("");
 		setShowLogout(false);

@@ -37,7 +37,7 @@ const LoginForm = ({ onLogin }) => {
     console.log(username2);
 
     onLogin(username2);
-    localStorage.setItem("username", username2);
+    alert(username2);
 
     if (rememberMe == true) {
       Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 14, path: "/" });
@@ -56,6 +56,10 @@ const LoginForm = ({ onLogin }) => {
         if (jwt.rsrc_id) {
           Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 14, path: "/" });
           window.location.href = "/ResearcherProfile";
+          Cookies.set("userName", `${jwt.username}`, {
+            expires: 14,
+            path: "/",
+          });
         } else {
           alert();
         }
@@ -73,6 +77,10 @@ const LoginForm = ({ onLogin }) => {
         if (jwt.rsrc_id) {
           Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
           window.location.href = "/ResearcherProfile";
+          Cookies.set("userName", `${jwt.username}`, {
+            expires: 2,
+            path: "/",
+          });
         } else {
           alert();
         }

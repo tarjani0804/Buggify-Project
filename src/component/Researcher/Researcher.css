@@ -147,3 +147,51 @@
 .div-img2 {
     margin-left: 8rem;
 }
+
+
+.researcher-div3 {
+    margin-top: 25rem;
+}
+
+.reasearcher-div3-h {
+    font-size: 26px;
+    font-family: "Nunito";
+    color: #F6F6F6;
+    text-align: center;
+    text-shadow: 0 0 15px #04FF69;
+    letter-spacing: 2px;
+    line-height: 2.8rem;
+    padding-top: 10rem;
+}
+
+.resarcher-div4-div {
+    box-shadow: inset 10px 10px 300px rgba(4, 255, 105, 0.2);
+}
+
+.resarcher-div4-div-h {
+    margin-top: 10rem;
+    padding-top: 10rem;
+    margin-left: calc(10rem);
+    color: #ffffff;
+    font-size: 26px;
+    text-shadow: 0 0 15px #04FF69;
+}
+
+.researcher-flex {
+    display: flex;
+}
+
+.resarcher-div4-div-p {
+    color: #ffffff;
+    margin-top: 5rem;
+    margin-left: calc(8rem);
+    font-size: 16px;
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+    padding-bottom: 10rem;
+}
+
+.resarcher-div4-div-button {
+    width: fit-content;
+    margin-left: 50rem;
+}
