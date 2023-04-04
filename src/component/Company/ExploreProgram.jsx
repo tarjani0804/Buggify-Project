@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect, useEffect } from "react";
 import "./ExploreProgram.css";
 import { useNavigate } from "react-router-dom";
 import BugHunter from "../image/BugHunter.jpg"
@@ -14,7 +14,13 @@ const C1 = () => {
         navigate('/BugBounty_Agreement');
     }
 
+    const targetElementRef = useRef(null);
 
+    useEffect(() => {
+        if (targetElementRef.current) {
+            targetElementRef.current.scrollIntoView();
+        }
+    }, []);
 
     const scrollRefToPublic = useRef(null);
     const scrollRefToPrivate = useRef(null);
@@ -75,7 +81,7 @@ const C1 = () => {
                         <button className=" button3">Register Engagement</button></div>
                 </div>
 
-                <div className="c1-section2" ref={scrollRefToPublic}>
+                <div className="c1-section2" id={targetElementId} ref={targetElementRef}>
                     <h1 className="c1-section2-h">Open Source Bug Bounty Program</h1>
 
                     <div className="c1-div">

@@ -81,7 +81,7 @@ const LoginForm = ({ onLogin }) => {
   };
 
   const alert = () => {
-    toast.error("Wron Credentials", {
+    toast.error("Wrong Credentials", {
       position: toast.POSITION.TOP_RIGHT
     })
   }

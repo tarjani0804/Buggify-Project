@@ -1,15 +1,19 @@
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import './Homes8.css';
+import { useNavigate } from "react-router-dom";
 
 
-function Form() {
+function Form(targetLocation, targetElementId) {
     const [email, setEmail] = useState("");
     const [concern, setConcern] = useState("");
+
+    const navigate = useNavigate();
+
 
 
 
     return (
-        <div className="section-eight">
+        <div className="section-eight" >
             <h1 className="h section-eight-h"> Any Questions? Get in Touch with Us</h1>
             <h2 className="h1 section-eight-h2">How Can We Help You? Let Us know and we will get back to you as soon as Possible</h2>
 

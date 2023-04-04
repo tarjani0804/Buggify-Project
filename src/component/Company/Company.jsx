@@ -50,8 +50,10 @@ function Company() {
 		navigate('/Login');
 	}
 	const gotoContactUs = () => {
-		navigate("/");
+		navigate('/', { state: { scrollTo: "homes8" } });
 	}
+
+
 
 	const [firstIndex, setFirstIndex] = useState(0);
 	const images = [CompanyProduct1, CompanyProduct2, CompanyProduct3, CompanyProduct4, CompanyProduct5, CompanyProduct6, CompanyProduct7, CompanyProduct8];

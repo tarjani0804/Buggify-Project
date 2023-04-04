@@ -274,7 +274,7 @@ function App() {
             </>
           } />
 
-          <Route path='/academyGetStarted' element={
+          <Route path='/AcademyGetStarted' element={
             <>
               <Navbar />
               <AcademyGetStarted />

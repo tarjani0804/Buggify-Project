@@ -103,10 +103,11 @@
 @media (max-width: 1920px) {
     .section-2-div {
         grid-template-columns: 20rem 1fr 1fr 1fr 20rem;
-       
+
     }
+
     .section-2-div1 {
-       
+
         width: 45rem;
         height: 30rem;
     }
@@ -209,7 +210,7 @@
 }
 
 .section-3-div-p {
-    color: #878787;
+    color: #dddddd;
     margin: 5rem 3rem;
     font-size: 16px;
     line-height: 2.5rem;

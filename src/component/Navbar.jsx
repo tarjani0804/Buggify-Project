@@ -12,7 +12,7 @@ function MyList() {
 		{ label: "Company", link: "/company" },
 		{ label: "Researchers", link: "/researcher" },
 		{ label: "Programs", link: "/program" },
-		{ label: "Academy", link: "/AcademygetStarted" },
+		{ label: "Academy", link: "/AcademyGetStarted" },
 	];
 	const [navActiveIndex, setNavActiveIndex] = useState(
 		items.findIndex((item) => item.link === window.location.pathname)
@@ -75,14 +75,13 @@ const Navbar = () => {
 	const [username2, setUsername] = useState("");
 
 	useEffect(() => {
-		const storedUsername = Cookies.get("username")
+		const storedUsername = Cookies.get("userName")
 		if (storedUsername) {
 			setUsername(storedUsername);
 		}
 	}, []);
 
 	const [showLogout, setShowLogout] = useState(false);
-
 
 	const handleShowLogout = () => {
 		if (showLogout) {

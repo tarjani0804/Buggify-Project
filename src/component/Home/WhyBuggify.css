@@ -15,14 +15,14 @@
 }
 
 .whybuggify-div {
-    width: 90%;
-    margin-left: calc(5%);
-    margin-top: 7rem;
+    width: 95%;
+    margin-left: calc(2.5%);
+    margin-top: 8rem;
 }
 
 .whybuggify-div-p {
     color: #dfdfdf;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 2.8rem;
     letter-spacing: 1px;
     padding-bottom: 2rem;
@@ -45,24 +45,24 @@
 }
 
 .d1 {
-    margin-top: 15rem;
+    margin-top: 25rem;
 }
 
 .d3 {
-    margin-top: 15rem;
+    margin-top: 25rem;
 }
 
 .d5 {
-    margin-top: 15rem;
+    margin-top: 25rem;
 }
 
 .d7 {
-    margin-top: 15rem;
+    margin-top: 25rem;
 }
 
 .d1-span {
     color: #ffffff;
-    font-size: 14px;
+    /* font-size: 4px; */
     line-height: 2.8rem;
     letter-spacing: 1px;
     background-color: #003e8b;
@@ -73,8 +73,17 @@
 
 .d1-p {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 2.8rem;
     letter-spacing: 1px;
     margin-top: 1rem;
+}
+
+.whybuggify-divs-r {
+    margin-top: 10rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+
 }
