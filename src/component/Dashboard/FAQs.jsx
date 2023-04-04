@@ -10,6 +10,7 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { AiOutlineArrowLeft, AiOutlinePlus } from 'react-icons/ai';
 import { SiBigbluebutton } from 'react-icons/si';
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 
 function DashboardNavbar() {

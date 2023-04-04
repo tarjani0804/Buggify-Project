@@ -10,6 +10,7 @@ import Academy8 from "../image/academy8.png";
 import HeathAdam from "../image/heathAdam.png";
 import "./AcademyCourse.css";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const AcademyCourses = () => {
   const scrollRef = useRef(null);
@@ -243,6 +244,79 @@ const AcademyCourses = () => {
     );
   }
 
+  const courseAdd = async (course_id) => {
+    const myCookie = Cookies.get("myCookie");
+    const data = {
+      myCookie: myCookie,
+      course_id: course_id,
+    };
+    const courseUrl = "http://127.0.0.1:5173/courseAdd";
+    const response = await fetch(courseUrl, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const jwt = await response.json();
+    console.log(jwt.status)
+  };
+
+  const initPayment = (data, course_id) => {
+    const options = {
+      key: "rzp_test_hksk4ng15qBw7Q",
+      amount: data.amount,
+      currency: data.currency,
+      course_id: course_id,
+      description: "Test Transaction",
+      order_id: data.order_id,
+      handler: async (data) => {
+        try {
+          const verifyUrl = "http://127.0.0.1:5173/verify";
+          const response = await fetch(verifyUrl, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+          const jwt = await response.json();
+          alert(jwt.status);
+          courseAdd(course_id);
+        } catch (e) {
+          console.log(e);
+        }
+      },
+      theme: {
+        color: "#04ff66",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
+
+  const handlePay = async (val1, val2) => {
+    const amount = val1;
+    const course_id = val2;
+    const myCookie = Cookies.get("myCookie");
+    if (myCookie != undefined) {
+      const data = {
+        myCookie: myCookie,
+        amount: amount,
+        course_id: course_id,
+      };
+      const response = await fetch(`http://127.0.0.1:5173/order`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const jwt = await response.json();
+      initPayment(jwt.data, course_id);
+    }
+  };
+
   return (
     <>
       <div className="nav" ref={scrollRef}>
@@ -450,7 +524,12 @@ const AcademyCourses = () => {
                           >
                             <button className="button2"> View More</button>
                           </div>
-                          <div className="button_ani card-div3-button2">
+                          <div
+                            className="button_ani card-div3-button2"
+                            onClick={(event) =>
+                              handlePay(course.price, course.id)
+                            }
+                          >
                             <button className="btn card-div3-button2-button">
                               Buy Now
                             </button>
