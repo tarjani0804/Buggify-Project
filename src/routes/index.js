@@ -1498,6 +1498,19 @@ app.post("/courseAdd", middleware, async (req, res) => {
   }
 });
 
+app.get("/getcourse/:rsrc_id", async (req, res) => {
+  const rsrc_id = req.params.rsrc_id;
+  try {
+    console.log('abc');
+    const rep = await AcademyDB.find({
+      rsrc_id: `${rsrc_id}`,
+    });
+    res.status(200).json({ status: `${rep}` });
+  } catch (e) {
+    res.status(400).json({ status: `` });
+  }
+});
+
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;
 //         const getUser11 = await Buss.find({"username" : `${name}`});

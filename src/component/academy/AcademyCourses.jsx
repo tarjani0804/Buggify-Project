@@ -163,6 +163,15 @@ const AcademyCourses = () => {
     navigate(redirectLink);
   };
 
+  const course1 = async () => {
+    const rsrc_id = Cookies.get("rsrc_id");
+    const courseUrl1 = `http://127.0.0.1:5173/getcourse/${rsrc_id}`;
+    const response = await fetch(courseUrl1);
+    const jwt = await response.json();
+    console.log(jwt.status);
+  };
+  course1();
+
   const gotoGetStarted = () => {
     navigate("/AcademyGetStarted");
   };
@@ -259,7 +268,7 @@ const AcademyCourses = () => {
       body: JSON.stringify(data),
     });
     const jwt = await response.json();
-    console.log(jwt.status)
+    console.log(jwt.status);
   };
 
   const initPayment = (data, course_id) => {
