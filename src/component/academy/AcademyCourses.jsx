@@ -168,8 +168,8 @@ const AcademyCourses = () => {
     const courseUrl1 = `http://127.0.0.1:5173/getcourse/${rsrc_id}`;
     const response = await fetch(courseUrl1);
     const jwt = await response.json();
-    console.log(jwt.status);
-    console.log(jwt.status[0].course_id);
+    const status = jwt.status
+    console.log(status[0].course_id);
   };
   course1();
 
@@ -270,7 +270,6 @@ const AcademyCourses = () => {
       body: JSON.stringify(data),
     });
     const jwt = await response.json();
-    console.log(jwt.status);
   };
 
   const initPayment = (data, course_id) => {

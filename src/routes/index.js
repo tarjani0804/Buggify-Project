@@ -1509,7 +1509,7 @@ app.get("/getcourse/:rsrc_id", async (req, res) => {
     const rep = await AcademyDB.find({
       rsrc_id: `${rsrc_id}`,
     });
-    res.status(200).json({ status: `${rep}` });
+    res.status(200).json({ status: rep });
   } catch (e) {
     res.status(400).json({ status: `` });
   }
