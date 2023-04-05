@@ -14,8 +14,8 @@ const SubmitReport = (props) => {
   const [poc5, setPoc5] = useState();
   const [attackScenarios, setAttackScenarios] = useState();
   const [remediation, setRemediation] = useState();
-  const myCookie = Cookies.get('myCookie')
-  const prog_id = Cookies.get('prog_id')
+  const myCookie = Cookies.get("myCookie");
+  const prog_id = Cookies.get("prog_id");
   if (prog_id == undefined) {
     window.location.href = "/program";
   }
@@ -43,6 +43,7 @@ const SubmitReport = (props) => {
     });
     const jwt = await response.json();
     alert(jwt.status);
+    window.location.href = "/inner-program";
   };
 
   return (

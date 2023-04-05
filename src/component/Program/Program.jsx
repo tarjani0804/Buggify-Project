@@ -6,6 +6,18 @@ import Google from "../image/Google.png";
 import Cookies from "js-cookie";
 
 const Program = () => {
+  const prog_id = Cookies.get("prog_id");
+  if (prog_id != undefined) {
+    Cookies.remove("prog_id");
+  }
+  const prog_name = Cookies.get("prog_name");
+  if (prog_name != undefined) {
+    Cookies.remove("prog_name");
+  }
+  const launch_date = Cookies.get("launch_date");
+  if (launch_date != undefined) {
+    Cookies.remove("prog_id");
+  }
   const navigate = useNavigate();
 
   const gotoPrograms = () => {
@@ -30,6 +42,14 @@ const Program = () => {
   const handleSubmit = (event, id) => {
     event.preventDefault();
     Cookies.set("prog_id", `${profileStats[id].buss_id}`, {
+      expires: 14,
+      path: "/",
+    });
+    Cookies.set("prog_name", `${profileStats[id].company_name}`, {
+      expires: 14,
+      path: "/",
+    });
+    Cookies.set("launch_date", `${profileStats[id].Launch_Date}`, {
       expires: 14,
       path: "/",
     });

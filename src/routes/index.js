@@ -22,6 +22,7 @@ const ReportDB = require("../models/ReportDB");
 const BountyDB = require("../models/paymentDB");
 const LeaderboardDB = require("../models/leaderboardDB");
 const AcademyDB = require("../models/academyDB");
+const RecordDB = require("../models/RecordDB");
 const sendotp = require("./mailer");
 const { array } = require("i/lib/util");
 const Razorpay = require("razorpay");
@@ -226,7 +227,7 @@ app.post("/userfetch", async (req, res) => {
               username: `${username}`,
             });
           } else {
-            res.status().json({ status: "Wrong Credentials" });
+            res.status(400).json({ status: "Wrong Credentials" });
           }
         }
       }
@@ -1496,12 +1497,15 @@ app.post("/courseAdd", middleware, async (req, res) => {
     const final = abc;
     res.status(200).json({ status: final });
   }
+  const data2 = { "rsrc_id": `${rsrc_id}`, "course_id": `${course_id}`, "vid_num":[] };
+  const response = new RecordDB(data2);
+  const out = response.save()
 });
 
 app.get("/getcourse/:rsrc_id", async (req, res) => {
   const rsrc_id = req.params.rsrc_id;
   try {
-    console.log('abc');
+    console.log("abc");
     const rep = await AcademyDB.find({
       rsrc_id: `${rsrc_id}`,
     });
