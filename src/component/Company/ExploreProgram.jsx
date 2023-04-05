@@ -14,13 +14,6 @@ const C1 = () => {
         navigate('/BugBounty_Agreement');
     }
 
-    const targetElementRef = useRef(null);
-
-    useEffect(() => {
-        if (targetElementRef.current) {
-            targetElementRef.current.scrollIntoView();
-        }
-    }, []);
 
     const scrollRefToPublic = useRef(null);
     const scrollRefToPrivate = useRef(null);
@@ -81,7 +74,7 @@ const C1 = () => {
                         <button className=" button3">Register Engagement</button></div>
                 </div>
 
-                <div className="c1-section2" id={targetElementId} ref={targetElementRef}>
+                <div className="c1-section2" >
                     <h1 className="c1-section2-h">Open Source Bug Bounty Program</h1>
 
                     <div className="c1-div">
