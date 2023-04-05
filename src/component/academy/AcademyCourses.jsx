@@ -35,11 +35,6 @@ const AcademyCourses = () => {
     Programming: false,
   });
 
-  // const btn = document.getElementById("course-btn");
-  // btn.addEventListener("click", function () {
-  //     window.location.href = courses.link;
-  // });
-
   const courses = [
     {
       id: 1,
@@ -147,6 +142,8 @@ const AcademyCourses = () => {
     },
   ];
 
+  const [coursePurchase, setCoursePurchase] = useState();
+
   /* navigation  */
   const navigate = useNavigate();
   const paths = [
@@ -163,14 +160,19 @@ const AcademyCourses = () => {
     navigate(redirectLink);
   };
 
+  const gotoCourseVideo = () => {
+    navigate('/TestCourse');
+  }
   const course1 = async () => {
     const rsrc_id = Cookies.get("rsrc_id");
     const courseUrl1 = `http://127.0.0.1:5173/getcourse/${rsrc_id}`;
     const response = await fetch(courseUrl1);
     const jwt = await response.json();
     console.log(jwt.status);
+    console.log(jwt.status[0].course_id);
   };
   course1();
+
 
   const gotoGetStarted = () => {
     navigate("/AcademyGetStarted");
@@ -522,28 +524,41 @@ const AcademyCourses = () => {
                         </p>
                       </div>
                       <div className="card-body-div3">
-                        <center>
-                          <p className="card-body-div3-price">
-                            Course Price:{"$" + course.price}
-                          </p>
 
+                        {coursePurchase === course.id ? (
                           <div
                             className="button_ani card-div3-button1"
-                            onClick={() => goto(course.link)}
+                            style={{ marginTop: "15rem" }}
+                            onClick={gotoCourseVideo}
                           >
-                            <button className="button2"> View More</button>
+                            <button className="button2">Continue to Course</button>
                           </div>
-                          <div
-                            className="button_ani card-div3-button2"
-                            onClick={(event) =>
-                              handlePay(course.price, course.id)
-                            }
-                          >
-                            <button className="btn card-div3-button2-button">
-                              Buy Now
-                            </button>
-                          </div>
-                        </center>
+                        ) : (
+
+                          <center >
+                            <p className="card-body-div3-price">
+                              Course Price : {"$" + course.price}
+                            </p>
+
+                            <div
+                              className="button_ani card-div3-button1"
+                              onClick={() => goto(course.link)}
+                            >
+                              <button className="button2"> View More</button>
+                            </div>
+                            <div
+                              className="button_ani card-div3-button2"
+                              onClick={(event) =>
+                                handlePay(course.price, course.id)
+                              }
+                            >
+                              <button className="btn card-div3-button2-button">
+                                Buy Now
+                              </button>
+                            </div>
+                          </center>
+                        )
+                        }
                       </div>
                     </div>
                   </div>
@@ -551,8 +566,8 @@ const AcademyCourses = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   );
 };
