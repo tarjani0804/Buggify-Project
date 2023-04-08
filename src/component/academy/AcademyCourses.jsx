@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import Academy1 from "../image/academy1.png";
 import Academy2 from "../image/academy2.png";
 import Academy3 from "../image/academy3.png";
@@ -35,6 +35,7 @@ const AcademyCourses = () => {
     Programming: false,
   });
 
+
   const courses = [
     {
       id: 1,
@@ -47,7 +48,7 @@ const AcademyCourses = () => {
       img: Academy1,
       avatar: HeathAdam,
       instrutor: "Heath Admans",
-      link: "/TestCourse",
+      link: "/PentestingWithPython",
     },
     {
       id: 2,
@@ -142,7 +143,7 @@ const AcademyCourses = () => {
     },
   ];
 
-  const [coursePurchase, setCoursePurchase] = useState();
+  const [coursePurchase, setCoursePurchase] = useState([]);
 
   /* navigation  */
   const navigate = useNavigate();
@@ -163,15 +164,26 @@ const AcademyCourses = () => {
   const gotoCourseVideo = () => {
     navigate('/TestCourse');
   }
+  var course2 = []
+
+
+
   const course1 = async () => {
     const rsrc_id = Cookies.get("rsrc_id");
     const courseUrl1 = `http://127.0.0.1:5173/getcourse/${rsrc_id}`;
     const response = await fetch(courseUrl1);
     const jwt = await response.json();
     const status = jwt.status
-    console.log(status[0].course_id);
+    // console.log(status[0].course_id);
+    course2 = status[0].course_id;
+    setCoursePurchase(...coursePurchase, course2);
+    console.log(status[0].course_id)
+
   };
+  // alert(course2);
   course1();
+
+  console.log(coursePurchase);
 
 
   const gotoGetStarted = () => {
@@ -524,7 +536,7 @@ const AcademyCourses = () => {
                       </div>
                       <div className="card-body-div3">
 
-                        {coursePurchase === course.id ? (
+                        {coursePurchase.includes(course.id) ? (
                           <div
                             className="button_ani card-div3-button1"
                             style={{ marginTop: "15rem" }}

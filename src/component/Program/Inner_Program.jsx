@@ -154,7 +154,6 @@ function Policy() {
   );
 }
 var in_scope = [
-
   { id: 1, asset: "*.buggify.com", asset_type: "Web", impact: "critical", elb: "Yes" },
   { id: 2, asset: "*.buggif.in", asset_type: "Web", impact: "high", elb: "Yes" },
   { id: 3, asset: "buggify.com/api/v1", asset_type: "API", impact: "critical", elb: "Yes" },
@@ -275,7 +274,7 @@ const Inner_Program = (props) => {
   const [scopeSelected, setScopeSelected] = useState();
   const [bookmarked, setBookemarked] = useState(0);
   const prog_id = Cookies.get('prog_id');
-  if(prog_id == undefined){
+  if (prog_id == undefined) {
     window.location.href = "/program";
   }
 
@@ -356,32 +355,48 @@ const Inner_Program = (props) => {
     setScopeSelected(false);
   };
 
-  const handleScopeSelected = async (e) => {
+
+  const handleScopeSelected = async () => {
+
     localStorage.setItem("listPath", "scope");
     setScopeSelected(true);
     setpolicySelected(false);
     const prog_id = Cookies.get("prog_id");
     console.log("In Scope");
+
     const in_scope = await fetch(
       `http://127.0.0.1:5173/programScIn/${prog_id}`
     );
     const scopeval1 = await in_scope.json();
+    console.log(scopeval1);
     var in_assets = Object.values(scopeval1).map((item) => item.asset);
+
     var in_assets_type = Object.values(scopeval1).map(
       (item) => item.asset_type
     );
     var in_impact = Object.values(scopeval1).map((item) => item.impact);
     var in_elb = Object.values(scopeval1).map((item) => item.elb);
-    // set this in_scope data to table of in_scope, remove const program in upper function or set by making in_scope const in upper program and then map them using this loop
 
-    for (let i = 0; i < 10; i++) {
-      if (in_assets[i]) {
-        console.log(in_assets[i]);
-        console.log(in_assets_type[i]);
-        console.log(in_impact[i]);
-        console.log(in_elb[i]);
+    const In_Scope = [];
+    if (scopeval1) {
+      for (let i = 0; i < 10; i++) {
+        const data = scopeval1[i]
+        In_Scope.push(
+          <tr>
+            <td>{data.asset}</td>
+            <td>{data.asset_type}</td>
+            <td>{data.impact}</td>
+            <td>{data.elb}</td>
+          </tr>
+
+        )
+
+
       }
     }
+    console.log(In_Scope);
+
+
     console.log("Out of Scope");
     const out_scope = await fetch(
       `http://127.0.0.1:5173/programScOut/${prog_id}`
@@ -392,23 +407,23 @@ const Inner_Program = (props) => {
       (item) => item.asset_type
     );
     // set this out_scope data to table of out_scope, remove const program in upper function or set by making out_scope const in upper program and then map them using this loop
-    for (let i = 0; i < 10; i++) {
-      if (out_assets[i]) {
-        console.log(out_assets[i]);
-        console.log(out_assets_type[i]);
-      }
-    }
-    console.log("Reward");
+    // for (let i = 0; i < 10; i++) {
+    //   if (out_assets[i]) {
+    //     console.log(out_assets[i]);
+    //     console.log(out_assets_type[i]);
+    //   }
+    // }
+    // console.log("Reward");
     const reward = await fetch(`http://127.0.0.1:5173/programRd/${prog_id}`);
     const rdval = await reward.json();
     var rd_low = rdval.low;
     var rd_medium = rdval.medium;
     var rd_high = rdval.high;
     var rd_critical = rdval.critical;
-    console.log(rd_low);
-    console.log(rd_medium);
-    console.log(rd_high);
-    console.log(rd_critical);
+    // console.log(rd_low);
+    // console.log(rd_medium);
+    // console.log(rd_high);
+    // console.log(rd_critical);
 
     document.getElementById("low").innerHTML = rd_low;
     document.getElementById("medium").innerHTML = rd_medium;
@@ -435,6 +450,9 @@ const Inner_Program = (props) => {
     navigate("/program-submitReport");
   };
 
+  const launchDate = Cookies.get("launch_date");
+  const program_name = Cookies.get("prog_name");
+
   return (
     <>
       <div className="inner-program">
@@ -448,17 +466,17 @@ const Inner_Program = (props) => {
             </div>
             <div className="inner-program-heading-section-div1-2">
               <h1 className="inner-program-heading-section-div1-2-h">
-                {props.program_name}
+                {program_name}
               </h1>
 
               <div className="inner-program-heading-section-div1-2-div">
                 <div className="program-launch-div">
                   <h5>Program Launch</h5>
-                  <p>{props.program_launch}</p>
+                  <p>{launchDate}</p>
                 </div>
                 <div className="program-type-div">
                   <h5>Program Type</h5>
-                  <p>{props.program_type}</p>
+                  <p>Bug Bounty Program</p>
                 </div>
                 <div className="program-bookmark" style={{ cursor: "pointer" }}>
                   <h5>
@@ -521,26 +539,5 @@ const Inner_Program = (props) => {
   );
 };
 
-Inner_Program.defaultProps = {
-  program_name: "Buggify",
-  program_link: "https://www.shopify.com",
 
-  program_launch: "3/2023 ",
-  program_type: "Bug  Bounty Program",
-
-  bug_resolved: "1570",
-  asset_in_scope: "15",
-  avg_bounties_paid: "600",
-  avg_time_respond: "Within 2 Days",
-  avg_time_triage: "Within 3 Days",
-  program: [
-    {
-      id: 1,
-      asset: "*.buggify.com",
-      asset_type: "web",
-      impact: "High",
-      elb: "yes",
-    },
-  ],
-};
 export default Inner_Program;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import ReactPlayer from "react-player";
 import Cookies from "js-cookie";
 
@@ -7,10 +7,19 @@ import "./TestCourse.css";
 const CourseVideo = () => {
   const [videoProgress, setVideoProgress] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const abc = Cookies.get("acad_id");
-  if (abc == undefined) {
-    window.location.href = "/AcademyCourses";
-  }
+  // const abc = Cookies.get("acad_id");
+  // if (abc == undefined) {
+  //   // window.location.href = "/AcademyCourses";
+  // }
+
+
+  const scrollRef = useRef(null);
+  useLayoutEffect(() => {
+    if (scrollRef.current) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   const courseData = [
     {
       id: 1,
@@ -96,7 +105,7 @@ const CourseVideo = () => {
 
   return (
     <>
-      <div className="academy-courseVideo">
+      <div className="academy-courseVideo" ref={scrollRef}>
         <div className="academy-course-video">
           {/* Video List */}
 
