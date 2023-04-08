@@ -1497,9 +1497,13 @@ app.post("/courseAdd", middleware, async (req, res) => {
     const final = abc;
     res.status(200).json({ status: final });
   }
-  const data2 = { "rsrc_id": `${rsrc_id}`, "course_id": `${course_id}`, "vid_num":[] };
+  const data2 = {
+    rsrc_id: `${rsrc_id}`,
+    course_id: `${course_id}`,
+    vid_num: [],
+  };
   const response = new RecordDB(data2);
-  const out = response.save()
+  const out = response.save();
 });
 
 app.get("/getcourse/:rsrc_id", async (req, res) => {
@@ -1514,6 +1518,46 @@ app.get("/getcourse/:rsrc_id", async (req, res) => {
     res.status(400).json({ status: `` });
   }
 });
+
+app.post("/seenVideo", middleware, async (req, res) => {
+  const rsrc_id = req.rsrc_id;
+  const course_id = req.body.course_id;
+  const vid_num = req.body.vid_num;
+  try {
+    const data = await RecordDB.find({
+      rsrc_id: `${rsrc_id}`,
+      course_id: `${course_id}`,
+    });
+    console.log(data);
+    const arraybhau = data[0].vid_num;
+    if (arraybhau.includes(vid_num)) {
+      res.status(200).json({ status: 0 });
+    } else {
+      const abc = await RecordDB.updateOne(
+        { rsrc_id: `${rsrc_id}`, course_id: `${course_id}` },
+        { $push: { vid_num: `${vid_num}` } }
+      );
+      const final = abc;
+      res.status(200).json({ status: `Video ${vid_num} Seen` });
+    }
+  } catch (e) {
+    res.status(400).json({ status: `Somthing Went Wrong!` });
+  }
+});
+
+app.post("/vids", middleware, async(req, res)=>{
+  const rsrc_id = req.rsrc_id;
+  const course_id = req.body.course_id;
+  try {
+    const data = await RecordDB.find({
+      rsrc_id: `${rsrc_id}`,
+      course_id: `${course_id}`,
+    });
+    res.status(200).json({status: data})
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 // app.get('/forgetPass/:username', async (req, res) => {
 //         const name = req.params.username;

@@ -5,6 +5,23 @@ import Cookies from "js-cookie";
 import "./TestCourse.css";
 
 const CourseVideo = () => {
+  const abc = async () => {
+    const myCookie = Cookies.get("myCookie");
+    const data = {
+      myCookie: myCookie,
+      course_id: 1,
+    };
+    const response = await fetch(`http://127.0.0.1:5173/vids`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const jwt = await response.json();
+    console.log(jwt.status[0].vid_num);
+  };
+  abc();
   const [videoProgress, setVideoProgress] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   // const abc = Cookies.get("acad_id");
@@ -74,7 +91,7 @@ const CourseVideo = () => {
     setCurrentVideoUrl(url);
   };
 
-  const handleNextLessonClick = () => {
+  const handleNextLessonClick = async () => {
     const currentVideoIndex = courseData.findIndex(
       (video) => video.id === currentVideoId
     );
@@ -84,6 +101,24 @@ const CourseVideo = () => {
       setCurrentVideoUrl(nextVideo.url);
       setCurrentVideoTitle(nextVideo.title);
     }
+    const vid_num = currentVideoId;
+    const course_id = 1;
+    const myCookie = Cookies.get("myCookie");
+    const data = {
+      myCookie: myCookie,
+      course_id: course_id,
+      vid_num: vid_num,
+    };
+    const response = await fetch(`http://127.0.0.1:5173/seenVideo`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const jwt = await response.json();
+    alert(jwt.status);
+    window.location.href = "/TestCourse";
   };
 
   const handlePreviousLessonClick = () => {
