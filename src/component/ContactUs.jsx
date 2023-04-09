@@ -7,7 +7,7 @@ const contactUs = () => {
 
     return (
         <>
-            <div className="section-eight" style={{ backgroundColor: "#0b0b0b" }}>
+            <div className="section-eight" style={{ backgroundColor: "#0b0b0b", paddingTop: "5rem" }}>
                 <h1 className="h" style={{ backgroundColor: "#0b0b0b" }}> Any Questions? Get in Touch with Us</h1>
                 <h2 className="h1 section-eight-h2" style={{ backgroundColor: "#0b0b0b" }}>How Can We Help You? Let Us know and we will get back to you as soon as Possible</h2>
 

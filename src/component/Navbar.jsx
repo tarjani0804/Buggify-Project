@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import { BsList } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -82,14 +82,13 @@ const Navbar = () => {
 	}, []);
 
 	const [showLogout, setShowLogout] = useState(false);
+	const logoutRef = useRef(null);
+
 
 	const handleShowLogout = () => {
-		if (showLogout) {
-			setShowLogout(false);
-		} else {
-			setShowLogout(true);
-		}
-	}
+		setShowLogout(!showLogout);
+	};
+	console.log(showLogout)
 	const handleLogout = () => {
 		Cookies.remove("username");
 		Cookies.remove('companyName');
@@ -102,6 +101,23 @@ const Navbar = () => {
 		setUsername("");
 		setShowLogout(false);
 	}
+
+
+	const handleOutsideClick = (event) => {
+		if (logoutRef.current && !logoutRef.current.contains(event.target)) {
+			setShowLogout(false);
+		}
+	}
+
+	useEffect(() => {
+		document.addEventListener('click', handleOutsideClick, true);
+
+		return () => {
+			document.removeEventListener('click', handleOutsideClick, true);
+		}
+	}, []);
+
+
 	const navActiveIndex = Number(window.localStorage.getItem("navActiveIndex"));
 
 
@@ -124,7 +140,7 @@ const Navbar = () => {
 								<span onClick={handleShowLogout}>{`${username2}`}</span>
 							</div>
 							{showLogout && (
-								<div className="logout-btn" >
+								<div className="logout-btn" ref={logoutRef} >
 									<div style={{
 										marginTop: "1rem",
 										textAlign: "center",
