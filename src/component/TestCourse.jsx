@@ -1,28 +1,43 @@
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import ReactPlayer from "react-player";
 import Cookies from "js-cookie";
 
 import "./TestCourse.css";
 
+var videoComplete = [];
+
 const CourseVideo = () => {
-  const abc = async () => {
-    const myCookie = Cookies.get("myCookie");
-    const data = {
-      myCookie: myCookie,
-      course_id: 1,
+  const [videoProgress, setVideoProgress] = useState([]);
+
+  const [onClickCount, setOnClickCount] = useState(0);
+  console.log(onClickCount);
+  console.log(videoProgress);
+  useEffect(() => {
+    const abc = async () => {
+      const myCookie = Cookies.get("myCookie");
+      const data = {
+        myCookie: myCookie,
+        course_id: 1,
+      };
+      const response = await fetch(`http://127.0.0.1:5173/vids`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const jwt = await response.json();
+      console.log(jwt.status[0].vid_num);
+      // setVideoProgress(jwt.status[0].vid_num);
+
+      videoComplete = jwt.status[0].vid_num;
+
+
+      setVideoProgress(...videoProgress, videoComplete);
+
     };
-    const response = await fetch(`http://127.0.0.1:5173/vids`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    const jwt = await response.json();
-    console.log(jwt.status[0].vid_num);
-  };
-  abc();
-  const [videoProgress, setVideoProgress] = useState(0);
+    abc();
+  }, [onClickCount]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   // const abc = Cookies.get("acad_id");
   // if (abc == undefined) {
@@ -118,7 +133,8 @@ const CourseVideo = () => {
     });
     const jwt = await response.json();
     alert(jwt.status);
-    window.location.href = "/TestCourse";
+    // window.location.href = "/TestCourse";
+    setOnClickCount(onClickCount + 1);
   };
 
   const handlePreviousLessonClick = () => {
@@ -133,7 +149,6 @@ const CourseVideo = () => {
     }
   };
 
-  const [completedVideos, setCompletedVideos] = useState([]);
   const handleVideoEnd = () => {
     console.log("Video End");
   };

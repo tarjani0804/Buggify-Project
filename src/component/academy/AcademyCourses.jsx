@@ -147,16 +147,7 @@ const AcademyCourses = () => {
 
   /* navigation  */
   const navigate = useNavigate();
-  const paths = [
-    "/PentestingWithPython",
-    "/BashWithBeginner",
-    "/WebApplicationPentesting",
-    "/OffensiveRedTeaming",
-    "/MalwareAnalysis",
-    "/ActiveDirectoryExploitation",
-    "/MobileAppPentesting",
-    "/ApiPentesting",
-  ];
+
   const goto = (redirectLink) => {
     navigate(redirectLink);
   };
@@ -166,25 +157,21 @@ const AcademyCourses = () => {
   }
   var course2 = []
 
+  useEffect(() => {
+    const course1 = async () => {
+      const rsrc_id = Cookies.get("rsrc_id");
+      const courseUrl1 = `http://127.0.0.1:5173/getcourse/${rsrc_id}`;
+      const response = await fetch(courseUrl1);
+      const jwt = await response.json();
+      const status = jwt.status
+      course2 = status[0].course_id;
 
+      setCoursePurchase(course2);
+      console.log(coursePurchase)
+    };
 
-  const course1 = async () => {
-    const rsrc_id = Cookies.get("rsrc_id");
-    const courseUrl1 = `http://127.0.0.1:5173/getcourse/${rsrc_id}`;
-    const response = await fetch(courseUrl1);
-    const jwt = await response.json();
-    const status = jwt.status
-    // console.log(status[0].course_id);
-    course2 = status[0].course_id;
-    setCoursePurchase(...coursePurchase, course2);
-    console.log(status[0].course_id)
-
-  };
-  // alert(course2);
-  course1();
-
-  console.log(coursePurchase);
-
+    course1();
+  }, []);
 
   const gotoGetStarted = () => {
     navigate("/AcademyGetStarted");
@@ -535,8 +522,7 @@ const AcademyCourses = () => {
                         </p>
                       </div>
                       <div className="card-body-div3">
-
-                        {coursePurchase.includes(course.id) ? (
+                        {coursePurchase.includes(String(course.id)) ? (
                           <div
                             className="button_ani card-div3-button1"
                             style={{ marginTop: "15rem" }}
@@ -545,12 +531,10 @@ const AcademyCourses = () => {
                             <button className="button2">Continue to Course</button>
                           </div>
                         ) : (
-
-                          <center >
+                          <center>
                             <p className="card-body-div3-price">
                               Course Price : {"$" + course.price}
                             </p>
-
                             <div
                               className="button_ani card-div3-button1"
                               onClick={() => goto(course.link)}
@@ -568,8 +552,7 @@ const AcademyCourses = () => {
                               </button>
                             </div>
                           </center>
-                        )
-                        }
+                        )}
                       </div>
                     </div>
                   </div>
