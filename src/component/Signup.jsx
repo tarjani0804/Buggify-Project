@@ -4,6 +4,7 @@ import "./signin.css";
 import "./Login.css";
 import { ToastContainer, toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Navigate, useNavigate } from "react-router-dom";
 
 // import { Form, Input, Label, Dropdown, Checkbox, Button } from "semantic-ui-react";
 var username2;
@@ -19,6 +20,8 @@ const SignInForm = () => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirmPassword, setShowconfirmPassword] = useState(false);
+
+  const Navigate = useNavigate();
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -318,14 +321,25 @@ const SignInForm = () => {
         });
         const jwt = await response.json();
         username2 = jwt.username;
+
         Cookies.set("myCookie", `${jwt.jwttoken}`, { expires: 2, path: "/" });
         if (jwt.buss_id) {
           Cookies.set("buss_id", `${jwt.buss_id}`, { expires: 2, path: "/" });
-          window.location.href = "/ExploreProgram";
+
+          Cookies.set("userName", `${jwt.username}`, {
+            expires: 14,
+            path: "/",
+          });
+          Navigate = "/ExploreProgram";
+
         } else {
           if (jwt.rsrc_id) {
             Cookies.set("rsrc_id", `${jwt.rsrc_id}`, { expires: 2, path: "/" });
             window.location.href = "/Researcher";
+            Cookies.set("userName", `${jwt.username}`, {
+              expires: 2,
+              path: "/",
+            });
           } else {
             alert();
           }

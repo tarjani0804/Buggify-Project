@@ -1,6 +1,7 @@
 import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import ReactPlayer from "react-player";
 import Cookies from "js-cookie";
+import { MdOutlineDoneOutline } from "react-icons/md"
 
 import "./TestCourse.css";
 
@@ -9,9 +10,41 @@ var videoComplete = [];
 const CourseVideo = () => {
   const [videoProgress, setVideoProgress] = useState([]);
 
+
+  const courseData = [
+    { id: 1, title: "Video 1", url: "https://www.youtube.com/embed/eVI0Ny5cZ2c", },
+    { id: 2, title: "Video 2", url: "https://www.youtube.com/embed/zHxgZJCy9fA", },
+    { id: 3, title: "Video 3", url: "https://www.youtube.com/embed/kKOzvqkP4UM", },
+    { id: 4, title: "Video 4", url: "https://www.youtube.com/embed/POgrNo4xRko", },
+    { id: 5, title: "Video 5", url: "https://youtube.com/embed/7utwZYKweho", },
+    { id: 6, title: "Video 6", url: "https://www.youtube.com/embed/zHxgZJCy9fA", },
+
+    { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
+    { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
+    { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
+    { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
+  ];
+
+  const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
+  const [currentVideoUrl, setCurrentVideoUrl] = useState(courseData[0].url);
+  const [currentVideoTitle, setCurrentVideoTitle] = useState(
+    courseData[0].title
+  );
+
+
+
+
+  // useEffect(calculateProgress, [currentVideoId])
+
+
+
+
+
   const [onClickCount, setOnClickCount] = useState(0);
-  console.log(onClickCount);
+
   console.log(videoProgress);
+
+
   useEffect(() => {
     const abc = async () => {
       const myCookie = Cookies.get("myCookie");
@@ -28,7 +61,6 @@ const CourseVideo = () => {
       });
       const jwt = await response.json();
       console.log(jwt.status[0].vid_num);
-      // setVideoProgress(jwt.status[0].vid_num);
 
       videoComplete = jwt.status[0].vid_num;
 
@@ -37,13 +69,37 @@ const CourseVideo = () => {
 
     };
     abc();
-  }, [onClickCount]);
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  // const abc = Cookies.get("acad_id");
-  // if (abc == undefined) {
-  //   // window.location.href = "/AcademyCourses";
-  // }
 
+  }, [onClickCount]);
+
+
+  function calculateProgress() {
+    const numVideos = courseData.length;
+    const numSeenVideos = videoProgress.length;
+    const progress = (numSeenVideos / numVideos) * 100;
+    return progress;
+  }
+
+
+  // const [progressBar, setProgress] = useState(null);
+
+  // useEffect(() => {
+  //   setProgress(
+  //     <div>
+  //       <div className="CourseVideo-progress">
+  //         Complete Course - {Math.floor(calculateProgress())}%
+  //       </div>
+  //       <progress
+  //         value={calculateProgress() / 100}
+  //         max="1"
+  //         className="academy-course-video-progress-bar"
+  //       />
+  //     </div>
+  //   );
+  // }, []);
+
+
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
   const scrollRef = useRef(null);
   useLayoutEffect(() => {
@@ -52,53 +108,17 @@ const CourseVideo = () => {
     }
   }, []);
 
-  const courseData = [
-    {
-      id: 1,
-      title: "Video 1",
-      url: "https://www.youtube.com/watch?v=eVI0Ny5cZ2c",
-      completed: false,
-    },
-    {
-      id: 2,
-      title: "Video 2",
-      url: "https://www.youtube.com/watch?v=zHxgZJCy9fA",
-      completed: false,
-    },
-    {
-      id: 3,
-      title: "Video 3",
-      url: "https://www.youtube.com/watch?v=kKOzvqkP4UM",
-      completed: false,
-    },
-    {
-      id: 4,
-      title: "Video 4",
-      url: "https://www.youtube.com/watch?v=POgrNo4xRko",
-      completed: false,
-    },
-    {
-      id: 5,
-      title: "Video 5",
-      url: "https://youtube.com/watch?v=7utwZYKweho",
-      completed: false,
-    },
+  // Retrieve the current video URL from localStorage on component mount
+  useEffect(() => {
+    const savedVideoId = localStorage.getItem('currentVideoId');
+    if (savedVideoId) {
+      setCurrentVideoId(savedVideoId);
+    }
 
-    {
-      id: 6,
-      title: "Video 6",
-      url: "https://www.youtube.com/watch?v=zHxgZJCy9fA",
-    },
-    { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
-    { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
-    { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
-    { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
-  ];
-  const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
-  const [currentVideoUrl, setCurrentVideoUrl] = useState(courseData[0].url);
-  const [currentVideoTitle, setCurrentVideoTitle] = useState(
-    courseData[0].title
-  );
+  }, []);
+
+  // Update localStorage with the current video URL when it changes
+  localStorage.setItem('currentVideoId', currentVideoId);
 
   const handleVideoClick = (id, title, url) => {
     setCurrentVideoId(id);
@@ -133,6 +153,7 @@ const CourseVideo = () => {
     });
     const jwt = await response.json();
     alert(jwt.status);
+
     // window.location.href = "/TestCourse";
     setOnClickCount(onClickCount + 1);
   };
@@ -149,9 +170,6 @@ const CourseVideo = () => {
     }
   };
 
-  const handleVideoEnd = () => {
-    console.log("Video End");
-  };
 
   return (
     <>
@@ -162,10 +180,10 @@ const CourseVideo = () => {
           <div className="academy-course-video-progree-list">
             <div className="academy-course-video-progress">
               <div className="CourseVideo-progress">
-                Complete Course - {Math.floor(videoProgress * 100)}%
+                Complete Course - {Math.floor(calculateProgress())}%
               </div>
               <progress
-                value={videoProgress}
+                value={calculateProgress() / 100}
                 max="1"
                 className="academy-course-video-progress-bar"
               />
@@ -179,8 +197,13 @@ const CourseVideo = () => {
                     onClick={() =>
                       handleVideoClick(video.id, video.title, video.url)
                     }
+                    className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
+                    style={{ display: "flex" }}
                   >
                     {video.title}
+
+                    {videoComplete.includes(String(video.id)) &&
+                      <span style={{ paddingLeft: "12rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
                   </li>
                 ))}
                 <h2 className="academy-course-video-list-h">
@@ -190,10 +213,15 @@ const CourseVideo = () => {
                   <li
                     key={video.id}
                     onClick={() =>
-                      handleVideoClick(video.id, video.title, video.url)
-                    }
+                      handleVideoClick(video.id, video.title, video.url)}
+                    className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
+                    style={{ display: "flex" }}
                   >
                     {video.title}
+
+                    {videoComplete.includes(String(video.id)) &&
+                      <span style={{ paddingLeft: "12rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+
                   </li>
                 ))}
               </ul>
@@ -205,13 +233,12 @@ const CourseVideo = () => {
             <h2 className="academy-course-video-videos-h">
               {currentVideoTitle}
             </h2>
-            <ReactPlayer
-              controls
-              url={currentVideoUrl}
-              onEnded={handleVideoEnd}
+            <iframe
+              src={currentVideoUrl}
               className="academy-course-video-videos-video-player"
-            />
-            <div>
+
+            ></iframe>
+            <div style={{ display: "flex", width: "800px" }}>
               {currentVideoId !== 1 && (
                 <button
                   onClick={handlePreviousLessonClick}
@@ -232,7 +259,7 @@ const CourseVideo = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 };

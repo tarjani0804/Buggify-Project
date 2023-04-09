@@ -162,8 +162,7 @@ const LoginForm = ({ onLogin }) => {
       </form>
       <p className="login-p">
         Don't have a account?
-        <a href="/Signup" style={{ color: "#04ff69" }}>
-          Create an account
+        <a href="/Signup" style={{ color: "#04ff69" }}  >  Create an account
         </a>
       </p>
 

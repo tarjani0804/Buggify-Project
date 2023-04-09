@@ -32,6 +32,10 @@
     margin: 1rem 2rem 0rem 2rem;
 }
 
+.academy-course-video-videos {
+    width: 20%;
+}
+
 .academy-course-video-videos-h {
     font-size: 24px;
     margin-bottom: 10px;
@@ -42,6 +46,8 @@
 
 .academy-course-video-videos-video-player {
     color: #878787;
+    width: 850px;
+    height: 50%;
 }
 
 .academy-course-video-list li {
