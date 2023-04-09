@@ -21,6 +21,7 @@ const contactUs = () => {
     const jwt = await response.json();
     if (jwt != undefined) {
       alert(`Glad to hear from you, we will contact you soon`);
+      window.location.href = "/Contact-us";
     }
   };
   return (
