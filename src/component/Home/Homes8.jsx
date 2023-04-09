@@ -7,10 +7,6 @@ function Form(targetLocation, targetElementId) {
     const [email, setEmail] = useState("");
     const [concern, setConcern] = useState("");
 
-    const navigate = useNavigate();
-
-
-
 
     return (
         <div className="section-eight" >

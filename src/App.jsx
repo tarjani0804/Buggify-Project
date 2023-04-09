@@ -62,7 +62,7 @@ import OTP from './component/OTP';
 import SetNewPassword from './component/SetNewPassword';
 
 
-
+import ContactUs from './component/ContactUs';
 
 import BussinessProfile from './component/Dashboard/BusinessProfile';
 import ScopeSetting from './component/Dashboard/ScopeSetting';
@@ -173,6 +173,13 @@ function App() {
               <NoNavbar />
               <Login onLogin={handleLogin} />
               <NoFooter />
+            </>
+          } />
+          <Route path='/Contact-us' element={
+            <>
+              <Navbar />
+              <ContactUs />
+              <Footer />
             </>
           } />
           <Route path='/Forgot' element={

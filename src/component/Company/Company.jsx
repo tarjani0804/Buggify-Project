@@ -50,7 +50,7 @@ function Company() {
 		navigate('/Login');
 	}
 	const gotoContactUs = () => {
-		navigate('/', { state: { scrollTo: "homes8" } });
+		navigate('/Contact-us');
 	}
 
 
