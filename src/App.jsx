@@ -38,6 +38,17 @@ import ActiveDirectoryExploitation from './component/Academy-Courses/ActiveDirec
 import MobileAppPentesting from './component/Academy-Courses/MobileAppPentesting';
 import ApiPentesting from './component/Academy-Courses/ApiPentesting';
 
+import PentestingWithPython_Video from './component/Courses-video/PentestingWithPython_Video'
+import MobileApp_Video from './component/Courses-video/MobileApp_Video';
+import Bash_Video from './component/Courses-video/Bash_Video';
+import WebApplication_Video from './component/Courses-video/WebApplication_Video';
+import Offensive_Video from './component/Courses-video/Offensive_Video';
+import API_Video from './component/Courses-video/API_Video';
+import ActiveDiratory_VIdeo from './component/Courses-video/ActiveDiratory_VIdeo';
+import Malware_Video from './component/Courses-video/Malware_Video';
+
+
+
 import AcademyVideos from './component/academy/AcademyVideos';
 import TestCourse from './component/TestCourse';
 
@@ -536,6 +547,68 @@ function App() {
               <NoFooter />
             </>
           } />
+
+          <Route path='/course-video-pentesting-with-python' element={
+            <>
+              <Navbar />
+              <PentestingWithPython_Video />
+              <Footer />
+            </>
+          } />
+          <Route path='/course-video-mobile-app-pentesting' element={
+            <>
+              <Navbar />
+              <MobileApp_Video />
+              <Footer />
+            </>
+          } />
+          <Route path='/course-video-bash-for-beginner' element={
+            <>
+              <Navbar />
+              <Bash_Video />
+              <Footer />
+            </>
+          } />
+          <Route path='/course-video-web-application-pentesting' element={
+            <>
+              <Navbar />
+              <WebApplication_Video />
+              <Footer />
+            </>
+          } />
+          <Route path='/course-video-offensive-red-teaming' element={
+            <>
+              <Navbar />
+              <Offensive_Video />
+              <Footer />
+            </>
+          } />
+          <Route path='/course-video-malware-analysis' element={
+            <>
+              <Navbar />
+              <Malware_Video />
+              <Footer />
+            </>
+          } />
+          <Route path='/course-video-active-diratory-exploitation' element={
+            <>
+              <Navbar />
+              <ActiveDiratory_VIdeo />
+              <Footer />
+            </>
+          } />
+          <Route path='/course-video-API-pentesting' element={
+            <>
+              <Navbar />
+              <API_Video />
+              <Footer />
+            </>
+          } />
+
+
+
+
+
 
         </Routes>
 

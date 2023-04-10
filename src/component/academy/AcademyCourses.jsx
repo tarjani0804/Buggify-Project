@@ -49,6 +49,7 @@ const AcademyCourses = () => {
       avatar: HeathAdam,
       instrutor: "Heath Admans",
       link: "/PentestingWithPython",
+      videoLink: "/course-video-pentesting-with-python",
     },
     {
       id: 2,
@@ -62,6 +63,7 @@ const AcademyCourses = () => {
       avatar: HeathAdam,
       instrutor: "Heath Adams",
       link: "/BashWithBeginner/",
+      videoLink: "/course-video-bash-for-beginner",
     },
     {
       id: 3,
@@ -75,6 +77,7 @@ const AcademyCourses = () => {
       avatar: HeathAdam,
       instrutor: "Heath Adams",
       link: "/WebApplicationPentesting/",
+      videoLink: "/course-video-web-application-pentesting",
     },
     {
       id: 4,
@@ -88,6 +91,7 @@ const AcademyCourses = () => {
       instrutor: "Heath Adams",
       price: "220",
       link: "/OffensiveRedTeaming/",
+      videoLink: "/course-video-offensive-red-teaming",
     },
     {
       id: 5,
@@ -101,6 +105,7 @@ const AcademyCourses = () => {
       price: "150",
       img: Academy5,
       link: "/MalwareAnalysis/",
+      videoLink: "/course-video-malware-analysis",
     },
     {
       id: 6,
@@ -114,6 +119,7 @@ const AcademyCourses = () => {
       instrutor: "Heath Adams ",
       price: "200",
       link: "/ActiveDirectoryExploitation/",
+      videoLink: "/course-video-active-diratory-exploitation",
     },
     {
       id: 7,
@@ -127,6 +133,7 @@ const AcademyCourses = () => {
       instrutor: "Heath Adams",
       price: "120",
       link: "/MobileAppPentesting/",
+      videoLink: "/course-video-mobile-app-pentesting",
     },
     {
       id: 8,
@@ -140,6 +147,7 @@ const AcademyCourses = () => {
       instrutor: "Heath Adams ",
       price: "150",
       link: "/ApiPentesting/",
+      videoLink: "/course-video-API-pentesting",
     },
   ];
 
@@ -152,8 +160,8 @@ const AcademyCourses = () => {
     navigate(redirectLink);
   };
 
-  const gotoCourseVideo = () => {
-    navigate('/TestCourse');
+  const gotoCourseVideo = (redirectLink) => {
+    navigate(redirectLink);
   }
   var course2 = []
 
@@ -526,7 +534,7 @@ const AcademyCourses = () => {
                           <div
                             className="button_ani card-div3-button1"
                             style={{ marginTop: "15rem" }}
-                            onClick={gotoCourseVideo}
+                            onClick={() => gotoCourseVideo(course.videoLink)}
                           >
                             <button className="button2">Continue to Course</button>
                           </div>

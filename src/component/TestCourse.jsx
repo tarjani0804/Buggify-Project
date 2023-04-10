@@ -32,19 +32,7 @@ const CourseVideo = () => {
   );
 
 
-
-
-  // useEffect(calculateProgress, [currentVideoId])
-
-
-
-
-
   const [onClickCount, setOnClickCount] = useState(0);
-
-  console.log(videoProgress);
-
-
   useEffect(() => {
     const abc = async () => {
       const myCookie = Cookies.get("myCookie");
@@ -63,7 +51,7 @@ const CourseVideo = () => {
       console.log(jwt.status[0].vid_num);
 
       videoComplete = jwt.status[0].vid_num;
-
+      console.log(videoComplete);
 
       setVideoProgress(...videoProgress, videoComplete);
 
@@ -71,32 +59,20 @@ const CourseVideo = () => {
     abc();
 
   }, [onClickCount]);
-
-
+  console.log(videoProgress);
+  const [progress, setProgress] = useState(calculateProgress());
   function calculateProgress() {
     const numVideos = courseData.length;
     const numSeenVideos = videoProgress.length;
     const progress = (numSeenVideos / numVideos) * 100;
-    return progress;
+    const slideincrease = (Math.floor(progress));
+    return slideincrease;
   }
 
-
-  // const [progressBar, setProgress] = useState(null);
-
-  // useEffect(() => {
-  //   setProgress(
-  //     <div>
-  //       <div className="CourseVideo-progress">
-  //         Complete Course - {Math.floor(calculateProgress())}%
-  //       </div>
-  //       <progress
-  //         value={calculateProgress() / 100}
-  //         max="1"
-  //         className="academy-course-video-progress-bar"
-  //       />
-  //     </div>
-  //   );
-  // }, []);
+  // Update progress state whenever videoProgress prop changes
+  useEffect(() => {
+    setProgress(calculateProgress());
+  }, [videoProgress]);
 
 
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
@@ -107,18 +83,6 @@ const CourseVideo = () => {
       window.scrollTo(0, 0);
     }
   }, []);
-
-  // Retrieve the current video URL from localStorage on component mount
-  useEffect(() => {
-    const savedVideoId = localStorage.getItem('currentVideoId');
-    if (savedVideoId) {
-      setCurrentVideoId(savedVideoId);
-    }
-
-  }, []);
-
-  // Update localStorage with the current video URL when it changes
-  localStorage.setItem('currentVideoId', currentVideoId);
 
   const handleVideoClick = (id, title, url) => {
     setCurrentVideoId(id);
@@ -156,6 +120,7 @@ const CourseVideo = () => {
 
     // window.location.href = "/TestCourse";
     setOnClickCount(onClickCount + 1);
+
   };
 
   const handlePreviousLessonClick = () => {
@@ -180,10 +145,10 @@ const CourseVideo = () => {
           <div className="academy-course-video-progree-list">
             <div className="academy-course-video-progress">
               <div className="CourseVideo-progress">
-                Complete Course - {Math.floor(calculateProgress())}%
+                Complete Course - {progress}%
               </div>
               <progress
-                value={calculateProgress() / 100}
+                value={progress / 100}
                 max="1"
                 className="academy-course-video-progress-bar"
               />
