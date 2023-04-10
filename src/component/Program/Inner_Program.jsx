@@ -156,10 +156,34 @@ function Policy() {
   );
 }
 var in_scope = [
-  { id: 1, asset: "*.buggify.com", asset_type: "Web", impact: "critical", elb: "Yes" },
-  { id: 2, asset: "*.buggif.in", asset_type: "Web", impact: "high", elb: "Yes" },
-  { id: 3, asset: "buggify.com/api/v1", asset_type: "API", impact: "critical", elb: "Yes" },
-  { id: 4, asset: "com.buggify.app", asset_type: "Mobile", impact: "high", elb: "Yes" },
+  {
+    id: 1,
+    asset: "*.buggify.com",
+    asset_type: "Web",
+    impact: "critical",
+    elb: "Yes",
+  },
+  {
+    id: 2,
+    asset: "*.buggif.in",
+    asset_type: "Web",
+    impact: "high",
+    elb: "Yes",
+  },
+  {
+    id: 3,
+    asset: "buggify.com/api/v1",
+    asset_type: "API",
+    impact: "critical",
+    elb: "Yes",
+  },
+  {
+    id: 4,
+    asset: "com.buggify.app",
+    asset_type: "Mobile",
+    impact: "high",
+    elb: "Yes",
+  },
 ];
 var out_scope = [
   { id: 1, asset: "docs.buggify.com", asset_type: "Web" },
@@ -168,7 +192,6 @@ var out_scope = [
 
 const Scope_and_Reward = () => {
   //change this program and set value of in_scope and out_scope
-
 
   return (
     <div className="program-sar-div">
@@ -275,7 +298,7 @@ const Inner_Program = (props) => {
   const [policySelect, setpolicySelected] = useState(true);
   const [scopeSelected, setScopeSelected] = useState();
   const [bookmarked, setBookemarked] = useState(0);
-  const prog_id = Cookies.get('prog_id');
+  const prog_id = Cookies.get("prog_id");
   if (prog_id == undefined) {
     window.location.href = "/program";
   }
@@ -357,9 +380,7 @@ const Inner_Program = (props) => {
     setScopeSelected(false);
   };
 
-
   const handleScopeSelected = async () => {
-
     localStorage.setItem("listPath", "scope");
     setScopeSelected(true);
     setpolicySelected(false);
@@ -382,7 +403,7 @@ const Inner_Program = (props) => {
     const In_Scope = [];
     if (scopeval1) {
       for (let i = 0; i < 10; i++) {
-        const data = scopeval1[i]
+        const data = scopeval1[i];
         In_Scope.push(
           <tr>
             <td>{data.asset}</td>
@@ -390,14 +411,10 @@ const Inner_Program = (props) => {
             <td>{data.impact}</td>
             <td>{data.elb}</td>
           </tr>
-
-        )
-
-
+        );
       }
     }
     console.log(In_Scope);
-
 
     console.log("Out of Scope");
     const out_scope = await fetch(
@@ -449,7 +466,12 @@ const Inner_Program = (props) => {
 
   const navigate = useNavigate();
   const gotoSubmitReport = () => {
-    navigate("/program-submitReport");
+    const rsrc_id = Cookies.get("rsrc_id");
+    if (rsrc_id != undefined) {
+      navigate("/program-submitReport");
+    } else {
+      navigate("/Login");
+    }
   };
 
   const launchDate = Cookies.get("launch_date");
@@ -516,21 +538,22 @@ const Inner_Program = (props) => {
               </div>
             </div>
           </div>
-
         </div>
         <div>
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward
@@ -545,6 +568,5 @@ const Inner_Program = (props) => {
     </>
   );
 };
-
 
 export default Inner_Program;

@@ -21,8 +21,8 @@ import Cookies from "js-cookie";
 
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
-  const abc = Cookies.get('buss_id');
-  if(abc == undefined){
+  const abc = Cookies.get("buss_id");
+  if (abc == undefined) {
     window.location.href = "/";
   }
   const handleMenuToggle = () => {
@@ -59,12 +59,12 @@ function DashboardNavbar() {
   };
 
   const logout = () => {
-    Cookies.remove('userName');
-    Cookies.remove('companyName');
-    Cookies.remove('buss_id');
-    Cookies.remove('rsrc_id');
-    Cookies.remove('myCookie');
-    Cookies.remove('prog_id');
+    Cookies.remove("userName");
+    Cookies.remove("companyName");
+    Cookies.remove("buss_id");
+    Cookies.remove("rsrc_id");
+    Cookies.remove("myCookie");
+    Cookies.remove("prog_id");
     Navigate("/");
   };
 
@@ -167,7 +167,6 @@ const BusinessProfile = () => {
   const [report, setReport] = useState("");
   const [showReport, setShowReport] = useState(false);
 
-
   function handleInputChange(event) {
     setQuery(event.target.value);
   }
@@ -182,7 +181,7 @@ const BusinessProfile = () => {
   };
   const handleSubmit = async (e) => {
     const myCookie = Cookies.get("myCookie");
-    const report_id = report.report_id
+    const report_id = report.report_id;
     const data = {
       myCookie: `${myCookie}`,
       report_id: `${report_id}`,
@@ -196,25 +195,22 @@ const BusinessProfile = () => {
     });
     const jwt = await response.json();
     alert(jwt.status);
+    window.location.href = "/Retesting";
     // data outgoing for retesting
-
-
-
-
   };
-  console.log(report.report_title);
-  console.log(report.report_id);
-  console.log(report.reproduce_steps);
-  console.log(report.poc1);
-  console.log(report.poc2);
-  console.log(report.poc3);
-  console.log(report.poc4);
-  console.log(report.poc5);
-  console.log(report.cvss);
-  console.log(report.attack_scenario);
-  console.log(report.remediation);
-  console.log(report.note);
-  const companyName = Cookies.get('companyName');
+  // console.log(report.report_title);
+  // console.log(report.report_id);
+  // console.log(report.reproduce_steps);
+  // console.log(report.poc1);
+  // console.log(report.poc2);
+  // console.log(report.poc3);
+  // console.log(report.poc4);
+  // console.log(report.poc5);
+  // console.log(report.cvss);
+  // console.log(report.attack_scenario);
+  // console.log(report.remediation);
+  // console.log(report.note);
+  const companyName = Cookies.get("companyName");
   return (
     <>
       <div className="bus-profile">
@@ -227,9 +223,7 @@ const BusinessProfile = () => {
               <h1 className="bus-profile-div2-h">Retesting</h1>
               <div className="bus-profile-header">
                 <img src={Avat} className="bus-profile-company-logo" />
-                <h3 className="bus-profile-company-name">
-                  {companyName}
-                </h3>
+                <h3 className="bus-profile-company-name">{companyName}</h3>
               </div>
             </center>
             <div className="stats">
@@ -245,7 +239,7 @@ const BusinessProfile = () => {
                     value={query}
                     onChange={handleInputChange}
                     placeholder="Enter Report Id :"
-                  // onChange={(event) => setReportSearch(event.target.value)}
+                    // onChange={(event) => setReportSearch(event.target.value)}
                   />
                   <div>
                     <button
@@ -258,7 +252,10 @@ const BusinessProfile = () => {
                 </div>
               </form>
               /* report div */
-              <div className="report-div" style={{ display: showReport ? 'block' : 'none' }} >
+              <div
+                className="report-div"
+                style={{ display: showReport ? "block" : "none" }}
+              >
                 <div className="bus-profile-bug-report-divtitle">
                   <p className="bus-profile-bug-report-div-title-p">
                     Report Title: {report.report_title}
@@ -271,7 +268,6 @@ const BusinessProfile = () => {
                   <p className="bus-profile-bug-report-div-title-p">
                     Steps to Reproduce :
                     <p className="report-note-p"> {report.reproduce_steps}</p>
-
                   </p>
                 </div>
 
@@ -281,27 +277,42 @@ const BusinessProfile = () => {
                   </p>
                   <ul>
                     <li>
-                      <a href={report.poc1} className="report-proof-link-of-poc">
+                      <a
+                        href={report.poc1}
+                        className="report-proof-link-of-poc"
+                      >
                         Link 1
                       </a>
                     </li>
                     <li>
-                      <a href={report.poc2} className="report-proof-link-of-poc">
+                      <a
+                        href={report.poc2}
+                        className="report-proof-link-of-poc"
+                      >
                         Link 2
                       </a>
                     </li>
                     <li>
-                      <a href={report.poc3} className="report-proof-link-of-poc">
+                      <a
+                        href={report.poc3}
+                        className="report-proof-link-of-poc"
+                      >
                         Link 3
                       </a>
                     </li>
                     <li>
-                      <a href={report.poc4} className="report-proof-link-of-poc">
+                      <a
+                        href={report.poc4}
+                        className="report-proof-link-of-poc"
+                      >
                         Link 4
                       </a>
                     </li>
                     <li>
-                      <a href={report.poc5} className="report-proof-link-of-poc">
+                      <a
+                        href={report.poc5}
+                        className="report-proof-link-of-poc"
+                      >
                         Link 5
                       </a>
                     </li>
@@ -311,20 +322,23 @@ const BusinessProfile = () => {
                   <p className="bus-profile-bug-report-div-title-p">
                     CVSS Score:
                     <p className="report-note-p"> {report.cvss}</p>
-
                   </p>
                 </div>
                 <div className="report-proof">
                   <p className="bus-profile-bug-report-div-title-p">
                     Attack Scenario:
                   </p>
-                  <p className="report-proof-link-of-poc">{report.attack_scenario}</p>
+                  <p className="report-proof-link-of-poc">
+                    {report.attack_scenario}
+                  </p>
                 </div>
                 <div className="report-proof">
                   <p className="bus-profile-bug-report-div-title-p">
                     Remediation:
                   </p>
-                  <p className="report-proof-link-of-poc">{report.remediation}</p>
+                  <p className="report-proof-link-of-poc">
+                    {report.remediation}
+                  </p>
                 </div>
                 <div className="report-proof">
                   <p className="bus-profile-bug-report-div-title-p">
@@ -333,10 +347,12 @@ const BusinessProfile = () => {
                   <p className="report-note-p"> {report.note}</p>
                 </div>
               </div>
-              <div className="button_ani retesting-button" style={{ display: showReport ? 'block' : 'none' }}>
-                <button className="btn" onClick={handleSubmit}>
-                  Request for Retesting
-                </button>
+              <div
+                className="button_ani retesting-button"
+                style={{ display: showReport ? "block" : "none" }}
+                onClick={handleSubmit}
+              >
+                <button className="btn">Request for Retesting</button>
               </div>
             </div>
           </div>
@@ -345,7 +361,5 @@ const BusinessProfile = () => {
     </>
   );
 };
-
-
 
 export default BusinessProfile;
