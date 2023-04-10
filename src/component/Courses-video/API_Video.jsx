@@ -38,7 +38,7 @@ const APIPentesting = () => {
             const myCookie = Cookies.get("myCookie");
             const data = {
                 myCookie: myCookie,
-                course_id: 1,
+                course_id: 8,
             };
             const response = await fetch(`http://127.0.0.1:5173/vids`, {
                 method: "POST",
@@ -101,7 +101,7 @@ const APIPentesting = () => {
             setCurrentVideoTitle(nextVideo.title);
         }
         const vid_num = currentVideoId;
-        const course_id = 1;
+        const course_id = 8;
         const myCookie = Cookies.get("myCookie");
         const data = {
             myCookie: myCookie,
