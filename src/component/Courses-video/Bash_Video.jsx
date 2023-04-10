@@ -11,35 +11,36 @@ const Bash = () => {
   const courseData = [
     {
       id: 1,
-      title: "Video 1",
-      url: "https://www.youtube.com/embed/eVI0Ny5cZ2c",
+      title: "Introduction & Shebang",
+      url: "https://www.youtube.com/embed/LTuuMtQR1uQ",
     },
     {
       id: 2,
-      title: "Video 2",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "Variables",
+      url: "https://www.youtube.com/embed/WhqfbwQbWVE",
     },
     {
       id: 3,
-      title: "Video 3",
-      url: "https://www.youtube.com/embed/kKOzvqkP4UM",
+      title: "User Input & Comments",
+      url: "https://www.youtube.com/embed/yLQnpmkNFmk",
     },
     {
       id: 4,
-      title: "Video 4",
-      url: "https://www.youtube.com/embed/POgrNo4xRko",
+      title: " If & If/else Statements",
+      url: "https://www.youtube.com/embed/qoem5hqCH6A",
     },
-    { id: 5, title: "Video 5", url: "https://youtube.com/embed/7utwZYKweho" },
+    { id: 5, title: "Test Scripts", url: "https://youtube.com/embed/ujp6d1he-jk" },
     {
       id: 6,
-      title: "Video 6",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: " For Loops",
+      url: "https://www.youtube.com/embed/T7hVOiTsSUU",
     },
 
-    { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
-    { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
-    { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
-    { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
+    { id: 7, title: "Functions", url: "https://www.youtube.com/embed/Jx9yhQ76o8U" },
+    { id: 8, title: "Ping Sweep Script", url: "https://www.youtube.com/embed/U79cJfDTIrQ" },
+    { id: 9, title: "Password Generator", url: "https://www.youtube.com/embed/P5552IJp7tU" },
+    { id: 10, title: "Positional Parameters", url: "https://www.youtube.com/embed/MBYnhVaN4rU" },
+    { id: 11, title: " File Encryptor/Decryptor", url: "https://www.youtube.com/embed/p7JctZmdhuo" },
   ];
 
   const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
@@ -166,8 +167,8 @@ const Bash = () => {
             </div>
             <div>
               <ul className="academy-course-video-list">
-                <h2 className="academy-course-video-list-h">Introduction</h2>
-                {courseData.slice(0, 5).map((video, index) => (
+                <h2 className="academy-course-video-list-h">Basic of Bash</h2>
+                {courseData.slice(0, 7).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -183,7 +184,6 @@ const Bash = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -194,9 +194,9 @@ const Bash = () => {
                   </li>
                 ))}
                 <h2 className="academy-course-video-list-h">
-                  Basic of Networking
+                  Let's Hack With Scripts
                 </h2>
-                {courseData.slice(5, 10).map((video, index) => (
+                {courseData.slice(7, 11).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -212,7 +212,6 @@ const Bash = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}

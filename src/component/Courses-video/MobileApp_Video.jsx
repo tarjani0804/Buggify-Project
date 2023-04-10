@@ -11,35 +11,90 @@ const MobileAppPentesting = () => {
   const courseData = [
     {
       id: 1,
-      title: "Video 1",
-      url: "https://www.youtube.com/embed/eVI0Ny5cZ2c",
+      title: " Introduction, Architecture, Permissions ",
+      url: "https://www.youtube.com/embed/vx-FKEqi9b8",
     },
     {
       id: 2,
-      title: "Video 2",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "Android Applications & Signing an application",
+      url: "https://www.youtube.com/embed/2-WTAgd6YZ8",
     },
     {
       id: 3,
-      title: "Video 3",
-      url: "https://www.youtube.com/embed/kKOzvqkP4UM",
+      title: "Genymotion & App Components",
+      url: "https://www.youtube.com/embed/bVcfBKcblmE",
     },
     {
       id: 4,
-      title: "Video 4",
-      url: "https://www.youtube.com/embed/POgrNo4xRko",
+      title: "Dex File Analysis and ADB ",
+      url: "https://www.youtube.com/embed/iZCbKELR8ok",
     },
-    { id: 5, title: "Video 5", url: "https://youtube.com/embed/7utwZYKweho" },
+    {
+      id: 5,
+      title: "Logging based Vulnerabilities",
+      url: "https://youtube.com/embed/kxY6dPPB-34"
+    },
     {
       id: 6,
-      title: "Video 6",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "Reversing an Application",
+      url: "https://www.youtube.com/embed/uP5W2hCLar0",
+    },
+    {
+      id: 7,
+      title: "Malware Analysis (Static)",
+      url: "https://www.youtube.com/embed/TbbxtDQ_LlM",
+    },
+    {
+      id: 8,
+      title: " Traffic Analysis (Dynamic",
+      url: "https://www.youtube.com/embed/RPPEfy39aos",
+    },
+    {
+      id: 9,
+      title: "Bypass SSL Pinning",
+      url: "https://www.youtube.com/embed/WXStzGTosSA",
+    },
+    {
+      id: 10,
+      title: "Content Providers",
+      url: "https://www.youtube.com/embed/DCzhsibPfh8",
+    },
+    {
+      id: 11,
+      title: "Drozer basics",
+      url: "https://www.youtube.com/embed/RwM1sRMBDZM",
+    },
+    {
+      id: 12,
+      title: "Drozer - Content Provider Vulnerabilities",
+      url: "https://www.youtube.com/embed/si1LhLHhmzk",
+    },
+    {
+      id: 13,
+      title: "Advanced Drozer example",
+      url: "https://www.youtube.com/embed/a4UJNIYHyWY",
+    },
+    {
+      id: 14,
+      title: "Injection Attacks",
+      url: "https://www.youtube.com/embed/Hp9MMYinwlU",
+    },
+    {
+      id: 15,
+      title: " Dynamic Hooking with Frida",
+      url: "https://www.youtube.com/embed/92vjtZhbl2s",
+    },
+    {
+      id: 16,
+      title: "Debugging using Andbug and JDB",
+      url: "https://www.youtube.com/embed/-D4GNijEbZ8",
+    },
+    {
+      id: 17,
+      title: "Webview Vulnerabilities",
+      url: "https://www.youtube.com/embed/mVAshGZxu7g",
     },
 
-    { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
-    { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
-    { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
-    { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
   ];
 
   const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
@@ -130,6 +185,12 @@ const MobileAppPentesting = () => {
     });
     const jwt = await response.json();
     alert(jwt.status);
+    alert(jwt.status);
+    alert(jwt.status);
+    alert(jwt.status);
+    alert(jwt.status);
+    alert(jwt.status);
+    alert(jwt.status);
 
     // window.location.href = "/TestCourse";
     setOnClickCount(onClickCount + 1);
@@ -167,7 +228,7 @@ const MobileAppPentesting = () => {
             <div>
               <ul className="academy-course-video-list">
                 <h2 className="academy-course-video-list-h">Introduction</h2>
-                {courseData.slice(0, 5).map((video, index) => (
+                {courseData.slice(0, 17).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -183,7 +244,6 @@ const MobileAppPentesting = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -193,35 +253,7 @@ const MobileAppPentesting = () => {
                     )}
                   </li>
                 ))}
-                <h2 className="academy-course-video-list-h">
-                  Basic of Networking
-                </h2>
-                {courseData.slice(5, 10).map((video, index) => (
-                  <li
-                    key={video.id}
-                    onClick={() =>
-                      handleVideoClick(video.id, video.title, video.url)
-                    }
-                    className={
-                      videoComplete.includes(String(video.id)) ? "watched" : ""
-                    }
-                    style={{ display: "flex" }}
-                  >
-                    {video.title}
 
-                    {videoComplete.includes(String(video.id)) && (
-                      <span
-                        style={{
-                          paddingLeft: "12rem",
-                          color: "#04ff69",
-                          fontSize: "20px",
-                        }}
-                      >
-                        <MdOutlineDoneOutline />
-                      </span>
-                    )}
-                  </li>
-                ))}
               </ul>
             </div>
           </div>

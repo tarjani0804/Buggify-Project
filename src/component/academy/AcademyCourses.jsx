@@ -119,7 +119,7 @@ const AcademyCourses = () => {
       instrutor: "Heath Adams ",
       price: "200",
       link: "/ActiveDirectoryExploitation/",
-      videoLink: "/course-video-active-diratory-exploitation",
+      videoLink: "/course-video-active-diretory-exploitation",
     },
     {
       id: 7,

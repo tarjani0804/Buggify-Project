@@ -11,35 +11,91 @@ const WebApplication = () => {
   const courseData = [
     {
       id: 1,
-      title: "Video 1",
-      url: "https://www.youtube.com/embed/eVI0Ny5cZ2c",
+      title: " HTTP Fundamentals ",
+      url: "https://www.youtube.com/embed/qv5-5hhsKpE",
     },
     {
       id: 2,
-      title: "Video 2",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "Enumeration of Web Application",
+      url: "https://www.youtube.com/embed/ZBi8Qa9m5c0?feature=share",
     },
     {
       id: 3,
-      title: "Video 3",
-      url: "https://www.youtube.com/embed/kKOzvqkP4UM",
+      title: "Fuzzing 101",
+      url: "https://www.youtube.com/embed/M_guA0wjrLg",
     },
     {
       id: 4,
-      title: "Video 4",
-      url: "https://www.youtube.com/embed/POgrNo4xRko",
+      title: "BurpSuite Professional Walkthrough",
+      url: "https://www.youtube.com/embed/ePiAM4Vd3fg",
     },
-    { id: 5, title: "Video 5", url: "https://youtube.com/embed/7utwZYKweho" },
+    {
+      id: 5,
+      title: "Best BurpSuite Plugins for Collaboration",
+      url: "https://youtube.com/embed/AI5Sz5E0qhE"
+    },
     {
       id: 6,
-      title: "Video 6",
+      title: "XSS & UI Bypassing",
+      url: "https://www.youtube.com/embed/zu_aNhbMhnQ?feature=share",
+    },
+    {
+      id: 7,
+      title: "SQL Injection, XSS, Broken Access Control",
+      url: "https://www.youtube.com/embed/azYwfI26oXo?feature=share",
+    },
+    {
+      id: 8,
+      title: "XXE, Input Validation, BAC, more XSS",
+      url: "https://www.youtube.com/embed/xH8WbuApFXw",
+    },
+    {
+      id: 9,
+      title: "File Upload Vulnerabilities",
+      url: "https://www.youtube.com/embed/YAFVGQ-lBoM",
+    },
+    {
+      id: 10,
+      title: "NoSQL Injection",
       url: "https://www.youtube.com/embed/zHxgZJCy9fA",
     },
+    {
+      id: 11,
+      title: "SSRF Exploitation",
+      url: "https://www.youtube.com/embed/eVI0Ny5cZ2c",
+    },
+    {
+      id: 12,
+      title: "Attacking JWT",
+      url: "https://www.youtube.com/embed/2aanc20xnaQ",
+    },
+    {
+      id: 13,
+      title: "Cracking JWT",
+      url: "https://www.youtube.com/embed/2RKCDhH6dyA",
+    },
+    {
+      id: 14,
+      title: "Build & Break WebSockets",
+      url: "https://www.youtube.com/embed/kKOzvqkP4UM",
+    },
+    {
+      id: 15,
+      title: "Broken Object Level Authorization",
+      url: "https://www.youtube.com/embed/YciLnEY1AN0",
+    },
 
-    { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
-    { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
-    { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
-    { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
+    {
+      id: 16,
+      title: "Live Web App Bug Hunting",
+      url: "https://www.youtube.com/embed/U3Qzc2YUNIU",
+    },
+    {
+      id: 17,
+      title: "Hunting for Third Level Domains",
+      url: "https://www.youtube.com/embed/AMmGtFsZutk",
+    },
+
   ];
 
   const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
@@ -166,8 +222,8 @@ const WebApplication = () => {
             </div>
             <div>
               <ul className="academy-course-video-list">
-                <h2 className="academy-course-video-list-h">Introduction</h2>
-                {courseData.slice(0, 5).map((video, index) => (
+                <h2 className="academy-course-video-list-h">Basic of Web Hacking</h2>
+                {courseData.slice(0, 3).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -183,7 +239,6 @@ const WebApplication = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -194,9 +249,9 @@ const WebApplication = () => {
                   </li>
                 ))}
                 <h2 className="academy-course-video-list-h">
-                  Basic of Networking
+                  Tooling
                 </h2>
-                {courseData.slice(5, 10).map((video, index) => (
+                {courseData.slice(3, 5).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -212,7 +267,62 @@ const WebApplication = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">
+                  Exploit Vulnerabilities
+                </h2>
+                {courseData.slice(5, 15).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">
+                  Hack Live Target
+                </h2>
+                {courseData.slice(15, 17).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
                           color: "#04ff69",
                           fontSize: "20px",
                         }}

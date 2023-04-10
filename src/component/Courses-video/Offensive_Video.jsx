@@ -11,35 +11,89 @@ const Offensive = () => {
   const courseData = [
     {
       id: 1,
-      title: "Video 1",
-      url: "https://www.youtube.com/embed/eVI0Ny5cZ2c",
+      title: " Adversary Emulation with Caldera",
+      url: "https://www.youtube.com/embed/EIHLXWnK1Dw",
     },
     {
       id: 2,
-      title: "Video 2",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "Reconnaissance Techniques",
+      url: "https://www.youtube.com/embed/BWaGnsRirtU",
     },
     {
       id: 3,
-      title: "Video 3",
-      url: "https://www.youtube.com/embed/kKOzvqkP4UM",
+      title: "Luckystrike & Powershell Empire",
+      url: "https://www.youtube.com/embed/dRebw65X5eQ",
     },
     {
       id: 4,
-      title: "Video 4",
-      url: "https://www.youtube.com/embed/POgrNo4xRko",
+      title: "Dynamic Shellcode Injection & Powershell Obfuscation",
+      url: "https://www.youtube.com/embed/6xexyQwG7SY",
     },
-    { id: 5, title: "Video 5", url: "https://youtube.com/embed/7utwZYKweho" },
+    {
+      id: 5, title: "Bypassing UAC & Kernel Exploits",
+      url: "https://youtube.com/embed/vPTbWnCZ0sg"
+    },
     {
       id: 6,
-      title: "Video 6",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "Credential Access Techniques - Mimikatz & WCE",
+      url: "https://www.youtube.com/embed/wH2kE527cwQ",
+    },
+    {
+      id: 7,
+      title: "Persistance with Powershell Empire",
+      url: "https://www.youtube.com/embed/7h_5BJHIpnU",
+    },
+    {
+      id: 8,
+      title: "Lateral Movement Techniques - PsExec & RDP",
+      url: "https://www.youtube.com/embed/QGkmlsvjMYI",
+    },
+    {
+      id: 9,
+      title: "Mimikatz & Privilege Escalation",
+      url: "https://www.youtube.com/embed/52xkWbDMUUM",
+    },
+    {
+      id: 10,
+      title: "Post Exploitation with Empire & LaZagne",
+      url: "https://www.youtube.com/embed/AwFyiFOXrd0",
+    },
+    {
+      id: 11,
+      title: "Windows Credential Editor - Dump Window Password Hashes ",
+      url: "https://www.youtube.com/embed/u0RppDmw1So",
     },
 
-    { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
-    { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
-    { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
-    { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
+    {
+      id: 12,
+      title: "Pivoting and Persistance with Armitage",
+      url: "https://www.youtube.com/embed/kRXVQdzRbzI",
+    },
+    {
+      id: 13,
+      title: "Linux RTE - Exploit Wordpress & MySQL",
+      url: "https://www.youtube.com/embed/_1QnyKTqQ6w",
+    },
+    {
+      id: 14,
+      title: "Kernal Exploits & SUDO Permissions ",
+      url: "https://www.youtube.com/embed/w2rElXYV2Fs",
+    },
+    {
+      id: 15,
+      title: "Persistance Techniques - SSH Keys, Web Shells & Cron Jobs",
+      url: "https://www.youtube.com/embed/tNJs8CFj_B8",
+    },
+    {
+      id: 16,
+      title: "Defense Evasion - Apache2 Rootkit ",
+      url: "https://www.youtube.com/embed/ChgqGBwl8NQ",
+    },
+    {
+      id: 17,
+      title: "Hiding Linux Processes",
+      url: "https://www.youtube.com/embed/GT-ClZAi6rE",
+    },
   ];
 
   const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
@@ -166,8 +220,8 @@ const Offensive = () => {
             </div>
             <div>
               <ul className="academy-course-video-list">
-                <h2 className="academy-course-video-list-h">Introduction</h2>
-                {courseData.slice(0, 5).map((video, index) => (
+                <h2 className="academy-course-video-list-h">Initial Actions</h2>
+                {courseData.slice(0, 2).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -183,7 +237,6 @@ const Offensive = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -194,9 +247,9 @@ const Offensive = () => {
                   </li>
                 ))}
                 <h2 className="academy-course-video-list-h">
-                  Basic of Networking
+                  Powerfull Powershell
                 </h2>
-                {courseData.slice(5, 10).map((video, index) => (
+                {courseData.slice(2, 4).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -212,7 +265,118 @@ const Offensive = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">
+                  Windows Exploitation
+                </h2>
+                {courseData.slice(4, 6).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">
+                  Windows Persistance & Lateral Movement
+                </h2>
+                {courseData.slice(6, 12).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">
+                  Linux Exploitation
+                </h2>
+                {courseData.slice(12, 15).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">
+                  Hiding Yourself
+                </h2>
+                {courseData.slice(15, 17).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
                           color: "#04ff69",
                           fontSize: "20px",
                         }}

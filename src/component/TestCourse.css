@@ -42,6 +42,7 @@
     color: #ffffff;
     line-height: 2.8rem;
     letter-spacing: 1px;
+    width: max-content;
 }
 
 .academy-course-video-videos-video-player {

@@ -590,7 +590,7 @@ function App() {
               <Footer />
             </>
           } />
-          <Route path='/course-video-active-diratory-exploitation' element={
+          <Route path='/course-video-active-diretory-exploitation' element={
             <>
               <Navbar />
               <ActiveDiratory_VIdeo />

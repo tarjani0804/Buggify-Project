@@ -11,35 +11,55 @@ const ActiveDiratory = () => {
   const courseData = [
     {
       id: 1,
-      title: "Video 1",
-      url: "https://www.youtube.com/embed/eVI0Ny5cZ2c",
+      title: "HackTheBox - Forest",
+      url: " https://youtube.com/embed/H9FcE_FMZio",
     },
     {
       id: 2,
-      title: "Video 2",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "HackTheBox - Sauna",
+      url: "https://youtube.com/embed/uLNpR3AnE-Y",
     },
     {
       id: 3,
-      title: "Video 3",
-      url: "https://www.youtube.com/embed/kKOzvqkP4UM",
+      title: "HackTheBox - Active",
+      url: " https://youtube.com/embed/jUc1J31DNdw",
     },
     {
       id: 4,
-      title: "Video 4",
-      url: "https://www.youtube.com/embed/POgrNo4xRko",
+      title: "HackTheBox - Blackfield",
+      url: "https://youtube.com/embed/IfCysW0Od8w",
     },
-    { id: 5, title: "Video 5", url: "https://youtube.com/embed/7utwZYKweho" },
+    {
+      id: 5,
+      title: "HackTheBox - Resolute",
+      url: " https://youtube.com/embed/8KJebvmd1Fk"
+    },
     {
       id: 6,
-      title: "Video 6",
-      url: "https://www.youtube.com/embed/zHxgZJCy9fA",
+      title: "HackTheBox - Reel (Bloodhound)",
+      url: "https://youtube.com/embed/ob9SgtFm6_g",
     },
 
-    { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
-    { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
-    { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
-    { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
+    {
+      id: 7,
+      title: "HackTheBox - Sizzle",
+      url: "https://youtube.com/embed/YVhlfUvsqYc"
+    },
+    {
+      id: 8,
+      title: "HackTheBox - Mantis",
+      url: "https://youtube.com/embed/VVZZgqIyD0Q"
+    },
+    {
+      id: 9,
+      title: "HackTheBox - Cascade",
+      url: " https://youtube.com/embed/mr-fsVLoQGw"
+    },
+    {
+      id: 10,
+      title: "HackTheBox - Multimaste",
+      url: "https://youtube.com/embed/iwR746pfTEc"
+    },
   ];
 
   const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
@@ -166,8 +186,8 @@ const ActiveDiratory = () => {
             </div>
             <div>
               <ul className="academy-course-video-list">
-                <h2 className="academy-course-video-list-h">Introduction</h2>
-                {courseData.slice(0, 5).map((video, index) => (
+                <h2 className="academy-course-video-list-h">Initial Enumeration</h2>
+                {courseData.slice(0, 3).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -183,7 +203,6 @@ const ActiveDiratory = () => {
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
-                          paddingLeft: "12rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -194,9 +213,61 @@ const ActiveDiratory = () => {
                   </li>
                 ))}
                 <h2 className="academy-course-video-list-h">
-                  Basic of Networking
+                  Breaching & Exploiting AD
                 </h2>
-                {courseData.slice(5, 10).map((video, index) => (
+                {courseData.slice(3, 5).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">Post Enumeration & Exploitation</h2>
+                {courseData.slice(5, 7).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+                <h2 className="academy-course-video-list-h">Lateral Movement & Pivoting</h2>
+                {courseData.slice(7, 9).map((video, index) => (
                   <li
                     key={video.id}
                     onClick={() =>
@@ -222,6 +293,36 @@ const ActiveDiratory = () => {
                     )}
                   </li>
                 ))}
+                <h2 className="academy-course-video-list-h">Full AD Exploitation</h2>
+                {courseData.slice(9, 10).map((video, index) => (
+                  <li
+                    key={video.id}
+                    onClick={() =>
+                      handleVideoClick(video.id, video.title, video.url)
+                    }
+                    className={
+                      videoComplete.includes(String(video.id)) ? "watched" : ""
+                    }
+                    style={{ display: "flex" }}
+                  >
+                    {video.title}
+
+                    {videoComplete.includes(String(video.id)) && (
+                      <span
+                        style={{
+                          paddingLeft: "12rem",
+                          color: "#04ff69",
+                          fontSize: "20px",
+                        }}
+                      >
+                        <MdOutlineDoneOutline />
+                      </span>
+                    )}
+                  </li>
+                ))}
+
+
+
               </ul>
             </div>
           </div>

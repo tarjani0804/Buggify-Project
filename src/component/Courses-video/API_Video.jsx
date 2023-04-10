@@ -12,17 +12,20 @@ const APIPentesting = () => {
 
 
     const courseData = [
-        { id: 1, title: "Video 1", url: "https://www.youtube.com/embed/eVI0Ny5cZ2c", },
-        { id: 2, title: "Video 2", url: "https://www.youtube.com/embed/zHxgZJCy9fA", },
-        { id: 3, title: "Video 3", url: "https://www.youtube.com/embed/kKOzvqkP4UM", },
-        { id: 4, title: "Video 4", url: "https://www.youtube.com/embed/POgrNo4xRko", },
-        { id: 5, title: "Video 5", url: "https://youtube.com/embed/7utwZYKweho", },
-        { id: 6, title: "Video 6", url: "https://www.youtube.com/embed/zHxgZJCy9fA", },
+        { id: 1, title: "Introduction to Reco", url: "https://youtube.com/embed/o8L2nweiF1s", },
+        { id: 2, title: "API Enumeration", url: "https://youtube.com/embed/fvcKwUS4PTE", },
+        { id: 3, title: "Finding Bug Using API", url: "https://youtube.com/embed/yCUQBc2rY9Y", },
+        { id: 4, title: "Manual IDOR Hunting", url: "https://youtube.com/embed/gINAtzdccts", },
+        { id: 5, title: "JSON & XML reading for Information Disclosure", url: "https://youtube.com/embed/992cxaPdaho", },
+        { id: 6, title: "Hunting for GraphQL", url: "https://youtube.com/embed/jyjGneKJynk", },
 
-        { id: 7, title: "Video 7", url: "https://example.com/video7.mp4" },
-        { id: 8, title: "Video 8", url: "https://example.com/video8.mp4" },
-        { id: 9, title: "Video 9", url: "https://example.com/video9.mp4" },
-        { id: 10, title: "Video 10", url: "https://example.com/video10.mp4" },
+        { id: 7, title: "Hunting for GraphQL (Demo)", url: "https://youtube.com/embed/viWzbPuGqpo" },
+        { id: 8, title: "Kiterunner", url: "https://youtube.com/embed/hNs8fpWfcyU" },
+        { id: 9, title: "Fuzzing with FFUF", url: "https://youtube.com/embed/aN3Nayvd7FU" },
+        { id: 10, title: "Firefox Container ", url: "https://youtube.com/embed/zeDb9ugIGYs" },
+        { id: 11, title: "API Hacking for Noob ", url: "https://youtube.com/embed/qqmyAxfGV9c?feature=share" },
+        { id: 12, title: "OWASP API Top 10 ", url: "https://youtube.com/embed/aQGbYfalRTA" },
+
     ];
 
     const [currentVideoId, setCurrentVideoId] = useState(courseData[0].id);
@@ -155,8 +158,8 @@ const APIPentesting = () => {
                         </div>
                         <div>
                             <ul className="academy-course-video-list">
-                                <h2 className="academy-course-video-list-h">Introduction</h2>
-                                {courseData.slice(0, 5).map((video, index) => (
+                                <h2 className="academy-course-video-list-h">How To Do Recon</h2>
+                                {courseData.slice(0, 2).map((video, index) => (
                                     <li
                                         key={video.id}
                                         onClick={() =>
@@ -168,13 +171,13 @@ const APIPentesting = () => {
                                         {video.title}
 
                                         {videoComplete.includes(String(video.id)) &&
-                                            <span style={{ paddingLeft: "12rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
                                     </li>
                                 ))}
                                 <h2 className="academy-course-video-list-h">
-                                    Basic of Networking
+                                    Finding Your First Bug
                                 </h2>
-                                {courseData.slice(5, 10).map((video, index) => (
+                                {courseData.slice(2, 5).map((video, index) => (
                                     <li
                                         key={video.id}
                                         onClick={() =>
@@ -185,7 +188,65 @@ const APIPentesting = () => {
                                         {video.title}
 
                                         {videoComplete.includes(String(video.id)) &&
-                                            <span style={{ paddingLeft: "12rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+
+                                    </li>
+                                ))}
+                                <h2 className="academy-course-video-list-h">
+                                    GraphQL Hacking
+                                </h2>
+                                {courseData.slice(5, 7).map((video, index) => (
+                                    <li
+                                        key={video.id}
+                                        onClick={() =>
+                                            handleVideoClick(video.id, video.title, video.url)}
+                                        className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
+                                        style={{ display: "flex" }}
+                                    >
+                                        {video.title}
+
+                                        {videoComplete.includes(String(video.id)) &&
+                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+
+                                    </li>
+                                ))}
+                                <h2 className="academy-course-video-list-h">
+                                    Tooling
+                                </h2>
+                                {courseData.slice(7, 10).map((video, index) => (
+                                    <li
+                                        key={video.id}
+                                        onClick={() =>
+                                            handleVideoClick(video.id, video.title, video.url)}
+                                        className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
+                                        style={{ display: "flex" }}
+                                    >
+                                        {video.title}
+
+                                        {videoComplete.includes(String(video.id)) &&
+                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+
+                                    </li>
+                                ))}
+                                <h2 className="academy-course-video-list-h">
+                                    Extra
+                                </h2>
+                                {courseData.slice(10, 12).map((video, index) => (
+                                    <li
+                                        key={video.id}
+                                        onClick={() =>
+                                            handleVideoClick(video.id, video.title, video.url)}
+                                        className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
+                                        style={{ display: "flex" }}
+                                    >
+                                        {video.title}
+
+                                        {videoComplete.includes(String(video.id)) &&
+                                            <span style={
+                                                {
+                                                    color: "#04ff69",
+                                                    fontSize: "20px"
+                                                }}><MdOutlineDoneOutline /></span>}
 
                                     </li>
                                 ))}
