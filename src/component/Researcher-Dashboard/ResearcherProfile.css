@@ -16,7 +16,7 @@
 
 .res-profile-label {
     /* text-align: center; */
-    color: #878787;
+    color: #d6d6d6;
     font-size: 14px;
     letter-spacing: 1px;
     line-height: 2.8rem;
@@ -47,7 +47,7 @@
 }
 
 .res-track-report-list-div {
-    border-bottom: 1px solid #878787;
+    border-bottom: 1px solid #d4d4d4;
     position: relative;
     padding-bottom: 2rem;
 }
@@ -61,7 +61,7 @@
 }
 
 .track-report-menu-list-li {
-    color: #878787;
+    color: #d4d4d4;
     cursor: pointer;
     font-size: 16px;
     line-height: 2.8rem;
@@ -122,7 +122,7 @@
 }
 
 .res-form-label {
-    color: #878787;
+    color: #d4d4d4;
     font-size: 14px;
     letter-spacing: 1px;
     line-height: 2.8rem;
@@ -190,7 +190,7 @@
     margin-top: -10px;
     border: 0;
     border-top: 0;
-    color: #878787;
+    color: #aaaaaa;
 }
 
 .accordion__content.active {

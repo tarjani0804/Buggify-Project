@@ -204,7 +204,7 @@
 
 .bus-profile-label {
     text-align: center;
-    color: #878787;
+    color: #d4d4d4;
     font-size: 14px;
     letter-spacing: 1px;
     line-height: 2.8rem;
@@ -235,7 +235,7 @@
     position: relative;
     left: calc(40%);
     text-align: center;
-    color: #878787;
+    color: #d4d4d4;
     font-size: 14px;
     letter-spacing: 1px;
     line-height: 2.8rem;
@@ -279,7 +279,7 @@
 }
 
 .bus-profile-bug-report-div {
-    border-bottom: 1px solid #878787;
+    border-bottom: 1px solid #d4d4d4;
     position: relative;
     padding-bottom: 2rem;
 }

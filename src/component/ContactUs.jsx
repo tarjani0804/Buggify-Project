@@ -24,6 +24,8 @@ const contactUs = () => {
             window.location.href = "/Contact-us";
         }
     };
+
+
     return (
         <>
             <div

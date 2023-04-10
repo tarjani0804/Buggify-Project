@@ -20,7 +20,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 function ResearcherNavbar() {
   const rsrc_id = Cookies.get('rsrc_id');
-  if(rsrc_id == undefined){
+  if (rsrc_id == undefined) {
     window.location.href = "/";
   }
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -268,9 +268,10 @@ const ResearcherNotification = (props) => {
 
                     {mess ? (
                       <p style={{
-                        color: "#878787",
+                        color: "#fff",
                         fontSize: "14px",
-                        margin: "2rem 5rem 2rem 2rem",
+                        paddingTop: "3rem",
+                        margin: "0rem 5rem 2rem 2rem",
                         lineHeight: "2.8rem",
                         letterSpacing: "1px",
                       }}>
