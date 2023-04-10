@@ -477,8 +477,14 @@ const Inner_Program = (props) => {
   const launchDate = Cookies.get("launch_date");
   const program_name = Cookies.get("prog_name");
 
-  const cookie = Cookies.get("prog_name");
-  console.log(cookie);
+  const cookie = Cookies.get("prog_id");
+  useEffect(() => {
+    if (cookie == 78972966773335755910) {
+      logo.src = buggify;
+    } else {
+      logo.src = ProgramLogo;
+    }
+  }, []);
 
 
 
@@ -488,8 +494,8 @@ const Inner_Program = (props) => {
         <div className="inner-program-heading-section">
           <div className="inner-program-heading-section-div1">
             <div className="inner-program-heading-section-div1-1">
-              <img
-                src={``}
+              <img id="logo"
+                src=""
                 className="inner-program-heading-section-div1-img"
               />
             </div>
@@ -543,17 +549,15 @@ const Inner_Program = (props) => {
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${
-                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${
-                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                }`}
+                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                  }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward

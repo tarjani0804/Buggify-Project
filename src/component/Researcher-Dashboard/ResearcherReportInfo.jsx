@@ -153,7 +153,7 @@ const BusinessProfile = () => {
       );
       const data = await response.json();
       setReport(data[0]);
-
+      console.log(data)
 
     };
     fetchProfileStats();
