@@ -8,6 +8,15 @@ import Academy6 from "../image/academy6.png";
 import Academy7 from "../image/academy7.png";
 import Academy8 from "../image/academy8.png";
 import HeathAdam from "../image/heathAdam.png";
+import activeDirectory from '../image/active_directory_pentesting.jpg';
+import bash from '../image/Bash_scripting.jpg';
+import web from '../image/Web_Application_Pentesting.jpg';
+import offensive from '../image/Offensive_Red_Teaming.jpg';
+import malware from '../image/Malware_Analysis.jpg';
+import api from '../image/API_pentesting.jpg';
+import mobile from '../image/Mobile_Application_Pentesting.jpg';
+import python from '../image/Pentesting_with_Python.jpg';
+
 import "./AcademyCourse.css";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -46,8 +55,8 @@ const AcademyCourses = () => {
         "Learn Python concepts & modules important for hacking. Learn how to use python as scripting language.",
       price: "10",
       img: Academy1,
-      avatar: HeathAdam,
-      instrutor: "Heath Admans",
+      avatar: python,
+      instrutor: "HackerSploit",
       link: "/PentestingWithPython",
       videoLink: "/course-video-pentesting-with-python",
     },
@@ -60,8 +69,8 @@ const AcademyCourses = () => {
         "Bash Scripting or Shell Scripting Course includes everything you need for Command-line, Automate Daily Tasks, and a lot of fun and experiment with shell.",
       price: "15",
       img: Academy2,
-      avatar: HeathAdam,
-      instrutor: "Heath Adams",
+      avatar: bash,
+      instrutor: "HackerSploit",
       link: "/BashWithBeginner/",
       videoLink: "/course-video-bash-for-beginner",
     },
@@ -74,7 +83,7 @@ const AcademyCourses = () => {
         "Web Application Pentesting Covers Basic of Web Applications, OWASP Top 10 attacks in-depth. Latest Exploits and Techniques in wild.",
       price: "150",
       img: Academy3,
-      avatar: HeathAdam,
+      avatar: web,
       instrutor: "Heath Adams",
       link: "/WebApplicationPentesting/",
       videoLink: "/course-video-web-application-pentesting",
@@ -87,8 +96,8 @@ const AcademyCourses = () => {
       description:
         "Offensive Red Teaming Covers Every Techniques & Tactics covered in MITRE Framework and other infamous Frameworks.",
       img: Academy4,
-      avatar: HeathAdam,
-      instrutor: "Heath Adams",
+      avatar: offensive,
+      instrutor: "HackerSploit",
       price: "220",
       link: "/OffensiveRedTeaming/",
       videoLink: "/course-video-offensive-red-teaming",
@@ -100,8 +109,8 @@ const AcademyCourses = () => {
       category: "Malware",
       description:
         "Advance Malware Analysis Training Consist of Static and Dynamic Analysis of Recent Malwares and Reverse Enginner them.",
-      avatar: HeathAdam,
-      instrutor: " Heath Adams",
+      avatar: malware,
+      instrutor: "HackerSploit",
       price: "150",
       img: Academy5,
       link: "/MalwareAnalysis/",
@@ -115,8 +124,8 @@ const AcademyCourses = () => {
       img: Academy6,
       description:
         "AD Exploitation is one of the top notch skill to Pentest 99% of Forbs top 500 Companies and get into their Networks Ethically.",
-      avatar: HeathAdam,
-      instrutor: "Heath Adams ",
+      avatar: activeDirectory,
+      instrutor: "qhum7",
       price: "200",
       link: "/ActiveDirectoryExploitation/",
       videoLink: "/course-video-active-diretory-exploitation",
@@ -129,8 +138,8 @@ const AcademyCourses = () => {
       img: Academy7,
       description:
         "Mobile Application Pentesting One of the Most Untouched Area of Pentesting, Hunting Bugs in Mobile App gives High Payouts.",
-      avatar: HeathAdam,
-      instrutor: "Heath Adams",
+      avatar: mobile,
+      instrutor: "BitsPlease",
       price: "120",
       link: "/MobileAppPentesting/",
       videoLink: "/course-video-mobile-app-pentesting",
@@ -143,8 +152,8 @@ const AcademyCourses = () => {
       img: Academy8,
       description:
         "API is a way of Communication Between Systems and Breaking it, Testing it is a Fun.",
-      avatar: HeathAdam,
-      instrutor: "Heath Adams ",
+      avatar: api,
+      instrutor: "insiderPhD",
       price: "150",
       link: "/ApiPentesting/",
       videoLink: "/course-video-API-pentesting",

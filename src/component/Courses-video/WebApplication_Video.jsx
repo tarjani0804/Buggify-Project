@@ -136,7 +136,15 @@ const WebApplication = () => {
     const numSeenVideos = videoProgress.length;
     const progress = (numSeenVideos / numVideos) * 100;
     const slideincrease = Math.floor(progress);
+
+
+    console.log(numSeenVideos);
+    console.log(numVideos);
+    console.log(progress);
     return slideincrease;
+
+
+
   }
 
   // Update progress state whenever videoProgress prop changes
@@ -169,6 +177,7 @@ const WebApplication = () => {
       setCurrentVideoUrl(nextVideo.url);
       setCurrentVideoTitle(nextVideo.title);
     }
+
     const vid_num = currentVideoId;
     const course_id = 3;
     const myCookie = Cookies.get("myCookie");
