@@ -330,7 +330,7 @@ const SignInForm = () => {
             expires: 14,
             path: "/",
           });
-          Navigate = "/ExploreProgram";
+          window.location.href = "/ExploreProgram";
 
         } else {
           if (jwt.rsrc_id) {

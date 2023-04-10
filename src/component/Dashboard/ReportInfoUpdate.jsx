@@ -19,8 +19,8 @@ import Cookies from "js-cookie";
 
 function DashboardNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
-  const abc = Cookies.get('buss_id');
-  if(abc == undefined){
+  const abc = Cookies.get("buss_id");
+  if (abc == undefined) {
     window.location.href = "/";
   }
   const handleMenuToggle = () => {
@@ -57,12 +57,12 @@ function DashboardNavbar() {
   };
 
   const logout = () => {
-    Cookies.remove('userName');
-    Cookies.remove('companyName');
-    Cookies.remove('buss_id');
-    Cookies.remove('rsrc_id');
-    Cookies.remove('myCookie');
-    Cookies.remove('prog_id');
+    Cookies.remove("userName");
+    Cookies.remove("companyName");
+    Cookies.remove("buss_id");
+    Cookies.remove("rsrc_id");
+    Cookies.remove("myCookie");
+    Cookies.remove("prog_id");
     Navigate("/");
   };
 
@@ -214,7 +214,7 @@ const BusinessProfile = (props) => {
     });
     const jwt = await response.json();
     alert(jwt.status);
-    window.location.href = "/ReportInfoUpdate";
+    window.location.href = "/bugReport";
   };
   // show this data
   console.log(report.report_title);
@@ -241,9 +241,7 @@ const BusinessProfile = (props) => {
                 {" "}
                 <div className="bus-profile-header">
                   <img src={Avat} className="bus-profile-company-logo" />
-                  <h3 className="bus-profile-company-name">
-                    {companyName}
-                  </h3>
+                  <h3 className="bus-profile-company-name">{companyName}</h3>
                 </div>
               </center>
 
