@@ -153,9 +153,13 @@ const BusinessProfile = () => {
       );
       const data = await response.json();
       setReport(data[0]);
+
+
     };
     fetchProfileStats();
   }, []);
+
+
   const myCookie = Cookies.get("myCookie");
   const username = Cookies.get("username");
 

@@ -3,6 +3,8 @@ import "./Inner_Program.css";
 import { BsBookmarkPlus, BsBookmarkCheckFill } from "react-icons/bs";
 import { HiOutlineBellAlert, HiBellAlert } from "react-icons/hi2";
 import ProgramLogo from "../image/inner_program_logo.png";
+import buggify from '../image/buggify.png'
+
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -453,6 +455,11 @@ const Inner_Program = (props) => {
   const launchDate = Cookies.get("launch_date");
   const program_name = Cookies.get("prog_name");
 
+  const cookie = Cookies.get("prog_name");
+  console.log(cookie);
+
+
+
   return (
     <>
       <div className="inner-program">
@@ -460,7 +467,7 @@ const Inner_Program = (props) => {
           <div className="inner-program-heading-section-div1">
             <div className="inner-program-heading-section-div1-1">
               <img
-                src={ProgramLogo}
+                src={``}
                 className="inner-program-heading-section-div1-img"
               />
             </div>

@@ -2,6 +2,12 @@ import React from "react";
 import "./Homes2.css";
 import { BsInfoLg } from "react-icons/bs";
 import { IoBugOutline } from "react-icons/io5";
+import iso from '../image/iso 27001 isms-1-1.jpeg';
+import trust from '../image/vdp.jpg.jpg';
+import mitre from '../image/MITREAttack_Framework_V2.jpg';
+import ice from '../image/The-International-Electrotechnical-Commission-IEC-and-Efficiency-750x375-1.png';
+
+
 
 const homes2 = () => {
 	return (
@@ -32,7 +38,15 @@ const homes2 = () => {
 								We help Organizations to implement an ISMS that meets the requirements
 								of the standard.
 							</p>
-							{/* <div className="sq-span"><BsInfoLg className="sq-icon sq1-icon" /></div> */}
+							<div style={{ textAlign: "center" }} >
+								<img src={iso}
+									style=
+									{{
+										width: "82%",
+										textAlign: "center",
+										marginTop: "6rem",
+									}} />
+							</div>
 
 							<br />
 						</div>
@@ -48,8 +62,16 @@ const homes2 = () => {
 								Public Program uses knowledge of Researchers around the world to make
 								systems more secure.
 							</p>
-							{/* <div className="sq-span"><IoBugOutline className="sq-icon sq1-icon" /></div> */}
-							<br />
+							<div style={{ textAlign: "center" }} >
+								<img src={ice}
+									style=
+									{{
+										width: "83%",
+										height: "150px",
+										textAlign: "center",
+										marginTop: "6rem",
+									}} />
+							</div>
 						</div>
 						<div className=" sq sq3">
 							<h2 className="sq-h1">Disclosure Policy</h2>
@@ -64,8 +86,16 @@ const homes2 = () => {
 								and NDA helps Organizations to allow disclosure of bug based on their
 								policy.
 							</p>
-							{/* <div className="sq-span"><BsInfoLg className="sq-icon sq1-icon" /></div> */}
-							<br />
+							<div style={{ textAlign: "center" }} >
+								<img src={trust}
+									style=
+									{{
+										width: "83%",
+										height: "150px",
+										textAlign: "center",
+										marginTop: "6rem",
+									}} />
+							</div>
 						</div>
 						<div className=" sq sq4">
 							<h2 className="sq-h1">MiTRE Att&ck Framework</h2>
@@ -80,8 +110,16 @@ const homes2 = () => {
 								organizations about Security Policies that must be enforces to maintain
 								standards.
 							</p>
-							{/* <div className="sq-span"><BsInfoLg className="sq-icon sq1-icon" /></div> */}
-							<br />
+							<div style={{ textAlign: "center" }} >
+								<img src={mitre}
+									style=
+									{{
+										width: "83%",
+										height: "150px",
+										textAlign: "center",
+										marginTop: "2rem",
+									}} /><br />
+							</div>
 						</div>
 					</div>
 					<br />

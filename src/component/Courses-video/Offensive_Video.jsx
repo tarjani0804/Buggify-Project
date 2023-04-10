@@ -131,7 +131,7 @@ const Offensive = () => {
   const [progress, setProgress] = useState(calculateProgress());
   function calculateProgress() {
     const numVideos = courseData.length;
-    const numSeenVideos = videoProgress.length;
+    const numSeenVideos = courseData.length;
     const progress = (numSeenVideos / numVideos) * 100;
     const slideincrease = Math.floor(progress);
     return slideincrease;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Program.css";
 import { useNavigate } from "react-router-dom";
-import Poster from "../image/program_poster.png";
+import Poster from "../image/Sponsored By BugBee LTD.png";
 import Google from "../image/Google.png";
 import Cookies from "js-cookie";
 

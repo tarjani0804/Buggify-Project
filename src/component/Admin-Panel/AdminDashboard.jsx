@@ -6,11 +6,13 @@ import { AiOutlineSchedule, AiOutlineArrowLeft } from 'react-icons/ai';
 import { RiSecurePaymentFill, RiLogoutBoxRLine } from 'react-icons/ri';
 import { MdContacts } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
 
 function DashboardNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(true);
     const abc = Cookies.get('admin_id');
-    if(abc == undefined){
+    if (abc == undefined) {
         window.location.href = "/";
     }
     const handleMenuToggle = () => {
