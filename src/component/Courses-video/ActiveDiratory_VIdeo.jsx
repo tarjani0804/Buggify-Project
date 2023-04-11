@@ -196,13 +196,14 @@ const ActiveDiratory = () => {
                     className={
                       videoComplete.includes(String(video.id)) ? "watched" : ""
                     }
-                    style={{ display: "flex" }}
+
                   >
                     {video.title}
 
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
+                          marginLeft: "1rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}

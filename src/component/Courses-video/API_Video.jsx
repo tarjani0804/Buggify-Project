@@ -66,7 +66,7 @@ const APIPentesting = () => {
     const [progress, setProgress] = useState(calculateProgress());
     function calculateProgress() {
         const numVideos = courseData.length;
-        const numSeenVideos = courseData.length;
+        const numSeenVideos = videoComplete.length;
         const progress = (numSeenVideos / numVideos) * 100;
         const slideincrease = (Math.floor(progress));
         return slideincrease;
@@ -166,12 +166,12 @@ const APIPentesting = () => {
                                             handleVideoClick(video.id, video.title, video.url)
                                         }
                                         className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
-                                        style={{ display: "flex" }}
+
                                     >
                                         {video.title}
 
                                         {videoComplete.includes(String(video.id)) &&
-                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+                                            <span style={{ marginLeft: "1rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
                                     </li>
                                 ))}
                                 <h2 className="academy-course-video-list-h">
@@ -183,12 +183,12 @@ const APIPentesting = () => {
                                         onClick={() =>
                                             handleVideoClick(video.id, video.title, video.url)}
                                         className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
-                                        style={{ display: "flex" }}
+
                                     >
                                         {video.title}
 
                                         {videoComplete.includes(String(video.id)) &&
-                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+                                            <span style={{ marginLeft: "1rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
 
                                     </li>
                                 ))}
@@ -201,12 +201,12 @@ const APIPentesting = () => {
                                         onClick={() =>
                                             handleVideoClick(video.id, video.title, video.url)}
                                         className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
-                                        style={{ display: "flex" }}
+
                                     >
                                         {video.title}
 
                                         {videoComplete.includes(String(video.id)) &&
-                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+                                            <span style={{ marginLeft: "1rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
 
                                     </li>
                                 ))}
@@ -221,10 +221,10 @@ const APIPentesting = () => {
                                         className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
                                         style={{ display: "flex" }}
                                     >
-                                        {video.title}
+
 
                                         {videoComplete.includes(String(video.id)) &&
-                                            <span style={{ color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
+                                            <span style={{ marginLeft: "1rem", color: "#04ff69", fontSize: "20px" }}><MdOutlineDoneOutline /></span>}
 
                                     </li>
                                 ))}
@@ -239,11 +239,12 @@ const APIPentesting = () => {
                                         className={videoComplete.includes(String(video.id)) ? 'watched' : ''}
                                         style={{ display: "flex" }}
                                     >
-                                        {video.title}
+
 
                                         {videoComplete.includes(String(video.id)) &&
                                             <span style={
                                                 {
+                                                    marginLeft: "1rem",
                                                     color: "#04ff69",
                                                     fontSize: "20px"
                                                 }}><MdOutlineDoneOutline /></span>}

@@ -133,14 +133,11 @@ const WebApplication = () => {
   const [progress, setProgress] = useState(calculateProgress());
   function calculateProgress() {
     const numVideos = courseData.length;
-    const numSeenVideos = courseData.length;
+    const numSeenVideos = videoComplete.length;
     const progress = (numSeenVideos / numVideos) * 100;
     const slideincrease = Math.floor(progress);
 
 
-    console.log(numSeenVideos);
-    console.log(numVideos);
-    console.log(progress);
     return slideincrease;
 
 
@@ -241,13 +238,14 @@ const WebApplication = () => {
                     className={
                       videoComplete.includes(String(video.id)) ? "watched" : ""
                     }
-                    style={{ display: "flex" }}
+
                   >
                     {video.title}
 
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
+                          marginLeft: "1rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -269,13 +267,14 @@ const WebApplication = () => {
                     className={
                       videoComplete.includes(String(video.id)) ? "watched" : ""
                     }
-                    style={{ display: "flex" }}
+
                   >
                     {video.title}
 
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
+                          marginLeft: "1rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -297,13 +296,14 @@ const WebApplication = () => {
                     className={
                       videoComplete.includes(String(video.id)) ? "watched" : ""
                     }
-                    style={{ display: "flex" }}
+
                   >
                     {video.title}
 
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
+                          marginLeft: "1rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
@@ -325,13 +325,14 @@ const WebApplication = () => {
                     className={
                       videoComplete.includes(String(video.id)) ? "watched" : ""
                     }
-                    style={{ display: "flex" }}
+
                   >
                     {video.title}
 
                     {videoComplete.includes(String(video.id)) && (
                       <span
                         style={{
+                          marginLeft: "1rem",
                           color: "#04ff69",
                           fontSize: "20px",
                         }}
