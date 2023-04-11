@@ -22,6 +22,9 @@ function DashboardNavbar() {
   const gotoPaymentClearance = () => {
     Navigate("/PaymentClearance");
   };
+  const gotohome = () => {
+    Navigate("/");
+  };
   const gotoContactNotification = () => {
     Navigate("/ContactNotification");
   };
@@ -41,7 +44,7 @@ function DashboardNavbar() {
         {isMenuOpen ? <FiChevronLeft /> : <FiChevronRight />}
       </div>
       <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
-        <li>
+        <li onClick={gotohome}>
           <span className="back-link-icon navbar-menu-icon">
             <AiOutlineArrowLeft />
           </span>

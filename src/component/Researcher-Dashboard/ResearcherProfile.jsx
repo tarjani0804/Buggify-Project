@@ -30,6 +30,9 @@ function ResearcherNavbar() {
   const gotoResearcherProfile = () => {
     Navigate("/researcherProfile");
   };
+  const gotohome = () => {
+    Navigate("/");
+  };
   const gotoTrackReports = () => {
     Navigate("/track-report");
   };
@@ -69,7 +72,7 @@ function ResearcherNavbar() {
         {isMenuOpen ? <FiChevronLeft /> : <FiChevronRight />}
       </div>
       <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
-        <li>
+        <li onClick={gotohome}>
           <span className="back-link-icon navbar-menu-icon">
             <AiOutlineArrowLeft />
           </span>

@@ -35,6 +35,9 @@ function DashboardNavbar() {
   const gotoScopeSetting = () => {
     Navigate("/ScopeSetting");
   };
+  const gotohome = () => {
+    Navigate("/");
+  };
   const gotoBugReport = () => {
     Navigate("/bugReport");
   };
@@ -76,7 +79,7 @@ function DashboardNavbar() {
         {isMenuOpen ? <FiChevronLeft /> : <FiChevronRight />}
       </div>
       <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
-        <li>
+        <li onClick={gotohome}>
           <span className="back-link-icon navbar-menu-icon">
             <AiOutlineArrowLeft />
           </span>

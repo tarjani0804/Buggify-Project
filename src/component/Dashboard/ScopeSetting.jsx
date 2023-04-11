@@ -27,137 +27,140 @@ function DashboardNavbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-    const Navigate = useNavigate();
-    const gotoBusinessProfile = () => {
-        Navigate("/businessProfile");
-    };
-    const gotoScopeSetting = () => {
-        Navigate("/ScopeSetting");
-    };
-    const gotoBugReport = () => {
-        Navigate("/bugReport");
-    };
-    const gotoRewardUpdate = () => {
-        Navigate("/rewardUpdate");
-    };
-    const gotoRetesting = () => {
-        Navigate("/Retesting");
-    };
-    const gotoBountyPayment = () => {
-        Navigate("/BountyPayment");
-    };
-    const gotoPreviousFinding = () => {
-        Navigate("/PreviousFinding");
-    };
-    const gotoDashboardSetting = () => {
-        Navigate("/DashboardSetting");
-    };
-    const gotoFAQs = () => {
-        Navigate("/FAQs");
-    };
+  const Navigate = useNavigate();
+  const gotoBusinessProfile = () => {
+    Navigate("/businessProfile");
+  };
+  const gotohome = () => {
+    Navigate("/");
+  };
+  const gotoScopeSetting = () => {
+    Navigate("/ScopeSetting");
+  };
+  const gotoBugReport = () => {
+    Navigate("/bugReport");
+  };
+  const gotoRewardUpdate = () => {
+    Navigate("/rewardUpdate");
+  };
+  const gotoRetesting = () => {
+    Navigate("/Retesting");
+  };
+  const gotoBountyPayment = () => {
+    Navigate("/BountyPayment");
+  };
+  const gotoPreviousFinding = () => {
+    Navigate("/PreviousFinding");
+  };
+  const gotoDashboardSetting = () => {
+    Navigate("/DashboardSetting");
+  };
+  const gotoFAQs = () => {
+    Navigate("/FAQs");
+  };
 
-    const logout = () => {
-        Cookies.remove('userName');
-        Cookies.remove('companyName');
-        Cookies.remove('buss_id');
-        Cookies.remove('rsrc_id');
-        Cookies.remove('myCookie');
-        Cookies.remove('prog_id');
-        Navigate("/");
-    };
+  const logout = () => {
+    Cookies.remove("userName");
+    Cookies.remove("companyName");
+    Cookies.remove("buss_id");
+    Cookies.remove("rsrc_id");
+    Cookies.remove("myCookie");
+    Cookies.remove("prog_id");
+    Navigate("/");
+  };
 
-    return (
-        <nav className={`navbar ${isMenuOpen ? "open" : "close"}`}>
-            <div
-                className={`navbar-toggle ${isMenuOpen ? "navopen" : "navclose"}`}
-                onClick={handleMenuToggle}
-            >
-                {isMenuOpen ? <FiChevronLeft /> : <FiChevronRight />}
-            </div>
-            <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
-                <li>
-                    <span className="back-link-icon navbar-menu-icon">
-                        <AiOutlineArrowLeft />
-                    </span>
-                    {isMenuOpen && (
-                        <span className="back-link navbar-menu-item">Back to Home</span>
-                    )}
-                </li>
-                <hr className={`navbar-hr ${isMenuOpen ? "open" : ""}`} />
-                <li onClick={gotoBusinessProfile}>
-                    <span className="navbar-menu-icon">
-                        <MdAddBusiness />
-                    </span>
-                    {isMenuOpen && (
-                        <span className="navbar-menu-item">Business Profile</span>
-                    )}
-                </li>
-                <li onClick={gotoScopeSetting} className="dashboard-link">
-                    <span className="navbar-menu-icon" style={{ color: "#ffffff" }}>
-                        <RiUserSettingsLine />
-                    </span>
-                    {isMenuOpen && (
-                        <span className="navbar-menu-item">Scope Setting</span>
-                    )}
-                </li>
-                <li onClick={gotoBugReport}>
-                    <span className="navbar-menu-icon">
-                        <VscReport />
-                    </span>
-                    {isMenuOpen && <span className="navbar-menu-item">Bug Reports</span>}
-                </li>
-                <li onClick={gotoRewardUpdate}>
-                    <span className="navbar-menu-icon">
-                        <MdSecurityUpdateGood />
-                    </span>
-                    {isMenuOpen && (
-                        <span className="navbar-menu-item">Reward Update</span>
-                    )}
-                </li>
-                <li onClick={gotoRetesting}>
-                    <span className="navbar-menu-icon">
-                        <BsPlusSquareDotted />
-                    </span>
-                    {isMenuOpen && <span className="navbar-menu-item">Retesting</span>}
-                </li>
-                <li onClick={gotoBountyPayment}>
-                    <span className="navbar-menu-icon">
-                        <RiFileHistoryLine />
-                    </span>
-                    {isMenuOpen && (
-                        <span className="navbar-menu-item">Bounty Payment Details</span>
-                    )}
-                </li>
-                <li onClick={gotoPreviousFinding}>
-                    <span className="navbar-menu-icon">
-                        <TbReportAnalytics />
-                    </span>
-                    {isMenuOpen && (
-                        <span className="navbar-menu-item">Previous finding</span>
-                    )}
-                </li>
-                <li onClick={logout}>
-                    <span className="navbar-menu-icon">
-                        <RiLogoutBoxRLine />
-                    </span>
-                    {isMenuOpen && <span className="navbar-menu-item">Logout</span>}
-                </li>
-                <hr className={`navbar-hr ${isMenuOpen ? "open" : ""}`} />
-                <li onClick={gotoDashboardSetting}>
-                    <span className="navbar-menu-icon">
-                        <IoSettingsOutline />
-                    </span>
-                    {isMenuOpen && <span className="navbar-menu-item">Settings</span>}
-                </li>
-                <li onClick={gotoFAQs}>
-                    <span className="navbar-menu-icon">
-                        <RiQuestionLine />
-                    </span>
-                    {isMenuOpen && <span className="navbar-menu-item">FAQs</span>}
-                </li>
-            </ul>
-        </nav>
-    );
+  return (
+    <nav className={`navbar ${isMenuOpen ? "open" : "close"}`}>
+      <div
+        className={`navbar-toggle ${isMenuOpen ? "navopen" : "navclose"}`}
+        onClick={handleMenuToggle}
+      >
+        {isMenuOpen ? <FiChevronLeft /> : <FiChevronRight />}
+      </div>
+      <ul className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
+        <li onClick={gotohome}>
+          <span className="back-link-icon navbar-menu-icon">
+            <AiOutlineArrowLeft />
+          </span>
+          {isMenuOpen && (
+            <span className="back-link navbar-menu-item">Back to Home</span>
+          )}
+        </li>
+        <hr className={`navbar-hr ${isMenuOpen ? "open" : ""}`} />
+        <li onClick={gotoBusinessProfile}>
+          <span className="navbar-menu-icon">
+            <MdAddBusiness />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Business Profile</span>
+          )}
+        </li>
+        <li onClick={gotoScopeSetting} className="dashboard-link">
+          <span className="navbar-menu-icon" style={{ color: "#ffffff" }}>
+            <RiUserSettingsLine />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Scope Setting</span>
+          )}
+        </li>
+        <li onClick={gotoBugReport}>
+          <span className="navbar-menu-icon">
+            <VscReport />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Bug Reports</span>}
+        </li>
+        <li onClick={gotoRewardUpdate}>
+          <span className="navbar-menu-icon">
+            <MdSecurityUpdateGood />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Reward Update</span>
+          )}
+        </li>
+        <li onClick={gotoRetesting}>
+          <span className="navbar-menu-icon">
+            <BsPlusSquareDotted />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Retesting</span>}
+        </li>
+        <li onClick={gotoBountyPayment}>
+          <span className="navbar-menu-icon">
+            <RiFileHistoryLine />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Bounty Payment Details</span>
+          )}
+        </li>
+        <li onClick={gotoPreviousFinding}>
+          <span className="navbar-menu-icon">
+            <TbReportAnalytics />
+          </span>
+          {isMenuOpen && (
+            <span className="navbar-menu-item">Previous finding</span>
+          )}
+        </li>
+        <li onClick={logout}>
+          <span className="navbar-menu-icon">
+            <RiLogoutBoxRLine />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Logout</span>}
+        </li>
+        <hr className={`navbar-hr ${isMenuOpen ? "open" : ""}`} />
+        <li onClick={gotoDashboardSetting}>
+          <span className="navbar-menu-icon">
+            <IoSettingsOutline />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">Settings</span>}
+        </li>
+        <li onClick={gotoFAQs}>
+          <span className="navbar-menu-icon">
+            <RiQuestionLine />
+          </span>
+          {isMenuOpen && <span className="navbar-menu-item">FAQs</span>}
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 const BusinessProfile = (props) => {
