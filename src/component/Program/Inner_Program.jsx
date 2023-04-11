@@ -3,7 +3,7 @@ import "./Inner_Program.css";
 import { BsBookmarkPlus, BsBookmarkCheckFill } from "react-icons/bs";
 import { HiOutlineBellAlert, HiBellAlert } from "react-icons/hi2";
 import ProgramLogo from "../image/inner_program_logo.png";
-import buggify from '../image/buggify.png'
+import buggify from "../image/buggify.png";
 
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -387,62 +387,63 @@ const Inner_Program = (props) => {
     const prog_id = Cookies.get("prog_id");
     console.log("In Scope");
 
-    const in_scope = await fetch(
-      `http://127.0.0.1:5173/programScIn/${prog_id}`
-    );
-    const scopeval1 = await in_scope.json();
-    console.log(scopeval1);
-    var in_assets = Object.values(scopeval1).map((item) => item.asset);
+    // const in_scope = await fetch(
+    //   `http://127.0.0.1:5173/programScIn/${prog_id}`
+    // );
+    // const scopeval1 = await in_scope.json();
+    // console.log(scopeval1);
+    // var in_assets = Object.values(scopeval1).map((item) => item.asset);
 
-    var in_assets_type = Object.values(scopeval1).map(
-      (item) => item.asset_type
-    );
-    var in_impact = Object.values(scopeval1).map((item) => item.impact);
-    var in_elb = Object.values(scopeval1).map((item) => item.elb);
+    // var in_assets_type = Object.values(scopeval1).map(
+    //   (item) => item.asset_type
+    // );
+    // var in_impact = Object.values(scopeval1).map((item) => item.impact);
+    // var in_elb = Object.values(scopeval1).map((item) => item.elb);
 
-    const In_Scope = [];
-    if (scopeval1) {
-      for (let i = 0; i < 10; i++) {
-        const data = scopeval1[i];
-        In_Scope.push(
-          <tr>
-            <td>{data.asset}</td>
-            <td>{data.asset_type}</td>
-            <td>{data.impact}</td>
-            <td>{data.elb}</td>
-          </tr>
-        );
-      }
-    }
-    console.log(In_Scope);
-
-    console.log("Out of Scope");
-    const out_scope = await fetch(
-      `http://127.0.0.1:5173/programScOut/${prog_id}`
-    );
-    const scopeval2 = await out_scope.json();
-    var out_assets = Object.values(scopeval2).map((item) => item.asset);
-    var out_assets_type = Object.values(scopeval2).map(
-      (item) => item.asset_type
-    );
-    // set this out_scope data to table of out_scope, remove const program in upper function or set by making out_scope const in upper program and then map them using this loop
-    // for (let i = 0; i < 10; i++) {
-    //   if (out_assets[i]) {
-    //     console.log(out_assets[i]);
-    //     console.log(out_assets_type[i]);
+    // const In_Scope = [];
+    // if (scopeval1) {
+    //   for (let i = 0; i < 10; i++) {
+    //     const data = scopeval1[i];
+    //     In_Scope.push(
+    //       <tr>
+    //         <td>{data.asset}</td>
+    //         <td>{data.asset_type}</td>
+    //         <td>{data.impact}</td>
+    //         <td>{data.elb}</td>
+    //       </tr>
+    //     );
     //   }
     // }
-    // console.log("Reward");
+    // console.log(In_Scope);
+
+    // console.log("Out of Scope");
+    // const out_scope = await fetch(
+    //   `http://127.0.0.1:5173/programScOut/${prog_id}`
+    // );
+    // const scopeval2 = await out_scope.json();
+    // var out_assets = Object.values(scopeval2).map((item) => item.asset);
+    // var out_assets_type = Object.values(scopeval2).map(
+    //   (item) => item.asset_type
+    // );
+    // // set this out_scope data to table of out_scope, remove const program in upper function or set by making out_scope const in upper program and then map them using this loop
+    // // for (let i = 0; i < 10; i++) {
+    // //   if (out_assets[i]) {
+    // //     console.log(out_assets[i]);
+    // //     console.log(out_assets_type[i]);
+    // //   }
+    // // }
+    // // console.log("Reward");
+    
     const reward = await fetch(`http://127.0.0.1:5173/programRd/${prog_id}`);
     const rdval = await reward.json();
     var rd_low = rdval.low;
     var rd_medium = rdval.medium;
     var rd_high = rdval.high;
     var rd_critical = rdval.critical;
-    // console.log(rd_low);
-    // console.log(rd_medium);
-    // console.log(rd_high);
-    // console.log(rd_critical);
+    console.log(rd_low);
+    console.log(rd_medium);
+    console.log(rd_high);
+    console.log(rd_critical);
 
     document.getElementById("low").innerHTML = rd_low;
     document.getElementById("medium").innerHTML = rd_medium;
@@ -486,15 +487,14 @@ const Inner_Program = (props) => {
     }
   }, []);
 
-
-
   return (
     <>
       <div className="inner-program">
         <div className="inner-program-heading-section">
           <div className="inner-program-heading-section-div1">
             <div className="inner-program-heading-section-div1-1">
-              <img id="logo"
+              <img
+                id="logo"
                 src=""
                 className="inner-program-heading-section-div1-img"
               />
@@ -549,15 +549,17 @@ const Inner_Program = (props) => {
           <nav className="program-navbar">
             <ul className="program-navbar-ul">
               <li
-                className={`program-navbar-ul-li  ${policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  policySelect ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handlePolicySelected}
               >
                 Policy
               </li>
               <li
-                className={`program-navbar-ul-li  ${scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
-                  }`}
+                className={`program-navbar-ul-li  ${
+                  scopeSelected ? "selecProgram-navbar" : "program-navbar-ul-li"
+                }`}
                 onClick={handleScopeSelected}
               >
                 Scope and Reward
