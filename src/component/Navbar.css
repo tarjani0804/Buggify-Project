@@ -33,9 +33,11 @@ li {
     align-items: center;
     color: #04FF69;
     font-size: 15px;
-    margin-top: 30px;
     cursor: pointer;
+    margin-top: 15px;
 }
+
+
 
 .menu-link {
     grid-column: 4/5;
@@ -72,7 +74,7 @@ ul li.active {
 .username-div {
     position: relative;
     font-size: 16px;
-    margin: 35px auto 0;
+    margin: 15px auto 0;
     justify-content: end;
     align-items: center;
     display: grid;
@@ -89,11 +91,11 @@ ul li.active {
 
 .logout-btn {
     position: absolute;
-    top: 60px;
+    top: 70px;
     color: #878787;
     cursor: pointer;
     display: block;
-    left: 2rem;
+    left: 1rem;
 }
 
 .button_ani {

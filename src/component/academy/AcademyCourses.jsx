@@ -528,7 +528,7 @@ const AcademyCourses = () => {
                           {course.category}
                         </button>
                         <p className="card-body-div2-instrutor">
-                          Course instrutor : <br />
+                          Course instructor : <br />
                           <img
                             src={course.avatar}
                             className="card-body-div2-avatar"
