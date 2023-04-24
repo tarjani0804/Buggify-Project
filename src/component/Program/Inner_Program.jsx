@@ -475,9 +475,8 @@ const Inner_Program = (props) => {
     }
   };
 
-  const launchDate = Cookies.get("launch_date");
   const program_name = Cookies.get("prog_name");
-
+  const launchDate = Cookies.get("launch_date");
   const cookie = Cookies.get("prog_id");
   useEffect(() => {
     if (cookie == 78972966773335755910) {

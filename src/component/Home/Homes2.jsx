@@ -93,7 +93,7 @@ const homes2 = () => {
 										width: "83%",
 										height: "150px",
 										textAlign: "center",
-										marginTop: "6rem",
+										marginTop: "2rem",
 									}} />
 							</div>
 						</div>

@@ -65,7 +65,7 @@
 
 .sq-p {
     letter-spacing: 1px;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 2rem;
     color: #FFFFFF;
     padding-top: 3rem;
@@ -74,16 +74,7 @@
     margin-left: calc(7.5%);
 }
 
-.sq-span {
-    position: absolute;
-    top: 25rem;
-    right: 10rem;
-    padding: 2rem;
-    background-color: #04FF69;
-    width: 25%;
-    border-radius: 50%;
-    font-size: 14px;
-}
+
 
 .sq-icon {
     font-size: 30px;

@@ -220,67 +220,36 @@ const BookmarkedProgram = (props) => {
                 </div>
               </center>
               <div className="track-report">
-                <div className="track-reports-div">
-                  <ol className="bookmarked-ul">{openlist}</ol>
+          <div className="track-reports-div">
+            <ol className="bookmarked-ul">
+              {BookmarkedProgram.defaultProps.bookmarked.map((title) => (
+                <div key={title.id} className="res-track-report-list-div">
+                  <div className="bus-profile-bug-report-divtitle">
+                    <li
+                      className="bus-profile-bug-report-div-title-p"
+                      style={{ marginLeft: "4rem" }}
+                    >
+                      {" "}
+                      {title.programTitle}
+                    </li>
+                    <p className="res-bookmarked-list-link">
+                      <a href="" className="res-track-report-list-link">
+                        Start Hunting {title.programLink}
+                      </a>
+                    </p>
+                  </div>
                 </div>
-
-              </div>
+              ))}
+            </ol>
+          </div>
+        </div>
             </div>
-
-
-
           </div>
         </div>
 
-        <div className="track-report">
-          <div className="track-reports-div">
-            <ol className="bookmarked-ul">
-              {BookmarkedProgram.defaultProps.bookmarked.map((title) => (
-                <div key={title.id} className="res-track-report-list-div">
-                  <div className="bus-profile-bug-report-divtitle">
-                    <li
-                      className="bus-profile-bug-report-div-title-p"
-                      style={{ marginLeft: "4rem" }}
-                    >
-                      {" "}
-                      {title.programTitle}
-                    </li>
-                    <p className="res-bookmarked-list-link">
-                      <a href="" className="res-track-report-list-link">
-                        Start Hunting {title.programLink}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </ol>
-          </div>
-        </div>
+       
 
-        <div className="track-report">
-          <div className="track-reports-div">
-            <ol className="bookmarked-ul">
-              {BookmarkedProgram.defaultProps.bookmarked.map((title) => (
-                <div key={title.id} className="res-track-report-list-div">
-                  <div className="bus-profile-bug-report-divtitle">
-                    <li
-                      className="bus-profile-bug-report-div-title-p"
-                      style={{ marginLeft: "4rem" }}
-                    >
-                      {" "}
-                      {title.programTitle}
-                    </li>
-                    <p className="res-bookmarked-list-link">
-                      <a href="" className="res-track-report-list-link">
-                        Start Hunting {title.programLink}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </ol>
-          </div>
-        </div>
+        
       </div>
 
 
